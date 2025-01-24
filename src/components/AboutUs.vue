@@ -41,22 +41,20 @@
         </h1>
     </div>
 </v-container>
-    <v-parallax class="parallax" src='@/assets/BC1.jpg'>
+<v-parallax class="parallax" src='@/assets/BC1.jpg' style="align-items: center;">
+    <div class="content">
+        <p class="paragraph mt-2 ml-1 mr-1" data-aos="fade-up" data-aos-duration="3000">
+            <b>Our Mission </b>is to excel as a premier Cambridge English Assessment preparation center in Sri Lanka. We are dedicated to providing an exceptional learning experience, fostering language proficiency, critical thinking, and global awareness. Through innovative teaching and a commitment to student success, we aim to be the preferred choice for effective Cambridge English Assessment preparation, making a lasting impact on our students' academic and personal growth.
+        </p>
+        <br>
+
         <div class="content">
-            <p class="paragraph mt-5 ml-5 mr-5" data-aos="fade-up" data-aos-duration="3000"><b>Our Mission </b>is to excel
-                as a premier Cambridge English Assessment preparation center in Sri Lanka. We are dedicated to
-                providing an exceptional learning experience, fostering language proficiency, critical thinking,
-                and global awareness. Through innovative teaching and a commitment to student success, we aim to
-                be the preferred choice for effective Cambridge English Assessment preparation, making a lasting
-                impact on our students' academic and personal growth.</p>
-            <br>
-            <p class="paragraph mt-5 ml-5 mr-5" data-aos="fade-up" data-aos-duration="3000"><b>Our Vision </b>is to lead
-                as the top Cambridge English Assessment preparation center in Sri Lanka, dedicated to fostering
-                excellence in language proficiency and academic success. We aim to provide an inspiring learning
-                environment, utilizing innovative teaching methods and resources to empower students for success
-                in a globalized world.</p>
+            <p class="paragraph mt-2 ml-1 mr-1" data-aos="fade-up" data-aos-duration="3000">
+                <b>Our Vision </b>is to lead as the top Cambridge English Assessment preparation center in Sri Lanka, dedicated to fostering excellence in language proficiency and academic success. We aim to provide an inspiring learning environment, utilizing innovative teaching methods and resources to empower students for success in a globalized world.
+            </p>
         </div>
-    </v-parallax>
+    </div>
+</v-parallax>
   <v-container>
     <v-divider></v-divider>
     <!-- Existing content -->
@@ -229,6 +227,23 @@ export default {
     border-radius: 5px;
 }
 .parallax{
-    height: 500px;
+    height: 550px;
+}
+.paragraph {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 767px) {
+    .content {
+        display: block;
+        /* Ensures both Mission and Vision texts are displayed */
+    }
+
+    .paragraph {
+        font-size: 1rem; /* Adjust the font size for mobile screens */
+        line-height: 1.4;
+    }
 }
 </style>
