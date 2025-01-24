@@ -33,7 +33,7 @@ export default {
                 },
                 {
                     src: require("../assets/carosel/2.jpg"),
-                    title: "Centric Classroom Environment",
+                    title: "Students Centric Classroom Environment",
                     subtitle: "Empowering Active Participation and Engagement.",
                 },
                 {

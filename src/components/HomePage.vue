@@ -1,5 +1,4 @@
 <template>
-    <DigitalLinerPage></DigitalLinerPage>
 <NavBar></NavBar>
 <CaroselPage></CaroselPage>
 
@@ -28,7 +27,7 @@
 
     <v-divider></v-divider>
     <section class="why-choose-us" ref="statsSection" style="background-color: white; padding: 50px 0;">
-        <h1 class="title mt-2 text-center" style="color: #FBB700; font-family: 'Roboto', sans-serif; font-size: 36px; font-weight: bold;" data-aos="fade-up" data-aos-duration="2000">OUR <span class="highlight">STRENGTH</span></h1>
+        <h1 class="title mt-1 text-center" style="color: #FBB700; font-family: 'Roboto', sans-serif; font-size: 36px; font-weight: bold;" data-aos="fade-up" data-aos-duration="2000">OUR <span class="highlight">STRENGTH</span></h1>
 
         <v-container>
             <v-row justify="center" align="center" class="stats-row" spacing="4">
@@ -108,14 +107,14 @@
     <v-divider></v-divider>
     <br>
     <!-- News Feed Section -->
-    <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">News & <span class="highlight">Events</span></h1>
+    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000">News & <span class="highlight">Events</span></h1>
     <NewsSliderPage></NewsSliderPage>
     <br>
 
     <v-divider></v-divider>
 
     <br>
-    <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
+    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000">
         <span class="highlight">TESTIMONIALS</span>
     </h1>
     <TestimologyPage></TestimologyPage>
@@ -134,7 +133,6 @@ import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue'
 import NewsSliderPage from './NewsSliderPage.vue';
 import TestimologyPage from './TestimologyPage.vue'
-import DigitalLinerPage from './DigitalLinerPage.vue';
 
 export default {
 
@@ -146,7 +144,6 @@ export default {
         ChatBot,
         NewsSliderPage,
         TestimologyPage,
-        DigitalLinerPage
     },
     data() {
         return {
