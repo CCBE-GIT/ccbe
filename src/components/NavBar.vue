@@ -3,12 +3,11 @@
     <div class="container">
         <!-- Brand Section -->
         <div class="d-flex align-items-center" id="navLogo">
-            <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;" >CCBE</h1>
+            <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;">CCBE</h1>
             <a class="navbar-brand" href="#">
                 <img :src="logoPath" alt="Company Logo" width="130" height="100" class="d-inline-block align-top ml-3">
             </a>
         </div>
-
         <!-- Toggler Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
             <span class="navbar-toggler-icon" style="border-radius: 3px;"></span>
@@ -42,10 +41,14 @@
                     <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Careers</a>
                 </li>
                 <li class="nav-item mr-2">
-                    <a class="nav-link text-red" href="/payment" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Payment</a>
+                    <img :src="lblLMS" width="100" height="50" class="d-inline-block align-top ml-1">
+                </li>
+                <li class="nav-item mr-2">
+                    <img :src="lblPAyment" width="100" height="50" class="d-inline-block align-top mb-2 ml-1">
                 </li>
             </ul>
         </div>
+
     </div>
 </nav>
 <div class="text-center">
@@ -105,6 +108,8 @@ export default {
     data() {
         return {
             logoPath: require("@/assets/Logo.png"),
+            lblLMS: require("@/assets/icons/lblLMS.png"),
+            lblPAyment: require("@/assets/icons/lblPayments.png"),
             dialog: false,
             successDialog: false,
             formData: {
@@ -200,24 +205,36 @@ export default {
 
 <style scoped>
 .navbar {
-  margin-bottom: 0; /* Ensures no margin under the navbar */
+    margin-bottom: 0;
+    /* Ensures no margin under the navbar */
 }
+
 .navbar {
-  margin-bottom: 0;
-  padding-bottom: 0; /* Prevent any padding issues */
-  border: none; /* Removes unwanted bottom border */
-  box-shadow: none; /* Removes any shadow */
+    margin-bottom: 0;
+    padding-bottom: 0;
+    /* Prevent any padding issues */
+    border: none;
+    /* Removes unwanted bottom border */
+    box-shadow: none;
+    /* Removes any shadow */
 }
+
 .navbar {
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden;    /* Hide overflow if needed */
+    white-space: nowrap;
+    /* Prevent text from wrapping */
+    overflow: hidden;
+    /* Hide overflow if needed */
 }
 
 .nav-item {
-  word-break: normal;    /* Prevent breaking words */
-  white-space: nowrap;   /* Prevent text wrapping within the item */
+    word-break: normal;
+    /* Prevent breaking words */
+    white-space: nowrap;
+    /* Prevent text wrapping within the item */
 }
+
 body {
-  font-family: 'YourCustomFont', sans-serif; /* Add a fallback font like sans-serif */
+    font-family: 'YourCustomFont', sans-serif;
+    /* Add a fallback font like sans-serif */
 }
 </style>
