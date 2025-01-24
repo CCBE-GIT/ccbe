@@ -29,7 +29,7 @@ export default {
                 {
                     src: require("../assets/carosel/1.png"),
                     title: "Our Recognition",
-                    subtitle: "Celebrating Excellence Across the Years.",
+                    subtitle: "Celebrating Excellence Through the Years.",
                 },
                 {
                     src: require("../assets/carosel/2.jpg"),
