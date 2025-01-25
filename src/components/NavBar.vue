@@ -27,9 +27,6 @@
                     <a class="nav-link text-black" href="/corevalues" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Core Values</a>
                 </li>
                 <li class="nav-item mr-0">
-                    <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Inquiry</a>
-                </li>
-                <li class="nav-item mr-0">
                     <a class="nav-link text-black" href="/about" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">About Us</a>
                 </li>
                 <li class="nav-item mr-0">
@@ -37,6 +34,9 @@
                 </li>
                 <li class="nav-item mr-0">
                     <a class="nav-link text-black" href="/news" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">News & Events</a>
+                </li>
+                <li class="nav-item mr-0">
+                    <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Inquiry</a>
                 </li>
                 <li class="nav-item mr-0">
                     <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Careers</a>

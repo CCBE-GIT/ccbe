@@ -1,7 +1,6 @@
 <template>
 <NavBar></NavBar>
-<CaroselPage></CaroselPage>
-
+    <CaroselPage></CaroselPage>
 <v-container>
     <!-- Logo Section -->
     <div class="logo-container mt-2" data-aos="zoom-in-up" data-aos-duration="3000">
@@ -122,6 +121,7 @@
     <br />
 
 </v-container>
+<ArrowButton></ArrowButton>
 <ChatBot></ChatBot>
 <FooterPage></FooterPage>
 </template>
@@ -133,6 +133,7 @@ import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue'
 import NewsSliderPage from './NewsSliderPage.vue';
 import TestimologyPage from './TestimologyPage.vue'
+import ArrowButton from './ArrowButton.vue';
 
 export default {
 
@@ -144,6 +145,7 @@ export default {
         ChatBot,
         NewsSliderPage,
         TestimologyPage,
+        ArrowButton
     },
     data() {
         return {
