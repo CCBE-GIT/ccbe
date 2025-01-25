@@ -94,7 +94,7 @@ export default {
                     description: 'Our classrooms are designed to be student-centric, with a focus on developing the four essential skills, ensuring a holistic approach to education.'
                 },
                 {
-                    image: require('@/assets/coreValues/CV7.jpg'),
+                    image: "https://ik.imagekit.io/u3wbiya66/CV7.jpg?updatedAt=1737780608594",
                     title: 'Excellent Student Results',
                     description: 'Our dedication to academic excellence is evidenced by the consistently outstanding results achieved by our students in various assessments and examinations.'
                 },
