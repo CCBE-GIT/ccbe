@@ -10,7 +10,7 @@
         <v-row>
             <v-col cols="12" lg="4">
                 <v-card class="mx-auto" max-width="400" height="450" data-aos="fade-up" data-aos-duration="3000" elevation="23">
-                    <v-img class="align-end text-white image-pop-up" height="200" src="https://www.parents.com/thmb/d0qdbY82J3o-2ezdehypjSNXKI0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Parents-Preschool-Age-Stocksy-3668758-4b6915ed8fbd4d32aa00d86fc7ad43ad.jpg" cover></v-img>
+                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/PXL_20250117_094732824.jpg?updatedAt=1737789273936" cover></v-img>
                     <v-card-subtitle class="pt-4"></v-card-subtitle>
                     <v-card-text class="cardtext">
                         <h3><b>Pre Schoolers</b></h3>
