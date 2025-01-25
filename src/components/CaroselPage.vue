@@ -27,27 +27,27 @@ export default {
         loadData() {
             this.items = [
                 {
-                    src: require("../assets/carosel/1.png"),
+                    src: "https://ik.imagekit.io/u3wbiya66/1.png?updatedAt=1737779114828",
                     title: "Our Recognition",
                     subtitle: "Celebrating Excellence Through the Years.",
                 },
                 {
-                    src: require("../assets/carosel/2.jpg"),
+                    src: "https://ik.imagekit.io/u3wbiya66/2.jpg?updatedAt=1737779121377",
                     title: "Students Centric Classroom Environment",
                     subtitle: "Empowering Active Participation and Engagement.",
                 },
                 {
-                    src: require("../assets/carosel/3.jpg"),
+                    src: "https://ik.imagekit.io/u3wbiya66/3.jpg?updatedAt=1737779167089",
                     title: "Individual Attention with Safeguarding Environment",
                     subtitle: "Personalized Support in a Safe Space.",
                 },
                 {
-                    src: require("../assets/carosel/6.jpg"),
+                    src: "https://ik.imagekit.io/u3wbiya66/6.jpg?updatedAt=1737779168033",
                     title: "Personalized Support in a Safe Space",
                     subtitle: "Empowering Confidence and Leadership.",
                 },
                 {
-                    src: require("../assets/carosel/7.jpg"),
+                    src: "https://ik.imagekit.io/u3wbiya66/7.jpg?updatedAt=1737779166430",
                     title: "Innovative Learning Experiences",
                     subtitle: "Blending Technology and Teaching for Growth.",
                 },
