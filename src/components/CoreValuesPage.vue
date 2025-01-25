@@ -36,6 +36,7 @@
             </v-row>
         </div>
     </v-container>
+    <ArrowButton></ArrowButton>
     <ChatBot></ChatBot>
     <FooterPage></FooterPage>
 </template>
@@ -45,7 +46,7 @@
 import NavBar from './NavBar.vue';
 import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue';
-
+import ArrowButton from './ArrowButton.vue';
 // AOS Transition
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -55,7 +56,8 @@ export default {
     components: {
         NavBar,
         FooterPage,
-        ChatBot
+        ChatBot,
+        ArrowButton
     },
     mounted() {
         AOS.init(); // Initialize AOS when the component is mounted

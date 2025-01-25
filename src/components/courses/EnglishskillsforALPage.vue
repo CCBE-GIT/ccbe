@@ -237,7 +237,8 @@
         </h5>
     </v-row>
 </v-container>
-
+<ArrowButton></ArrowButton>
+<ChatBot></ChatBot>
 <FooterPage></FooterPage>
 </template>
 
@@ -245,6 +246,8 @@
 <script>
 import NavBar from '../NavBar.vue'
 import FooterPage from '../FooterPage.vue'
+import ChatBot from '../ChatBot.vue';
+import ArrowButton from '../ArrowButton.vue';
 
 // AOS Transition
 import AOS from 'aos';
@@ -254,7 +257,9 @@ export default {
     name: 'EnglishskillsforALPage',
     components: {
         NavBar,
-        FooterPage
+        FooterPage,
+        ChatBot,
+        ArrowButton
     },
     mounted() {
         AOS.init(); // Initialize AOS when the component is mounted

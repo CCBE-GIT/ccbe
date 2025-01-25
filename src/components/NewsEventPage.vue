@@ -38,6 +38,7 @@
         </v-col>
     </v-row>
 </v-container>
+<ArrowButton></ArrowButton>
 <ChatBot></ChatBot>
 <FooterPage></FooterPage>
 </template>
@@ -47,6 +48,7 @@ import AOS from 'aos';
 import NavBar from './NavBar.vue';
 import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue'
+import ArrowButton from './ArrowButton.vue';
 
 export default {
 
@@ -55,6 +57,7 @@ export default {
         NavBar,
         FooterPage,
         ChatBot,
+        ArrowButton
     },
     data() {
         return {

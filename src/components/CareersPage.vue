@@ -36,6 +36,7 @@ import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue';
 import AOS from 'aos';
 
+
 export default {
     name: 'CareersPage',
     data() {

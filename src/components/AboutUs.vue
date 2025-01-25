@@ -91,6 +91,7 @@
     <ViewT></ViewT>
 
 </v-container>
+<ArrowButton></ArrowButton>
 <ChatBot></ChatBot>
 <FooterPage></FooterPage>
 </template>
@@ -100,7 +101,7 @@ import NavBar from './NavBar.vue'
 import FooterPage from './FooterPage.vue'
 import ChatBot from './ChatBot.vue';
 import ViewT from './360View.vue'
-
+import ArrowButton from './ArrowButton.vue';
 //AOS Trasnsition
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -111,7 +112,8 @@ export default {
         NavBar,
         FooterPage,
         ChatBot,
-        ViewT
+        ViewT,
+        ArrowButton
     },
     mounted() {
         AOS.init(); // Initialize AOS when the component is mounted
