@@ -22,7 +22,7 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col v-for="(image, index) in images" :key="index" class="d-flex child-flex" cols="4">
+            <v-col v-for="(image, index) in images" :key="index" class="d-flex child-flex" cols="12" sm="6" md="4" lg="4" xl="2">
                 <v-img :lazy-src="image.lazySrc" :src="image.src" aspect-ratio="1" class="bg-grey-lighten-2" cover>
                     <template v-slot:placeholder>
                         <v-row align="center" class="fill-height ma-0" justify="center">
