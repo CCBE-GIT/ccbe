@@ -55,25 +55,25 @@
         </div>
     </div>
 </v-parallax>
-  <v-container>
+<v-container>
     <v-divider></v-divider>
     <!-- Existing content -->
+    <br>
+    <h1 class="title" data-aos="fade-up" data-aos-duration="3000">
+        OUR <span class="highlight mt-3">BRANCH NETWORK</span>
+    </h1>
 
-    <div class="center-container">
-        <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">OUR <span class="highlight">BRANCH
-                NETWORK</span></h1>
-    </div>
-    <v-row justify="center" class="mt-5">
-        <v-col cols="12" sm="6" md="4" v-for="(photo, index) in photos" :key="index">
-            <v-card class="gallery-card" data-aos="zoom-in" data-aos-duration="2000">
-                <v-img :src="photo.src" height="200px" class="gallery-image"></v-img>
-                <v-card-title class="text-center">{{ photo.title }}</v-card-title>
-            </v-card>
-        </v-col>
-    </v-row>
+    <div class="center-container-Branch mt-3">
+        <!-- Image Container -->
+        <div class="image-container">
+            <!-- Main Image -->
+            <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
 
-    <div class="center-container">
-        <v-img data-aos="zoom-out" data-aos-duration="2000" width="300" height="400" src="@/assets/Branch_Network.png" align="center"></v-img>
+            <!-- Points on Image -->
+            <div v-for="(point, index) in points" :key="index" class="point" :style="{ top: point.y + '%', left: point.x + '%' }" @click="handlePointClick(point)">
+                <span class="tooltip">{{ point.label }}</span>
+            </div>
+        </div>
     </div>
     <div v-if="selectedOffice" class="text-center mt-5">
         <h3>{{ selectedOffice.name }}</h3>
@@ -122,6 +122,14 @@ export default {
         selectOffice(office) {
             this.selectedOffice = office;
         },
+        handlePointClick(point) {
+            // Navigate to the link or display additional information
+            if (point.link) {
+                window.open(point.link, "_blank");
+            } else {
+                alert(`Clicked on: ${point.label}`);
+            }
+        },
     },
     data() {
         return {
@@ -152,6 +160,39 @@ export default {
                     address: "No 149, Graceland Circular Rd, Horana, 12400",
                     phone: "+94 2 180 008"
                 },
+            ],
+            points: [
+                {
+                    x: 34,
+                    y: 73,
+                    label: "Ambalangoda",
+                    link: "https://example.com/branch1"
+                },
+                {
+                    x: 40,
+                    y: 80.5,
+                    label: "Galle",
+                    link: "https://example.com/branch1"
+                },
+                {
+                    x: 55,
+                    y: 79,
+                    label: "Matara",
+                    link: "https://example.com/branch1"
+                },
+                {
+                    x: 32,
+                    y: 67,
+                    label: "Piliyanadala",
+                    link: "https://example.com/branch1"
+                },
+                {
+                    x: 35,
+                    y: 63,
+                    label: "Piliyanadala",
+                    link: "https://example.com/branch1"
+                },
+
             ],
             selectedOffice: null,
         }
@@ -228,9 +269,11 @@ export default {
     /* Semi-transparent background for readability */
     border-radius: 5px;
 }
-.parallax{
+
+.parallax {
     height: 550px;
 }
+
 .paragraph {
     font-size: 1.2rem;
     line-height: 1.5;
@@ -244,8 +287,38 @@ export default {
     }
 
     .paragraph {
-        font-size: 1rem; /* Adjust the font size for mobile screens */
+        font-size: 1rem;
+        /* Adjust the font size for mobile screens */
         line-height: 1.4;
     }
+}
+
+.image-container {
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+.point {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 230, 0);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+}
+
+.center-container-Branch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    /* Match the image width */
+    height: 400px;
+    /* Match the image height */
+    margin: 0 auto;
 }
 </style>
