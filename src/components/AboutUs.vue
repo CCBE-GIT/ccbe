@@ -69,14 +69,15 @@
             <!-- Main Image -->
             <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
             <!-- Ambalangoda Branch -->
-            <div class="point" :style="{ top: '73%', left: '34%' }" @click="navigateTo('/about/ambalangoda')">
-                <span class="tooltip">Ambalangoda Branch</span>
-            </div>
+            <div class="point" v-tooltip:start="'Ambalangoda College'"  :style="{ top: '72%', left: '34%' }" @click="navigateTo('/about/ambalangoda')"></div>
             <!-- Galle Branch -->
-            <div class="point" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/galle')">
-                <span class="tooltip">Galle Branch</span>
-            </div>
-            
+            <div class="point" v-tooltip:start="'Galle College'" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/about/galle')"></div>
+            <!-- Matara Branch -->
+            <div class="point" v-tooltip:start="'Matara College'" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')"></div>
+            <!-- Piliyandala Branch -->
+            <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
+            <!-- Horana Branch -->
+            <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
         </div>
     </div>
     <div v-if="selectedOffice" class="text-center mt-5">

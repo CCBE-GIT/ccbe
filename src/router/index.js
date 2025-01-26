@@ -21,6 +21,10 @@ const IELTSPage = () => import('../components/courses/IELTSPage.vue');
 
 //Branches
 const AmbalangodaBranch = () => import('../components/branches/AmbalangodaBranch.vue');
+const GalleBranch = () => import('../components/branches/GalleBranch.vue');
+const MataraBranch = () => import('../components/branches/MataraBranch.vue');
+const PiliyandalaBranch = () => import('../components/branches/PiliyandalaBranch.vue');
+const HoranaBranch = () => import('../components/branches/HoranaBranch.vue');
 
 const routes = [
   {path: '/', name: 'HomePage',component: HomePage},
@@ -39,6 +43,10 @@ const routes = [
   {path: '/courses/ielts',name: 'IELTSPage',component: IELTSPage,},
 
   {path: '/about/ambalangoda',name: 'AmabalngodaBranch',component: AmbalangodaBranch,},
+  {path: '/about/galle',name: 'GalleBranch',component: GalleBranch,},
+  {path: '/about/matara',name: 'MataraBranch',component: MataraBranch,},
+  {path: '/about/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
+  {path: '/about/horana',name: 'HoranaBranch',component: HoranaBranch,},
 ];
 
 const router = createRouter({
