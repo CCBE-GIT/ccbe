@@ -308,7 +308,48 @@ export default {
     transform: translate(-50%, -50%);
     cursor: pointer;
     z-index: 10;
+    animation: pulse-grow 2s infinite;
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
 }
+
+.point::before,
+.point::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 230, 0, 0.6);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    animation: wave 2s infinite;
+}
+
+.point::after {
+    animation-delay: 1s;
+}
+
+@keyframes pulse-grow {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes wave {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
 
 .center-container-Branch {
     display: flex;
