@@ -79,8 +79,7 @@
             };
         },
         mounted() {
-            // Trigger the animations for numbers when the stats section comes into view
-    
+            window.scrollTo(0, 0);
         },
         methods: {
     

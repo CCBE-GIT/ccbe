@@ -61,8 +61,7 @@ export default {
                 subtitle: "Explore Ambalangoda Branch in 360",
                 description: "Immerse yourself in a virtual tour of our vibrant learning spaces at the Ambalangoda Branch.",
             }, ],
-            images: [
-                {
+            images: [{
                     lazySrc: 'https://picsum.photos/10/6?image=15',
                     src: 'https://ik.imagekit.io/u3wbiya66/Ambalangoda/BC2.jpg?updatedAt=1737874746112',
                 },
@@ -79,8 +78,7 @@ export default {
         };
     },
     mounted() {
-        // Trigger the animations for numbers when the stats section comes into view
-
+        window.scrollTo(0, 0);
     },
     methods: {
 
