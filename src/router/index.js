@@ -19,6 +19,9 @@ const EnglishskillsforOLPage = () => import('../components/courses/Englishskills
 const EnglishskillsforALPage = () => import('../components/courses/EnglishskillsforALPage.vue');
 const IELTSPage = () => import('../components/courses/IELTSPage.vue');
 
+//Branches
+const AmbalangodaBranch = () => import('../components/branches/AmbalangodaBranch.vue');
+
 const routes = [
   {path: '/', name: 'HomePage',component: HomePage},
   {path: '/about',name: 'AboutUs',component: AboutUs},
@@ -28,13 +31,14 @@ const routes = [
   {path: '/news',name: 'NewsEventPage',component: NewsEventPage ,},
   {path: '/careers',name: 'CareersPage',component: CareersPage ,},
 
-
   {path: '/courses/preschool',name: 'PreschoolPage',component: PreschoolPage,},
-  {path: '/course/younglearners',name: 'YoungLearnersPage',component: YoungLearnersPage,},
-  {path: '/course/forschool',name: 'ForSchoolPage',component: ForSchoolPage,},
-  {path: '/course/ol',name: 'EnglishskillsforOLPage',component: EnglishskillsforOLPage,},
-  {path: '/course/al',name: 'EnglishskillsforALPage',component: EnglishskillsforALPage,},
-  {path: '/course/ielts',name: 'IELTSPage',component: IELTSPage,},
+  {path: '/courses/younglearners',name: 'YoungLearnersPage',component: YoungLearnersPage,},
+  {path: '/courses/forschool',name: 'ForSchoolPage',component: ForSchoolPage,},
+  {path: '/courses/ol',name: 'EnglishskillsforOLPage',component: EnglishskillsforOLPage,},
+  {path: '/courses/al',name: 'EnglishskillsforALPage',component: EnglishskillsforALPage,},
+  {path: '/courses/ielts',name: 'IELTSPage',component: IELTSPage,},
+
+  {path: '/about/ambalangoda',name: 'AmabalngodaBranch',component: AmbalangodaBranch,},
 ];
 
 const router = createRouter({

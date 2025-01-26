@@ -71,15 +71,7 @@ export default {
     },
     data() {
         return {
-            contentItems: [
-                {
-                    iframeSrc: "https://momento360.com/e/u/4e0567c60ff04f2399663f0331bf84d5?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true",
-                    subtitle: "Explore Ambalangoda Branch in 360",
-                    description: "Immerse yourself in a virtual tour of our vibrant learning spaces at the Ambalangoda Branch.",
-                },
-                
-            ],
-            fullscreenDialog: false, // Control for the fullscreen image dialog
+            
             selectedItem: {}, // The currently selected image or video item
         };
     },

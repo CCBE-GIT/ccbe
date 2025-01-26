@@ -1,6 +1,6 @@
 <template>
 <NavBar></NavBar>
-    <CaroselPage></CaroselPage>
+<CaroselPage></CaroselPage>
 <v-container>
     <!-- Logo Section -->
     <div class="logo-container mt-2" data-aos="zoom-in-up" data-aos-duration="3000">
@@ -243,7 +243,6 @@ export default {
 </script>
 
 <style>
-
 .title {
     text-align: center;
     font-size: 2rem;

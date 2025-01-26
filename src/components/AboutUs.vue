@@ -68,11 +68,15 @@
         <div class="image-container">
             <!-- Main Image -->
             <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
-
-            <!-- Points on Image -->
-            <div v-for="(point, index) in points" :key="index" class="point" :style="{ top: point.y + '%', left: point.x + '%' }" @click="handlePointClick(point)">
-                <span class="tooltip">{{ point.label }}</span>
+            <!-- Ambalangoda Branch -->
+            <div class="point" :style="{ top: '73%', left: '34%' }" @click="navigateTo('/about/ambalangoda')">
+                <span class="tooltip">Ambalangoda Branch</span>
             </div>
+            <!-- Galle Branch -->
+            <div class="point" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/galle')">
+                <span class="tooltip">Galle Branch</span>
+            </div>
+            
         </div>
     </div>
     <div v-if="selectedOffice" class="text-center mt-5">
@@ -88,7 +92,6 @@
         </v-row>
     </div>
     <v-divider></v-divider>
-    <ViewT></ViewT>
 
 </v-container>
 <ArrowButton></ArrowButton>
@@ -100,7 +103,6 @@
 import NavBar from './NavBar.vue'
 import FooterPage from './FooterPage.vue'
 import ChatBot from './ChatBot.vue';
-import ViewT from './360View.vue'
 import ArrowButton from './ArrowButton.vue';
 //AOS Trasnsition
 import AOS from 'aos';
@@ -112,7 +114,6 @@ export default {
         NavBar,
         FooterPage,
         ChatBot,
-        ViewT,
         ArrowButton
     },
     mounted() {
@@ -122,12 +123,12 @@ export default {
         selectOffice(office) {
             this.selectedOffice = office;
         },
-        handlePointClick(point) {
-            // Navigate to the link or display additional information
-            if (point.link) {
-                window.open(point.link, "_blank");
+        navigateTo(link) {
+            console.log('Navigating to:', link); // Log the link
+            if (link) {
+                this.$router.push(link); // Navigate to the provided route
             } else {
-                alert(`Clicked on: ${point.label}`);
+                console.warn("No link provided for this point.");
             }
         },
     },
@@ -161,38 +162,36 @@ export default {
                     phone: "+94 2 180 008"
                 },
             ],
-            points: [
-                {
+            points: [{
                     x: 34,
                     y: 73,
-                    label: "Ambalangoda",
-                    link: "https://example.com/branch1"
+                    label: "AmbalangodaBranch",
+                    link: "/courses"
                 },
                 {
                     x: 40,
                     y: 80.5,
                     label: "Galle",
-                    link: "https://example.com/branch1"
+                    link: ""
                 },
                 {
                     x: 55,
                     y: 79,
                     label: "Matara",
-                    link: "https://example.com/branch1"
+                    link: ""
                 },
                 {
                     x: 32,
                     y: 67,
-                    label: "Piliyanadala",
-                    link: "https://example.com/branch1"
+                    label: "Piliyandala",
+                    link: ""
                 },
                 {
                     x: 35,
                     y: 63,
-                    label: "Piliyanadala",
-                    link: "https://example.com/branch1"
+                    label: "Horana",
+                    link: ""
                 },
-
             ],
             selectedOffice: null,
         }

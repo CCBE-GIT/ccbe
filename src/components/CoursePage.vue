@@ -31,7 +31,7 @@
                         <div>Want to customize Elementor image box height? Here we have the Solution!</div>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/course/younglearners">Learn More -></v-btn>
+                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/courses/younglearners">Learn More -></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -45,7 +45,7 @@
                         <div>Want to customize Elementor image box height? Here we have the Solution!</div>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="custom-btn mt-5" variant="outlined" color="teal-darken-4" to="/course/forschool">Learn More -></v-btn>
+                        <v-btn class="custom-btn mt-5" variant="outlined" color="teal-darken-4" to="/courses/forschool">Learn More -></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -59,7 +59,7 @@
                         <div>Trying to add image box to your WordPress sites? No worries!</div>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/course/ol">Learn More -></v-btn>
+                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/courses/ol">Learn More -></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -75,7 +75,7 @@
                         <div>Want to customize Elementor image box height? Here we have the Solution!</div>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/course/al">Learn More -></v-btn>
+                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/courses/al">Learn More -></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
@@ -89,7 +89,7 @@
                         <div>Do you know how to add Elementor image box with button?</div>
                     </v-card-text>
                     <v-card-actions>
-                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/course/ielts">Learn More -></v-btn>
+                        <v-btn class="custom-btn mt-3" variant="outlined" color="teal-darken-4" to="/courses/ielts">Learn More -></v-btn>
                     </v-card-actions>
                 </v-card>
             </v-col>
