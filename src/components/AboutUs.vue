@@ -314,7 +314,7 @@ export default {
     position: absolute;
     width: 100%;
     height: 100%;
-    border: 2px solid rgba(255, 230, 0, 0.6);
+    border: 2px solid rgba(255, 243, 7, 0.889);
     border-radius: 50%;
     top: 0;
     left: 0;

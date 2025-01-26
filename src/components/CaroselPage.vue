@@ -1,6 +1,6 @@
 <template>
 <div class="parallax-carousel-container">
-    <v-carousel v-if="items.length" cycle interval="5000" data-aos="zoom-in" data-aos-duration="2000" height="500" show-arrows="hover" hide-delimiter-background>
+    <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500" show-arrows="hover" hide-delimiter-background>
         <v-carousel-item v-for="(item, i) in items" :key="i">
             <div class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
                 <div class="parallax-overlay">
@@ -26,6 +26,11 @@ export default {
     methods: {
         loadData() {
             this.items = [
+                {
+                    src: "https://i.imghippo.com/files/aRy9749Zww.gif",
+                    title: "Celebrating 77 Years of Freedom",
+                    subtitle: "Honoring Freedom, Unity, and the Pride of Sri Lanka.",
+                },
                 {
                     src: "https://ik.imagekit.io/u3wbiya66/1.png?updatedAt=1737779114828",
                     title: "Our Recognition",
