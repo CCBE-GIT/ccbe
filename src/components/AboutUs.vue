@@ -2,34 +2,30 @@
 <NavBar></NavBar>
 <v-container>
     <div class="logo-container mt-3" data-aos="zoom-in-up" data-aos-duration="2000">
-        <img :src="logo" alt="Company Logo" width="150" height="150" id="logo">
+        <img :src="logo" alt="Company Logo" width="200" height="150" id="logo">
     </div>
     <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">ABOUT <span class="highlight">CCBE</span>
     </h1>
     <br>
     <div class="center-container">
         <v-row>
-            <v-col cols="12" sm="6">
-                <v-img data-aos="zoom-out" data-aos-duration="2000" src="@/assets/AboutUs.png" align="center"></v-img>
-            </v-col>
-            <v-col cols="12" sm="6">
-                <p class="paragraph" data-aos="fade-up" data-aos-duration="3000">
-                    Established on September 3rd, 2015, our institution proudly functions as a distinguished
-                    Cambridge English
-                    Exam Preparation Centre (CELA Centre). Recognized as a designated Cambridge Qualifications
-                    registration
-                    center for the esteemed British Council in Colombo, Sri Lanka, we specialize in facilitating
-                    University of
-                    Cambridge Examinations.
-                    With a steadfast commitment to academic excellence, we provide comprehensive and tailored
-                    preparatory
-                    programs to empower individuals seeking success in Cambridge English exams. Our longstanding
-                    association
-                    with the British Council underscores our dedication to upholding the highest standards in
-                    education,
-                    ensuring that our students are well-equipped to excel in their academic pursuits.
-                </p>
-            </v-col>
+            <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/Board.jpg?updatedAt=1737883142390" align="center"></v-img>
+            <p class="paragraph mt-2" data-aos="fade-up" data-aos-duration="3000">
+                Established on September 3rd, 2015, our institution proudly functions as a distinguished
+                Cambridge English
+                Exam Preparation Centre (CELA Centre). Recognized as a designated Cambridge Qualifications
+                registration
+                center for the esteemed British Council in Colombo, Sri Lanka, we specialize in facilitating
+                University of
+                Cambridge Examinations.
+                With a steadfast commitment to academic excellence, we provide comprehensive and tailored
+                preparatory
+                programs to empower individuals seeking success in Cambridge English exams. Our longstanding
+                association
+                with the British Council underscores our dedication to upholding the highest standards in
+                education,
+                ensuring that our students are well-equipped to excel in their academic pursuits.
+            </p>
         </v-row>
     </div>
 
@@ -69,7 +65,7 @@
             <!-- Main Image -->
             <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
             <!-- Ambalangoda Branch -->
-            <div class="point" v-tooltip:start="'Ambalangoda College'"  :style="{ top: '72%', left: '34%' }" @click="navigateTo('/about/ambalangoda')"></div>
+            <div class="point" v-tooltip:start="'Ambalangoda College'" :style="{ top: '72%', left: '34%' }" @click="navigateTo('/about/ambalangoda')"></div>
             <!-- Galle Branch -->
             <div class="point" v-tooltip:start="'Galle College'" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/about/galle')"></div>
             <!-- Matara Branch -->
@@ -331,9 +327,12 @@ export default {
 }
 
 @keyframes pulse-grow {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(-50%, -50%) scale(1);
     }
+
     50% {
         transform: translate(-50%, -50%) scale(1.2);
     }
@@ -344,12 +343,12 @@ export default {
         opacity: 1;
         transform: scale(1);
     }
+
     100% {
         opacity: 0;
         transform: scale(3);
     }
 }
-
 
 .center-container-Branch {
     display: flex;
