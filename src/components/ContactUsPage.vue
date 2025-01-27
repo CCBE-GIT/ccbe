@@ -3,7 +3,7 @@
 <v-container>
 
     <div class="logo-container mt-3" data-aos="zoom-in-up" data-aos-duration="2000">
-            <img :src="logo" alt="Company Logo" width="150" height="150" id="logo">
+            <img :src="logo" alt="Company Logo" width="200" height="150" id="logo">
     </div>
 
     <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">

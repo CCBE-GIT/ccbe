@@ -119,6 +119,10 @@ export default {
                     lazySrc: 'https://picsum.photos/10/6?image=15',
                     src: 'https://ik.imagekit.io/u3wbiya66/Ambalangoda/CV8.jpg?updatedAt=1737874746020',
                 },
+                {
+                    lazySrc: 'https://picsum.photos/10/6?image=15',
+                    src: 'https://scontent.fcmb2-2.fna.fbcdn.net/v/t39.30808-6/471703751_546176895088360_9175928756161747081_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGiSCSGunP-KzLjK45Ai6G-te88Jlt6ybO17zwmW3rJsyW_Pj9U4VsT7GlwOBa1aVMjMhUroRJ4hzRJDmmHnHZO&_nc_ohc=fEcBOlz1MpcQ7kNvgFzaMO8&_nc_oc=AdgM2Zon6pAlxiVENhg_USGWflctjTdGS4ttG-Mr2gMMxy5CZWyz5gDrcF0ejUOnov8&_nc_zt=23&_nc_ht=scontent.fcmb2-2.fna&_nc_gid=A674B8Au4cLJjOOhP9zkPtE&oh=00_AYCrSs8fc6EEADe-lWvGNl0HSEEZGFHJVHbTDkKOX5zZ4Q&oe=679CF9FE',
+                },
             ],
             fullscreenDialog: false, // Control for the fullscreen image dialog
         };
