@@ -2,9 +2,55 @@
 <NavBar></NavBar>
 <v-container>
     <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
-        Welcome to <span class="highlight">Ambalangoda College Gallery</span>
+        Welcome to <span class="highlight">Ambalangoda College</span>
     </h1>
     <br />
+
+    <h2 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">Contact</h2>
+    <v-row justify="center" class="fill-height">
+
+        <v-col cols="12" class="branch-card mt-3" style="text-align: center;">
+            <div class="branch-info">
+                <p>
+                    <v-icon class="icon">mdi-map-marker</v-icon>
+                    123 Main Street, Ambalangoda
+                </p>
+                <p>
+                    <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
+                    Google Map
+                </p>
+                <p>
+                    <v-icon class="icon">mdi-phone</v-icon>
+                    <a href="tel:091 2 252 452">091 2 252 452</a>
+                </p>
+                <p>
+                    <v-icon class="icon">mdi-email</v-icon>
+                    <a>ambalangodaccbe@gmail.com</a>
+                </p>
+                <p>
+                    <a href="https://www.facebook.com/ccbe.ambalangoda" target="_blank" rel="noopener noreferrer">
+                        <v-icon class="icon mr-1" color="blue">mdi-facebook</v-icon>
+                    </a>
+                    <a href="https://www.youtube.com/@cambridgecollegeofbritishe9360" target="_blank" rel="noopener noreferrer">
+                        <v-icon class="icon mr-1" color="red">mdi-youtube</v-icon>
+                    </a>
+                    <a href="https://www.instagram.com/ccbeamb" target="_blank" rel="noopener noreferrer">
+                        <v-icon class="icon mr-1" color="pink">mdi-instagram</v-icon>
+                    </a>
+                    <a href="https://www.tiktok.com/@cambridgecollege9" target="_blank" rel="noopener noreferrer">
+                        <v-icon class="icon mr-1" color="orange">mdi-music-note</v-icon>
+                    </a>
+                </p>
+                <a href="https://wa.me/+94707997501?text=Hello%20Branch%201" target="_blank" class="whatsapp-button">
+                    <img :src="require('@/assets/icons/whatsapp.jpg')" alt="WhatsApp" />
+                    <strong>Chat Via WhatsApp</strong>
+                </a>
+            </div>
+        </v-col>
+    </v-row>
+    <v-divider></v-divider>
+
+    <h2 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">Gallery</h2>
 
     <div>
         <v-row>
@@ -81,7 +127,9 @@ export default {
         window.scrollTo(0, 0);
     },
     methods: {
-
+        openGoogleMaps() {
+            window.open('https://www.google.com/maps/place/Cambridge+College+of+British+English-Ambalangoda+Branch/@6.2385847,80.0514462,17z/data=!4m15!1m8!3m7!1s0x3ae18182adb4c185:0x5d72bb258aff3f49!2s97+Galle+Rd,+Ambalangoda+80300!3b1!8m2!3d6.2385847!4d80.0540211!16s%2Fg%2F11vkct126h!3m5!1s0x3ae181ec02cee8a1:0xe4f738a14e81be9d!8m2!3d6.2385847!4d80.0540211!16s%2Fg%2F11k266tzpd?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D', '_blank');
+        },
     },
 };
 </script>
@@ -243,5 +291,28 @@ export default {
 .stats-row .v-col:hover {
     transform: scale(1.05);
     opacity: 0.9;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #25d366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-button img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebf57;
 }
 </style>
