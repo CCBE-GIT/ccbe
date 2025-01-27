@@ -38,7 +38,7 @@
     
             <v-col cols="12" lg="4">
                 <v-card class="mx-auto" max-width="400" height="450" data-aos="fade-up" data-aos-duration="3000" elevation="23">
-                    <v-img class="align-end text-white image-pop-up" height="200" src="https://edsource.org/wp-content/uploads/2021/12/Oak_Tech_137-1024x683.jpg" cover></v-img>
+                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/IMG-20250127-WA0071.jpg?updatedAt=1737967718437" cover></v-img>
                     <v-card-subtitle class="pt-4"></v-card-subtitle>
                     <v-card-text class="cardtext">
                         <h3><b>For Schools (Age 13-18)</b></h3>

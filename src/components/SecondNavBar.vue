@@ -1,29 +1,35 @@
 <template>
-<DigitalLinerPage></DigitalLinerPage>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- Brand Section -->
-    <div class="d-flex align-items-center" id="navLogo">
-        <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;">CCBE</h1>
-        <a class="navbar-brand ml-2" href="#">
-            <img :src="logoPath" alt="Company Logo" width="130" height="100" class="d-inline-block align-top">
-        </a>
-    </div>
-
-    <!-- Toggler Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
-        <span class="navbar-toggler-icon" style="border-radius: 3px;"></span>
+<nav class="navbar navbar-expand-lg" style="background-color: #FFCC00;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
     </button>
-
-    <!-- Navigation Links -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <img :src="lblLMS" width="100" height="50" class="d-inline-block align-top ml-2">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Home</a>
             </li>
-            <li class="nav-item">
-                <img :src="lblPAyment" width="100" height="50" class="d-inline-block align-top ml-2">
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/courses" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Our Programmes</a>
             </li>
-        </ul>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/corevalues" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Core Values</a>
+            </li>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/about" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">About Us</a>
+            </li>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/contact" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Contact</a>
+            </li>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/news" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">News & Events</a>
+            </li>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Inquiry</a>
+            </li>
+            <li class="nav-item mr-0">
+                <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Careers</a>
+            </li>
+        </div>
     </div>
 </nav>
 <div class="text-center">
@@ -74,14 +80,10 @@
         </v-card>
     </v-dialog>
 </div>
-<SecondNavBar></SecondNavBar>
 </template>
 
 <script>
 import emailjs from "emailjs-com";
-
-import DigitalLinerPage from "./DigitalLinerPage.vue";
-import SecondNavBar from "./SecondNavBar.vue";
 
 export default {
     data() {
@@ -99,10 +101,6 @@ export default {
                 message: "",
             },
         };
-    },
-    components: {
-        DigitalLinerPage,
-        SecondNavBar
     },
     methods: {
         async sendInquiry() {
@@ -187,35 +185,6 @@ export default {
 </script>
 
 <style scoped>
-.navbar {
-    margin-bottom: 0;
-    /* Ensures no margin under the navbar */
-}
-
-.navbar {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    /* Prevent any padding issues */
-    border: none;
-    /* Removes unwanted bottom border */
-    box-shadow: none;
-    /* Removes any shadow */
-}
-
-.navbar {
-    white-space: nowrap;
-    /* Prevent text from wrapping */
-    overflow: hidden;
-    /* Hide overflow if needed */
-}
-
-.nav-item {
-    word-break: normal;
-    /* Prevent breaking words */
-    white-space: nowrap;
-    /* Prevent text wrapping within the item */
-}
-
 body {
     font-family: 'YourCustomFont', sans-serif;
     /* Add a fallback font like sans-serif */
