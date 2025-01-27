@@ -1,12 +1,12 @@
 <template>
-    <DigitalLinerPage></DigitalLinerPage>
+<DigitalLinerPage></DigitalLinerPage>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <!-- Brand Section -->
         <div class="d-flex align-items-center" id="navLogo">
             <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;">CCBE</h1>
             <a class="navbar-brand" href="#">
-                <img :src="logoPath" alt="Company Logo" width="130" height="100" class="d-inline-block align-top ml-3">
+                <img :src="logoPath" alt="Company Logo" width="130" height="100" class="d-inline-block align-top ml-1">
             </a>
         </div>
         <!-- Toggler Button -->
@@ -211,8 +211,17 @@ export default {
 
 <style scoped>
 .navbar {
-    margin-bottom: 0;
-    /* Ensures no margin under the navbar */
+    flex-wrap: wrap;
+}
+@media (max-width: 1024px) {
+    .nav-item {
+        padding: 5px 10px;
+        font-size: medium; /* Adjust font size */
+    }
+    img {
+        width: 80px; /* Reduce the width of the images */
+        height: auto;
+    }
 }
 
 .navbar {
