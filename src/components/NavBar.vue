@@ -1,6 +1,6 @@
 <template>
 <DigitalLinerPage></DigitalLinerPage>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <!-- Brand Section -->
     <div class="d-flex align-items-center" id="navLogo">
         <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;">CCBE</h1>
@@ -219,30 +219,5 @@ export default {
 body {
     font-family: 'YourCustomFont', sans-serif;
     /* Add a fallback font like sans-serif */
-}
-/* Navbar animation when loading */
-.animated-navbar {
-    animation: slideDown 1s ease-in-out;
-}
-
-@keyframes slideDown {
-    from {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Navbar item hover animations */
-.nav-item-animated {
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.nav-item-animated:hover {
-    transform: scale(1.1);
-    color: #FF6600; /* Changes color on hover */
 }
 </style>
