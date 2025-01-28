@@ -1,8 +1,3 @@
-<v-app-bar
-  scroll-behavior="hide collapse elevate fade-image"
-  scroll-threshold="638"
-  image="https://picsum.photos/1920/1080?random"
-></v-app-bar>
 <template>
 <nav class="navbar navbar-expand-lg" style="background-color: #FFCC00;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,28 +6,28 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Home</a>
+                <a class="nav-link text-black" href="/" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-home</v-icon> Home</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/courses" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Our Programmes</a>
+                <a class="nav-link text-black" href="/courses" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-account-school</v-icon>Our Programmes</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/corevalues" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Core Values</a>
+                <a class="nav-link text-black" href="/corevalues" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-shield-check</v-icon>Core Values</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/about" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">About Us</a>
+                <a class="nav-link text-black" href="/about" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-target</v-icon>About Us</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/contact" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Contact</a>
+                <a class="nav-link text-black" href="/contact" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-phone-outline</v-icon>Contact</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/news" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">News & Events</a>
+                <a class="nav-link text-black" href="/news" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-newspaper</v-icon>News & Events</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Inquiry</a>
+                <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-lifebuoy</v-icon>Inquiry</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">Careers</a>
+                <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-briefcase-outline</v-icon>Careers</a>
             </li>
         </div>
     </div>
@@ -219,4 +214,5 @@ body {
     transform: scale(1.1);
     color: #FF6600; /* Changes color on hover */
 }
+
 </style>
