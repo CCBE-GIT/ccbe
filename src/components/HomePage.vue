@@ -106,7 +106,7 @@
     <v-divider></v-divider>
     <br>
     <!-- News Feed Section -->
-    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000">News & <span class="highlight">Events</span></h1>
+    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000"><span class="highlight">Highlights</span></h1>
     <NewsSliderPage></NewsSliderPage>
     <br>
 
@@ -117,7 +117,6 @@
         <span class="highlight">TESTIMONIALS</span>
     </h1>
     <TestimologyPage></TestimologyPage>
-
     <br />
 
 </v-container>

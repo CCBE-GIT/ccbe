@@ -1,3 +1,8 @@
+<v-app-bar
+  scroll-behavior="hide collapse elevate fade-image"
+  scroll-threshold="638"
+  image="https://picsum.photos/1920/1080?random"
+></v-app-bar>
 <template>
 <nav class="navbar navbar-expand-lg" style="background-color: #FFCC00;">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
