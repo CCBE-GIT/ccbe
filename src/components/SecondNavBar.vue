@@ -215,4 +215,53 @@ body {
     color: #FF6600; /* Changes color on hover */
 }
 
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* To ensure it stays on top of other content */
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Apply animation to nav links */
+.nav-item {
+    opacity: 0; /* Initially hidden */
+    animation: slideIn 1s ease-out forwards;
+    animation-delay: 0s; /* Set delay for each item */
+}
+
+/* Delay each item by 0.1s for sequential animation */
+.nav-item:nth-child(1) {
+    animation-delay: 0s;
+}
+.nav-item:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.nav-item:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.nav-item:nth-child(4) {
+    animation-delay: 0.3s;
+}
+.nav-item:nth-child(5) {
+    animation-delay: 0.4s;
+}
+.nav-item:nth-child(6) {
+    animation-delay: 0.5s;
+}
+.nav-item:nth-child(7) {
+    animation-delay: 0.6s;
+}
+.nav-item:nth-child(8) {
+    animation-delay: 0.7s;
+}
 </style>
