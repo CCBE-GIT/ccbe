@@ -82,7 +82,7 @@
 
             <v-col cols="12" lg="4">
                 <v-card class="mx-auto" max-width="400" height="430" data-aos="fade-up" data-aos-duration="3000" elevation="23">
-                    <v-img class="align-end text-white image-pop-up" height="200" src="https://specialistlanguagecourses.com/wp-content/uploads/2023/12/Depositphotos_68789187_XL-scaled-1-600x401.jpg" cover></v-img>
+                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/IELTS.jpg?updatedAt=1738050317311" cover></v-img>
                     <v-card-subtitle class="pt-4"></v-card-subtitle>
                     <v-card-text class="cardtext">
                         <h3><b>IELTS</b></h3>
