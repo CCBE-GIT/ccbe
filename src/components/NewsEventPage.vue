@@ -13,8 +13,8 @@
     <v-row>
         <!-- Loop through the cards array -->
         <v-col v-for="(card, index) in cards" :key="index" cols="12" sm="6" md="4">
-            <v-card class="mx-auto" max-width="400">
-                <v-img :src="card.image" height="200px" cover></v-img>
+            <v-card class="mx-auto" max-width="auto">
+                <v-img :src="card.image" height="350px" cover></v-img>
 
                 <v-card-title>{{ card.title }}</v-card-title>
 
@@ -155,4 +155,26 @@ AOS.init();
     transform: scale(1.05);
     opacity: 0.9;
 }
+.v-card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    white-space: normal; /* Allow text to wrap */
+    line-height: 1.4; /* Improve readability */
+    text-align: center; /* Optional: center align titles */
+}
+
+.v-card-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    white-space: normal; /* Allow text to wrap */
+    line-height: 1.4;
+    color: #555; /* Subtle subtitle color */
+    text-align: center; /* Optional: center align subtitles */
+}
+
+
+.v-card-text {
+    padding: 16px; /* Add padding to improve spacing */
+}
+
 </style>
