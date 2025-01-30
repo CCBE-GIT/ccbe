@@ -7,12 +7,12 @@
         </a>
         <ul class="navbar-nav d-none d-lg-flex">
             <li class="nav-item">
-                <a class="nav-link text-black ml-2" href="/contact" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">
+                <a class="nav-link text-black ml-2" href="/contact" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
                     <v-icon>mdi-phone-outline</v-icon> Contact
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-black ml-2" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">
+                <a class="nav-link text-black ml-2" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
                     <v-icon>mdi-lifebuoy</v-icon> Inquiry
                 </a>
             </li>
@@ -38,10 +38,16 @@
             </li>
             <li class="nav-item d-lg-none">
                 <a class="nav-link text-black" @click="dialog = true">
-                    <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-lifebuoy</v-icon>Inquiry</a>
+                    <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">
+                        <v-icon>mdi-lifebuoy</v-icon>Inquiry
+                    </a>
                 </a>
             </li>
         </ul>
+    </div>
+
+    <div>
+        <DigitalLinerPage></DigitalLinerPage>
     </div>
 </nav>
 
@@ -98,7 +104,7 @@
 </template>
 
 <script>
-
+import DigitalLinerPage from "./DigitalLinerPage.vue";
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
 
@@ -119,8 +125,9 @@ export default {
             },
         };
     },
-    components:{
-        SecondNavBar
+    components: {
+        SecondNavBar,
+        DigitalLinerPage
     },
     methods: {
         async sendInquiry() {
@@ -224,5 +231,4 @@ export default {
 .navbar-nav .nav-item {
     white-space: nowrap;
 }
-
 </style>

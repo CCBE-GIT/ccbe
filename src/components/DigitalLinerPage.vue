@@ -22,40 +22,53 @@
   </script>
   
   <style>
-  /* Marquee container */
+ /* Marquee container */
+.marquee-container {
+  width: 100%; /* Full width on larger screens */
+  max-width: 700px; /* Limit width on larger screens */
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #ffffff;
+  color: #ff5f15;
+  padding: 10px 0;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive width adjustments */
+@media (max-width: 768px) {
   .marquee-container {
-    width: 100%; /* Full width of the screen */
-    overflow: hidden; /* Hide overflow text */
-    white-space: nowrap;
-    background-color: #ff5f15; /* Background color for the banner */
-    color: white; /* Text color */
-    padding: 10px 0; /* Vertical padding */
-    font-size: 1.2rem; /* Font size of the text */
-    display: flex;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    max-width: 90%; /* Adjust width for tablets and smaller screens */
   }
-  
-  /* Marquee animation */
-  .marquee {
-    display: flex; /* Use flex to align the duplicate messages */
-    will-change: transform;
-    animation: marquee linear infinite; /* Infinite linear animation */
+}
+
+@media (max-width: 480px) {
+  .marquee-container {
+    max-width: 100%; /* Full width on small mobile devices */
   }
-  
-  .marquee span {
-    flex-shrink: 0; /* Prevent shrinking of the text */
-    padding-right: 50px; /* Add some spacing between the duplicate messages */
+}
+
+/* Marquee animation */
+.marquee {
+  display: flex;
+  will-change: transform;
+  animation: marquee linear infinite;
+}
+
+.marquee span {
+  flex-shrink: 0;
+  padding-right: 50px;
+}
+
+/* Keyframes for marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
   }
-  
-  /* Keyframes for marquee */
-  @keyframes marquee {
-    0% {
-      transform: translateX(0); /* Start at the container's left edge */
-    }
-    100% {
-      transform: translateX(-100%); /* Move completely out of the container */
-    }
+  100% {
+    transform: translateX(-100%);
   }
+}
   </style>
   
