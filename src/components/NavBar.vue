@@ -1,6 +1,6 @@
 <template>
 <DigitalLinerPage></DigitalLinerPage>
-<nav class="navbar navbar-expand-lg navbar-dark bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-white">
     <!-- Brand Section -->
     <div class="d-flex align-items-center" id="navLogo">
         <h1 class="text-white mt-2" style="font-family: Arial, sans-serif; font-weight: bold; color: #FF5F15 !important;">CCBE</h1>
@@ -8,6 +8,7 @@
             <img :src="logoPath" alt="Company Logo" width="130" height="100" class="d-inline-block align-top">
         </a>
     </div>
+    
 
     <!-- Toggler Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="border: none;">
@@ -18,10 +19,10 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <img :src="lblLMS" width="100" height="50" class="d-inline-block align-top ml-2">
+                <img :src="lblLMS" width="120" height="60" class="d-inline-block align-top ml-3">
             </li>
             <li class="nav-item">
-                <img :src="lblPAyment" width="100" height="50" class="d-inline-block align-top ml-2">
+                <img :src="lblPAyment" width="120" height="60" class="d-inline-block align-top ml-3">
             </li>
         </ul>
     </div>
