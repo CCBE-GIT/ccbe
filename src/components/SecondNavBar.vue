@@ -18,13 +18,7 @@
                 <a class="nav-link text-black" href="/about" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-target</v-icon>About Us</a>
             </li>
             <li class="nav-item mr-0">
-                <a class="nav-link text-black" href="/contact" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-phone-outline</v-icon>Contact</a>
-            </li>
-            <li class="nav-item mr-0">
                 <a class="nav-link text-black" href="/news" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-newspaper</v-icon>News & Events</a>
-            </li>
-            <li class="nav-item mr-0">
-                <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-lifebuoy</v-icon>Inquiry</a>
             </li>
             <li class="nav-item mr-0">
                 <a class="nav-link text-black" href="/careers" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;"><v-icon >mdi-briefcase-outline</v-icon>Careers</a>
