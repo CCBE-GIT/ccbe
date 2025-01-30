@@ -106,7 +106,18 @@ export default {
                 iframeSrc: "https://momento360.com/e/u/4e0567c60ff04f2399663f0331bf84d5?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true",
                 subtitle: "Explore Ambalangoda Branch in 360",
                 description: "Immerse yourself in a virtual tour of our vibrant learning spaces at the Ambalangoda Branch.",
-            }, ],
+            }, 
+            {
+                iframeSrc: "https://momento360.com/e/u/494aacf6a10642b983445a4a13f7e490?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=98&size=medium&display-plan=true",
+                subtitle: "360° Virtual Tour of Smart Classroom",
+                description: "Explore the innovative learning environment equipped with cutting-edge technology for interactive education.",
+            }, 
+            {
+                iframeSrc: "https://momento360.com/e/u/e31cd13a27db483d8795e8ce1f822f30?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true",
+                subtitle: "360° Virtual Tour of the Auditorium",
+                description: "Experience every angle of our state-of-the-art auditorium from the comfort of your screen.",
+            }, 
+        ],
             images: [{
                     lazySrc: 'https://picsum.photos/10/6?image=15',
                     src: 'https://ik.imagekit.io/u3wbiya66/Ambalangoda/BC2.jpg?updatedAt=1737874746112',
