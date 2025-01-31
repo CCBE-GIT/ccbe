@@ -45,10 +45,6 @@
             </li>
         </ul>
     </div>
-
-    <div>
-        <DigitalLinerPage></DigitalLinerPage>
-    </div>
 </nav>
 
 <div class="text-center">
@@ -104,7 +100,6 @@
 </template>
 
 <script>
-import DigitalLinerPage from "./DigitalLinerPage.vue";
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
 
@@ -127,7 +122,6 @@ export default {
     },
     components: {
         SecondNavBar,
-        DigitalLinerPage
     },
     methods: {
         async sendInquiry() {
