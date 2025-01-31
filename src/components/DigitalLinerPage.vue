@@ -1,5 +1,5 @@
 <template>
-    <div class="marquee-container">
+    <div class="marquee-container" style="max-width: 450px;">
       <!-- The running text -->
       <div class="marquee" :style="{ animationDuration: animationSpeed + 's' }">
         <span>{{ message }}</span>

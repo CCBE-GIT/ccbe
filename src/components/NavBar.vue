@@ -1,35 +1,44 @@
 <template>
 <nav class="navbar navbar-expand-lg navbar-light bg-white">
-    <div class="d-flex align-items-center" id="navLogo">
+    <div class="d-flex align-items-center w-100" id="navLogo">
         <h1 class="brand-title">CCBE</h1>
         <a class="navbar-brand ml-2" href="#">
             <img :src="logoPath" alt="Company Logo" width="130" height="100" />
         </a>
-        <ul class="navbar-nav d-none d-lg-flex">
-            <li class="nav-item">
-                <a class="nav-link text-black ml-2" href="/contact" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
-                    <v-icon>mdi-phone-outline</v-icon> Contact
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-black ml-2" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
-                    <v-icon>mdi-lifebuoy</v-icon> Inquiry
-                </a>
-            </li>
-        </ul>
+
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler" type="button" @click="isMenuOpen = !isMenuOpen">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar Content -->
+        <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }" id="navbarsecondMarkup">
+            <ul class="navbar-nav mr-auto d-none d-lg-flex">
+                <li class="nav-item">
+                    <a class="nav-link text-black ml-2" href="/contact" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
+                        <v-icon>mdi-phone-outline</v-icon> Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-black ml-2" @click="dialog = true" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger; color: #FF5F15 !important">
+                        <v-icon>mdi-lifebuoy</v-icon> Inquiry
+                    </a>
+                </li>
+                <li class="nav-item d-flex justify-content-center mx-auto">
+                    <DigitalLinerPage></DigitalLinerPage>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <button class="navbar-toggler" type="button" @click="toggleMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
+    <!-- Navbar Items for Mobile -->
     <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <img :src="lblLMS" width="120" height="60" class="ml-3" />
+                <img :src="lblLMS" width="120" height="60" class="ml-1" />
             </li>
             <li class="nav-item">
-                <img :src="lblPayment" width="120" height="60" class="ml-3" />
+                <img :src="lblPayment" width="120" height="60" class="ml-1" />
             </li>
             <li class="nav-item d-lg-none">
                 <a class="nav-link text-black" href="/contact">
@@ -37,10 +46,8 @@
                 </a>
             </li>
             <li class="nav-item d-lg-none">
-                <a class="nav-link text-black" @click="dialog = true">
-                    <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold;  padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">
-                        <v-icon>mdi-lifebuoy</v-icon>Inquiry
-                    </a>
+                <a class="nav-link text-black" @click="dialog = true" style="font-weight: bold; padding: 10px 15px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-size: larger;">
+                    <v-icon>mdi-lifebuoy</v-icon> Inquiry
                 </a>
             </li>
         </ul>
@@ -102,6 +109,7 @@
 <script>
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
+import DigitalLinerPage from "./DigitalLinerPage.vue";
 
 export default {
     data() {
@@ -111,6 +119,7 @@ export default {
             lblPayment: require("@/assets/icons/lblPayments.png"),
             dialog: false,
             successDialog: false,
+            isMenuOpen: false,
             formData: {
                 name: "",
                 contact: "",
@@ -122,6 +131,7 @@ export default {
     },
     components: {
         SecondNavBar,
+        DigitalLinerPage
     },
     methods: {
         async sendInquiry() {
@@ -220,6 +230,10 @@ export default {
 
 .navbar-toggler {
     border: none;
+}
+
+.nav-link {
+    color: #ff5f15;
 }
 
 .navbar-nav .nav-item {
