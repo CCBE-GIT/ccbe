@@ -24,9 +24,9 @@
                         <v-icon>mdi-lifebuoy</v-icon> Inquiry
                     </a>
                 </li>
-                <li class="nav-item d-flex justify-content-center mx-auto">
-                    <DigitalLinerPage></DigitalLinerPage>
-                </li>
+            </ul>
+            <ul class="nav-item d-flex justify-content-center mx-auto mt-3">
+                <DigitalLinerPage></DigitalLinerPage>
             </ul>
         </div>
     </div>
