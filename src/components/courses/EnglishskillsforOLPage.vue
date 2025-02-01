@@ -263,6 +263,7 @@ export default {
         ArrowButton
     },
     mounted() {
+        window.scrollTo(0, 0);
         AOS.init(); // Initialize AOS when the component is mounted
     },
     data() {
