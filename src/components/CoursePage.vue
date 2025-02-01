@@ -24,7 +24,7 @@
 
             <v-col cols="12" lg="4">
                 <v-card class="mx-auto" max-width="400" height="450" data-aos="fade-up" data-aos-duration="3000" elevation="23">
-                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/2024_11_07_15_33_IMG_8396.jpg?updatedAt=1737709328196" cover></v-img>
+                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/PXL_20250128_092657658-EDIT.jpg?updatedAt=1738392311029" cover></v-img>
                     <v-card-subtitle class="pt-4"></v-card-subtitle>
                     <v-card-text class="cardtext">
                         <h3><b>Young Learners (Age 6-12)</b></h3>
