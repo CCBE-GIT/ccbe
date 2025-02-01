@@ -11,10 +11,10 @@
     <br />
     <div class="center-container">
         <v-row>
-            <v-col cols="12" class="mt-1">
-                <v-img data-aos="zoom-out" data-aos-duration="2000" src="@/assets/course/PS1.jpg" align="center" elevation="23"></v-img>
+            <v-col cols="12" md="6" class="mt-1">
+                <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/PXL_20250131_073049442-EDIT.jpg?updatedAt=1738389378296" align="center" elevation="23" max-height="400"></v-img>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" md="6">
                 <p class="paragraph" data-aos="fade-up" data-aos-duration="3000">
                     This programme is suitable for secondary school students and provides better academic, social and career opportunities through English mastery. We provide learners with a friendly learning space where they can improve their language abilities through the four core skills of reading, writing, speaking and listening. This programme teaches learners to discover their own voices to communicate effortlessly.
                     We use materials which provide learners with the language, vocabulary, grammar and the skills to do well in the Cambridge English examinations. We also encourage plenty of speaking practice in order to increase the learner’s confidence in their English skills.
@@ -47,7 +47,7 @@
             </v-col>
 
             <v-col cols="12" sm="6">
-                <v-img data-aos="zoom-out" data-aos-duration="2000" src="@/assets/course/PS3.jpg" align="center" class="mt-3" elevation="23"></v-img>
+                <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/PXL_20250131_073022940-EDIT.jpg?updatedAt=1738390003508" align="center" class="mt-3" elevation="23" max-height="400"></v-img>
             </v-col>
         </v-row>
     </div>

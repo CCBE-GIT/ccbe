@@ -8,7 +8,7 @@
     <div class="center-container">
         <v-row>
             <v-col cols="12" sm="6" class="mt-1">
-                <v-img data-aos="zoom-out" data-aos-duration="2000" src="@/assets/course/PS1.jpg" align="center" elevation="23"></v-img>
+                <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/2024_11_07_15_33_IMG_8396.jpg?updatedAt=1737709328196" align="center" elevation="23"></v-img>
             </v-col>
             <v-col cols="12" sm="6">
                 <p class="paragraph" data-aos="fade-up" data-aos-duration="3000">
@@ -42,7 +42,7 @@
             </v-col>
 
             <v-col cols="12" sm="6">
-                <v-img data-aos="zoom-out" data-aos-duration="2000" src="@/assets/course/PS3.jpg" align="center" class="mt-3" elevation="23"></v-img>
+                <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/6.jpg?updatedAt=1737779168033" align="center" class="mt-3" elevation="23"></v-img>
             </v-col>
         </v-row>
     </div>
