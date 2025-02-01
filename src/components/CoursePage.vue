@@ -68,7 +68,7 @@
  
             <v-col cols="12" lg="4">
                 <v-card class="mx-auto" max-width="400" height="430" data-aos="fade-up" data-aos-duration="3000" elevation="23">
-                    <v-img class="align-end text-white image-pop-up" height="200" src="https://www.ethoseducation.lk/wp-content/uploads/2022/08/shutterstock_611097329.jpg" cover></v-img>
+                    <v-img class="align-end text-white image-pop-up" height="200" src="https://ik.imagekit.io/u3wbiya66/PXL_20250127_083713735-EDIT.jpg?updatedAt=1738393428664" cover></v-img>
                     <v-card-subtitle class="pt-4"></v-card-subtitle>
                     <v-card-text class="cardtext">
                         <h3><b>English Skills For A/L's</b></h3>
