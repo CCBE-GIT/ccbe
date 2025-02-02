@@ -3,7 +3,7 @@
 <v-container>
 
     <div class="logo-container mt-3" data-aos="zoom-in-up" data-aos-duration="2000">
-            <img :src="logo" alt="Company Logo" width="200" height="150" id="logo">
+        <img :src="logo" alt="Company Logo" width="200" height="150" id="logo">
     </div>
 
     <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
@@ -14,35 +14,40 @@
         At the heart of our commitment to communication and service lies our dedication to ensuring every interaction is meaningful, responsive, and supportive.
     </h4>
 
-    <div class="branches mt-5" style="text-align: center;" data-aos="fade-up" data-aos-duration="2000">
-    <v-row justify="center" align="center" class="fill-height">
-        <v-col cols="12" md="6" v-for="branch in branches" :key="branch.name" class="branch-card mt-5">
-            <h2 class="branch-name" style="color: brown;">{{ branch.name }}</h2>
-            <div class="branch-info">
-                <p>
-                    <v-icon class="icon">mdi-map-marker</v-icon>
-                    {{ branch.address }}
-                </p>
-                <p>
-                    <v-icon class="icon">mdi-phone</v-icon>
-                    <a :href="`tel:${branch.phone}`">{{ formatPhone(branch.phone) }}</a>
-                </p>
-                <a :href="`https://wa.me/${branch.whatsapp}?text=${encodeURIComponent(branch.message)}`" target="_blank" class="whatsapp-button">
-                    <img :src="require('@/assets/icons/whatsapp.jpg')" alt="WhatsApp" />
-                    <strong>Chat Via WhatsApp</strong>
-                </a>
-            </div>
-        </v-col>
-    </v-row>
-</div>
+    <h1 class="title" data-aos="fade-up" data-aos-duration="3000">
+        OUR <span class="highlight mt-3">BRANCH NETWORK</span>
+    </h1>
 
+    <div class="center-container-Branch mt-3">
+        <!-- Image Container -->
+        <div class="image-container">
+            <!-- Main Image -->
+            <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
+            <!-- Ambalangoda Branch -->
+            <div class="point" v-tooltip:start="'Ambalangoda College'" :style="{ top: '72%', left: '34%' }" @click="navigateTo('/about/ambalangoda')"></div>
+            <!-- Galle Branch -->
+            <div class="point" v-tooltip:start="'Galle College'" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/about/galle')"></div>
+            <!-- Matara Branch -->
+            <div class="point" v-tooltip:start="'Matara College'" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')"></div>
+            <!-- Piliyandala Branch -->
+            <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
+            <!-- Horana Branch -->
+            <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
+        </div>
+    </div>
+    <div v-if="selectedOffice" class="text-center mt-5">
+        <h3>{{ selectedOffice.name }}</h3>
+        <p>{{ selectedOffice.address }}</p>
+        <p>{{ selectedOffice.phone }}</p>
+    </div>
+    <div>
+    </div>
 
 </v-container>
 <ChatBot></ChatBot>
 <FooterPage></FooterPage>
 </template>
 
-  
 <script>
 import NavBar from "./NavBar.vue";
 import FooterPage from "./FooterPage.vue";
@@ -67,47 +72,71 @@ export default {
             // Format the phone number in a readable format
             return phone.replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, "+$1 $2 $3 $4");
         },
+        navigateTo(route) {
+        this.$router.push(route);
+    }
     },
     data() {
         return {
             logo: require('@/assets/Logo.png'),
-            branches: [
-                {
-                    name: "Ambalangoda Branch",
-                    address: "123 Main Street, Ambalangoda",
-                    phone: "091 2 252 452",
-                    whatsapp: "+94707997501",
-                    message: "Hello, I would like to inquire about your services.",
+            offices: [{
+                    name: "Galle College",
+                    address: "118, Old Matara Rd, Galle, 80000",
+                    phone: "+94 91 22 37373"
                 },
                 {
-                    name: "Galle Branch",
-                    address: "456 High Street, Galle",
-                    phone: "091 22 37 37 3",
-                    whatsapp: "+94705725666",
-                    message: "Hi, I need assistance with my order.",
+                    name: "Ambalangoda College",
+                    address: "No 97, New Rd, Ambalangoda, 80300",
+                    phone: "+94 91 2252 452"
                 },
                 {
-                    name: "Horana Branch",
-                    address: "No: 149 Graceland,Circular Road,Horana,12400",
-                    phone: "034 2 205 503",
-                    whatsapp: "+94707997512",
-                    message: "Hi, I need assistance with my order.",
+                    name: "Matara College",
+                    address: "No 352, Kumarathunga Mw, Matara, 81000",
+                    phone: "+94 41 2050 200"
                 },
                 {
-                    name: "Matara Branch",
-                    address: "No: 352,Kumarathunga Mawatha,Matara,81000",
-                    phone: "041 20 50 200",
-                    whatsapp: "+94707997506",
-                    message: "Hi, I need assistance with my order.",
+                    name: "Piliyandala College",
+                    address: "No Moratuwa Rd, Suwarapola, Piliyandala, 10300",
+                    phone: "+94 11 2 180 008"
                 },
                 {
-                    name: "Piliyandala Branch",
-                    address: "No: 119 ,Moratuwa Road,Piliyandala,10300",
-                    phone: "011 2 180 008",
-                    whatsapp: "+94705834666",
-                    message: "Hi, I need assistance with my order.",
+                    name: "Horana College",
+                    address: "No 149, Graceland Circular Rd, Horana, 12400",
+                    phone: "+94 2 180 008"
                 },
             ],
+            points: [{
+                    x: 34,
+                    y: 73,
+                    label: "AmbalangodaBranch",
+                    link: "/courses"
+                },
+                {
+                    x: 40,
+                    y: 80.5,
+                    label: "Galle",
+                    link: ""
+                },
+                {
+                    x: 55,
+                    y: 79,
+                    label: "Matara",
+                    link: ""
+                },
+                {
+                    x: 32,
+                    y: 67,
+                    label: "Piliyandala",
+                    link: ""
+                },
+                {
+                    x: 35,
+                    y: 63,
+                    label: "Horana",
+                    link: ""
+                },
+            ],
+            selectedOffice: null,
         };
     },
 };
@@ -163,8 +192,6 @@ h4 {
     margin-top: 20px;
 }
 
-
-
 @media (max-width: 960px) {
 
     /* For smaller screens, remove zigzag effect to keep a clean layout */
@@ -207,5 +234,76 @@ h4 {
     color: #d4f1dc;
 }
 
+.image-container {
+    position: relative;
+    width: auto;
+    height: auto;
+}
 
+.point {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: rgb(255, 230, 0);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    z-index: 10;
+    animation: pulse-grow 2s infinite;
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
+}
+
+.point::before,
+.point::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 243, 7, 0.889);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    transform: scale(1);
+    animation: wave 2s infinite;
+}
+
+.point::after {
+    animation-delay: 1s;
+}
+
+@keyframes pulse-grow {
+
+    0%,
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+@keyframes wave {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}
+
+.center-container-Branch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 300px;
+    /* Match the image width */
+    height: 400px;
+    /* Match the image height */
+    margin: 0 auto;
+}
 </style>

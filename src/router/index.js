@@ -48,6 +48,12 @@ const routes = [
   {path: '/about/matara',name: 'MataraBranch',component: MataraBranch,},
   {path: '/about/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
   {path: '/about/horana',name: 'HoranaBranch',component: HoranaBranch,},
+/*
+  {path: '/contact/ambalangoda',name: 'AmabalngodaBranch',component: AmbalangodaBranch,},
+  {path: '/contact/galle',name: 'GalleBranch',component: GalleBranch,},
+  {path: '/contact/matara',name: 'MataraBranch',component: MataraBranch,},
+  {path: '/contact/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
+  {path: '/contact/horana',name: 'HoranaBranch',component: HoranaBranch,},*/
 ];
 
 const router = createRouter({
