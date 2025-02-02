@@ -26,7 +26,7 @@
                 </li>
             </ul>
             <ul class="nav-item d-flex justify-content-center mx-auto mt-3">
-                <DigitalLinerPage></DigitalLinerPage>
+                
             </ul>
         </div>
     </div>
@@ -109,7 +109,6 @@
 <script>
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
-import DigitalLinerPage from "./DigitalLinerPage.vue";
 
 export default {
     data() {
@@ -131,7 +130,6 @@ export default {
     },
     components: {
         SecondNavBar,
-        DigitalLinerPage
     },
     methods: {
         async sendInquiry() {
