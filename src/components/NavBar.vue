@@ -237,4 +237,10 @@ export default {
 .navbar-nav .nav-item {
     white-space: nowrap;
 }
+
+@media (max-width: 768px) {  
+    .navbar-nav .nav-link {
+        color: #FF5F15 !important; /* Change to any color you want */
+    }
+}
 </style>
