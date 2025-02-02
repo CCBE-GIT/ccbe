@@ -1,48 +1,116 @@
 <template>
-  <NavBar></NavBar>
-  <v-container>
-      <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
-          <span class="highlight">Careers</span>
-      </h1>
-      <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
-          <b>Cambridge College of British English (CCBE)</b> Careers is your gateway to a world of possibilities and a launchpad for your professional aspirations. Be part of a prestigious institution that not only prioritizes academic excellence but also nurtures a thriving community of dedicated professionals. Together, we inspire confidence, build futures, and redefine what it means to succeed.
-          Your career journey begins here at Cambridge College of British English!
-      </p>
-      <v-row justify="center" class="mt-5" data-aos="fade-up" data-aos-duration="3000">
-          <!-- Loop through careers array -->
-          <v-col v-for="(career, index) in careers" :key="index" cols="12" md="6">
-              <v-card outlined class="image-card">
-                  <v-img :src="career.image" height="100%" width="100%" cover></v-img>
-                  <v-card-actions class="text-center">
-                      <v-spacer></v-spacer>
-                      <h2 class="image-title">Join Our Team</h2>
-                      <a href="mailto:jobs@ccbe.lk?subject=Job Application&body=Dear Hiring Team,%0D%0A%0D%0APlease find my application for the position.%0D%0A%0D%0ARegards,%0D%0A[Your Name]" class="apply-now-button">
-                          Apply Now
-                      </a>
-                      <v-spacer></v-spacer>
-                  </v-card-actions>
-              </v-card>
-          </v-col>
-      </v-row>
-  </v-container>
-  <ChatBot></ChatBot>
-  <FooterPage></FooterPage>
-</template>
+<NavBar></NavBar>
+<v-container>
+    <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
+        <span class="highlight">Careers</span>
+    </h1>
+    <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
+        <b>Cambridge College of British English (CCBE)</b> Careers is your gateway to a world of possibilities and a launchpad for your professional aspirations. Be part of a prestigious institution that not only prioritizes academic excellence but also nurtures a thriving community of dedicated professionals. Together, we inspire confidence, build futures, and redefine what it means to succeed.
+        Your career journey begins here at Cambridge College of British English!
+    </p>
+    <v-row justify="center" class="mt-5" data-aos="fade-up" data-aos-duration="3000">
+        <!-- Loop through careers array -->
+        <v-col v-for="(career, index) in careers" :key="index" cols="12" md="6">
+            <v-card outlined class="image-card" max-height="auto">
+                <v-img :src="career.image" height="100%" width="100%" cover></v-img>
+                <v-card-actions class="text-center">
+                    <v-spacer></v-spacer>
+                    <v-row justify="center" align="center" class="flex-column">
+                        <h3 class="image-title">Join Our Team</h3>
+                        <a @click="dialog = true" class="apply-now-button mb-2">Apply Now</a>
+                    </v-row>
+                    <v-spacer></v-spacer>
+                </v-card-actions>
+            </v-card>
+        </v-col>
+    </v-row>
+</v-container>
 
+<ChatBot></ChatBot>
+<FooterPage></FooterPage>
+
+<div class="text-center">
+    <v-dialog v-model="dialog" max-width="600">
+        <v-card prepend-icon="mdi-account" title="Inquiry Form">
+            <v-card-text>
+                <v-row dense>
+                    <v-col cols="12" md="6">
+                        <v-text-field label="Your Name" v-model="formData.name" required variant="outlined"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-select :items="['Teaching', 'Administration', 'Management', 'Marketing', 'Development', 'Business Development']" v-model="formData.position" label="Apply For" required variant="outlined"></v-select>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-select :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala']" v-model="formData.branch" label="Nearest Branch" required variant="outlined"></v-select>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-select :items="['Masters', 'Bachelors', 'HND', 'Diploma', 'Certificate']" v-model="formData.qualifications" label="Highest Qualifications" required variant="outlined"></v-select>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-select :items="['No Experience', '<2 Years', '<3 Years', '<4 Years', '4+ Years']" v-model="formData.experience" label="Experience" required variant="outlined"></v-select>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-select :items="['Social Media', 'Website', 'Friend/Referral', 'Other']" v-model="formData.source" label="How did you hear about us?" required variant="outlined"></v-select>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-text-field label="Contact Number" v-model="formData.contact" variant="outlined"></v-text-field>
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-text-field label="Email" v-model="formData.email" type="email" variant="outlined"></v-text-field>
+                    </v-col>
+                </v-row>
+                <small class="text-caption text-medium-emphasis">*indicates required field</small>
+            </v-card-text>
+            <v-divider></v-divider>
+            <v-card-actions class="d-flex justify-end">
+                <v-btn text="Close" color="red" variant="plain" prepend-icon="mdi-close-circle" @click="dialog = false"></v-btn>
+                <v-btn color="primary" text="Apply" variant="tonal" @click="sendInquiry" prepend-icon="mdi-check-circle"></v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
+
+    <!-- Success Message Dialog -->
+    <v-dialog v-model="successDialog" max-width="500">
+        <v-card>
+            <v-card-title class="text-h5">Application Sent Successfully</v-card-title>
+            <v-card-text class="text-center">
+                <v-icon color="success" size="64">mdi-check-circle</v-icon>
+                <p>Your application has been successfully sent. Thank you for applying!</p>
+            </v-card-text>
+            <v-divider></v-divider>
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn text="Close" color="primary" @click="successDialog = false"></v-btn>
+            </v-card-actions>
+        </v-card>
+    </v-dialog>
+</div>
+</template>
 
 <script>
 import NavBar from './NavBar.vue';
 import FooterPage from './FooterPage.vue';
 import ChatBot from './ChatBot.vue';
 import AOS from 'aos';
-
+import emailjs from "emailjs-com";
 
 export default {
     name: 'CareersPage',
     data() {
         return {
-            careers: [
-                {
+            dialog: false,
+            successDialog: false,
+            formData: {
+                name: "",
+                position: "",
+                branch: "",
+                qualifications: "",
+                experience: "",
+                source: "",
+                contact: "",
+                email: "",
+            },
+            careers: [{
                     image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0006.jpg?updatedAt=1737434201584",
                 },
                 {
@@ -80,9 +148,51 @@ export default {
     mounted() {
         AOS.init(); // Initialize AOS when the component is mounted
     },
+    methods: {
+        sendInquiry() {
+            const formData = this.formData;
+
+            // Send the first email
+            emailjs.send('service_8on9459', 'template_pfyf4pk', formData, 'YbnqsQ5AnMP6ZGQEl')
+                .then(response => {
+                    console.log('First email sent successfully', response);
+                })
+                .catch(error => {
+                    console.error('Error sending first email', error);
+                });
+
+            // Send the second email
+            emailjs.send('service_9tiu7kr', 'template_3ia2twa', formData, 'R6uFBw48FPF5wYGmF')
+                .then(response => {
+                    console.log('Second email sent successfully', response);
+                })
+                .catch(error => {
+                    console.error('Error sending second email', error);
+                });
+
+            // Show success dialog
+            this.successDialog = true;
+            window.open('https://docs.google.com/forms/d/e/1FAIpQLSco34ONLHBhIu6kfET6PNMynrJ-R5x9qRLIfGrYSquXd9tmwQ/viewform?fbzx=5328050623112666009', '_blank');
+            this.dialog = false; // Close the dialog after submission
+
+            // Optionally reset the form
+            this.clearForm();
+        },
+        clearForm() {
+            this.formData = {
+                name: "",
+                position: "",
+                branch: "",
+                qualifications: "",
+                experience: "",
+                source: "",
+                contact: "",
+                email: "",
+            };
+        },
+    },
 };
 </script>
-
 
 <style scoped>
 .title {
@@ -129,11 +239,6 @@ export default {
 
 .apply-now-button:hover {
     background-color: #cc4a12;
-}
-
-.v-card-actions {
-    flex-direction: column;
-    align-items: center;
 }
 
 .title {
