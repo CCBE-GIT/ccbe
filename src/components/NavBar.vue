@@ -38,7 +38,7 @@
                 <img :src="lblLMS" width="120" height="60" class="ml-1" />
             </li>
             <li class="nav-item">
-                <img :src="lblPayment" width="120" height="60" class="ml-1" />
+                <img :src="lblPayment" width="115" height="55" class="ml-1" />
             </li>
             <li class="nav-item d-lg-none">
                 <a class="nav-link text-black" href="/contact">
