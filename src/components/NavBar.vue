@@ -34,9 +34,9 @@
     <!-- Navbar Items for Mobile -->
     <div class="collapse navbar-collapse" :class="{ show: isMenuOpen }">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <a href="https://classroom.google.com/" target="_blank">
                 <img :src="lblLMS" width="120" height="60" class="ml-1" />
-            </li>
+            </a>
             <li class="nav-item">
                 <img :src="lblPayment" width="115" height="55" class="ml-1" />
             </li>
