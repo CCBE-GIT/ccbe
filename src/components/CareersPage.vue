@@ -31,7 +31,7 @@
 
 <div class="text-center">
     <v-dialog v-model="dialog" max-width="600">
-        <v-card prepend-icon="mdi-account" title="Inquiry Form">
+        <v-card prepend-icon="mdi-briefcase-outline" title="Application Form">
             <v-card-text>
                 <v-row dense>
                     <v-col cols="12" md="6">
