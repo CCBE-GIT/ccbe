@@ -152,7 +152,7 @@ export default {
         sendInquiry() {
             const formData = this.formData;
 
-            // Send the first email
+            // My Personal Send the first email
             emailjs.send('service_8on9459', 'template_pfyf4pk', formData, 'YbnqsQ5AnMP6ZGQEl')
                 .then(response => {
                     console.log('First email sent successfully', response);
@@ -161,8 +161,8 @@ export default {
                     console.error('Error sending first email', error);
                 });
 
-            // Send the second email
-            emailjs.send('service_9tiu7kr', 'template_3ia2twa', formData, 'R6uFBw48FPF5wYGmF')
+            // Jobs@ccbe.lk Send the second email
+            emailjs.send('service_eypw2ip', 'template_ygw1cnq', formData, 'sW9PkDNeVewlET9FF')
                 .then(response => {
                     console.log('Second email sent successfully', response);
                 })
