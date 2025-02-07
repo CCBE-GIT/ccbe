@@ -26,11 +26,11 @@ export default {
     methods: {
         loadData() {
             this.items = [
-                {
+                /*{
                     src: "https://i.imghippo.com/files/aRy9749Zww.gif",
                     title: "Celebrating 77 Years of Freedom",
                     subtitle: "Honoring Freedom, Unity, and the Pride of Sri Lanka.",
-                },
+                },*/
                 {
                     src: "https://ik.imagekit.io/u3wbiya66/1.png?updatedAt=1737779114828",
                     title: "Our Recognition",
