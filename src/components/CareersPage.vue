@@ -152,8 +152,8 @@ export default {
         sendInquiry() {
             const formData = this.formData;
 
-            // My Personal Send the first email
-            emailjs.send('service_8on9459', 'template_pfyf4pk', formData, 'YbnqsQ5AnMP6ZGQEl')
+            // info@ccbe.lk first email
+            emailjs.send('service_s33obqe', 'template_mz5d1yg', formData, 'WIB0bG1OPslsktqa2')
                 .then(response => {
                     console.log('First email sent successfully', response);
                 })
