@@ -195,13 +195,22 @@
                 <v-card-title class="text-center text-h5 font-weight-bold">
                     <span class="orange--text">CCBE</span>
                     <v-spacer></v-spacer>
-                    <v-img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Sampath_Bank_logo.svg/1200px-Sampath_Bank_logo.svg.png" max-height="30" max-width="80" contain></v-img>
+                    <v-img
+                        src="https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Sampath_Bank_logo.svg/1200px-Sampath_Bank_logo.svg.png"
+                        max-height="30" max-width="80" contain></v-img>
                 </v-card-title>
 
                 <v-card-subtitle class="text-center text-h6">
-                    <v-text-field v-model="cardNumber" label="Amount Rs." required type="number" hight="15"></v-text-field>
+                    <v-radio-group v-model="paymentType" inline>
+                        <v-radio label="Monthly Payment" value="monthly"></v-radio>
+                        <v-radio label="Full Payment" value="full"></v-radio>
+                    </v-radio-group>
                 </v-card-subtitle>
 
+                <v-select v-if="paymentType === 'monthly'" label="Select Monthly Amount" v-model="monthlyAmount"
+                    :items="monthlyOptions"></v-select>
+                <v-select v-if="paymentType === 'full'" label="Select Full Payment Amount" v-model="fullAmount"
+                    :items="fullOptions"></v-select>
                 <v-divider></v-divider>
 
                 <v-tab>Card Payment</v-tab>
@@ -209,17 +218,22 @@
                 <v-tabs-items v-model="tab">
                     <v-tab-item>
                         <v-row justify="center" class="mt-3">
-                            <v-img src="https://1000logos.net/wp-content/uploads/2017/06/VISA-Logo-1976.png" max-height="25" max-width="50"></v-img>
-                            <v-img src="https://images.seeklogo.com/logo-png/8/1/master-card-logo-png_seeklogo-89117.png" max-height="30" max-width="55"></v-img>
+                            <v-img src="https://1000logos.net/wp-content/uploads/2017/06/VISA-Logo-1976.png"
+                                max-height="25" max-width="50"></v-img>
+                            <v-img
+                                src="https://images.seeklogo.com/logo-png/8/1/master-card-logo-png_seeklogo-89117.png"
+                                max-height="30" max-width="55"></v-img>
                         </v-row>
                         <br>
 
                         <v-form ref="form" v-model="valid">
 
-                            <v-select v-model="cardType" :items="['Visa', 'MasterCard']" label="Card Type" required></v-select>
+                            <v-select v-model="cardType" :items="['Visa', 'MasterCard']" label="Card Type"
+                                required></v-select>
 
                             <v-text-field v-model="name" label="Name on card" required></v-text-field>
-                            <v-text-field v-model="cardNumber" label="Card number" required type="number"></v-text-field>
+                            <v-text-field v-model="cardNumber" label="Card number" required
+                                type="number"></v-text-field>
                             <v-row>
                                 <v-col>
                                     <v-text-field v-model="expiry" label="Expiry (MM/YY)" required></v-text-field>
@@ -247,6 +261,7 @@
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
 
+
 export default {
     data() {
         return {
@@ -265,6 +280,25 @@ export default {
             expiry: "",
             cvc: "",
             cardType: "",
+
+            paymentType: '',      // Initial empty
+            monthlyAmount: '',    // Monthly amount
+            fullAmount: '',
+
+            monthlyOptions: [
+            { title: 'Rs. 5,000', value: 5000 },
+            { title: 'Rs. 10,000', value: 10000 },
+            { title: 'Rs. 15,000', value: 15000 },
+        ],
+
+        fullOptions: [
+            { title: 'Rs. 50,000', value: 50000 },
+            { title: 'Rs. 100,000', value: 100000 },
+            { title: 'Rs. 150,000', value: 150000 },
+        ],
+
+
+            // Full payment amount
             valid: false,
 
             formData: {
