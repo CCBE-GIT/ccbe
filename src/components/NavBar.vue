@@ -292,9 +292,9 @@ export default {
         ],
 
         fullOptions: [
-            { title: 'Rs. 50,000', value: 50000 },
-            { title: 'Rs. 100,000', value: 100000 },
-            { title: 'Rs. 150,000', value: 150000 },
+            { title: 'Rs. 55,000', value: 50000 },
+            { title: 'Rs. 105,000', value: 100000 },
+            { title: 'Rs. 155,000', value: 150000 },
         ],
 
 
