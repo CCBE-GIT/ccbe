@@ -209,7 +209,7 @@
 
                 <v-select v-if="paymentType === 'monthly'" label="Select Monthly Amount" v-model="monthlyAmount"
                     :items="monthlyOptions"></v-select>
-                <v-select v-if="paymentType === 'full'" label="Select Full Payment Amount" v-model="fullAmount"
+                <v-select v-if="paymentType === 'full'" label="Select Full Payment Amount" v-model="fullAmount" 
                     :items="fullOptions"></v-select>
                 <v-divider></v-divider>
 
@@ -286,16 +286,16 @@ export default {
             fullAmount: '',
 
             monthlyOptions: [
-            { title: 'Rs. 5,000', value: 5000 },
-            { title: 'Rs. 10,000', value: 10000 },
-            { title: 'Rs. 15,000', value: 15000 },
-        ],
+                { title: 'Rs. 3,950', value: 3950 },
+            ],
 
-        fullOptions: [
-            { title: 'Rs. 55,000', value: 50000 },
-            { title: 'Rs. 105,000', value: 100000 },
-            { title: 'Rs. 155,000', value: 150000 },
-        ],
+            fullOptions: [
+                { title: 'Rs. 13,430', value: 13430 },
+                { title: 'Rs. 26,860', value: 26860 },
+                { title: 'Rs. 40,300', value: 40300 },
+                { title: 'Rs. 20,145', value: 20145 },
+                { title: 'Rs. 40,290', value: 40290 },
+            ],
 
 
             // Full payment amount
