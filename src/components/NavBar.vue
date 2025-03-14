@@ -213,35 +213,14 @@
                     :items="fullOptions"></v-select>
                 <v-divider></v-divider>
 
-                <v-tab>Card Payment</v-tab>
+                
 
                 <v-tabs-items v-model="tab">
                     <v-tab-item>
-                        <v-row justify="center" class="mt-3">
-                            <v-img src="https://1000logos.net/wp-content/uploads/2017/06/VISA-Logo-1976.png"
-                                max-height="25" max-width="50"></v-img>
-                            <v-img
-                                src="https://images.seeklogo.com/logo-png/8/1/master-card-logo-png_seeklogo-89117.png"
-                                max-height="30" max-width="55"></v-img>
-                        </v-row>
-                        <br>
-
                         <v-form ref="form" v-model="valid">
-
-                            <v-select v-model="cardType" :items="['Visa', 'MasterCard']" label="Card Type"
-                                required></v-select>
-
-                            <v-text-field v-model="name" label="Name on card" required></v-text-field>
-                            <v-text-field v-model="cardNumber" label="Card number" required
-                                type="number"></v-text-field>
-                            <v-row>
-                                <v-col>
-                                    <v-text-field v-model="expiry" label="Expiry (MM/YY)" required></v-text-field>
-                                </v-col>
-                                <v-col>
-                                    <v-text-field v-model="cvc" label="CVC" required type="number"></v-text-field>
-                                </v-col>
-                            </v-row>
+                            <v-text-field v-model="name" label="Full Name" required></v-text-field>
+                            <v-text-field v-model="contactNumber" label="Contact Number" required></v-text-field>
+                            <v-text-field v-model="email" label="Email" required></v-text-field>
                             <v-btn block color="primary" :disabled="!valid" @click="submitPayment">Submit</v-btn>
                         </v-form>
                     </v-tab-item>
