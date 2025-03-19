@@ -272,8 +272,6 @@ export default {
                 { title: 'Rs. 13,430', value: 13430 },
                 { title: 'Rs. 26,860', value: 26860 },
                 { title: 'Rs. 40,300', value: 40300 },
-                { title: 'Rs. 20,145', value: 20145 },
-                { title: 'Rs. 40,290', value: 40290 },
             ],
 
 
