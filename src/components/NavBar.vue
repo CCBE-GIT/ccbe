@@ -218,7 +218,7 @@
                 <v-tabs-items v-model="tab">
                     <v-tab-item>
                         <v-form ref="form" v-model="valid">
-                            <v-text-field v-model="name" label="Full Name" required></v-text-field>
+                            <v-text-field v-model="name" label="Child Name" required></v-text-field>
                             <v-text-field v-model="contactNumber" label="Contact Number" required></v-text-field>
                             <v-text-field v-model="email" label="Email" required></v-text-field>
                             <v-btn block color="primary" :disabled="!valid" @click="submitPayment">Submit</v-btn>
@@ -255,10 +255,6 @@ export default {
             paymentDialog: false,
 
             name: "",
-            cardNumber: "",
-            expiry: "",
-            cvc: "",
-            cardType: "",
 
             paymentType: '',      // Initial empty
             monthlyAmount: '',    // Monthly amount
@@ -276,7 +272,7 @@ export default {
 
 
             // Full payment amount
-            valid: false,
+            valid: true,
 
             formData: {
                 name: "",
