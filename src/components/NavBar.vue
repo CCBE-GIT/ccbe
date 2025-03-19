@@ -217,10 +217,10 @@
 
                 <v-tabs-items v-model="tab">
                     <v-tab-item>
-                        <v-form ref="form" v-model="valid">
-                            <v-text-field v-model="name" label="Child Name" required></v-text-field>
-                            <v-text-field v-model="contactNumber" label="Contact Number" required></v-text-field>
-                            <v-text-field v-model="email" label="Email" required></v-text-field>
+                        <v-form ref="form" >
+                            <v-text-field  label="Full Name" required></v-text-field>
+                            <v-text-field  label="Contact Number" required></v-text-field>
+                            <v-text-field  label="Email" required></v-text-field>
                             <v-btn block color="primary" :disabled="!valid" @click="submitPayment">Submit</v-btn>
                         </v-form>
                     </v-tab-item>
@@ -272,7 +272,7 @@ export default {
 
 
             // Full payment amount
-            valid: true,
+            valid: false,
 
             formData: {
                 name: "",
