@@ -189,7 +189,6 @@
         </v-dialog>
 
 
-        <!-- Payment Dialog -->
         <v-dialog v-model="paymentDialog" max-width="500">
             <v-card class="pa-3" width="400">
                 <v-card-title class="text-center text-h5 font-weight-bold">
@@ -207,27 +206,40 @@
                     </v-radio-group>
                 </v-card-subtitle>
 
+                <!-- Monthly Amount -->
                 <v-select v-if="paymentType === 'monthly'" label="Select Monthly Amount" v-model="monthlyAmount"
-                    :items="monthlyOptions"></v-select>
-                <v-select v-if="paymentType === 'full'" label="Select Full Payment Amount" v-model="fullAmount" 
-                    :items="fullOptions"></v-select>
+                    :items="monthlyOptions" item-text="title" item-value="value" required></v-select>
+
+                <!-- Full Payment Amount -->
+                <v-select v-if="paymentType === 'full'" label="Select Full Payment Amount" v-model="fullAmount"
+                    :items="fullOptions" item-text="title" item-value="value" required></v-select>
+
                 <v-divider></v-divider>
 
-                
+                <!-- Form -->
+                <v-form ref="form" v-model="valid">
+                    <v-text-field v-model="name" label="Full Name" :rules="[v => !!v || 'Name is required']"
+                        required></v-text-field>
 
-                <v-tabs-items v-model="tab">
-                    <v-tab-item>
-                        <v-form ref="form" >
-                            <v-text-field  label="Full Name" required></v-text-field>
-                            <v-text-field  label="Contact Number" required></v-text-field>
-                            <v-text-field  label="Email" required></v-text-field>
-                            <v-btn block color="primary" :disabled="!valid" @click="submitPayment">Submit</v-btn>
-                        </v-form>
-                    </v-tab-item>
-                </v-tabs-items>
+                    <v-text-field v-model="contact" label="Contact Number"
+                        :rules="[v => !!v || 'Contact number is required']" required></v-text-field>
+
+                    <v-text-field v-model="email" label="Email"
+                        :rules="[v => !!v || 'Email is required', v => /.+@.+\..+/.test(v) || 'E-mail must be valid']"
+                        required></v-text-field>
+
+                    <v-checkbox v-model="agreed" label="I agree to the terms and conditions"
+                        :rules="[v => !!v || 'You must agree before submitting']" required></v-checkbox>
+
+                    <v-btn block color="primary" :disabled="!valid || !agreed" @click="submitPayment">
+                        Submit
+                    </v-btn>
+                </v-form>
 
                 <v-divider class="mt-3"></v-divider>
-                <p class="text-center mt-2 text-caption">Securely processed and powered by DFCC Bank</p>
+                <p class="text-center mt-2 text-caption">
+                    Securely processed and powered by DFCC Bank
+                </p>
                 <v-img src="https://www.bancstac.com/logo.png" max-height="30" contain class="mx-auto"></v-img>
             </v-card>
         </v-dialog>
@@ -239,11 +251,24 @@
 <script>
 import SecondNavBar from "./SecondNavBar.vue";
 import emailjs from "emailjs-com";
-
+import axios from 'axios'; 
 
 export default {
     data() {
         return {
+            merchantId: "your-merchant-id", // DFCC provided merchant ID
+            secretKey: "your-secret-key", // DFCC provided secret key
+            paymentUrl: "https://www.dfccpaycorp.com/transaction", // DFCC endpoint
+
+            paymentType: '',
+            monthlyAmount: null,
+            fullAmount: null,
+            name: '',
+            contact: '',
+            email: '',
+            agreed: false,
+
+
             logoPath: require("@/assets/Logo.png"),
             lblLMS: require("@/assets/icons/lblLMS.png"),
             lblPayment: require("@/assets/icons/lblPayments.png"),
@@ -251,14 +276,7 @@ export default {
             dialogInstructions: false,
             successDialog: false,
             isMenuOpen: false,
-            agreed: false,
             paymentDialog: false,
-
-            name: "",
-
-            paymentType: '',      // Initial empty
-            monthlyAmount: '',    // Monthly amount
-            fullAmount: '',
 
             monthlyOptions: [
                 { title: 'Rs. 3,950', value: 3950 },
@@ -269,9 +287,6 @@ export default {
                 { title: 'Rs. 26,860', value: 26860 },
                 { title: 'Rs. 40,300', value: 40300 },
             ],
-
-
-            // Full payment amount
             valid: false,
 
             formData: {
@@ -292,7 +307,7 @@ export default {
                 alert("Please fill out all required fields.");
                 return;
             }
-
+            
             const branchConfig = {
                 Ambalangoda: {
                     serviceId: "service_lfaw7ig",
@@ -355,6 +370,13 @@ export default {
             }
         },
 
+        openDialog() {
+      this.paymentDialog = true;  // You can use paymentDialog here
+    },
+    closeDialog() {
+      this.paymentDialog = false; // Similarly, close the dialog here
+    },
+
         clearForm() {
             this.formData = {
                 name: "",
@@ -371,6 +393,61 @@ export default {
                 this.dialogSuccess = true;
             }
         }
+    },
+
+    async submitPayment() {
+      if (!this.$refs.form.validate()) {
+        return;
+      }
+
+      const amount = this.paymentType === 'monthly' ? this.monthlyAmount : this.fullAmount;
+      if (!amount) {
+        alert("Please select a payment amount.");
+        return;
+      }
+
+      const payload = {
+        merchantId: this.merchantId,
+        orderId: `ORDER-${Date.now()}`,
+        amount: amount,
+        currency: 'LKR',
+        customerName: this.name,
+        customerEmail: this.email,
+        customerPhone: this.contact,
+        returnUrl: `${window.location.origin}/payment-success`,
+        cancelUrl: `${window.location.origin}/payment-cancel`,
+        notifyUrl: `${window.location.origin}/payment-notify`
+      };
+
+      console.log("Payload:", payload);
+
+      // Generate HMAC-SHA256 signature
+      payload.signature = this.generateSignature(payload);
+
+      try {
+        const response = await axios.post(this.paymentUrl, payload);
+
+        if (response.data.status === "SUCCESS") {
+          console.log("Payment successful:", response.data);
+          this.$router.push('/payment-success');
+        } else {
+          console.error("Payment failed:", response.data.message);
+          alert(`Payment failed: ${response.data.message}`);
+        }
+      } catch (error) {
+        console.error("Payment error:", error);
+        alert(`Payment error: ${error.message}`);
+      }
+    },
+
+    // Generate the HMAC signature for payment
+    generateSignature(payload) {
+      const crypto = require('crypto');
+      const dataString = `${payload.merchantId}${payload.orderId}${payload.amount}${payload.currency}${payload.returnUrl}${payload.cancelUrl}`;
+      return crypto
+        .createHmac('sha256', this.secretKey)
+        .update(dataString)
+        .digest('hex');
     },
 };
 </script>
