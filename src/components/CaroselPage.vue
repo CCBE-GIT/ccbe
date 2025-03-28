@@ -71,7 +71,7 @@
       },
   
       generateSnowflakeStyle() {
-        const size = Math.random() * 20 + 30; // Random size between 35px and 60px
+        const size = Math.random() * 25 + 35; // Random size between 35px and 60px
         const positionX = Math.random() * 100; // Random X position from 0 to 100%
         const animationDuration = Math.random() * 5 + 5; // Random duration between 5 and 10 seconds
         const animationDelay = Math.random() * 5; // Random delay
@@ -141,6 +141,8 @@
     background-position: center;
     background-attachment: fixed;
     position: relative;
+    width: 100%; /* Ensure the container doesn't exceed screen width */
+    overflow: hidden; /* Hide overflow images */
   }
   
   .parallax-overlay {
@@ -174,6 +176,7 @@
   
     .parallax-item {
       background-attachment: scroll; /* Fix for parallax effect on mobile */
+      background-size: cover; /* Ensure the image doesn't overflow */
     }
     
     .snowflake {
