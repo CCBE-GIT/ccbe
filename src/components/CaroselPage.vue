@@ -8,7 +8,7 @@
           :style="generateSnowflakeStyle(i)"
         ></div>
       </div>
-      
+  
       <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500" show-arrows="hover" hide-delimiter-background>
         <v-carousel-item v-for="(item, i) in items" :key="i">
           <div class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
@@ -27,12 +27,11 @@
     data() {
       return {
         items: [],
-        // Import the 4 snowflake images from the assets folder
         snowflakeImages: [
-          require('@/assets/festivel/flower1.png'), // Image 1
-          require('@/assets/festivel/flower2.png'), // Image 2
-          require('@/assets/festivel/cashew.png'), // Image 3
-          require('@/assets/festivel/kokis.png')  // Image 4
+          require('@/assets/festivel/flower1.png'),
+          require('@/assets/festivel/flower2.png'),
+          require('@/assets/festivel/cashew.png'),
+          require('@/assets/festivel/kokis.png')
         ],
       };
     },
@@ -72,19 +71,18 @@
       },
   
       generateSnowflakeStyle() {
-        const size = Math.random() * 25 + 35; // Random size between 10px and 30px
+        const size = Math.random() * 25 + 35; // Random size between 35px and 60px
         const positionX = Math.random() * 100; // Random X position from 0 to 100%
         const animationDuration = Math.random() * 5 + 5; // Random duration between 5 and 10 seconds
         const animationDelay = Math.random() * 5; // Random delay
-        
-        // Randomly select a snowflake image
+  
         const randomImage = this.snowflakeImages[Math.floor(Math.random() * this.snowflakeImages.length)];
   
         return {
           left: `${positionX}%`,
           width: `${size}px`,
           height: `${size}px`,
-          backgroundImage: `url(${randomImage})`, // Randomly chosen image
+          backgroundImage: `url(${randomImage})`,
           backgroundSize: "contain",
           animationDuration: `${animationDuration}s`,
           animationDelay: `${animationDelay}s`,
@@ -172,6 +170,15 @@
   
     .carousel-subtitle {
       font-size: 1rem;
+    }
+  
+    .parallax-item {
+      background-attachment: scroll; /* Fix for parallax effect on mobile */
+    }
+    
+    .snowflake {
+      animation-duration: 7s; /* Slower snowflake animation on mobile */
+      animation-iteration-count: infinite;
     }
   }
   </style>
