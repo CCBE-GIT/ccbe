@@ -86,6 +86,7 @@
           backgroundSize: "contain",
           animationDuration: `${animationDuration}s`,
           animationDelay: `${animationDelay}s`,
+          transform: "translateX(-50%)", // Center the snowflakes within the screen width
         };
       },
     },
