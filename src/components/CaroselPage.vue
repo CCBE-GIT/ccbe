@@ -79,7 +79,7 @@
         const randomImage = this.snowflakeImages[Math.floor(Math.random() * this.snowflakeImages.length)];
   
         return {
-          left: `${Math.min(positionX, 95)}vw`,  // Constrain to 95% to avoid overflowing
+          left: `${Math.min(positionX, 80)}vw`,  // Constrain to 95% to avoid overflowing
           width: `${size}px`,
           height: `${size}px`,
           backgroundImage: `url(${randomImage})`,
