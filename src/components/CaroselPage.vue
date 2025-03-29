@@ -42,7 +42,7 @@
       loadData() {
         this.items = [
           {
-            src: "https://ik.imagekit.io/u3wbiya66/1.png?updatedAt=1737779114828",
+            src: "https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356",
             title: "Our Recognition",
             subtitle: "Celebrating Excellence Through the Years.",
           },
