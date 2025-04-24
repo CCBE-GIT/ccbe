@@ -103,7 +103,7 @@
 
       generateUpImageStyle() {
   const size = Math.random() * 20 + 40; // 40px to 60px
-  const positionX = Math.random() * 90;
+  const positionX = Math.random() * 80;
   const duration = Math.random() * 5 + 7; // 7s to 12s
   const delay = Math.random() * 5;
   const randomImage = this.upImages[Math.floor(Math.random() * this.upImages.length)];
