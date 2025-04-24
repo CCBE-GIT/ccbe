@@ -1,11 +1,21 @@
 <template>
     <div class="parallax-carousel-container">
+
       <div class="snowflakes">
         <div 
           v-for="i in 50" 
           :key="i" 
           class="snowflake" 
           :style="generateSnowflakeStyle(i)"
+        ></div>
+      </div>
+
+      <div class="up-floating-images">
+        <div 
+          v-for="i in 20" 
+          :key="'up' + i" 
+          class="floating-up" 
+          :style="generateUpImageStyle(i)"
         ></div>
       </div>
   
@@ -28,10 +38,11 @@
       return {
         items: [],
         snowflakeImages: [
-          require('@/assets/festivel/flower1.png'),
-          require('@/assets/festivel/flower2.png'),
-          require('@/assets/festivel/cashew.png'),
-          require('@/assets/festivel/kokis.png')
+          
+        ],
+        upImages: [
+          require('@/assets/festivel/vesak-1.png'),
+          require('@/assets/festivel/vesak-2.png'),
         ],
       };
     },
@@ -89,6 +100,27 @@
           transform: "translateX(-50%)", // Ensure snowflakes are centered horizontally
         };
       },
+
+      generateUpImageStyle() {
+  const size = Math.random() * 20 + 40; // 40px to 60px
+  const positionX = Math.random() * 100;
+  const duration = Math.random() * 5 + 7; // 7s to 12s
+  const delay = Math.random() * 5;
+  const randomImage = this.upImages[Math.floor(Math.random() * this.upImages.length)];
+
+  return {
+    left: `${positionX}vw`,
+    bottom: '-60px',
+    width: `${size}px`,
+    height: `${size}px`,
+    backgroundImage: `url(${randomImage})`,
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
+    animationDuration: `${duration}s`,
+    animationDelay: `${delay}s`,
+    transform: 'translateX(-50%)',
+  };
+},
     },
   };
   </script>
@@ -193,5 +225,35 @@
       height: 30px;
     }
   }
+
+  .up-floating-images {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-up {
+  position: absolute;
+  background-color: transparent;
+  opacity: 0.8;
+  animation-name: floatUp;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(-360deg);
+    opacity: 0;
+  }
+}
   </style>
   
