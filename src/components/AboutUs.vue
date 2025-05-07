@@ -74,6 +74,8 @@
             <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
             <!-- Horana Branch -->
             <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
+            <!-- Kalutara Branch -->
+            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }"></div>
         </div>
     </div>
     <div v-if="selectedOffice" class="text-center mt-5">
@@ -158,6 +160,11 @@ export default {
                     address: "No 149, Graceland Circular Rd, Horana, 12400",
                     phone: "+94 2 180 008"
                 },
+                {
+                    name: "Kalutara College",
+                    address: "",
+                    phone: ""
+                },
             ],
             points: [{
                     x: 34,
@@ -175,6 +182,12 @@ export default {
                     x: 55,
                     y: 79,
                     label: "Matara",
+                    link: ""
+                },
+                {
+                    x: 63,
+                    y: 28,
+                    label: "Kalutara",
                     link: ""
                 },
                 {

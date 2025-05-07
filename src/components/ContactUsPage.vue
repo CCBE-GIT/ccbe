@@ -106,6 +106,11 @@ export default {
                     address: "No 149, Graceland Circular Rd, Horana, 12400",
                     phone: "+94 2 180 008"
                 },
+                {
+                    name: "Kalutara College",
+                    address: "",
+                    phone: ""
+                },
             ],
             points: [{
                     x: 34,

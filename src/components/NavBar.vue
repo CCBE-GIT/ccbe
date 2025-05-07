@@ -71,7 +71,7 @@
                                 variant="outlined"></v-text-field>
                         </v-col>
                         <v-col cols="12" md="6">
-                            <v-select :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala']"
+                            <v-select :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala', 'Kalutara']"
                                 label="Branch" v-model="formData.branch" required variant="outlined"></v-select>
                         </v-col>
                         <v-col cols="12" md="6">
@@ -333,6 +333,11 @@ export default {
                     serviceId: "service_mdw48kr",
                     templateId: "template_nzbm91b",
                     publicKey: "OOatG6LX2Xmx6_jGO",
+                },
+                Kalutara: {
+                    serviceId: "service_la24xn6",
+                    templateId: "template_loig6cz",
+                    publicKey: "MJPUAdls_w9W5hPaK",
                 },
             };
 
