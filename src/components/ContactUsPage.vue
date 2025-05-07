@@ -31,6 +31,8 @@
             <div class="point" v-tooltip:start="'Matara College'" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')"></div>
             <!-- Piliyandala Branch -->
             <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
+            <!-- Kalutara Branch -->
+            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }"></div>
             <!-- Horana Branch -->
             <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
         </div>
