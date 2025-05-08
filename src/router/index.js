@@ -25,6 +25,7 @@ const GalleBranch = () => import('../components/branches/GalleBranch.vue');
 const MataraBranch = () => import('../components/branches/MataraBranch.vue');
 const PiliyandalaBranch = () => import('../components/branches/PiliyandalaBranch.vue');
 const HoranaBranch = () => import('../components/branches/HoranaBranch.vue');
+const KalutaraBranch = () => import('../components/branches/KalutaraBranch.vue');
 
 const routes = [
   {path: '/', name: 'HomePage',component: HomePage},
@@ -48,6 +49,7 @@ const routes = [
   {path: '/about/matara',name: 'MataraBranch',component: MataraBranch,},
   {path: '/about/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
   {path: '/about/horana',name: 'HoranaBranch',component: HoranaBranch,},
+  {path: '/about/kalutara',name: 'KalutaraBranch',component: KalutaraBranch,},
 /*
   {path: '/contact/ambalangoda',name: 'AmabalngodaBranch',component: AmbalangodaBranch,},
   {path: '/contact/galle',name: 'GalleBranch',component: GalleBranch,},

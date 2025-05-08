@@ -75,7 +75,7 @@
             <!-- Horana Branch -->
             <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
             <!-- Kalutara Branch -->
-            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }"></div>
+            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }" @click="navigateTo('/about/kalutara')"></div>
         </div>
     </div>
     <div v-if="selectedOffice" class="text-center mt-5">
@@ -162,8 +162,8 @@ export default {
                 },
                 {
                     name: "Kalutara College",
-                    address: "",
-                    phone: ""
+                    address: "No 85, Maha Waskaduwa, 12580",
+                    phone: "0342 121 210"
                 },
             ],
             points: [{

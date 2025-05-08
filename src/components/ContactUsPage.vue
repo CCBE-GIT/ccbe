@@ -32,7 +32,7 @@
             <!-- Piliyandala Branch -->
             <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
             <!-- Kalutara Branch -->
-            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }"></div>
+            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }" @click="navigateTo('/about/kalutara')"></div>
             <!-- Horana Branch -->
             <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
         </div>
@@ -108,8 +108,8 @@ export default {
                 },
                 {
                     name: "Kalutara College",
-                    address: "",
-                    phone: ""
+                    address: "No 85, Maha Waskaduwa, 12580",
+                    phone: "+342 121 210"
                 },
             ],
             points: [{
