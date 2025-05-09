@@ -104,8 +104,8 @@
             return {
                 contentItems: [{
                     iframeSrc: "https://momento360.com/e/u/4e0567c60ff04f2399663f0331bf84d5?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=75&size=medium&display-plan=true",
-                    subtitle: "Explore Ambalangoda Branch in 360",
-                    description: "Immerse yourself in a virtual tour of our vibrant learning spaces at the Ambalangoda Branch.",
+                    subtitle: "Explore Kalutara Branch in 360",
+                    description: "Immerse yourself in a virtual tour of our vibrant learning spaces at the Kalutara Branch.",
                 }, 
                 {
                     iframeSrc: "https://momento360.com/e/u/494aacf6a10642b983445a4a13f7e490?utm_campaign=embed&utm_source=other&heading=0&pitch=0&field-of-view=98&size=medium&display-plan=true",
@@ -120,7 +120,7 @@
             ],
                 images: [{
                         lazySrc: 'https://picsum.photos/10/6?image=15',
-                        src: 'https://ik.imagekit.io/u3wbiya66/Ambalangoda/BC2.jpg?updatedAt=1737874746112',
+                        src: 'https://ik.imagekit.io/u3wbiya66/Ambalangoda/Kalutara.jpg?updatedAt=1746770889100',
                     },
                     {
                         lazySrc: 'https://picsum.photos/10/6?image=10',

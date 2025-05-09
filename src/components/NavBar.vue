@@ -335,7 +335,7 @@ export default {
                     publicKey: "OOatG6LX2Xmx6_jGO",
                 },
                 Kalutara: {
-                    serviceId: "service_la24xn6",
+                    serviceId: "service_mg2271v",
                     templateId: "template_loig6cz",
                     publicKey: "MJPUAdls_w9W5hPaK",
                 },
