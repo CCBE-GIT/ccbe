@@ -112,6 +112,7 @@ export default {
                 "Ambalangoda College",
                 "Galle College",
                 "Horana College",
+                "Kalutara College",
                 "Matara College",
                 "Piliyandala College",
             ], // Subcategories for Courses
@@ -121,6 +122,7 @@ export default {
               <li class="branch-item"><strong>Ambalangoda Branch</strong><br />123 Main Street, Ambalangoda</li>
               <li class="branch-item"><strong>Galle Branch</strong><br />456 High Street, Galle</li>
               <li class="branch-item"><strong>Horana Branch</strong><br />No: 149 Graceland,Circular Road,Horana,12400</li>
+              <li class="branch-item"><strong>Kalutara Branch</strong><br />No 85, Maha Waskaduwa, 12580</li>
               <li class="branch-item"><strong>Matara Branch</strong><br />No: 352,Kumarathunga Mawatha,Matara,81000</li>
               <li class="branch-item"><strong>Piliyandala Branch</strong><br />No: 119 ,Moratuwa Road,Piliyandala,10300</li>
             </ul>
@@ -177,6 +179,16 @@ export default {
               Email: <a href="mailto:horanaccbe@gmail.com">horanaccbe@gmail.com</a><br />
               WhatsApp: <a href="https://wa.me/+94707997512" target="_blank">+94707997512</a><br />
               Landline: 034 2 205 503
+            </div>
+          `,
+
+          "Kalutara College": `
+            <div>
+              <strong>Kalutara College</strong><br />
+              Address: No 85, Maha Waskaduwa, 12580<br />
+              Email: <a href="mailto:kalutaraccbe@gmail.com">kalutaraccbe@gmail.com</a><br />
+              WhatsApp: <a href="https://wa.me/+94711715666" target="_blank">+94 71 171 5666</a><br />
+              Landline: 0342 121 210
             </div>
           `,
                 "Matara College": `
