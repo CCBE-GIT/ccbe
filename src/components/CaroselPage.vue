@@ -1,7 +1,7 @@
 <template>
   <div class="parallax-carousel-container">
     <a href="https://www.topweb.lk" target="_blank" rel="noopener">
-      <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
+      <img :src="require('@/assets/TopWeb.png')" alt="Top Left Logo" class="top-left-image" />
     </a>
     <div class="snowflakes">
       <div v-for="i in 50" :key="i" class="snowflake" :style="generateSnowflakeStyle(i)"></div>
