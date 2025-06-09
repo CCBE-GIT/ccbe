@@ -64,6 +64,13 @@ export default {
             // Array of card data
             cards: [
                 {
+                    image: "https://ik.imagekit.io/u3wbiya66/News&Events/WhatsApp%20Image%202025-06-08%20at%2010.12.15_fb599a49.jpg?updatedAt=1749452636230",
+                    title: "🌿 Husma Fluit Plant Dansal 2025 🌿",
+                    subtitle: "Thank You for Being a Part of the Husma Project 2025",
+                    content: "The Husma Project, first launched by our CCBE Galle branch in 2024 with just 500 plants, has grown into a beautiful island-wide movement. In 2025, thanks to the amazing support from all our branches, the project has flourished reaching 5,000 plants across the country. This initiative reflects our shared commitment to a greener tomorrow and the strength of working together as one. Thank you for being a part of this journey. Together, we breathe life into the future.",
+                    show: false,
+                },
+                {
                     image: "https://ik.imagekit.io/u3wbiya66/_MG_9895.jpg?updatedAt=1745842133941",
                     title: "Cambrians Awrudu Udanaya",
                     subtitle: "The Cambrians Awurudu Udanaya 2025",
