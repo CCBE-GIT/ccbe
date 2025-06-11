@@ -3,13 +3,8 @@
     <a href="https://www.topweb.lk" target="_blank" rel="noopener">
       <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
     </a>
-    <div class="snowflakes">
-      <div v-for="i in 50" :key="i" class="snowflake" :style="generateSnowflakeStyle(i)"></div>
-    </div>
+    
 
-    <div class="up-floating-images">
-      <div v-for="i in 20" :key="'up' + i" class="floating-up" :style="generateUpImageStyle(i)"></div>
-    </div>
 
     <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500"
       show-arrows="hover" hide-delimiter-background>
