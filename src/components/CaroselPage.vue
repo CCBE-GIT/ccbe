@@ -4,7 +4,7 @@
       <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/BestWeb/2025/Rate_Us/image.png" alt="Top Left Logo" class="top-right-image" />
     </a>
       <a href="https://www.topweb.lk" target="_blank" rel="noopener">
-      <img :src="require('@/assets/TopWeb.png')" alt="Top Left Logo" class="top-left-image" />
+      <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
     </a>
     <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500"
       show-arrows="hover" hide-delimiter-background>
