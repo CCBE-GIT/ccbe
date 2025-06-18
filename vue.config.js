@@ -13,7 +13,8 @@ module.exports = defineConfig({
     resolve: {
       fallback: {
         crypto: require.resolve('crypto-browserify'),
-        stream: require.resolve('stream-browserify')
+        stream: require.resolve('stream-browserify'),
+        vm: false
       }
     }
   }

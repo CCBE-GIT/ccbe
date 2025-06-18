@@ -1,11 +1,11 @@
 <template>
   <div class="parallax-carousel-container">
-    <a href="https://www.topweb.lk" target="_blank" rel="noopener">
-      <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
+    <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/BestWeb/2025/Rate_Us" target="_blank" rel="noopener">
+      <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/BestWeb/2025/Rate_Us/image.png" alt="Top Left Logo" class="top-right-image" />
     </a>
-    
-
-
+      <a href="https://www.topweb.lk" target="_blank" rel="noopener">
+      <img :src="require('@/assets/TopWeb.png')" alt="Top Left Logo" class="top-left-image" />
+    </a>
     <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500"
       show-arrows="hover" hide-delimiter-background>
       <v-carousel-item v-for="(item, i) in items" :key="i">
@@ -256,10 +256,19 @@ export default {
 
 .top-left-image {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 5px;
+  right: 5px;
   width: 125px;
   height: 200px;
+  z-index: 20;
+}
+
+.top-right-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 150px;
+  height: 150px;
   z-index: 10;
 }
 </style>
