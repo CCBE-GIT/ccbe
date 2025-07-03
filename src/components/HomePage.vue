@@ -152,7 +152,7 @@ export default {
             happyStudents: 0,
             qualifiedTeachers: 0,
             yearsInField: 9,
-            branches: 5,
+            branches: 6,
             items: [{
                     src: require("../assets/cards/11.jpg"),
                     title: "Title",
