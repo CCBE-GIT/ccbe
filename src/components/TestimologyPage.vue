@@ -38,7 +38,7 @@ export default {
     data() {
         return {
             currentSlide: 0, // Start at the first slide
-            testimonialsPerPage: 3, // Number of testimonials per slide
+            testimonialsPerPage: 3, // Number of testimonials per slide 
             testimonials: [{
                     text: "English became as natural to me as my mother tongue. Apart from the syllabus, they taught me many valuable life lessons and prepared me with the armor of English.",
                     userName: "Thilina Chamod",
