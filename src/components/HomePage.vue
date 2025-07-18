@@ -34,7 +34,7 @@
                 <v-col cols="12" sm="6" md="3" class="text-center" data-aos="fade-down" data-aos-duration="1000">
                     <v-card class="mx-auto" max-width="344" outlined>
                         <div class="text-overline mb-2">
-                            <p class="stat-label" style="color: #5E0000; font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Happy Students</p>
+                            <p class="stat-label" style="color: #5E0000; font-weight: bold; font-size: 22px; font-family: Arial, Helvetica, sans-serif">Happy Students</p>
                         </div>
                         <v-row justify="center">
                             <v-col cols="auto mb-3">
@@ -51,7 +51,7 @@
                 <v-col cols="12" sm="6" md="3" class="text-center" data-aos="fade-down" data-aos-duration="1500">
                     <v-card class="mx-auto" max-width="344" outlined>
                         <div class="text-overline mb-2">
-                            <p class="stat-label" style="color: #5E0000; font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Teachers</p>
+                            <p class="stat-label" style="color: #5E0000; font-weight: bold; font-size: 22px; font-family: Arial, Helvetica, sans-serif">Teachers</p>
                         </div>
                         <v-row justify="center">
                             <v-col cols="auto mb-3">
@@ -68,7 +68,7 @@
                 <v-col cols="12" sm="6" md="3" class="text-center" data-aos="fade-down" data-aos-duration="2000">
                     <v-card class="mx-auto" max-width="344" outlined>
                         <div class="text-overline mb-2">
-                            <p class="stat-label" style="color: #5E0000; font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;">Years In The Field</p>
+                            <p class="stat-label" style="color: #5E0000; font-weight: bold; font-size: 20px; font-family: Arial, Helvetica, sans-serif">Years In The Field</p>
                         </div>
                         <v-row justify="center">
                             <v-col cols="auto mb-3">
@@ -85,7 +85,7 @@
                 <v-col cols="12" sm="6" md="3" class="text-center" data-aos="fade-down" data-aos-duration="2500">
                     <v-card class="mx-auto" max-width="344" outlined>
                         <div class="text-overline mb-2">
-                            <p class="stat-label" style="color: #5E0000; font-size: 22px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Branches</p>
+                            <p class="stat-label" style="color: #5E0000; font-weight: bold; font-size: 22px; font-family: Arial, Helvetica, sans-serif">Branches</p>
                         </div>
                         <v-row justify="center">
                             <v-col cols="auto mb-3">
