@@ -118,6 +118,9 @@ export default {
                     image: "https://ik.imagekit.io/u3wbiya66/Careers/WhatsApp%20Image%202025-08-22%20at%2008.46.00_3a637631.jpg?updatedAt=1755832782647",
                 },
                 {
+                    image: "https://ik.imagekit.io/u3wbiya66/Careers/2.png?updatedAt=1755833509742",
+                },
+                {
                     image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0006.jpg?updatedAt=1737434201584",
                 },
                 {
