@@ -3,6 +3,8 @@
       <a href="https://www.topweb.lk" target="_blank" rel="noopener">
       <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
     </a>
+
+    <img :src="require('@/assets/Aniversary.png')" alt="Top Right Logo" class="top-right-image" />
         <!-- Floating Balloons -->
     <div class="up-floating-images">
       <div
@@ -76,7 +78,7 @@ export default {
     },
 
     generateSnowflakeStyle() {
-      const size = Math.random() * 20 + 30; // Random size between 35px and 60px
+      const size = Math.random() * 20 + 25; // Random size between 35px and 60px
       const positionX = Math.random() * 100; // Random X position from 0 to 100%
       const animationDuration = Math.random() * 5 + 5; // Random duration between 5 and 10 seconds
       const animationDelay = Math.random() * 5; // Random delay
@@ -264,8 +266,8 @@ export default {
   position: absolute;
   top: 5px;
   right: 5px;
-  width: 125px;
-  height: 200px;
+  width: 75px;
+  height: 150px;
   z-index: 20;
 }
 
