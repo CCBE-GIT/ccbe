@@ -1,11 +1,17 @@
 <template>
   <div class="parallax-carousel-container">
-    <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/BestWeb/2025/Rate_Us" target="_blank" rel="noopener">
-      <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/BestWeb/2025/Rate_Us/image.png" alt="Top Left Logo" class="top-right-image" />
-    </a>
       <a href="https://www.topweb.lk" target="_blank" rel="noopener">
       <img :src="require('@/assets/TopWeb.jpg')" alt="Top Left Logo" class="top-left-image" />
     </a>
+        <!-- Floating Balloons -->
+    <div class="up-floating-images">
+      <div
+        v-for="(balloon, index) in 10"
+        :key="index"
+        class="floating-up"
+        :style="generateUpImageStyle()">
+      </div>
+    </div>
     <v-carousel v-if="items.length" cycle interval="10000" data-aos="zoom-in" data-aos-duration="2000" height="500"
       show-arrows="hover" hide-delimiter-background>
       <v-carousel-item v-for="(item, i) in items" :key="i">
@@ -29,8 +35,8 @@ export default {
 
       ],
       upImages: [
-        require('@/assets/festivel/vesak-1.png'),
-        require('@/assets/festivel/vesak-2.png'),
+        require('@/assets/festivel/baloon1.png'),
+        require('@/assets/festivel/baloon2.png'),
       ],
     };
   },
@@ -90,7 +96,7 @@ export default {
     },
 
     generateUpImageStyle() {
-      const size = Math.random() * 20 + 40; // 40px to 60px
+      const size = Math.random() * 50 + 50; // 40px to 60px
       const positionX = Math.random() * 80;
       const duration = Math.random() * 5 + 7; // 7s to 12s
       const delay = Math.random() * 5;
@@ -236,7 +242,7 @@ export default {
 .floating-up {
   position: absolute;
   background-color: transparent;
-  opacity: 0.8;
+  /*opacity: 0.8;*/
   animation-name: floatUp;
   animation-timing-function: ease-in;
   animation-iteration-count: infinite;
