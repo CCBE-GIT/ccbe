@@ -101,9 +101,12 @@
         </v-container>
     </section>
 
-    <br>
 
     <v-divider></v-divider>
+    <br>
+    <AwardsSection></AwardsSection>
+    <v-divider></v-divider>
+
     <br>
     <!-- News Feed Section -->
     <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000"><span class="highlight">Highlights</span></h1>
@@ -133,6 +136,7 @@ import ChatBot from './ChatBot.vue'
 import NewsSliderPage from './NewsSliderPage.vue';
 import TestimologyPage from './TestimologyPage.vue'
 import ArrowButton from './ArrowButton.vue';
+import AwardsSection from './AwardsSection.vue';
 
 export default {
 
@@ -144,7 +148,8 @@ export default {
         ChatBot,
         NewsSliderPage,
         TestimologyPage,
-        ArrowButton
+        ArrowButton,
+        AwardsSection
     },
     data() {
         return {

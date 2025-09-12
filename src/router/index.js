@@ -36,7 +36,6 @@ const routes = [
   {path: '/news',name: 'NewsEventPage',component: NewsEventPage ,},
   {path: '/careers',name: 'CareersPage',component: CareersPage ,},
 
-
   {path: '/courses/preschool',name: 'PreschoolPage',component: PreschoolPage,},
   {path: '/courses/younglearners',name: 'YoungLearnersPage',component: YoungLearnersPage,},
   {path: '/courses/forschool',name: 'ForSchoolPage',component: ForSchoolPage,},
