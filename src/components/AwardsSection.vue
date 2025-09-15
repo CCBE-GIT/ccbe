@@ -55,10 +55,9 @@ export default {
   data() {
     return {
       awards: [
-        { src: "https://ik.imagekit.io/u3wbiya66/Awards/Southern.jpg?updatedAt=1757647127985", title: "Highest Regional Contribution", subtitle: "Southern Province Recognition by the British Council for Cambridge English Registration Centres – Cambridge College of British English (2025)", description: "Recognized by the British Council for the highest regional contribution in Cambridge English registrations." },
+        { src: "https://ik.imagekit.io/u3wbiya66/Awards/Platinum.jpg?updatedAt=1757935994777", title: "Excellence Beyond Gold", subtitle: "British Council Platinum Category Recognition for Outstanding Performance – Cambridge College of British English (2025)", description: "Awarded by the British Council for outstanding performance and exclusivity as a Cambridge English registration centre." },
         { src: "https://ik.imagekit.io/u3wbiya66/Awards/Gold.jpg?updatedAt=1757647128110", title: "Excellence in Performance", subtitle: "Gold Category Recognition by the British Council for Outstanding Registration Centre Achievements – Cambridge College of British English (2024)", description: "Honoured by the British Council for exceptional achievements as a Cambridge English registration centre." },
-       
-       
+        { src: "https://ik.imagekit.io/u3wbiya66/Awards/Southern.jpg?updatedAt=1757647127985", title: "Highest Regional Contribution", subtitle: "Southern Province Recognition by the British Council for Cambridge English Registration Centres – Cambridge College of British English (2025)", description: "Recognized by the British Council for the highest regional contribution in Cambridge English registrations." },
       ],
     };
   },
