@@ -1,184 +1,134 @@
 <template>
-    <div class="carousel">
-      <button @click="prevSlide" class="nav left">‹</button>
-      <div class="carousel-track-container">
-        <div
-          class="carousel-track"
-          :style="{ transform: `translateX(-${currentSlide * (100 / visibleCards)}%)` }"
-        >
-          <div
-            v-for="(course, index) in courses"
-            :key="index"
-            class="carousel-card"
-          >
-            <img :src="course.image" alt="Course Image" class="course-image" />
-            <div class="course-info">
-              <h3>{{ course.title }}</h3>
-              <p>{{ course.description }}</p>
-              <span>{{ course.level }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button @click="nextSlide" class="nav right">›</button>
+  <v-container class="awards-section my-10">
+    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="2000">
+      <span class="highlight">Highlights</span>
+    </h1>
+
+    <div class="swiper-container-wrapper">
+      <swiper
+        :modules="[Autoplay]"
+        :slides-per-view="1"
+        :space-between="20"
+        :loop="true"
+        :autoplay="{ delay: 2500, disableOnInteraction: false }"
+        :breakpoints="{
+          640: { slidesPerView: 1 },
+          960: { slidesPerView: 2 },
+          1280: { slidesPerView: 3 }
+        }"
+      >
+        <swiper-slide v-for="(award, index) in awards" :key="index">
+          <v-hover v-slot="{ isHovering, props }">
+            <v-card class="mx-auto award-card" max-width="350" v-bind="props">
+              <v-img :src="award.src" height="300px" cover>
+                <!-- Hover overlay -->
+                <v-expand-transition>
+                  <div
+                    v-if="isHovering"
+                    class="d-flex flex-column justify-center align-center bg-orange-darken-2 v-card--reveal text-white text-center"
+                    style="height: 100%;"
+                  >
+                    <h3 class="text-h6 font-weight-bold">{{ award.title }}</h3>
+                    <p class="text-body-2">{{ award.subtitle }}</p>
+                  </div>
+                </v-expand-transition>
+              </v-img>
+
+              <v-card-text class="text-center">
+                <h3 class="text-h6 font-weight-bold text-orange mb-1">{{ award.title }}</h3>
+                <p class="text-body-2 text-grey-darken-1">{{ award.description }}</p>
+              </v-card-text>
+            </v-card>
+          </v-hover>
+        </swiper-slide>
+      </swiper>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        currentSlide: 0,
-        visibleCards: 3, // Number of visible cards per slide
-        intervalId: null, // Store the interval ID for auto-slide
-        courses: [
-          {
-            title: "",
-            description: "",
-            level: "",
-            image: require("../assets/cards/22.jpg"),
-          },
-          {
-            title: "",
-            description: "",
-            level: "",
-            image: require("../assets/cards/33.jpg"),
-          },
-          {
-            title: "",
-            description: "",
-            level: "",
-            image: require("../assets/cards/22.jpg"),
-          },
-          {
-            title: "",
-            description: "",
-            level: "",
-            image: require("../assets/cards/33.jpg"),
-          },
-          {
-            title: "",
-            description: "",
-            level: "",
-            image: require("../assets/cards/22.jpg"),
-          },
-        ],
-      };
-    },
-    methods: {
-      nextSlide() {
-        // Move to the next slide or loop back to the first slide
-        if (this.currentSlide < Math.ceil(this.courses.length / this.visibleCards) - 1) {
-          this.currentSlide++;
-        } else {
-          this.currentSlide = 0; // Reset to the first slide
-        }
-      },
-      prevSlide() {
-        // Move to the previous slide or loop back to the last slide
-        if (this.currentSlide > 0) {
-          this.currentSlide--;
-        } else {
-          this.currentSlide = Math.ceil(this.courses.length / this.visibleCards) - 1; // Go to the last slide
-        }
-      },
-      startAutoSlide() {
-        this.intervalId = setInterval(() => {
-          this.nextSlide();
-        }, 2000); // Auto-slide every 2 seconds
-      },
-      stopAutoSlide() {
-        clearInterval(this.intervalId);
-      },
-    },
-    mounted() {
-      this.startAutoSlide(); // Start auto-slide when the component is mounted
-    },
-    beforeUnmount() {
-      this.stopAutoSlide(); // Stop auto-slide when the component is destroyed
-    },
-  };
-  </script>
-  
-  <style>
-  .carousel {
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  .carousel-track-container {
-    overflow: hidden;
-    width: 100%;
-  }
-  
-  .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Smooth sliding effect */
-  }
-  
-  .carousel-card {
-    flex: 0 0 calc(100% / 4); /* Divide the width into 4 cards */
-    box-sizing: border-box;
-    padding: 1rem;
-    text-align: center;
-  }
-  
-  .course-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-  
-  .course-info h3 {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .course-info p {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .course-info span {
-    font-size: 0.9rem;
-    color: gray;
-  }
-  
-  .nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: #fff;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 10;
-  }
-  
-  .nav.left {
-    left: 1rem;
-  }
-  
-  .nav.right {
-    right: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-    .carousel-card {
-      flex: 0 0 calc(100% / 2); /* Show 2 cards per slide on smaller screens */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .carousel-card {
-      flex: 0 0 100%; /* Show 1 card per slide on very small screens */
-    }
-  }
-  </style>
-  
+  </v-container>
+</template>
+
+<script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Autoplay } from "swiper/modules";
+import "swiper/swiper-bundle.css";
+
+export default {
+  name: "AwardsSection",
+  components: { Swiper, SwiperSlide },
+  data() {
+    return {
+      awards: [
+        { src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg?updatedAt=1760438874157", title: "Children’s Day Awareness with Sri Lanka Police", subtitle: "Empowering our kids through an insightful “Good Touch and Bad Touch” session to learn, understand, and stay confident in their safety." },
+        { src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg?updatedAt=1760438873819", title: "Happy Children’s Day!", subtitle: "To our bright, kind, and curious little stars — keep dreaming big and believing in yourself every step of the way." },
+        { src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg?updatedAt=1760438873819", title: "Honoring Our Everyday Heroes", subtitle: "They don’t wear capes, but they build heroes. To all our teachers who inspire, guide, and ignite dreams — we thank you today and always." },
+        { src: "https://ik.imagekit.io/u3wbiya66/Highlights/2.jpg?updatedAt=1760438875073", title: "A Decade of Dedication and Blessings", subtitle: "Marking ten years of redefining English education, our institute held a Pirith Chanting and Almsgiving ceremony with the blessings of the Maha Sangha. Heartfelt thanks to all who joined us on this meaningful day."},
+        { src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg?updatedAt=1760438875365", title: "Cambridge English Awards 2025", subtitle: "Honoring our Pro School Achievers, High Achievers, and Top Achievers — a night of pride, passion, and excellence that truly lit up the stage."},
+      ],
+    };
+  },
+  setup() {
+    return { Autoplay };
+  },
+};
+</script>
+
+<style scoped>
+.award-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.award-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.v-card--reveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.95;
+}
+
+/* Custom scrollbar styling for the swiper container - LEFT SIDE */
+.swiper-container-wrapper {
+  position: relative;
+  overflow-x: auto;
+  padding-top: 10px; /* Space for scrollbar on top */
+  direction: rtl; /* This moves scrollbar to left */
+}
+
+/* Reverse direction for content to display correctly */
+.swiper-container-wrapper .swiper {
+  direction: ltr;
+}
+
+.swiper-container-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.swiper-container-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.swiper-container-wrapper::-webkit-scrollbar-thumb {
+  background: #ff9800; /* Orange color to match your theme */
+  border-radius: 10px;
+}
+
+.swiper-container-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #f57c00; /* Darker orange on hover */
+}
+
+/* For Firefox */
+.swiper-container-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: #ff9800 #f1f1f1;
+}
+
+/* Ensure swiper takes full width */
+.swiper-container-wrapper .swiper {
+  width: 100%;
+}
+</style>

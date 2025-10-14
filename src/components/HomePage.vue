@@ -109,7 +109,6 @@
 
     <br>
     <!-- News Feed Section -->
-    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000"><span class="highlight">Highlights</span></h1>
     <NewsSliderPage></NewsSliderPage>
     <br>
 

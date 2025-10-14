@@ -1,6 +1,6 @@
 <template>
   <v-container class="awards-section my-10">
-    <h1 class="title text-center mb-6">
+    <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="2000">
       <span class="highlight">Awards & Recognitions</span>
     </h1>
 
