@@ -1,29 +1,34 @@
 <template>
 <NavBar></NavBar>
 <CaroselPage></CaroselPage>
-<v-container>
-    <!-- Logo Section -->
-    <div class="logo-container mt-2" data-aos="zoom-in-up" data-aos-duration="3000">
+
+  <!-- Logo Section -->
+
+    <div class="logo-container" data-aos="zoom-in-up" data-aos-duration="3000">
         <img :src="logo" alt="Company Logo" width="210" height="170" id="logo" />
     </div>
-    <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
+    
+    <h1 class="title mr-5 ml-5" data-aos="fade-up" data-aos-duration="3000">
         Welcome to <span class="highlight">Cambridge College of British English</span>
     </h1>
-    <br />
-    <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
-        <b>Cambridge College of British English (CCBE)</b> is renowned for its commitment to providing world-class English
-        courses tailored to individuals of all ages, from 5-year-old children to adults. With a dedicated mission to
-        foster proficiency in reading, writing, listening, and speaking English, CCBE stands as a beacon of excellence in
-        language education. Through innovative teaching methods and a nurturing environment, students embark on a
-        transformative journey towards linguistic mastery. Whether honing the basics or delving into advanced concepts,
-        CCBE ensures that each learner receives personalized attention and support to achieve their language learning
-        goals.
-    </p>
-    <br />
-    <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
-        <b>Join CCBE and unlock your potential for academic success!</b>
-    </p>
+    
+    <div class="content-wrapper mr-5 ml-5">
+        <p class="paragraph" data-aos="fade-up" data-aos-duration="3000">
+            <b>Cambridge College of British English (CCBE)</b> is renowned for its commitment to providing world-class English
+            courses tailored to individuals of all ages, from 5-year-old children to adults. With a dedicated mission to
+            foster proficiency in reading, writing, listening, and speaking English, CCBE stands as a beacon of excellence in
+            language education. Through innovative teaching methods and a nurturing environment, students embark on a
+            transformative journey towards linguistic mastery. Whether honing the basics or delving into advanced concepts,
+            CCBE ensures that each learner receives personalized attention and support to achieve their language learning
+            goals.
+        </p>
+        
+        <p class="paragraph call-to-action" data-aos="fade-up" data-aos-duration="3000">
+            <b>Join CCBE and unlock your potential for academic success!</b>
+        </p>
+    </div>
 
+<v-container>
     <v-divider></v-divider>
     <section class="why-choose-us" ref="statsSection" style="background-color: white; padding: 50px 0;">
         <h1 class="title mt-1 text-center" style="color: #FBB700; font-family: 'Roboto', sans-serif; font-size: 36px; font-weight: bold;" data-aos="fade-up" data-aos-duration="2000">OUR <span class="highlight">STRENGTH</span></h1>
@@ -414,4 +419,6 @@ export default {
     transform: scale(1.05);
     opacity: 0.9;
 }
+
+
 </style>
