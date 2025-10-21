@@ -396,48 +396,54 @@ export default {
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Enhanced Content Overlay with More Transparency */
 .parallax-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3); /* More transparent */
   color: white;
   text-align: center;
-  padding: 30px;
+  padding: 25px;
   border-radius: 16px;
-  width: 85%;
-  max-width: 800px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  width: 90%;
+  max-width: 750px;
+  backdrop-filter: blur(8px); /* Reduced blur */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* More subtle border */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Softer shadow */
+}
+
+.title-container {
+  width: 100%;
 }
 
 .category-tag {
   display: inline-block;
-  background: linear-gradient(135deg, #ff6b35, #ff8c00);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.9), rgba(255, 140, 0, 0.9));
   color: white;
-  padding: 6px 16px;
+  padding: 5px 14px;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   text-transform: uppercase;
+  backdrop-filter: blur(5px);
 }
 
 .carousel-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   color: white;
   line-height: 1.1;
 }
 
 .carousel-subtitle {
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   line-height: 1.5;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   opacity: 0.95;
   font-weight: 300;
-  max-width: 600px;
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -446,34 +452,43 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px 0;
+  margin: 18px 0;
 }
 
 .decoration-line {
   height: 2px;
-  width: 50px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  width: 40px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
 }
 
 .decoration-icon {
-  margin: 0 12px;
-  font-size: 20px;
+  margin: 0 10px;
+  font-size: 18px;
+  opacity: 0.9;
 }
 
 .features-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin: 25px auto;
-  max-width: 500px;
+  gap: 8px;
+  margin: 20px auto;
+  max-width: 450px;
 }
 
 .feature-item {
   display: flex;
   align-items: center;
   text-align: left;
-  font-size: 0.9rem;
-  padding: 6px 0;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
+
+.feature-item .v-icon {
+  font-size: 16px;
+  margin-right: 6px;
 }
 
 .cta-container {
@@ -557,19 +572,32 @@ export default {
   }
 }
 
-/* Enhanced Responsive Design with Mobile Balloons */
+/* Enhanced Mobile Responsive Design */
 @media (max-width: 960px) {
+  .parallax-overlay {
+    padding: 22px;
+    width: 88%;
+    max-width: 650px;
+    background: rgba(0, 0, 0, 0.25);
+  }
+  
   .carousel-title {
-    font-size: 2rem;
+    font-size: 1.9rem;
   }
-
+  
   .carousel-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    max-width: 500px;
   }
-
+  
   .features-list {
-    grid-template-columns: 1fr;
-    gap: 8px;
+    max-width: 400px;
+    gap: 6px;
+  }
+  
+  .feature-item {
+    font-size: 0.82rem;
+    padding: 5px 8px;
   }
 
   .top-left-image {
@@ -597,22 +625,27 @@ export default {
     height: 350px !important;
   }
 
+  .parallax-overlay {
+    padding: 18px 15px;
+    width: 92%;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 12px;
+  }
+
   .carousel-title {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
   }
 
   .carousel-subtitle {
     font-size: 0.95rem;
+    margin-bottom: 15px;
+    max-width: 450px;
   }
 
   .parallax-item {
     background-attachment: scroll;
-  }
-
-  .parallax-overlay {
-    padding: 20px 15px;
-    width: 92%;
-    background: rgba(0, 0, 0, 0.4);
   }
 
   .icon-badge {
@@ -647,7 +680,7 @@ export default {
   .category-tag {
     font-size: 0.65rem;
     padding: 4px 12px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
   }
 
   .title-decoration {
@@ -659,18 +692,27 @@ export default {
   }
 
   .decoration-icon {
-    font-size: 18px;
+    font-size: 16px;
     margin: 0 8px;
   }
 
   .features-list {
+    grid-template-columns: 1fr;
+    gap: 5px;
     margin: 15px auto;
-    gap: 6px;
+    max-width: 350px;
   }
 
   .feature-item {
     font-size: 0.8rem;
-    padding: 4px 0;
+    padding: 4px 8px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .feature-item .v-icon {
+    font-size: 14px;
+    margin-right: 4px;
   }
 
   .custom-indicators {
@@ -705,20 +747,23 @@ export default {
     height: 320px !important;
   }
 
+  .parallax-overlay {
+    padding: 15px 12px;
+    width: 94%;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+  }
+
   .carousel-title {
     font-size: 1.4rem;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .carousel-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-  }
-
-  .parallax-overlay {
-    padding: 18px 12px;
-    border-radius: 12px;
-    backdrop-filter: blur(5px);
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+    max-width: 300px;
   }
 
   .icon-badge {
@@ -753,7 +798,7 @@ export default {
   .category-tag {
     font-size: 0.6rem;
     padding: 3px 10px;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .title-decoration {
@@ -762,19 +807,28 @@ export default {
 
   .decoration-line {
     width: 25px;
+    height: 1.5px;
   }
 
   .decoration-icon {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0 6px;
   }
 
   .features-list {
     margin: 12px auto;
+    max-width: 280px;
+    gap: 4px;
   }
 
   .feature-item {
     font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .feature-item .v-icon {
+    font-size: 12px;
+    margin-right: 3px;
   }
 
   .custom-indicators {
@@ -811,7 +865,7 @@ export default {
   }
 
   .carousel-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .top-left-image {
@@ -830,7 +884,7 @@ export default {
   }
 
   .parallax-overlay {
-    padding: 15px 10px;
+    padding: 12px 10px;
   }
 
   /* Further optimize balloons for very small screens */
@@ -852,5 +906,14 @@ export default {
 
 .floating-up {
   will-change: transform, opacity;
+}
+
+/* Smooth transitions for all elements */
+.parallax-overlay,
+.category-tag,
+.carousel-title,
+.carousel-subtitle,
+.feature-item {
+  transition: all 0.3s ease;
 }
 </style>
