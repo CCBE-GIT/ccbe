@@ -39,9 +39,9 @@
                 <a href="https://classroom.google.com/" target="_blank">
                     <img :src="lblLMS" width="120" height="60" class="ml-1" />
                 </a>
-                <li class="nav-item" @click="dialogInstructions = true">
+                <a href="https://pay.ccbe.lk/" target="_blank">
                     <img :src="lblPayment" width="115" height="55" class="ml-1" />
-                </li>
+                </a>
                 <li class="nav-item d-lg-none">
                     <a class="nav-link text-black" href="/contact">
                         <v-icon>mdi-phone-outline</v-icon> Contact
