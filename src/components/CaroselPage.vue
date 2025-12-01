@@ -10,15 +10,14 @@
       <div class="logo-glow"></div>
     </div>
 
-    <!-- Floating Balloons -->
-    <div class="up-floating-images">
-      <div v-for="(balloon, index) in balloonCount" :key="index" class="floating-up" :style="generateUpImageStyle()">
-      </div>
+    <!-- Falling Snowflakes only on carousel area -->
+    <div class="snow-container">
+      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateSnowflakeStyle()"></div>
     </div>
 
-    <!-- Main Carousel -->
+    <!-- Main Carousel - Snow will fall only on this area -->
     <v-carousel v-model="currentSlide" cycle interval="10000" height="500" show-arrows="hover" hide-delimiter-background
-      class="festive-carousel">
+      class="festive-carousel snow-target-area">
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <div class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
           <!-- Content Overlay -->
@@ -28,8 +27,8 @@
               <v-icon large color="white">{{ item.icon }}</v-icon>
             </div>
 
-            <!-- Main Content -->
-            <div class="parallax-overlay">
+            <!-- Main Content - Snow will fall on this text area -->
+            <div class="parallax-overlay text-content-area">
               <div class="title-container">
                 <!-- Category Tag -->
                 <div class="category-tag">
@@ -73,11 +72,10 @@
 </template>
 
 <script>
-// Import images at the top
+// Import images
 import topWebImage from '@/assets/TopWeb.jpg';
 import anniversaryImage from '@/assets/Aniversary.png';
-import balloon1 from '@/assets/festivel/baloon1.png';
-import balloon2 from '@/assets/festivel/baloon2.png';
+import snowflakeImage from '@/assets/festivel/snow.png';
 
 export default {
   name: 'CarouselPage',
@@ -86,8 +84,8 @@ export default {
       currentSlide: 0,
       topWebImage: topWebImage,
       anniversaryImage: anniversaryImage,
-      upImages: [balloon1, balloon2],
-      balloonCount: 6,
+      snowflakeImage: snowflakeImage,
+      snowCount: 35, // Optimized count
       isMobile: false,
       items: [
         {
@@ -174,44 +172,55 @@ export default {
     };
   },
   methods: {
-    generateUpImageStyle() {
+    generateSnowflakeStyle() {
       const isMobile = this.isMobile;
-      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 50 + 30;
-      const positionX = Math.random() * (isMobile ? 90 : 85);
-      const duration = isMobile ? Math.random() * 6 + 8 : Math.random() * 8 + 10;
-      const delay = Math.random() * 5;
-      const swingAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 40 - 20;
-      const randomImage = this.upImages[Math.floor(Math.random() * this.upImages.length)];
+      
+      // Random size - smaller snowflakes for better effect
+      const size = isMobile ? Math.random() * 8 + 5 : Math.random() * 15 + 8;
+      
+      // Random horizontal position - limited to carousel width
+      const positionX = Math.random() * 80 + 10; // 10% to 90% of container
+      
+      // Random fall duration - slower for natural effect
+      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
+      
+      // Random delay for staggered appearance
+      const delay = Math.random() * 10;
+      
+      // Subtle horizontal drift
+      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
+      
+      // Random opacity for variety
+      const opacity = Math.random() * 0.7 + 0.3;
+      
+      // Random rotation
+      const rotation = Math.random() * 360;
 
       return {
-        left: `${positionX}vw`,
-        bottom: '-100px',
+        left: `${positionX}%`, // Use percentage for better positioning
+        top: '-20px', // Start just above the carousel
         width: `${size}px`,
-        height: `${size * 1.2}px`,
-        backgroundImage: `url(${randomImage})`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.snowflakeImage})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         animationDuration: `${duration}s`,
         animationDelay: `${delay}s`,
-        '--swing-distance': `${swingAmount}px`,
-        opacity: isMobile ? '0.6' : '0.8'
+        '--drift-distance': `${driftAmount}px`,
+        opacity: `${opacity}`,
+        transform: `rotate(${rotation}deg)`,
+        filter: 'blur(0.5px)'
       };
     },
     checkMobile() {
       this.isMobile = window.innerWidth <= 768;
-      this.balloonCount = this.isMobile ? 4 : 6;
+      this.snowCount = this.isMobile ? 20 : 35;
     }
   },
   mounted() {
     this.checkMobile();
     window.addEventListener('resize', this.checkMobile);
-
-    console.log('Carousel images loaded:', {
-      topWeb: this.topWebImage,
-      anniversary: this.anniversaryImage,
-      balloons: this.upImages
-    });
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.checkMobile);
@@ -228,12 +237,67 @@ export default {
   background: linear-gradient(135deg, rgba(26, 42, 58, 0.7) 0%, rgba(44, 62, 80, 0.7) 100%);
 }
 
-/* Logo Styles */
+/* Snow Container - Positioned over carousel only */
+.snow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px; /* Match carousel height */
+  pointer-events: none;
+  z-index: 2; /* Above carousel background but below content */
+  overflow: hidden;
+}
+
+/* Target area where snow falls */
+.snow-target-area {
+  position: relative;
+  z-index: 1; /* Carousel stays below snow */
+}
+
+/* Text content area - snow falls on this */
+.text-content-area {
+  position: relative;
+  z-index: 3; /* Text above snow */
+}
+
+.snowflake {
+  position: absolute;
+  animation-name: snowFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: var(--start-opacity, 0.8);
+  }
+  30% {
+    transform: translateY(150px) translateX(var(--drift-distance)) rotate(180deg);
+  }
+  60% {
+    transform: translateY(300px) translateX(calc(-0.5 * var(--drift-distance))) rotate(360deg);
+  }
+  90% {
+    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.8)) rotate(540deg);
+  }
+  100% {
+    transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Logo Styles - Ensure they stay above snow */
 .logo-link {
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 20;
+  z-index: 25; /* Above snow */
   transition: transform 0.3s ease;
 }
 
@@ -253,7 +317,7 @@ export default {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 10;
+  z-index: 25; /* Above snow */
 }
 
 .top-right-image {
@@ -284,57 +348,9 @@ export default {
     opacity: 0.4;
     transform: translate(-50%, -50%) scale(0.95);
   }
-
   100% {
     opacity: 0.7;
     transform: translate(-50%, -50%) scale(1.05);
-  }
-}
-
-/* Floating Balloons */
-.up-floating-images {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.floating-up {
-  position: absolute;
-  animation-name: floatUp;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  opacity: 0.8;
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-@keyframes floatUp {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: 0.9;
-  }
-
-  25% {
-    transform: translateY(-25vh) translateX(var(--swing-distance)) rotate(90deg);
-  }
-
-  50% {
-    transform: translateY(-50vh) translateX(0) rotate(180deg);
-  }
-
-  75% {
-    transform: translateY(-75vh) translateX(calc(-1 * var(--swing-distance))) rotate(270deg);
-  }
-
-  100% {
-    transform: translateY(-100vh) translateX(0) rotate(360deg);
-    opacity: 0;
   }
 }
 
@@ -374,7 +390,7 @@ export default {
 
 .content-overlay {
   position: relative;
-  z-index: 3;
+  z-index: 10; /* High z-index to ensure content is above snow */
   width: 100%;
   height: 100%;
   display: flex;
@@ -396,18 +412,17 @@ export default {
   border: 3px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Enhanced Content Overlay with More Transparency */
 .parallax-overlay {
-  background: rgba(0, 0, 0, 0.3); /* More transparent */
+  background: rgba(0, 0, 0, 0.3);
   color: white;
   text-align: center;
   padding: 25px;
   border-radius: 16px;
   width: 90%;
   max-width: 750px;
-  backdrop-filter: blur(8px); /* Reduced blur */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* More subtle border */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); /* Softer shadow */
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .title-container {
@@ -435,6 +450,7 @@ export default {
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
   color: white;
   line-height: 1.1;
+  position: relative; /* Ensure text is above snow */
 }
 
 .carousel-subtitle {
@@ -446,6 +462,7 @@ export default {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
+  position: relative; /* Ensure text is above snow */
 }
 
 .title-decoration {
@@ -453,6 +470,7 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 18px 0;
+  position: relative; /* Ensure decoration is above snow */
 }
 
 .decoration-line {
@@ -473,6 +491,7 @@ export default {
   gap: 8px;
   margin: 20px auto;
   max-width: 450px;
+  position: relative; /* Ensure features are above snow */
 }
 
 .feature-item {
@@ -484,6 +503,7 @@ export default {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   backdrop-filter: blur(5px);
+  position: relative; /* Ensure feature items are above snow */
 }
 
 .feature-item .v-icon {
@@ -495,6 +515,7 @@ export default {
   display: flex;
   justify-content: center;
   margin-top: 25px;
+  position: relative; /* Ensure CTA is above snow */
 }
 
 .cta-button.primary {
@@ -510,7 +531,7 @@ export default {
   box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
 }
 
-/* Custom Indicators */
+/* Custom Indicators - Ensure they stay below snow */
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -518,7 +539,7 @@ export default {
   margin-top: 25px;
   padding: 0 20px;
   position: relative;
-  z-index: 5;
+  z-index: 1; /* Below snow container */
 }
 
 .indicator {
@@ -566,7 +587,6 @@ export default {
   0% {
     width: 0%;
   }
-
   100% {
     width: 100%;
   }
@@ -574,57 +594,46 @@ export default {
 
 /* Enhanced Mobile Responsive Design */
 @media (max-width: 960px) {
-  .parallax-overlay {
-    padding: 22px;
-    width: 88%;
-    max-width: 650px;
-    background: rgba(0, 0, 0, 0.25);
+  .snow-container {
+    height: 400px; /* Adjust snow container height for tablet */
   }
   
-  .carousel-title {
-    font-size: 1.9rem;
-  }
-  
-  .carousel-subtitle {
-    font-size: 1rem;
-    max-width: 500px;
-  }
-  
-  .features-list {
-    max-width: 400px;
-    gap: 6px;
-  }
-  
-  .feature-item {
-    font-size: 0.82rem;
-    padding: 5px 8px;
-  }
-
-  .top-left-image {
-    width: 60px;
-    height: 120px;
-  }
-
-  .top-right-image {
-    width: 100px;
-    height: 100px;
-  }
-
-  .logo-glow {
-    width: 120px;
-    height: 120px;
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.8);
+    }
+    100% {
+      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .parallax-carousel-container {
-    background: linear-gradient(135deg, rgba(26, 42, 58, 0.6) 0%, rgba(44, 62, 80, 0.6) 100%);
+  .snow-container {
+    height: 350px; /* Adjust for mobile carousel height */
   }
-
+  
+  .snowflake {
+    filter: blur(0.3px);
+  }
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.7);
+    }
+    100% {
+      transform: translateY(350px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
   .festive-carousel {
     height: 350px !important;
   }
-
+  
   .parallax-overlay {
     padding: 18px 15px;
     width: 92%;
@@ -632,279 +641,62 @@ export default {
     backdrop-filter: blur(5px);
     border-radius: 12px;
   }
-
+  
   .carousel-title {
     font-size: 1.6rem;
     margin-bottom: 10px;
   }
-
+  
   .carousel-subtitle {
     font-size: 0.95rem;
     margin-bottom: 15px;
     max-width: 450px;
   }
-
-  .parallax-item {
-    background-attachment: scroll;
-  }
-
+  
   .icon-badge {
     width: 50px;
     height: 50px;
     margin-bottom: 12px;
   }
-
+  
   .icon-badge .v-icon {
     font-size: 1.5rem !important;
-  }
-
-  .top-left-image {
-    width: 45px;
-    height: 90px;
-    top: 15px;
-    right: 15px;
-  }
-
-  .top-right-image {
-    width: 70px;
-    height: 70px;
-    top: 15px;
-    left: 15px;
-  }
-
-  .logo-glow {
-    width: 90px;
-    height: 90px;
-  }
-
-  .category-tag {
-    font-size: 0.65rem;
-    padding: 4px 12px;
-    margin-bottom: 12px;
-  }
-
-  .title-decoration {
-    margin: 15px 0;
-  }
-
-  .decoration-line {
-    width: 30px;
-  }
-
-  .decoration-icon {
-    font-size: 16px;
-    margin: 0 8px;
-  }
-
-  .features-list {
-    grid-template-columns: 1fr;
-    gap: 5px;
-    margin: 15px auto;
-    max-width: 350px;
-  }
-
-  .feature-item {
-    font-size: 0.8rem;
-    padding: 4px 8px;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .feature-item .v-icon {
-    font-size: 14px;
-    margin-right: 4px;
-  }
-
-  .custom-indicators {
-    gap: 8px;
-    margin-top: 20px;
-  }
-
-  .indicator {
-    width: 55px;
-  }
-
-  .indicator-label {
-    font-size: 0.6rem;
-  }
-
-  /* Mobile-optimized balloons */
-  .up-floating-images {
-    display: block;
-  }
-
-  .floating-up {
-    opacity: 0.6;
   }
 }
 
 @media (max-width: 480px) {
-  .parallax-carousel-container {
-    background: linear-gradient(135deg, rgba(26, 42, 58, 0.5) 0%, rgba(44, 62, 80, 0.5) 100%);
+  .snow-container {
+    height: 320px; /* Adjust for small mobile */
   }
-
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.6);
+    }
+    100% {
+      transform: translateY(320px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  .snowflake {
+    opacity: 0.5 !important;
+  }
+  
   .festive-carousel {
     height: 320px !important;
   }
-
-  .parallax-overlay {
-    padding: 15px 12px;
-    width: 94%;
-    background: rgba(0, 0, 0, 0.15);
-    backdrop-filter: blur(3px);
-    border-radius: 10px;
-  }
-
-  .carousel-title {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-  }
-
-  .carousel-subtitle {
-    font-size: 0.85rem;
-    margin-bottom: 12px;
-    max-width: 300px;
-  }
-
-  .icon-badge {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 10px;
-  }
-
-  .icon-badge .v-icon {
-    font-size: 1.3rem !important;
-  }
-
-  .top-left-image {
-    width: 40px;
-    height: 80px;
-    top: 12px;
-    right: 12px;
-  }
-
-  .top-right-image {
-    width: 65px;
-    height: 65px;
-    top: 12px;
-    left: 12px;
-  }
-
-  .logo-glow {
-    width: 85px;
-    height: 85px;
-  }
-
-  .category-tag {
-    font-size: 0.6rem;
-    padding: 3px 10px;
-    margin-bottom: 10px;
-  }
-
-  .title-decoration {
-    margin: 12px 0;
-  }
-
-  .decoration-line {
-    width: 25px;
-    height: 1.5px;
-  }
-
-  .decoration-icon {
-    font-size: 14px;
-    margin: 0 6px;
-  }
-
-  .features-list {
-    margin: 12px auto;
-    max-width: 280px;
-    gap: 4px;
-  }
-
-  .feature-item {
-    font-size: 0.75rem;
-    padding: 3px 6px;
-  }
-
-  .feature-item .v-icon {
-    font-size: 12px;
-    margin-right: 3px;
-  }
-
-  .custom-indicators {
-    gap: 6px;
-    margin-top: 18px;
-  }
-
-  .indicator {
-    width: 50px;
-  }
-
-  .indicator-label {
-    font-size: 0.55rem;
-  }
-
-  .indicator-progress {
-    height: 3px;
-    margin-bottom: 6px;
-  }
-
-  /* Smaller balloons for mobile */
-  .floating-up {
-    opacity: 0.5;
-  }
 }
 
-@media (max-width: 360px) {
-  .festive-carousel {
-    height: 300px !important;
-  }
-
-  .carousel-title {
-    font-size: 1.3rem;
-  }
-
-  .carousel-subtitle {
-    font-size: 0.8rem;
-  }
-
-  .top-left-image {
-    width: 35px;
-    height: 70px;
-  }
-
-  .top-right-image {
-    width: 55px;
-    height: 55px;
-  }
-
-  .logo-glow {
-    width: 75px;
-    height: 75px;
-  }
-
-  .parallax-overlay {
-    padding: 12px 10px;
-  }
-
-  /* Further optimize balloons for very small screens */
-  .up-floating-images {
-    pointer-events: none;
-  }
-
-  .floating-up {
-    opacity: 0.4;
-  }
-}
-
-/* Performance optimizations for balloons */
-.up-floating-images {
+/* Performance optimizations */
+.snow-container {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000;
 }
 
-.floating-up {
+.snowflake {
   will-change: transform, opacity;
 }
 
