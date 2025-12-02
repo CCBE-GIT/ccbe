@@ -3,9 +3,6 @@
     <v-container class="main-container">
       <!-- Header Section -->
       <section class="header-section">
-        <h1 class="section-title" data-aos="fade-up" data-aos-duration="3000">
-            <span class="highlight">TESTIMONIALS</span>
-          </h1>
         <p class="intro-text" data-aos="fade-up" data-aos-duration="3000">
           Hear from our students about their transformative learning experiences. 
           These testimonials reflect the impact of our comprehensive English programmes 
