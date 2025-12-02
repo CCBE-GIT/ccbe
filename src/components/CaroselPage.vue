@@ -5,14 +5,13 @@
       <img :src="topWebImage" alt="TopWeb Logo" class="top-left-image" />
     </a>
 
-    <div class="logo-container">
-      <img :src="anniversaryImage" alt="Anniversary Logo" class="top-right-image" />
-      <div class="logo-glow"></div>
-    </div>
-
-    <!-- Falling Snowflakes only on carousel area -->
+    <!-- Falling Snowflakes and Santa Caps only on carousel area -->
     <div class="snow-container">
+      <!-- Snowflakes -->
       <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateSnowflakeStyle()"></div>
+      
+      <!-- Santa Caps - fewer than snowflakes -->
+      <div v-for="(cap, index) in santaCapCount" :key="'cap-' + index" class="santa-cap" :style="generateSantaCapStyle()"></div>
     </div>
 
     <!-- Main Carousel - Snow will fall only on this area -->
@@ -76,6 +75,7 @@
 import topWebImage from '@/assets/TopWeb.jpg';
 import anniversaryImage from '@/assets/Aniversary.png';
 import snowflakeImage from '@/assets/festivel/snow.png';
+import santaCapImage from '@/assets/festivel/bells.png'; // Add this import
 
 export default {
   name: 'CarouselPage',
@@ -85,7 +85,9 @@ export default {
       topWebImage: topWebImage,
       anniversaryImage: anniversaryImage,
       snowflakeImage: snowflakeImage,
-      snowCount: 35, // Optimized count
+      santaCapImage: santaCapImage, // Add this
+      snowCount: 35, // Optimized count for snow
+      santaCapCount: 8, // Fewer Santa caps (adjust as needed)
       isMobile: false,
       items: [
         {
@@ -176,7 +178,7 @@ export default {
       const isMobile = this.isMobile;
       
       // Random size - smaller snowflakes for better effect
-      const size = isMobile ? Math.random() * 8 + 5 : Math.random() * 15 + 8;
+      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
       
       // Random horizontal position - limited to carousel width
       const positionX = Math.random() * 80 + 10; // 10% to 90% of container
@@ -197,8 +199,8 @@ export default {
       const rotation = Math.random() * 360;
 
       return {
-        left: `${positionX}%`, // Use percentage for better positioning
-        top: '-20px', // Start just above the carousel
+        left: `${positionX}%`,
+        top: '-20px',
         width: `${size}px`,
         height: `${size}px`,
         backgroundImage: `url(${this.snowflakeImage})`,
@@ -210,12 +212,57 @@ export default {
         '--drift-distance': `${driftAmount}px`,
         opacity: `${opacity}`,
         transform: `rotate(${rotation}deg)`,
-        filter: 'blur(0.5px)'
+        filter: 'none'
       };
     },
+    
+    // New method for Santa Caps
+    generateSantaCapStyle() {
+      const isMobile = this.isMobile;
+      
+      // Larger size for Santa Caps (bigger than snowflakes)
+      const size = isMobile ? Math.random() * 35 + 30 : Math.random() * 45 + 35;
+      
+      // Random horizontal position
+      const positionX = Math.random() * 80 + 10;
+      
+      // Slower fall duration for Santa Caps (they're heavier)
+      const duration = isMobile ? Math.random() * 20 + 15 : Math.random() * 25 + 20;
+      
+      // Random delay
+      const delay = Math.random() * 15;
+      
+      // More dramatic drift for Santa Caps
+      const driftAmount = isMobile ? Math.random() * 25 - 12.5 : Math.random() * 40 - 20;
+      
+      // Slightly less opacity variation for Santa Caps
+      const opacity = 1;
+      
+      // Less rotation for Santa Caps (more natural falling)
+      const rotation = Math.random() * 180 - 90; // -90 to 90 degrees
+
+      return {
+        left: `${positionX}%`,
+        top: '-30px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.santaCapImage})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift-distance': `${driftAmount}px`,
+        opacity: `${opacity}`,
+        transform: `rotate(${rotation}deg)`,
+        filter: 'none'
+      };
+    },
+    
     checkMobile() {
       this.isMobile = window.innerWidth <= 768;
       this.snowCount = this.isMobile ? 20 : 35;
+      this.santaCapCount = this.isMobile ? 5 : 8; // Adjust Santa cap count for mobile
     }
   },
   mounted() {
@@ -272,6 +319,18 @@ export default {
   perspective: 1000;
 }
 
+/* Santa Cap styles - similar to snowflakes but with different animation */
+.santa-cap {
+  position: absolute;
+  animation-name: santaCapFall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
 @keyframes snowFall {
   0% {
     transform: translateY(0) translateX(0) rotate(0deg);
@@ -288,6 +347,27 @@ export default {
   }
   100% {
     transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Different animation for Santa Caps - more bouncy/floaty */
+@keyframes santaCapFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: var(--start-opacity, 0.9);
+  }
+  25% {
+    transform: translateY(125px) translateX(calc(var(--drift-distance) * 0.5)) rotate(45deg);
+  }
+  50% {
+    transform: translateY(250px) translateX(calc(-0.3 * var(--drift-distance))) rotate(-30deg);
+  }
+  75% {
+    transform: translateY(375px) translateX(calc(var(--drift-distance) * 0.7)) rotate(60deg);
+  }
+  100% {
+    transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
     opacity: 0;
   }
 }
@@ -511,26 +591,6 @@ export default {
   margin-right: 6px;
 }
 
-.cta-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 25px;
-  position: relative; /* Ensure CTA is above snow */
-}
-
-.cta-button.primary {
-  background: linear-gradient(135deg, #ff6b35, #ff8c00);
-  color: white;
-  font-weight: 600;
-  padding: 12px 32px;
-  transition: all 0.3s ease;
-}
-
-.cta-button.primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 107, 53, 0.4);
-}
-
 /* Custom Indicators - Ensure they stay below snow */
 .custom-indicators {
   display: flex;
@@ -608,6 +668,17 @@ export default {
       opacity: 0;
     }
   }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.9);
+    }
+    100% {
+      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
+  }
 }
 
 @media (max-width: 768px) {
@@ -616,7 +687,7 @@ export default {
   }
   
   .snowflake {
-    filter: blur(0.3px);
+    filter: none; /* Removed blur for mobile */
   }
   
   @keyframes snowFall {
@@ -626,6 +697,17 @@ export default {
     }
     100% {
       transform: translateY(350px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.8);
+    }
+    100% {
+      transform: translateY(350px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
       opacity: 0;
     }
   }
@@ -680,6 +762,17 @@ export default {
     }
   }
   
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity: var(--start-opacity, 0.7);
+    }
+    100% {
+      transform: translateY(320px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
+  }
+  
   .snowflake {
     opacity: 0.5 !important;
   }
@@ -696,7 +789,7 @@ export default {
   perspective: 1000;
 }
 
-.snowflake {
+.snowflake, .santa-cap {
   will-change: transform, opacity;
 }
 
