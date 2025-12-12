@@ -8,90 +8,68 @@
         <p class="section-subtitle">Celebrating our achievements and memorable moments</p>
       </div>
 
-      <div class="custom-slider-container">
-        <div class="slider-wrapper">
-          <div 
-            class="slider-track" 
-            :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
-            @touchstart="handleTouchStart"
-            @touchmove="handleTouchMove"
-            @touchend="handleTouchEnd"
-          >
-            <div 
-              v-for="(award, index) in awards" 
-              :key="index" 
-              class="slide"
-              :class="{ 'active': currentSlide === index }"
-              :aria-hidden="currentSlide !== index"
-            >
-              <div class="award-card">
-                <div class="card-image">
-                  <img :src="award.src" :alt="award.title" loading="lazy" />
-                  <div class="image-overlay">
-                    <div class="overlay-content">
-                      <h3>{{ award.title }}</h3>
-                      <p>{{ award.subtitle }}</p>
-                      <button class="view-details-btn">View Details</button>
-                    </div>
+      <div class="swiper-container">
+        <swiper
+          :modules="[Autoplay, Navigation, Pagination]"
+          :slides-per-view="1"
+          :space-between="30"
+          :loop="true"
+          :autoplay="{ delay: 4000, disableOnInteraction: false }"
+          :pagination="{ clickable: true, dynamicBullets: true }"
+          :navigation="{ nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }"
+          :breakpoints="{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }"
+          class="highlights-swiper"
+          aria-label="Highlights and achievements carousel"
+        >
+          <swiper-slide v-for="(award, index) in awards" :key="index">
+            <div class="award-card">
+              <div class="card-image">
+                <img :src="award.src" :alt="award.title" />
+                <div class="image-overlay">
+                  <div class="overlay-content">
+                    <h3>{{ award.title }}</h3>
+                    <p>{{ award.subtitle }}</p>
+                    <button class="view-details-btn">View Details</button>
                   </div>
                 </div>
-                <div class="card-content">
-                  <h3 class="card-title">{{ award.title }}</h3>
-                  <p class="card-description">{{ award.description }}</p>
-                  <div class="card-footer">
-                    <span class="date-badge">2025</span>
-                    <div class="social-icons" aria-label="Social media sharing options">
-                      <button class="icon-btn" aria-label="Share on Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                        </svg>
-                      </button>
-                      <button class="icon-btn" aria-label="Share on Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                          <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
-                        </svg>
-                      </button>
-                    </div>
+              </div>
+              <div class="card-content">
+                <h3 class="card-title">{{ award.title }}</h3>
+                <p class="card-description">{{ award.description }}</p>
+                <div class="card-footer">
+                  <span class="date-badge">2025</span>
+                  <div class="social-icons" aria-label="Social media sharing options">
+                    <button class="icon-btn" aria-label="Share on Facebook">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                      </svg>
+                    </button>
+                    <button class="icon-btn"  aria-label="Share on Twitter">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                      </svg>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </swiper-slide>
+        </swiper>
 
         <!-- Custom Navigation -->
-        <div class="slider-navigation">
-          <button 
-            class="slider-button prev-button" 
-            @click="prevSlide"
-            :disabled="currentSlide === 0"
-            aria-label="Previous highlight"
-          >
+        <div class="swiper-navigation">
+          <button class="swiper-button swiper-button-prev" aria-label="Previous highlight">
             <img 
               src="https://cdn-icons-png.flaticon.com/512/271/271220.png" 
               alt="Previous slide" 
               class="nav-image"
             />
           </button>
-          
-          <!-- Pagination Dots -->
-          <div class="pagination-dots">
-            <button 
-              v-for="(_, index) in awards" 
-              :key="index" 
-              class="pagination-dot"
-              :class="{ active: currentSlide === index }"
-              @click="goToSlide(index)"
-              :aria-label="`Go to slide ${index + 1}`"
-            ></button>
-          </div>
-          
-          <button 
-            class="slider-button next-button" 
-            @click="nextSlide"
-            :disabled="currentSlide === awards.length - slidesPerView"
-            aria-label="Next highlight"
-          >
+          <button class="swiper-button swiper-button-next" aria-label="Next highlight">
             <img 
               src="https://cdn-icons-png.flaticon.com/512/271/271228.png" 
               alt="Next slide" 
@@ -109,8 +87,18 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+
 export default {
   name: 'AwardsSection',
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   data() {
     return {
       awards: [
@@ -144,111 +132,23 @@ export default {
           subtitle: "Honoring our Pro School Achievers", 
           description: "Celebrating our High Achievers and Top Achievers — a night of pride, passion, and excellence that truly lit up the stage."
         },
-      ],
-      currentSlide: 0,
-      slidesPerView: 1,
-      touchStartX: 0,
-      touchEndX: 0,
-      autoSlideInterval: null
+      ]
+    }
+  },
+  setup() {
+    return {
+      Autoplay,
+      Navigation,
+      Pagination
     }
   },
   mounted() {
-    this.updateSlidesPerView();
-    window.addEventListener('resize', this.updateSlidesPerView);
-    this.startAutoSlide();
-    
-    // Set equal heights after component is mounted
+    // Ensure equal heights after component is mounted
     this.$nextTick(() => {
       this.equalizeCardHeights();
     });
   },
-  beforeUnmount() {
-    window.removeEventListener('resize', this.updateSlidesPerView);
-    this.stopAutoSlide();
-  },
-  computed: {
-    maxSlideIndex() {
-      return Math.max(0, this.awards.length - this.slidesPerView);
-    }
-  },
   methods: {
-    updateSlidesPerView() {
-      const width = window.innerWidth;
-      if (width >= 1024) {
-        this.slidesPerView = 3;
-      } else if (width >= 768) {
-        this.slidesPerView = 2;
-      } else {
-        this.slidesPerView = 1;
-      }
-      
-      // Ensure currentSlide doesn't go beyond bounds
-      if (this.currentSlide > this.maxSlideIndex) {
-        this.currentSlide = this.maxSlideIndex;
-      }
-    },
-    nextSlide() {
-      if (this.currentSlide < this.maxSlideIndex) {
-        this.currentSlide++;
-      } else {
-        // Loop back to start
-        this.currentSlide = 0;
-      }
-      this.resetAutoSlide();
-    },
-    prevSlide() {
-      if (this.currentSlide > 0) {
-        this.currentSlide--;
-      } else {
-        // Loop to end
-        this.currentSlide = this.maxSlideIndex;
-      }
-      this.resetAutoSlide();
-    },
-    goToSlide(index) {
-      // Ensure the slide index is within bounds for current view
-      const maxIndex = Math.min(index, this.maxSlideIndex);
-      this.currentSlide = maxIndex;
-      this.resetAutoSlide();
-    },
-    handleTouchStart(e) {
-      this.touchStartX = e.touches[0].clientX;
-      this.stopAutoSlide();
-    },
-    handleTouchMove(e) {
-      this.touchEndX = e.touches[0].clientX;
-    },
-    handleTouchEnd() {
-      const swipeThreshold = 50;
-      const diff = this.touchStartX - this.touchEndX;
-      
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-          // Swipe left - go to next
-          this.nextSlide();
-        } else {
-          // Swipe right - go to previous
-          this.prevSlide();
-        }
-      }
-      this.startAutoSlide();
-    },
-    startAutoSlide() {
-      this.stopAutoSlide();
-      this.autoSlideInterval = setInterval(() => {
-        this.nextSlide();
-      }, 4000);
-    },
-    stopAutoSlide() {
-      if (this.autoSlideInterval) {
-        clearInterval(this.autoSlideInterval);
-        this.autoSlideInterval = null;
-      }
-    },
-    resetAutoSlide() {
-      this.stopAutoSlide();
-      this.startAutoSlide();
-    },
     equalizeCardHeights() {
       // Set equal height for all cards
       const cards = document.querySelectorAll('.award-card');
@@ -329,41 +229,19 @@ export default {
   margin: 0 auto;
 }
 
-/* Custom Slider Styles */
-.custom-slider-container {
+.swiper-container {
   position: relative;
   margin-bottom: 40px;
-  overflow: hidden;
 }
 
-.slider-wrapper {
-  overflow: hidden;
-  margin: 0 -15px;
+.highlights-swiper {
+  padding: 20px 10px 50px;
 }
 
-.slider-track {
+/* Ensure all swiper slides have the same height */
+:deep(.swiper-slide) {
+  height: auto;
   display: flex;
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.slide {
-  flex: 0 0 100%;
-  padding: 0 15px;
-  box-sizing: border-box;
-  transition: opacity 0.3s ease;
-}
-
-@media (min-width: 768px) {
-  .slide {
-    flex: 0 0 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .slide {
-    flex: 0 0 calc(100% / 3);
-  }
 }
 
 .award-card {
@@ -375,7 +253,6 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .award-card:hover {
@@ -387,7 +264,7 @@ export default {
   position: relative;
   height: 250px;
   overflow: hidden;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .card-image img {
@@ -474,6 +351,7 @@ export default {
   line-height: 1.6;
   margin-bottom: 20px;
   flex-grow: 1;
+  /* Limit text to 3 lines with ellipsis if needed */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -484,8 +362,8 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  flex-shrink: 0;
+  margin-top: auto; /* Push footer to bottom */
+  flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
 .date-badge {
@@ -522,16 +400,14 @@ export default {
   transform: translateY(-2px);
 }
 
-/* Slider Navigation */
-.slider-navigation {
+.swiper-navigation {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 30px;
-  gap: 20px;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.slider-button {
+.swiper-button {
   background: white;
   border: none;
   width: 50px;
@@ -544,21 +420,15 @@ export default {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   padding: 0;
-  flex-shrink: 0;
 }
 
-.slider-button:hover:not(:disabled) {
+.swiper-button:hover {
   background: #ff6b35;
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.slider-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.slider-button:active:not(:disabled) {
+.swiper-button:active {
   transform: translateY(-1px);
 }
 
@@ -570,37 +440,20 @@ export default {
   transition: all 0.3s ease;
 }
 
-.slider-button:hover:not(:disabled) .nav-image {
+.swiper-button:hover .nav-image {
   filter: brightness(0) invert(1);
   transform: scale(1.1);
 }
 
-/* Pagination Dots */
-.pagination-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  flex-grow: 1;
-}
-
-.pagination-dot {
+:deep(.swiper-pagination-bullet) {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
-  border: none;
   background: #dee2e6;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
+  opacity: 1;
 }
 
-.pagination-dot:hover {
-  transform: scale(1.2);
-}
-
-.pagination-dot.active {
+:deep(.swiper-pagination-bullet-active) {
   background: #ff6b35;
-  transform: scale(1.2);
 }
 
 .view-all-container {
@@ -648,18 +501,8 @@ export default {
     padding: 20px;
   }
   
-  .slider-navigation {
-    margin-top: 20px;
-  }
-  
-  .slider-button {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .nav-image {
-    width: 20px;
-    height: 20px;
+  .swiper-navigation {
+    margin-top: 10px;
   }
 }
 
@@ -680,49 +523,14 @@ export default {
     height: 180px;
   }
   
-  .slider-navigation {
-    gap: 15px;
-  }
-  
-  .slider-button {
-    width: 40px;
-    height: 40px;
+  .swiper-button {
+    width: 45px;
+    height: 45px;
   }
   
   .nav-image {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .pagination-dot {
-    width: 10px;
-    height: 10px;
-  }
-}
-
-/* Accessibility improvements */
-.slider-button:focus,
-.pagination-dot:focus,
-.view-all-btn:focus,
-.icon-btn:focus,
-.view-details-btn:focus {
-  outline: 2px solid #ff6b35;
-  outline-offset: 2px;
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .slider-track,
-  .award-card,
-  .slider-button,
-  .icon-btn,
-  .view-all-btn,
-  .view-details-btn {
-    transition: none;
-  }
-  
-  .award-card:hover {
-    transform: none;
+    width: 20px;
+    height: 20px;
   }
 }
 </style>
