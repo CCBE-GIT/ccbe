@@ -238,7 +238,7 @@
 
 <script>
 
-import lable2Img from '@/assets/IELTS.png'
+import lable2Img from '@/assets/IELTS_up.png'
 
 export default {
     data() {
