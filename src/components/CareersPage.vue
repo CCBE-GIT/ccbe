@@ -41,36 +41,63 @@
         <v-card prepend-icon="mdi-briefcase-outline" title="Application Form" class="dialog-card">
             <v-card-text>
                 <v-row dense>
-                    <v-col cols="12" md="6">
-                        <v-text-field label="Your Name" v-model="formData.name" required variant="outlined"></v-text-field>
+                    <v-col cols="12">
+                        <v-text-field label="Your Name*" v-model="formData.name" required variant="outlined"></v-text-field>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
-                        <v-select :items="['Teaching', 'Administration', 'Management', 'Marketing', 'Development', 'Business Development']" v-model="formData.position" label="Apply For" required variant="outlined"></v-select>
+                        <v-select :items="['Teaching', 'Administration', 'Management', 'Marketing', 'Development', 'Business Development']" 
+                                  v-model="formData.position" 
+                                  label="Apply For*" 
+                                  required 
+                                  variant="outlined"></v-select>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
-                        <v-select :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala']" v-model="formData.branch" label="Nearest Branch" required variant="outlined"></v-select>
+                        <v-select :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala']" 
+                                  v-model="formData.branch" 
+                                  label="Nearest Branch*" 
+                                  required 
+                                  variant="outlined"></v-select>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
-                        <v-select :items="['Masters', 'Bachelors', 'HND', 'Diploma', 'Certificate']" v-model="formData.qualifications" label="Highest Qualifications" required variant="outlined"></v-select>
+                        <v-select :items="['Masters', 'Bachelors', 'HND', 'Diploma', 'Certificate']" 
+                                  v-model="formData.qualifications" 
+                                  label="Highest Qualifications*" 
+                                  required 
+                                  variant="outlined"></v-select>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
-                        <v-select :items="['No Experience', '<2 Years', '<3 Years', '<4 Years', '4+ Years']" v-model="formData.experience" label="Experience" required variant="outlined"></v-select>
+                        <v-select :items="['No Experience', '<2 Years', '<3 Years', '<4 Years', '4+ Years']" 
+                                  v-model="formData.experience" 
+                                  label="Experience*" 
+                                  required 
+                                  variant="outlined"></v-select>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
-                        <v-select :items="['Social Media', 'Website', 'Friend/Referral', 'Other']" v-model="formData.source" label="How did you hear about us?" required variant="outlined"></v-select>
+                        <v-select :items="['Social Media', 'Website', 'Friend/Referral', 'Other']" 
+                                  v-model="formData.source" 
+                                  label="How did you hear about us?*" 
+                                  required 
+                                  variant="outlined"></v-select>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
                         <v-text-field label="Contact Number" v-model="formData.contact" variant="outlined"></v-text-field>
                     </v-col>
+                    
                     <v-col cols="12" md="6">
                         <v-text-field label="Email" v-model="formData.email" type="email" variant="outlined"></v-text-field>
                     </v-col>
                 </v-row>
                 <small class="text-caption text-medium-emphasis">*indicates required field</small>
             </v-card-text>
-            <v-card-actions class="d-flex justify-end">
-                <v-btn text="Close" color="red" variant="plain" prepend-icon="mdi-close-circle" @click="dialog = false" aria-label="Close application form"></v-btn>
-                <v-btn color="primary" text="Apply" variant="tonal" @click="sendInquiry" prepend-icon="mdi-check-circle" aria-label="Submit application"></v-btn>
+            <v-card-actions class="d-flex justify-space-between">
+                <v-btn text="CLOSE" color="grey-darken-2" variant="text" @click="dialog = false" aria-label="Close application form"></v-btn>
+                <v-btn color="primary" text="APPLY" variant="flat" @click="sendInquiry" aria-label="Submit application"></v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -128,7 +155,6 @@ export default {
                 {
                     image: "https://ik.imagekit.io/u3wbiya66/Careers/C2.jpg?updatedAt=1760439871237",
                 },
-
                 {
                     image: "https://ik.imagekit.io/u3wbiya66/Careers/WhatsApp%20Image%202025-08-22%20at%2008.47.25_0277efb2.jpg?updatedAt=1755832794043",
                 },
@@ -178,10 +204,19 @@ export default {
     },
     methods: {
         sendInquiry() {
-            const formData = this.formData;
+            const emailData = {
+                name: this.formData.name,
+                position: this.formData.position,
+                branch: this.formData.branch,
+                qualifications: this.formData.qualifications,
+                experience: this.formData.experience,
+                source: this.formData.source,
+                contact: this.formData.contact,
+                email: this.formData.email,
+            };
 
             // info@ccbe.lk first email
-            emailjs.send('service_s33obqe', 'template_mz5d1yg', formData, 'WIB0bG1OPslsktqa2')
+            emailjs.send('service_s33obqe', 'template_mz5d1yg', emailData, 'WIB0bG1OPslsktqa2')
                 .then(response => {
                     console.log('First email sent successfully', response);
                 })
@@ -190,7 +225,7 @@ export default {
                 });
 
             // Jobs@ccbe.lk Send the second email
-            emailjs.send('service_eypw2ip', 'template_ygw1cnq', formData, 'sW9PkDNeVewlET9FF')
+            emailjs.send('service_eypw2ip', 'template_ygw1cnq', emailData, 'sW9PkDNeVewlET9FF')
                 .then(response => {
                     console.log('Second email sent successfully', response);
                 })
