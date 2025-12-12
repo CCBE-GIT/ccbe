@@ -238,14 +238,14 @@
 
 <script>
 
-import lable2Img from '@/assets/IELTS_up.png'
+//import lable2Img from '@/assets/IELTS_up.png'
 
 export default {
     data() {
         return {
             logo: require('@/assets/Logo.png'),
             lable1: require('@/assets/WEP.png'),
-            lable2: lable2Img,
+            lable2: "https://ik.imagekit.io/u3wbiya66/IELTS.png",
             lable3: require('@/assets/CES.png'),
             icons: [
                 { name: 'mdi-instagram', link: 'https://www.instagram.com/ccbeamb' },
