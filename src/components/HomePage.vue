@@ -16,7 +16,7 @@
 
   <h1 class="title mr-5 ml-5" data-aos="fade-up" data-aos-duration="3000">
     Welcome to
-    <span class="highlight">Cambridge College of British English</span>
+    <span class="highlight">Cambridge College of the British English</span>
   </h1>
 
   <div class="content-wrapper mr-5 ml-5">
