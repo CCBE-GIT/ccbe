@@ -30,8 +30,16 @@
 <FooterPage></FooterPage>
 
 <div class="text-center">
-    <v-dialog v-model="dialog" max-width="600" aria-labelledby="application-form-title">
-        <v-card prepend-icon="mdi-briefcase-outline" title="Application Form">
+    <v-dialog 
+      v-model="dialog" 
+      max-width="600" 
+      aria-labelledby="application-form-title"
+      :backdrop-color="'black'"
+      :backdrop-opacity="0.5"
+      transition="dialog-bottom-transition"
+      persistent
+    >
+        <v-card prepend-icon="mdi-briefcase-outline" title="Application Form" class="dialog-card">
             <v-card-text>
                 <v-row dense>
                     <v-col cols="12" md="6">
@@ -69,8 +77,8 @@
     </v-dialog>
 
     <!-- Success Message Dialog -->
-    <v-dialog v-model="successDialog" max-width="500">
-        <v-card>
+    <v-dialog v-model="successDialog" max-width="500" backdrop-color="black" backdrop-opacity="0.5">
+        <v-card class="dialog-card">
             <v-card-title class="text-h5">Application Sent Successfully</v-card-title>
             <v-card-text class="text-center">
                 <v-icon color="success" size="64">mdi-check-circle</v-icon>
@@ -250,112 +258,45 @@ export default {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .apply-now-button:hover {
     background-color: #cc4a12;
 }
 
-.title {
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+/* Fix for transparent dialog in production */
+.v-overlay--scrim {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
 }
 
-.highlight {
-    color: #FF5F15;
+.v-dialog {
+  opacity: 1 !important;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 20px 0;
+.dialog-card {
+  background-color: white !important;
+  opacity: 1 !important;
 }
 
-.professionals-grid {
-    margin-top: 30px;
+/* Ensure dialog content is visible */
+.v-overlay__content {
+  opacity: 1 !important;
+}
+</style>
+
+<style>
+/* Global style to ensure dialog backdrop is visible in production */
+.v-overlay--scrim {
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
-.name {
-    font-weight: bold;
-    font-size: 1.1rem;
-    margin: 10px 0;
+.v-overlay__scrim {
+  opacity: 1 !important;
 }
 
-.paragraph {
-    font-family: "Roboto", sans-serif;
-    font-weight: 14px;
-    font-size: 20px;
-    font-style: normal;
-    text-align: center;
-}
-
-.horizontal-scroll {
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 10px;
-    scrollbar-width: none;
-    /* For Firefox */
-    -ms-overflow-style: none;
-    /* For Internet Explorer and Edge */
-}
-
-.horizontal-scroll::-webkit-scrollbar {
-    display: none;
-    /* For Chrome, Safari, and Opera */
-}
-
-.why-choose-us {
-    padding: 40px 20px;
-    background-color: #f9f9f9;
-}
-
-.section-title {
-    font-size: 2.5rem;
-    color: #272643;
-    font-family: "Arial", sans-serif;
-    margin-bottom: 20px;
-}
-
-.stats-row .v-col {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.stats-card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.stats-card-img {
-    object-fit: cover;
-    border-bottom: 3px solid #FBB700;
-}
-
-.card-content {
-    padding: 20px;
-}
-
-.stat-value {
-    font-size: 28px;
-    color: #FBB700;
-    font-weight: bold;
-}
-
-.stat-label {
-    font-size: 18px;
-    color: rgb(20, 10, 10);
-    font-family: 'Roboto', sans-serif;
-}
-
-.v-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-}
-
-.stats-row .v-col:hover {
-    transform: scale(1.05);
-    opacity: 0.9;
+.v-dialog .v-overlay__content {
+  opacity: 1 !important;
 }
 </style>
