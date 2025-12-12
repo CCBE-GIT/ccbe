@@ -71,7 +71,7 @@
             </v-card-text>
             <v-card-actions class="d-flex justify-end">
                 <v-btn text="Close" color="red" variant="plain" prepend-icon="mdi-close-circle" @click="dialog = false" aria-label="Close application form"></v-btn>
-                <v-btn color="primary" text="Apply" variant="tonal" @click="sendInquiry" prepend-icon="mdi-check-circle" aria-label="Submit application"></v-btn>
+                <v-btn color="blue" text="Apply" variant="tonal" @click="sendInquiry" prepend-icon="mdi-check-circle" aria-label="Submit application"></v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
