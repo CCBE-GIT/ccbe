@@ -24,7 +24,7 @@
                             <a href="https://classroom.google.com/" target="_blank" class="action-btn lms-btn">
                                 <span class="btn-text">LMS Portal</span>
                             </a>
-                                <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
+                            <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
                                 <span class="btn-text">Make Payment</span>
                             </a>
                         </div>
@@ -34,16 +34,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/contact">
                                     <div class="nav-icon">
-                                        <v-icon>mdi-phone-outline</v-icon>
+                                        <i class="material-icons">phone</i>
                                     </div>
                                     <span class="nav-text">Contact</span>
                                     <div class="nav-hover-effect"></div>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" @click="dialogInq = true">
+                                <a class="nav-link" @click.prevent="openInquiryDialog">
                                     <div class="nav-icon">
-                                        <v-icon>mdi-lifebuoy</v-icon>
+                                        <i class="material-icons">help</i>
                                     </div>
                                     <span class="nav-text">Inquiry</span>
                                     <div class="nav-hover-effect"></div>
@@ -71,7 +71,7 @@
                             <li class="secondary-nav-item" v-for="(item, index) in secondaryNavItems" :key="index">
                                 <a :href="item.link" class="secondary-nav-link" @mouseenter="activateHover(index)">
                                     <div class="secondary-nav-icon">
-                                        <v-icon>{{ item.icon }}</v-icon>
+                                        <i class="material-icons">{{ item.icon }}</i>
                                     </div>
                                     <span class="secondary-nav-text">{{ item.text }}</span>
                                     <div class="nav-underline" :class="{ 'active': activeIndex === index }"></div>
@@ -92,7 +92,7 @@
                         <h2 class="mobile-brand-title">CCBE</h2>
                     </div>
                     <button class="mobile-close-btn" @click="closeMobileMenu">
-                        <v-icon>mdi-close</v-icon>
+                        <i class="material-icons">close</i>
                     </button>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                     <a href="https://classroom.google.com/" target="_blank" class="mobile-action-btn lms-btn" @click="closeMobileMenu">
                         <span>LMS Portal</span>
                     </a>
-                        <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
+                    <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
                         <span>Make Payment</span>
                     </a>
                 </div>
@@ -114,13 +114,13 @@
                     <ul class="mobile-nav-links">
                         <li class="mobile-nav-item">
                             <a class="mobile-nav-link" href="/contact" @click="closeMobileMenu">
-                                <v-icon>mdi-phone-outline</v-icon>
+                                <i class="material-icons">phone</i>
                                 <span>Contact</span>
                             </a>
                         </li>
                         <li class="mobile-nav-item">
-                            <a class="mobile-nav-link" @click="dialogInq = true; closeMobileMenu();">
-                                <v-icon>mdi-lifebuoy</v-icon>
+                            <a class="mobile-nav-link" @click.prevent="openInquiryDialog(); closeMobileMenu();">
+                                <i class="material-icons">help</i>
                                 <span>Inquiry</span>
                             </a>
                         </li>
@@ -133,7 +133,7 @@
                     <ul class="mobile-secondary-links">
                         <li class="mobile-secondary-item" v-for="(item, index) in secondaryNavItems" :key="index">
                             <a :href="item.link" class="mobile-secondary-link" @click="closeMobileMenu">
-                                <v-icon>{{ item.icon }}</v-icon>
+                                <i class="material-icons">{{ item.icon }}</i>
                                 <span>{{ item.text }}</span>
                             </a>
                         </li>
@@ -144,26 +144,26 @@
                 <div class="mobile-nav-footer">
                     <div class="mobile-contact-info">
                         <div class="mobile-contact-item">
-                            <v-icon small>mdi-email</v-icon>
+                            <i class="material-icons">email</i>
                             <span>info@ccbe.lk</span>
                         </div>
                         <div class="mobile-contact-item">
-                            <v-icon small>mdi-phone</v-icon>
+                            <i class="material-icons">phone</i>
                             <span>071 3 999 666</span>
                         </div>
                     </div>
                     <div class="mobile-social-links">
                         <a href="#" class="mobile-social-link">
-                            <v-icon small>mdi-facebook</v-icon>
+                            <i class="material-icons">facebook</i>
                         </a>
                         <a href="#" class="mobile-social-link">
-                            <v-icon small>mdi-twitter</v-icon>
+                            <i class="material-icons">twitter</i>
                         </a>
                         <a href="#" class="mobile-social-link">
-                            <v-icon small>mdi-linkedin</v-icon>
+                            <i class="material-icons">linkedin</i>
                         </a>
                         <a href="#" class="mobile-social-link">
-                            <v-icon small>mdi-instagram</v-icon>
+                            <i class="material-icons">instagram</i>
                         </a>
                     </div>
                 </div>
@@ -171,142 +171,104 @@
         </div>
     </nav>
 
-    <!-- Dialogs -->
-    <div class="dialog-container">
-        <!-- Inquiry Dialog -->
-        <v-dialog v-model="dialogInq" max-width="600" class="modern-dialog">
-            <v-card class="dialog-card inquiry-card">
+    <!-- Inquiry Dialog -->
+    <div class="dialog-inquiry" v-show="dialogInq">
+        <div class="dialog-overlay" @click="closeInquiryDialog"></div>
+        <div class="dialog-content">
+            <div class="dialog-card inquiry-card">
                 <div class="dialog-header">
                     <div class="header-graphic">
                         <div class="graphic-circle"></div>
-                        <v-icon class="header-main-icon" color="#FFD700">mdi-account-question</v-icon>
+                        <i class="material-icons header-main-icon">help_outline</i>
                     </div>
-                    <v-card-title class="dialog-title">Get In Touch</v-card-title>
-                    <v-card-subtitle class="dialog-subtitle">We'll get back to you within 24 hours</v-card-subtitle>
+                    <h2 class="dialog-title">Get In Touch</h2>
+                    <p class="dialog-subtitle">We'll get back to you within 24 hours</p>
                 </div>
                 
-                <v-card-text class="dialog-body">
-                    <v-row dense>
-                        <v-col cols="12" md="6">
-                            <v-text-field 
-                                label="Your Name" 
-                                v-model="formData.name" 
-                                required
-                                variant="outlined"
-                                color="#FFD700"
-                                bg-color="white"
-                                density="comfortable"
-                            ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <v-text-field 
-                                label="Contact Number" 
-                                v-model="formData.contact"
-                                variant="outlined"
-                                color="#FFD700"
-                                bg-color="white"
-                                density="comfortable"
-                            ></v-text-field>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <v-select 
-                                :items="['Ambalangoda', 'Galle', 'Horana', 'Matara', 'Piliyandala', 'Kalutara']"
-                                label="Branch" 
-                                v-model="formData.branch" 
-                                required 
-                                variant="outlined"
-                                color="#FFD700"
-                                bg-color="white"
-                                density="comfortable"
-                            ></v-select>
-                        </v-col>
-                        <v-col cols="12" md="6">
-                            <v-select 
-                                :items="['Social Media', 'Website', 'Friend/Referral', 'Other']"
-                                label="How did you hear about us?" 
-                                v-model="formData.source" 
-                                required
-                                variant="outlined"
-                                color="#FFD700"
-                                bg-color="white"
-                                density="comfortable"
-                            ></v-select>
-                        </v-col>
-                        <v-col cols="12">
-                            <v-textarea 
-                                label="Type your message" 
-                                v-model="formData.message" 
-                                required
-                                variant="outlined"
-                                color="#FFD700"
-                                bg-color="white"
-                                rows="4"
-                                density="comfortable"
-                            ></v-textarea>
-                        </v-col>
-                    </v-row>
-                    <small class="text-caption text-medium-emphasis">*indicates required field</small>
-                </v-card-text>
-                
-                <v-divider></v-divider>
-                
-                <v-card-actions class="dialog-actions">
-                    <v-btn 
-                        text="Close" 
-                        variant="outlined" 
-                        @click="dialogInq = false"
-                        class="action-btn-close"
-                        size="large"
-                    >
-                        <v-icon left>mdi-close</v-icon>
-                        Cancel
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn 
-                        color="#FFD700" 
-                        text="Submit Inquiry" 
-                        variant="flat" 
-                        @click="sendInquiry"
-                        class="action-btn-submit"
-                        size="large"
-                        dark
-                    >
-                        <v-icon left>mdi-send</v-icon>
-                        Send Message
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+                <div class="dialog-body">
+                    <form @submit.prevent="sendInquiry" class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" class="form-control" v-model="formData.name" required placeholder="Enter your name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact">Contact Number</label>
+                            <input type="tel" id="contact" class="form-control" v-model="formData.contact" placeholder="Enter contact number">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="branch">Branch *</label>
+                            <select id="branch" class="form-control" v-model="formData.branch" required>
+                                <option value="">Select a branch</option>
+                                <option value="Ambalangoda">Ambalangoda</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Horana">Horana</option>
+                                <option value="Matara">Matara</option>
+                                <option value="Piliyandala">Piliyandala</option>
+                                <option value="Kalutara">Kalutara</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="source">How did you hear about us? *</label>
+                            <select id="source" class="form-control" v-model="formData.source" required>
+                                <option value="">Select an option</option>
+                                <option value="Social Media">Social Media</option>
+                                <option value="Website">Website</option>
+                                <option value="Friend/Referral">Friend/Referral</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="message">Type your message *</label>
+                            <textarea id="message" class="form-control" v-model="formData.message" required rows="4" placeholder="Enter your message here..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <small class="required-note">* indicates required field</small>
+                        </div>
+                        
+                        <div class="form-group full-width dialog-actions">
+                            <button type="button" class="btn btn-outline action-btn-close" @click="closeInquiryDialog">
+                                <i class="material-icons">close</i>
+                                Cancel
+                            </button>
+                            <div class="spacer"></div>
+                            <button type="submit" class="btn btn-primary action-btn-submit">
+                                <i class="material-icons">send</i>
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        <!-- Success Dialog -->
-        <v-dialog v-model="successDialog" max-width="500" class="modern-dialog">
-            <v-card class="dialog-card success-card">
-                <v-card-text class="text-center success-body">
+    <!-- Success Dialog -->
+    <div class="dialog-success" v-show="successDialog">
+        <div class="dialog-overlay" @click="closeSuccessDialog"></div>
+        <div class="dialog-content">
+            <div class="dialog-card success-card">
+                <div class="success-body">
                     <div class="success-animation">
                         <div class="success-circle">
-                            <v-icon color="success" size="48">mdi-check</v-icon>
+                            <i class="material-icons success-icon">check</i>
                         </div>
                     </div>
                     <h3 class="success-title">Message Sent Successfully!</h3>
                     <p class="success-message">Thank you for reaching out. Our team will contact you shortly.</p>
-                </v-card-text>
-                <v-divider></v-divider>
-                <v-card-actions class="dialog-actions">
-                    <v-spacer></v-spacer>
-                    <v-btn 
-                        text="Close" 
-                        color="#FFD700" 
-                        variant="flat" 
-                        @click="successDialog = false"
-                        class="action-btn-ok"
-                        size="large"
-                        dark
-                    >
+                </div>
+                <div class="dialog-actions">
+                    <div class="spacer"></div>
+                    <button class="btn btn-primary action-btn-ok" @click="closeSuccessDialog">
                         Got It
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -323,14 +285,10 @@ export default {
 
             // Assets
             logoPath: require("@/assets/Logo.png"),
-            lblLMS: require("@/assets/icons/lblLMS.png"),
-            lblPayment: require("@/assets/icons/lblPayments.png"),
             
             // Dialog states
             dialogInq: false,
-            dialogInstructions: false,
             successDialog: false,
-            agreed: false,
 
             // Form data
             formData: {
@@ -346,32 +304,32 @@ export default {
                 {
                     text: "Home",
                     link: "/",
-                    icon: "mdi-home"
+                    icon: "home"
                 },
                 {
                     text: "Our Programmes",
                     link: "/courses",
-                    icon: "mdi-account-school"
+                    icon: "school"
                 },
                 {
                     text: "Core Values",
                     link: "/corevalues",
-                    icon: "mdi-shield-check"
+                    icon: "verified_user"
                 },
                 {
                     text: "About Us",
                     link: "/about",
-                    icon: "mdi-target"
+                    icon: "info"
                 },
                 {
                     text: "News & Events",
                     link: "/news",
-                    icon: "mdi-newspaper"
+                    icon: "newspaper"
                 },
                 {
                     text: "Careers",
                     link: "/careers",
-                    icon: "mdi-briefcase-outline"
+                    icon: "work"
                 }
             ]
         };
@@ -379,16 +337,40 @@ export default {
     methods: {
         toggleMobileMenu() {
             this.isMenuOpen = !this.isMenuOpen;
+            if (this.isMenuOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         },
         closeMobileMenu() {
             this.isMenuOpen = false;
+            document.body.style.overflow = '';
         },
         activateHover(index) {
             this.activeIndex = index;
         },
+        openInquiryDialog() {
+            this.dialogInq = true;
+            document.body.style.overflow = 'hidden';
+        },
+        closeInquiryDialog() {
+            this.dialogInq = false;
+            document.body.style.overflow = '';
+        },
+        closeSuccessDialog() {
+            this.successDialog = false;
+            document.body.style.overflow = '';
+        },
+        openDialog() {
+            this.dialogInq = true;
+        },
+        closeDialog() {
+            this.dialogInq = false;
+        },
         
         async sendInquiry() {
-            if (!this.formData.name || !this.formData.branch || !this.formData.message) {
+            if (!this.formData.name || !this.formData.branch || !this.formData.message || !this.formData.source) {
                 alert("Please fill out all required fields.");
                 return;
             }
@@ -404,7 +386,6 @@ export default {
                     templateId: "template_6bv0ico",
                     publicKey: "5DFKJ881pqi_jmuPZ",
                 },
-                // Use Galle Branch same Ids & Keys for Horana, Matara, Piliyandala
                 Horana: {
                     serviceId: "service_a0rf5c8",
                     templateId: "template_6bv0ico",
@@ -465,30 +446,89 @@ export default {
                 source: "",
                 message: "",
             };
-        },
-
-        proceedToPayment() {
-            this.dialogInstructions = false;
-            window.open('https://pay.ccbe.lk/', '_blank');
-        },
-
-        openDialog() {
-            this.dialogInq = true;
-        },
-        
-        closeDialog() {
-            this.dialogInq = false;
-        },
+        }
     },
+    mounted() {
+        // Add escape key listener to close dialogs
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (this.dialogInq) {
+                    this.closeInquiryDialog();
+                }
+                if (this.successDialog) {
+                    this.closeSuccessDialog();
+                }
+            }
+        });
+        
+        // Close mobile menu when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (this.isMenuOpen && !e.target.closest('.mobile-navigation') && !e.target.closest('.mobile-menu-toggle')) {
+                this.closeMobileMenu();
+            }
+        });
+    }
 };
 </script>
 
-<style scoped>
+<style>
+/* Import Material Icons CSS */
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+/* Import Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Material Icons styling */
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Material Icons size adjustments */
+.nav-icon .material-icons,
+.secondary-nav-icon .material-icons {
+    font-size: 20px;
+}
+
+.mobile-nav-link .material-icons,
+.mobile-secondary-link .material-icons {
+    font-size: 22px;
+    color: #FFD700;
+}
+
+/* Success icon color */
+.success-icon {
+    color: white !important;
+}
+
 /* Unified Navigation Styles */
 .unified-navbar {
     background: transparent;
     position: relative;
     z-index: 1000;
+    width: 100%;
 }
 
 /* Main Navigation Header */
@@ -497,6 +537,7 @@ export default {
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 215, 0, 0.2);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
 /* Remove border-bottom on mobile devices */
@@ -507,11 +548,19 @@ export default {
     }
 }
 
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+}
+
 .nav-header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 /* Logo Section */
@@ -596,6 +645,7 @@ export default {
     position: relative;
     overflow: hidden;
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .action-btn::before {
@@ -711,6 +761,7 @@ export default {
     box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
 }
 
 /* Hide secondary navigation on mobile */
@@ -721,7 +772,7 @@ export default {
 }
 
 .secondary-nav-container {
-    max-width: 100%;
+    max-width: 1400px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -768,6 +819,7 @@ export default {
     overflow: hidden;
     border-radius: 0;
     background: transparent;
+    cursor: pointer;
 }
 
 .secondary-nav-link::before {
@@ -1072,6 +1124,7 @@ export default {
     font-weight: 500;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 .mobile-secondary-link:hover {
@@ -1102,8 +1155,9 @@ export default {
     font-size: 0.9rem;
 }
 
-.mobile-contact-item .v-icon {
+.mobile-contact-item .material-icons {
     color: #FFD700;
+    font-size: 18px;
 }
 
 .mobile-social-links {
@@ -1121,6 +1175,7 @@ export default {
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .mobile-social-link:hover {
@@ -1128,38 +1183,82 @@ export default {
     transform: translateY(-2px);
 }
 
-/* Dialog Styles */
-.modern-dialog {
-    font-family: 'Poppins', sans-serif;
+/* DIALOG STYLES */
+.dialog-inquiry,
+.dialog-success {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+.dialog-content {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: dialogFadeIn 0.3s ease;
+}
+
+@keyframes dialogFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dialog-card {
-    border-radius: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    width: 100%;
 }
 
-.inquiry-card .dialog-header,
-.terms-card .dialog-header {
-    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
-    padding: 30px 24px 20px;
+/* Header Styles */
+.dialog-header {
+    padding: 2rem 2rem 1rem;
     text-align: center;
-    position: relative;
+    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    color: white;
 }
 
 .header-graphic {
     position: relative;
-    margin-bottom: 15px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1rem;
 }
 
 .graphic-circle {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    margin: 0 auto;
-    position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
 }
 
 .header-main-icon {
@@ -1167,67 +1266,102 @@ export default {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 2rem;
+    font-weight: bold;
+    color: #FFD700;
 }
 
 .dialog-title {
-    color: #1a1a1a;
-    font-weight: 700;
     font-size: 1.8rem;
-    margin-bottom: 5px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
 }
 
 .dialog-subtitle {
-    color: #1a1a1a;
-    opacity: 0.8;
     font-size: 1rem;
-}
-
-.dialog-body {
-    padding: 30px;
-}
-
-.dialog-actions {
-    padding: 20px 30px;
-}
-
-.action-btn-close {
-    border: 2px solid #666;
-    color: #666;
-    font-weight: 600;
-    border-radius: 12px;
-}
-
-.action-btn-submit {
-    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    opacity: 0.8;
     color: #1a1a1a;
-    font-weight: 600;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
-/* Success Dialog */
-.success-card {
+/* Form Styles */
+.dialog-body {
+    padding: 2rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group.full-width {
+    grid-column: span 2;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #FFD700;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+}
+
+select.form-control:focus {
+    background-color: white;
+}
+
+.dialog-body label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+.required-note {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Success Dialog Styles */
+.success-body {
+    padding: 3rem 2rem;
     text-align: center;
 }
 
-.success-body {
-    padding: 40px 30px;
-}
-
 .success-animation {
-    margin-bottom: 25px;
+    margin-bottom: 1.5rem;
 }
 
 .success-circle {
-    width: 100px;
-    height: 100px;
-    background: linear-gradient(135deg, #014703 0%, #014b05 100%);
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
+    background: #4CAF50;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    animation: scaleIn 0.5s ease;
+    animation: scaleIn 0.5s ease-out, pulse 2s infinite;
 }
 
 @keyframes scaleIn {
@@ -1241,92 +1375,107 @@ export default {
     }
 }
 
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+}
+
+.success-icon {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
 .success-title {
-    color: #1a1a1a;
-    font-weight: 700;
     font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
 }
 
 .success-message {
     color: #666;
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 2rem;
+}
+
+/* Dialog Actions */
+.dialog-actions {
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
     font-size: 1rem;
-    line-height: 1.6;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif;
+    min-width: 120px;
 }
 
-.action-btn-ok {
-    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
-    color: #1a1a1a;
-    font-weight: 600;
-    border-radius: 12px;
+.btn-outline {
+    background: transparent;
+    border: 2px solid #e0e0e0;
+    color: #666;
 }
 
-/* Terms Dialog Styles */
-.terms-card {
-    max-height: 80vh;
-    overflow: hidden;
+.btn-outline:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
 }
 
-.terms-body {
-    padding: 25px;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.terms-content {
-    padding-right: 10px;
-}
-
-.term-section {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.term-section:last-child {
-    border-bottom: none;
-}
-
-.term-section p {
-    color: #333;
-    line-height: 1.6;
-    margin-bottom: 8px;
-}
-
-.term-section strong {
-    color: #FFD700;
-}
-
-.contact-link {
-    color: #FFD700;
-    text-decoration: none;
-}
-
-.contact-link:hover {
-    text-decoration: underline;
-}
-
-.terms-checkbox {
-    margin-top: 20px;
-}
-
-/* Custom scrollbar for terms */
-.terms-body::-webkit-scrollbar {
-    width: 6px;
-}
-
-.terms-body::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-}
-
-.terms-body::-webkit-scrollbar-thumb {
+.btn-primary {
     background: #FFD700;
-    border-radius: 3px;
+    color: #000;
+    font-weight: 600;
 }
 
-.terms-body::-webkit-scrollbar-thumb:hover {
-    background: #FFED4E;
+.btn-primary:hover {
+    background: #ffea00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.spacer {
+    flex: 1;
+}
+
+/* Button hover effects */
+.action-btn-submit:hover {
+    background: #ffea00 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+}
+
+.action-btn-close:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.action-btn-ok:hover {
+    background: #ffea00 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
 }
 
 /* Responsive Design */
@@ -1346,6 +1495,10 @@ export default {
     .secondary-nav-link {
         padding: 16px 22px;
         font-size: 0.95rem;
+    }
+    
+    .nav-header-container {
+        padding: 15px;
     }
 }
 
@@ -1396,6 +1549,49 @@ export default {
     .nav-scroll-wrapper {
         padding: 0 15px;
     }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+        grid-column: span 1;
+    }
+    
+    .dialog-content {
+        width: 95%;
+        margin: 1rem;
+        padding: 0.5rem;
+    }
+    
+    .dialog-body {
+        padding: 1.5rem;
+    }
+    
+    .dialog-actions {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .spacer {
+        display: none;
+    }
+    
+    .btn {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    /* Ensure dialog stays centered on mobile */
+    .dialog-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: calc(100% - 2rem);
+        margin: 0;
+    }
 }
 
 @media (max-width: 576px) {
@@ -1414,11 +1610,19 @@ export default {
     }
     
     .dialog-body {
-        padding: 20px;
+        padding: 1rem;
     }
     
     .dialog-actions {
-        padding: 15px 20px;
+        padding: 0.75rem;
+    }
+    
+    .dialog-title {
+        font-size: 1.5rem;
+    }
+    
+    .dialog-subtitle {
+        font-size: 0.9rem;
     }
 }
 
@@ -1460,12 +1664,5 @@ export default {
 .nav-link:hover::after, .action-btn:hover::after, .secondary-nav-link:hover::after {
     width: 300px;
     height: 300px;
-}
-
-/* Ensure container-fluid has proper padding */
-.container-fluid {
-    padding: 0;
-    margin: 0;
-    width: 100%;
 }
 </style>
