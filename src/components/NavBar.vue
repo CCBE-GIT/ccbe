@@ -152,20 +152,6 @@
                             <span>071 3 999 666</span>
                         </div>
                     </div>
-                    <div class="mobile-social-links">
-                        <a href="#" class="mobile-social-link">
-                            <i class="material-icons">facebook</i>
-                        </a>
-                        <a href="#" class="mobile-social-link">
-                            <i class="material-icons">twitter</i>
-                        </a>
-                        <a href="#" class="mobile-social-link">
-                            <i class="material-icons">linkedin</i>
-                        </a>
-                        <a href="#" class="mobile-social-link">
-                            <i class="material-icons">instagram</i>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
