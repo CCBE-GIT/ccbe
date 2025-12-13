@@ -24,7 +24,7 @@
                             <a href="https://classroom.google.com/" target="_blank" class="action-btn lms-btn">
                                 <span class="btn-text">LMS Portal</span>
                             </a>
-                            <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">
+                                <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
                                 <span class="btn-text">Make Payment</span>
                             </a>
                         </div>
@@ -103,7 +103,7 @@
                     <a href="https://classroom.google.com/" target="_blank" class="mobile-action-btn lms-btn" @click="closeMobileMenu">
                         <span>LMS Portal</span>
                     </a>
-                    <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">
+                        <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
                         <span>Make Payment</span>
                     </a>
                 </div>
@@ -177,13 +177,13 @@
         <v-dialog v-model="dialogInq" max-width="600" class="modern-dialog">
             <v-card class="dialog-card inquiry-card">
                 <div class="dialog-header">
-    <div class="header-graphic">
-        <div class="graphic-circle"></div>
-        <v-icon class="header-main-icon" color="#FFD700">mdi-account-question</v-icon>
-    </div>
-    <v-card-title class="dialog-title">Get In Touch</v-card-title>
-    <v-card-subtitle class="dialog-subtitle">We'll get back to you within 24 hours</v-card-subtitle>
-</div>
+                    <div class="header-graphic">
+                        <div class="graphic-circle"></div>
+                        <v-icon class="header-main-icon" color="#FFD700">mdi-account-question</v-icon>
+                    </div>
+                    <v-card-title class="dialog-title">Get In Touch</v-card-title>
+                    <v-card-subtitle class="dialog-subtitle">We'll get back to you within 24 hours</v-card-subtitle>
+                </div>
                 
                 <v-card-text class="dialog-body">
                     <v-row dense>
@@ -303,113 +303,6 @@
                         dark
                     >
                         Got It
-                    </v-btn>
-                </v-card-actions>
-            </v-card>
-        </v-dialog>
-
-        <!-- Payment Terms Dialog -->
-        <v-dialog v-model="dialogInstructions" max-width="700" class="modern-dialog">
-            <v-card class="dialog-card terms-card">
-                <div class="dialog-header">
-    <div class="header-graphic">
-        <div class="graphic-circle"></div>
-        <v-icon class="header-main-icon" color="#FFD700">mdi-certificate</v-icon>
-    </div>
-    <v-card-title class="dialog-title">Terms and Conditions</v-card-title>
-    <v-card-subtitle class="dialog-subtitle">For Payment Processing</v-card-subtitle>
-</div>
-
-                <v-divider></v-divider>
-
-                <v-card-text class="terms-body">
-                    <div class="terms-content">
-                        <div class="term-section">
-                            <p><strong>1. Introduction</strong></p>
-                            <p>Welcome to CCBE. By using our services and making payments through our website, you agree to comply with and be bound by the following terms and conditions. Please read them carefully.</p>
-                        </div>
-                        
-                        <div class="term-section">
-                            <p><strong>2. Payment Processing</strong></p>
-                            <p>All payments for services provided by CCBE are securely processed through DFCC Bank's Internet Payment Gateway (IPG). By making a payment, you authorize CCBE to charge the payment method you provide.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>3. Non-Refundable Payments</strong></p>
-                            <p>All payments made through our website are non-refundable. Once a payment is processed, it cannot be refunded, regardless of the transaction outcome.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>4. Payment Confirmation</strong></p>
-                            <p>After a successful payment, you will receive a confirmation receipt from CCBE as proof of payment.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>5. Payment Methods</strong></p>
-                            <p>We accept Visa, Mastercard, and other supported payment methods as listed by DFCC Bank.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>6. Security and Data Protection</strong></p>
-                            <p>All transactions are securely processed using encryption technologies provided by DFCC Bank's IPG. Your payment details are never stored on our servers.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>7. Payment Disputes</strong></p>
-                            <p>If you have issues with your payment, contact us at <strong>071 3 999 666</strong>. Payments are non-refundable unless required by law or if a system error occurs.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>8. Changes to Terms</strong></p>
-                            <p>CCBE reserves the right to modify these terms at any time. Changes will be posted on this page.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>9. Governing Law</strong></p>
-                            <p>These terms are governed by Sri Lankan law.</p>
-                        </div>
-
-                        <div class="term-section">
-                            <p><strong>10. Contact Us</strong></p>
-                            <p>Email: <a href="mailto:info@ccbe.lk" class="contact-link">info@ccbe.lk</a></p>
-                            <p>Phone: 071 3 999 666</p>
-                        </div>
-                    </div>
-                    
-                    <v-checkbox 
-                        v-model="agreed" 
-                        label="I agree to the Terms and Conditions" 
-                        color="#FFD700"
-                        class="terms-checkbox mt-4"
-                    ></v-checkbox>
-                </v-card-text>
-
-                <v-divider></v-divider>
-
-                <v-card-actions class="dialog-actions">
-                    <v-btn 
-                        text="Close" 
-                        variant="outlined" 
-                        @click="dialogInstructions = false"
-                        class="action-btn-close"
-                        size="large"
-                    >
-                        <v-icon left>mdi-close</v-icon>
-                        Cancel
-                    </v-btn>
-                    <v-spacer></v-spacer>
-                    <v-btn 
-                        color="#FFD700" 
-                        text="Continue to Payment" 
-                        variant="flat" 
-                        :disabled="!agreed" 
-                        @click="proceedToPayment"
-                        class="action-btn-submit"
-                        size="large"
-                        dark
-                    >
-                        <v-icon left>mdi-arrow-right</v-icon>
-                        Continue
                     </v-btn>
                 </v-card-actions>
             </v-card>
@@ -1247,7 +1140,8 @@ export default {
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
-.inquiry-card .dialog-header {
+.inquiry-card .dialog-header,
+.terms-card .dialog-header {
     background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
     padding: 30px 24px 20px;
     text-align: center;
