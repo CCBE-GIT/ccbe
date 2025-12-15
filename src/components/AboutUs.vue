@@ -1,101 +1,115 @@
 <template>
-<NavBar></NavBar>
-<v-container>
-    <div class="logo-container mt-3" data-aos="zoom-in-up" data-aos-duration="2000">
+  <div>
+    <NavBar></NavBar>
+    <div class="container">
+      <div class="logo-container mt-3" data-aos="zoom-in-up" data-aos-duration="2000">
         <img :src="logo" alt="Company Logo" width="200" height="150" id="logo">
-    </div>
-    <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">ABOUT <span class="highlight">CCBE</span>
-    </h1>
-    <br>
-    <div class="center-container">
-        <v-row>
-            <v-img data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/Board.jpg?updatedAt=1737883142390" align="center"></v-img>
-            <p class="paragraph mt-2" data-aos="fade-up" data-aos-duration="3000">
-                Established on September 3rd, 2015, our institution proudly functions as a distinguished
-                Cambridge English
-                Exam Preparation Centre (CELA Centre). Recognized as a designated Cambridge Qualifications
-                registration
-                center for the esteemed British Council in Colombo, Sri Lanka, we specialize in facilitating
-                University of
-                Cambridge Examinations.
-                With a steadfast commitment to academic excellence, we provide comprehensive and tailored
-                preparatory
-                programs to empower individuals seeking success in Cambridge English exams. Our longstanding
-                association
-                with the British Council underscores our dedication to upholding the highest standards in
-                education,
-                ensuring that our students are well-equipped to excel in their academic pursuits.
-            </p>
-        </v-row>
-    </div>
+      </div>
+      <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">ABOUT <span class="highlight">CCBE</span>
+      </h1>
+      <br>
+      <div class="center-container">
+        <div class="row">
+          <img class="center-image" data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/Board.jpg?updatedAt=1737883142390" alt="Board">
+          <p class="paragraph mt-2" data-aos="fade-up" data-aos-duration="3000">
+            Established on September 3rd, 2015, our institution proudly functions as a distinguished
+            Cambridge English
+            Exam Preparation Centre (CELA Centre). Recognized as a designated Cambridge Qualifications
+            registration
+            center for the esteemed British Council in Colombo, Sri Lanka, we specialize in facilitating
+            University of
+            Cambridge Examinations.
+            With a steadfast commitment to academic excellence, we provide comprehensive and tailored
+            preparatory
+            programs to empower individuals seeking success in Cambridge English exams. Our longstanding
+            association
+            with the British Council underscores our dedication to upholding the highest standards in
+            education,
+            ensuring that our students are well-equipped to excel in their academic pursuits.
+          </p>
+        </div>
+      </div>
 
-    <v-divider></v-divider>
+      <div class="divider"></div>
 
-    <div class="center-container">
+      <!-- FIXED: Vision & Mission Title - Now properly centered -->
+      <div class="vision-mission-title">
         <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
-            <span class="highlight">OUR VISION</span> & <span class="highlight">OUR MISSION</span>
+          <span class="highlight">OUR VISION</span> & <span class="highlight">OUR MISSION</span>
         </h1>
+      </div>
     </div>
-</v-container>
-<v-parallax class="parallax" src='@/assets/BC1.jpg' style="align-items: center;">
-    <div class="content">
+    
+    <div class="parallax-section">
+      <div class="parallax-content">
         <p class="paragraph mt-2 ml-1 mr-1" data-aos="fade-up" data-aos-duration="3000">
-            <b>Our Mission </b>is to excel as a premier Cambridge English Assessment preparation center in Sri Lanka. We are dedicated to providing an exceptional learning experience, fostering language proficiency, critical thinking, and global awareness. Through innovative teaching and a commitment to student success, we aim to be the preferred choice for effective Cambridge English Assessment preparation, making a lasting impact on our students' academic and personal growth.
+          <b>Our Mission </b>is to excel as a premier Cambridge English Assessment preparation center in Sri Lanka. We are dedicated to providing an exceptional learning experience, fostering language proficiency, critical thinking, and global awareness. Through innovative teaching and a commitment to student success, we aim to be the preferred choice for effective Cambridge English Assessment preparation, making a lasting impact on our students' academic and personal growth.
         </p>
         <br>
 
         <div class="content">
-            <p class="paragraph mt-2 ml-1 mr-1" data-aos="fade-up" data-aos-duration="3000">
-                <b>Our Vision </b>is to lead as the top Cambridge English Assessment preparation center in Sri Lanka, dedicated to fostering excellence in language proficiency and academic success. We aim to provide an inspiring learning environment, utilizing innovative teaching methods and resources to empower students for success in a globalized world.
-            </p>
+          <p class="paragraph mt-2 ml-1 mr-1" data-aos="fade-up" data-aos-duration="3000">
+            <b>Our Vision </b>is to lead as the top Cambridge English Assessment preparation center in Sri Lanka, dedicated to fostering excellence in language proficiency and academic success. We aim to provide an inspiring learning environment, utilizing innovative teaching methods and resources to empower students for success in a globalized world.
+          </p>
         </div>
+      </div>
     </div>
-</v-parallax>
-<v-container>
-    <v-divider></v-divider>
-    <!-- Existing content -->
-    <br>
-    <h1 class="title" data-aos="fade-up" data-aos-duration="3000">
+    
+    <div class="container">
+      <div class="divider"></div>
+      <br>
+      <h1 class="title" data-aos="fade-up" data-aos-duration="3000">
         OUR <span class="highlight mt-3">BRANCH NETWORK</span>
-    </h1>
+      </h1>
 
-    <div class="center-container-Branch mt-3">
+      <div class="center-container-Branch mt-3">
         <!-- Image Container -->
         <div class="image-container">
-            <!-- Main Image -->
-            <v-img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" src="@/assets/Branch_Network.png" alt="Branch Network"></v-img>
-            <!-- Ambalangoda Branch -->
-            <div class="point" v-tooltip:start="'Ambalangoda College'" :style="{ top: '72%', left: '34%' }" @click="navigateTo('/about/ambalangoda')"></div>
-            <!-- Galle Branch -->
-            <div class="point" v-tooltip:start="'Galle College'" :style="{ top: '80%', left: '40%' }" @click="navigateTo('/about/galle')"></div>
-            <!-- Matara Branch -->
-            <div class="point" v-tooltip:start="'Matara College'" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')"></div>
-            <!-- Piliyandala Branch -->
-            <div class="point" v-tooltip:start="'Piliyandala College'" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')"></div>
-            <!-- Horana Branch -->
-            <div class="point" v-tooltip:start="'Horana College'" :style="{ top: '67%', left: '32%' }" @click="navigateTo('/about/horana')"></div>
-            <!-- Kalutara Branch -->
-            <div class="point" v-tooltip:start="'Kalutara College'" :style="{ top: '63%', left: '28%' }" @click="navigateTo('/about/kalutara')"></div>
+          <!-- Main Image -->
+          <img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" :src="branchImage" alt="Branch Network" class="branch-map">
+          
+          <!-- Interactive Points -->
+          <div class="point" :style="{ top: '73%', left: '34%' }" @click="navigateTo('/about/ambalangoda')" @mouseenter="showTooltip($event, 'Ambalangoda College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '80.5%', left: '40%' }" @click="navigateTo('/about/galle')" @mouseenter="showTooltip($event, 'Galle College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')" @mouseenter="showTooltip($event, 'Matara College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')" @mouseenter="showTooltip($event, 'Piliyandala College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '67%', left: '32.5%' }" @click="navigateTo('/about/horana')" @mouseenter="showTooltip($event, 'Horana College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '63.5%', left: '28.5%' }" @click="navigateTo('/about/kalutara')" @mouseenter="showTooltip($event, 'Kalutara College')" @mouseleave="hideTooltip()"></div>
         </div>
-    </div>
-    <div v-if="selectedOffice" class="text-center mt-5">
+        
+        <!-- Tooltip -->
+        <div v-if="tooltipVisible" class="tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft + 'px' }">
+          {{ tooltipText }}
+        </div>
+      </div>
+      
+      <div v-if="selectedOffice" class="text-center mt-5">
         <h3>{{ selectedOffice.name }}</h3>
         <p>{{ selectedOffice.address }}</p>
         <p>{{ selectedOffice.phone }}</p>
+      </div>
+      
+      <div>
+        <div class="office-buttons">
+          <button 
+            v-for="(office, index) in offices" 
+            :key="index" 
+            data-aos="zoom-out" 
+            data-aos-duration="2000" 
+            class="office-btn" 
+            @click="selectOffice(office)"
+          >
+            {{ office.name }}
+          </button>
+        </div>
+      </div>
+      <div class="divider"></div>
     </div>
-    <div>
-        <v-row justify="center" class="my-3 mb-3">
-            <v-btn data-aos="zoom-out" data-aos-duration="2000" rounded="xl" size="large" class="ml-1 mr-1 mb-1" color="#FBB700" v-for="(office, index) in offices" :key="index" outlined @click="selectOffice(office)">
-                {{ office.name }}
-            </v-btn>
-        </v-row>
-    </div>
-    <v-divider></v-divider>
-
-</v-container>
-<ArrowButton></ArrowButton>
-<ChatBot></ChatBot>
-<FooterPage></FooterPage>
+    
+    <ArrowButton></ArrowButton>
+    <ChatBot></ChatBot>
+    <FooterPage></FooterPage>
+  </div>
 </template>
 
 <script>
@@ -103,275 +117,424 @@ import NavBar from './NavBar.vue'
 import FooterPage from './FooterPage.vue'
 import ChatBot from './ChatBot.vue';
 import ArrowButton from './ArrowButton.vue';
-//AOS Trasnsition
+// AOS Transition
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 export default {
-    name: 'HelloWorld',
-    components: {
-        NavBar,
-        FooterPage,
-        ChatBot,
-        ArrowButton
+  name: 'AboutPage',
+  components: {
+    NavBar,
+    FooterPage,
+    ChatBot,
+    ArrowButton
+  },
+  mounted() {
+    AOS.init(); // Initialize AOS when the component is mounted
+  },
+  methods: {
+    selectOffice(office) {
+      this.selectedOffice = office;
     },
-    mounted() {
-        AOS.init(); // Initialize AOS when the component is mounted
+    navigateTo(link) {
+      console.log('Navigating to:', link);
+      if (link) {
+        this.$router.push(link);
+      } else {
+        console.warn("No link provided for this point.");
+      }
     },
-    methods: {
-        selectOffice(office) {
-            this.selectedOffice = office;
+    showTooltip(event, text) {
+      this.tooltipText = text;
+      this.tooltipVisible = true;
+      this.tooltipTop = event.target.getBoundingClientRect().top + window.scrollY - 40;
+      this.tooltipLeft = event.target.getBoundingClientRect().left + window.scrollX;
+    },
+    hideTooltip() {
+      this.tooltipVisible = false;
+    }
+  },
+  data() {
+    return {
+      logo: require('@/assets/Logo.png'),
+      branchImage: require('@/assets/Branch_Network.png'),
+      offices: [
+        {
+          name: "Galle College",
+          address: "118, Old Matara Rd, Galle, 80000",
+          phone: "+94 91 22 37373"
         },
-        navigateTo(link) {
-            console.log('Navigating to:', link); // Log the link
-            if (link) {
-                this.$router.push(link); // Navigate to the provided route
-            } else {
-                console.warn("No link provided for this point.");
-            }
+        {
+          name: "Ambalangoda College",
+          address: "No 97, New Rd, Ambalangoda, 80300",
+          phone: "+94 91 2252 452"
         },
-    },
-    data() {
-        return {
-
-            logo: require('@/assets/Logo.png'),
-            offices: [{
-                    name: "Galle College",
-                    address: "118, Old Matara Rd, Galle, 80000",
-                    phone: "+94 91 22 37373"
-                },
-                {
-                    name: "Ambalangoda College",
-                    address: "No 97, New Rd, Ambalangoda, 80300",
-                    phone: "+94 91 2252 452"
-                },
-                {
-                    name: "Matara College",
-                    address: "No 352, Kumarathunga Mw, Matara, 81000",
-                    phone: "+94 41 2050 200"
-                },
-                {
-                    name: "Piliyandala College",
-                    address: "No Moratuwa Rd, Suwarapola, Piliyandala, 10300",
-                    phone: "+94 11 2 180 008"
-                },
-                {
-                    name: "Horana College",
-                    address: "No 149, Graceland Circular Rd, Horana, 12400",
-                    phone: "+94 2 180 008"
-                },
-                {
-                    name: "Kalutara College",
-                    address: "No 85, Maha Waskaduwa, 12580",
-                    phone: "0342 121 210"
-                },
-            ],
-            points: [{
-                    x: 34,
-                    y: 73,
-                    label: "AmbalangodaBranch",
-                    link: "/courses"
-                },
-                {
-                    x: 40,
-                    y: 80.5,
-                    label: "Galle",
-                    link: ""
-                },
-                {
-                    x: 55,
-                    y: 79,
-                    label: "Matara",
-                    link: ""
-                },
-                {
-                    x: 63,
-                    y: 28,
-                    label: "Kalutara",
-                    link: ""
-                },
-                {
-                    x: 32,
-                    y: 67,
-                    label: "Piliyandala",
-                    link: ""
-                },
-                {
-                    x: 35,
-                    y: 63,
-                    label: "Horana",
-                    link: ""
-                },
-            ],
-            selectedOffice: null,
-        }
-    },
-
+        {
+          name: "Matara College",
+          address: "No 352, Kumarathunga Mw, Matara, 81000",
+          phone: "+94 41 2050 200"
+        },
+        {
+          name: "Piliyandala College",
+          address: "No Moratuwa Rd, Suwarapola, Piliyandala, 10300",
+          phone: "+94 11 2 180 008"
+        },
+        {
+          name: "Horana College",
+          address: "No 149, Graceland Circular Rd, Horana, 12400",
+          phone: "+94 2 180 008"
+        },
+        {
+          name: "Kalutara College",
+          address: "No 85, Maha Waskaduwa, 12580",
+          phone: "0342 121 210"
+        },
+      ],
+      selectedOffice: null,
+      tooltipVisible: false,
+      tooltipText: '',
+      tooltipTop: 0,
+      tooltipLeft: 0
+    }
+  }
 }
 </script>
 
-<style>
+<style scoped>
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Row */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+/* Title */
 .title {
-    color: #FBB700;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
+  color: #FBB700;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100%;
 }
 
 .highlight {
-    color: #FF5F15;
+  color: #FF5F15;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 20px 0;
+/* FIX: Special container for Vision & Mission title to ensure centering */
+.vision-mission-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
-.title-intro {
-    font-family: "Anton", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    text-align: center;
+.vision-mission-title .title {
+  text-align: center;
+  display: inline-block;
 }
 
+/* Margin Utilities */
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+.ml-1 { margin-left: 0.25rem !important; }
+.mr-1 { margin-right: 0.25rem !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+
+/* Paragraph */
 .paragraph {
-    font-family: "Roboto", sans-serif;
-    font-weight: 14px;
-    font-size: 20px;
-    font-style: normal;
-    text-align: justify;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  text-align: justify;
+  line-height: 1.6;
 }
 
 #logo {
-    justify-content: center;
+  display: block;
 }
 
 .logo-container {
-    display: flex;
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .center-container {
-    display: flex;
-    justify-content: center;
-    align-items: left;
-    display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
-.content {
-    position: relative;
-    z-index: 1;
-    /* Make sure content is above the image */
-    text-align: center;
-    color: white;
-    /* Adjust for visibility over the image */
+.center-image {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 
-.content h1,
-.content p {
-    padding: 20px;
-    background-color: rgba(89, 79, 0, 0.452);
-    /* Semi-transparent background for readability */
-    border-radius: 5px;
+/* Divider */
+.divider {
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+  margin: 2rem 0;
+  width: 100%;
 }
 
-.parallax {
-    height: 550px;
+/* Parallax Section */
+.parallax-section {
+  background-image: url('@/assets/BC1.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-.paragraph {
-    font-size: 1.2rem;
-    line-height: 1.5;
+.parallax-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Media query for smaller screens */
-@media (max-width: 767px) {
-    .content {
-        display: block;
-        /* Ensures both Mission and Vision texts are displayed */
-    }
-
-    .paragraph {
-        font-size: 1rem;
-        /* Adjust the font size for mobile screens */
-        line-height: 1.4;
-    }
+.parallax-content {
+  position: relative;
+  z-index: 1;
+  color: white;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
+.parallax-content .paragraph {
+  color: white;
+  background-color: rgba(89, 79, 0, 0.6);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Image Container for Branch Network */
 .image-container {
-    position: relative;
-    width: auto;
-    height: auto;
+  position: relative;
+  width: 390px;
+  height: 490px;
+  margin: 0 auto;
 }
 
+.branch-map {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Points for interactive map */
 .point {
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background-color: rgb(255, 230, 0);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-    z-index: 10;
-    animation: pulse-grow 2s infinite;
-    box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: rgb(255, 230, 0);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  animation: pulse-grow 2s infinite;
+  box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
 }
 
 .point::before,
 .point::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid rgba(255, 243, 7, 0.889);
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    transform: scale(1);
-    animation: wave 2s infinite;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 243, 7, 0.889);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  transform: scale(1);
+  animation: wave 2s infinite;
 }
 
 .point::after {
-    animation-delay: 1s;
+  animation-delay: 1s;
 }
 
-@keyframes pulse-grow {
-
-    0%,
-    100% {
-        transform: translate(-50%, -50%) scale(1);
-    }
-
-    50% {
-        transform: translate(-50%, -50%) scale(1.2);
-    }
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 100;
+  white-space: nowrap;
+  pointer-events: none;
+  transform: translateX(-50%);
 }
 
-@keyframes wave {
-    0% {
-        opacity: 1;
-        transform: scale(1);
-    }
+/* Office Buttons */
+.office-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 1.5rem 0 3rem;
+}
 
-    100% {
-        opacity: 0;
-        transform: scale(3);
-    }
+.office-btn {
+  padding: 12px 24px;
+  background-color: transparent;
+  color: black;
+  border: 2px solid #FBB700;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.office-btn:hover {
+  background-color: #FBB700;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(251, 183, 0, 0.3);
+}
+
+.office-btn:active {
+  transform: translateY(0);
+}
+
+.office-btn:focus {
+  outline: 2px solid #FBB700;
+  outline-offset: 2px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-center h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.text-center p {
+  color: #666;
+  margin-bottom: 5px;
 }
 
 .center-container-Branch {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes pulse-grow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+@keyframes wave {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .title {
+    font-size: 1.75rem;
+  }
+  
+  .paragraph {
+    font-size: 18px;
+    padding: 0 10px;
+  }
+  
+  .center-image {
+    max-width: 100%;
+  }
+  
+  .image-container {
     width: 300px;
-    /* Match the image width */
-    height: 400px;
-    /* Match the image height */
-    margin: 0 auto;
+    height: 385px;
+  }
+  
+  .parallax-section {
+    min-height: 450px;
+    background-attachment: scroll;
+  }
+  
+  .parallax-content {
+    padding: 1rem;
+  }
+  
+  .office-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .office-btn {
+    width: 90%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .paragraph {
+    font-size: 16px;
+  }
+  
+  .image-container {
+    width: 250px;
+    height: 320px;
+  }
+  
+  #logo {
+    width: 150px;
+    height: auto;
+  }
 }
 </style>
