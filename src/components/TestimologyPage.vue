@@ -1,6 +1,6 @@
 <template>
   <div class="testimonials-page" aria-label="Student testimonials and success stories">
-    <v-container class="main-container">
+    <div class="main-container">
       <!-- Header Section -->
       <section class="header-section" aria-labelledby="intro-heading">
         <p class="intro-text" data-aos="fade-up" data-aos-duration="3000">
@@ -15,7 +15,7 @@
         <div class="carousel-container">
           <div class="testimonials-carousel" aria-label="Testimonials slideshow">
             <button @click="prevSlide" class="nav-button nav-left" aria-label="Previous testimonials">
-              <v-icon>mdi-chevron-left</v-icon>
+              <span class="nav-icon">‹</span>
             </button>
             
             <div class="testimonials-grid" aria-label="Testimonial cards">
@@ -35,7 +35,7 @@
                     class="testimonial-avatar" 
                   />
                   <div class="card-overlay">
-                    <v-icon class="overlay-icon">mdi-account</v-icon>
+                    <span class="overlay-icon">👤</span>
                     <span class="overlay-text">{{ testimonial.userRole }}</span>
                   </div>
                 </div>
@@ -51,22 +51,21 @@
                 
                 <!-- Card Actions -->
                 <div class="card-actions">
-                  <v-btn 
-                    class="learn-more-btn" 
-                    variant="outlined" 
+                  <a 
                     :href="testimonial.link" 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    class="learn-more-btn"
                   >
                     Watch Video
-                    <v-icon right>mdi-play-circle</v-icon>
-                  </v-btn>
+                    <span class="btn-icon">▶</span>
+                  </a>
                 </div>
               </div>
             </div>
             
             <button @click="nextSlide" class="nav-button nav-right" aria-label="Next testimonials">
-              <v-icon>mdi-chevron-right</v-icon>
+              <span class="nav-icon">›</span>
             </button>
           </div>
 
@@ -91,37 +90,32 @@
           Experience the journey through their own words
         </p>
         
-        <v-row class="videos-grid" aria-label="Student video testimonials">
-          <v-col 
+        <div class="videos-grid" aria-label="Student video testimonials">
+          <div 
             v-for="(video, index) in videos" 
             :key="index" 
-            cols="12" 
-            md="6" 
-            lg="4"
+            class="video-card"
             data-aos="fade-up" 
             :data-aos-delay="(index + 1) * 100"
             data-aos-duration="3000"
           >
-            <div class="video-card">
-              <div class="video-container">
-                <iframe 
-                  :src="video.link" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="video-iframe"
-                  aria-label="Embedded YouTube video testimonial"
-                ></iframe>
-              </div>
+            <div class="video-container">
+              <iframe 
+                :src="video.link" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="video-iframe"
+                aria-label="Embedded YouTube video testimonial"
+              ></iframe>
             </div>
-          </v-col>
-        </v-row>
+          </div>
+        </div>
       </section>
-    </v-container>
+    </div>
     
     <ArrowButton></ArrowButton>
     <ChatBot></ChatBot>
-    
   </div>
 </template>
 
@@ -137,7 +131,6 @@ export default {
   components: {
     ChatBot,
     ArrowButton,
-    
   },
   data() {
     return {
@@ -148,28 +141,28 @@ export default {
           text: "English became as natural to me as my mother tongue. Apart from the syllabus, they taught me many valuable life lessons and prepared me with the armor of English.",
           userName: "Thilina Chamod",
           userRole: "Key Intake",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Chamod.PNG?updatedAt=1751604750970',
           link: "https://www.youtube.com/watch?v=Xb9PO6GwpYE&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=1"
         },
         {
           text: "I was able to improve my language skills, including reading, writing, listening, and speaking. The practice exams helped us achieve good grades in the British Council exam.",
           userName: "Rishini Hansani",
           userRole: "IKEY002",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Rishini.PNG?updatedAt=1751604753387',
           link: "https://www.youtube.com/watch?v=QgsrB9n_EVQ&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=2"
         },
         {
           text: "Through the four-month course, we were able to improve the four essential language skills: reading, writing, listening, and speaking.",
           userName: "Hasanga Bingusara",
           userRole: "IKEY002",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Hasanga.PNG?updatedAt=1751604752950',
           link: "https://www.youtube.com/watch?v=X3URJtpSRNc&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=3"
         },
         {
           text: "The dedicated instructors, comprehensive study materials, and interactive learning environment helped me achieve my desired score. I highly recommend it to anyone looking to excel in the IELTS exam",
           userName: "Ranmina Navoth",
           userRole: "IELTS",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Ranmina.PNG?updatedAt=1751604753181',
           link: "https://www.youtube.com/watch?v=5a-CoElEByk&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=4"
         },
         {
@@ -183,28 +176,28 @@ export default {
           text: "During the course we were able to do lot of activities in English and we could in our four language skills such as reading,writing listning & speaking the evolutions.",
           userName: "Kushani Umanda",
           userRole: "IKEY002",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Kushani.PNG?updatedAt=1751604753146',
           link: "https://www.youtube.com/watch?v=-nBqEGHpnQs&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=6"
         },
         {
           text: "I wanted to improve my speaking skills as I'm expecting to go abroad for my highest studies at CCBE. I was given the best guidance we learn in a stressfree environment.",
           userName: "Jayani Bawathma",
           userRole: "IKF004",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Jayani.PNG?updatedAt=1751604753246',
           link: "https://www.youtube.com/watch?v=iN5WZINOmrk&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=7"
         },
         {
           text: "We could learn and make learned language skills through various academic activities the students entered classrooms help us to improve our confidence in English.",
           userName: "Vinuji Mallawa Arachchi",
           userRole: "IPET002",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Vinuji.PNG?updatedAt=1751604753245',
           link: "https://www.youtube.com/watch?v=ZEyR-mUGTAs&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=8"
         },
         {
           text: "End of the course I faced Cambridge assessment exams confidently. Thanks to all the preparation sessions. I would really recommend CCBE to anyone out there come joing CCBE without hesitation.",
           userName: "Naduni Abeynayaka",
           userRole: "FCE Intake",
-          userAvatar: StudentIcon,
+          userAvatar: 'https://ik.imagekit.io/u3wbiya66/Testi/Naduni.PNG?updatedAt=1751604753158',
           link: "https://www.youtube.com/watch?v=Lsl_qzKhMjY&list=PLnra1_c-Y6TiQiBCk1clsy80PVAp9Z1q3&index=9"
         },
       ],
@@ -338,6 +331,7 @@ export default {
 /* Navigation Buttons */
 .nav-button {
   background: linear-gradient(135deg, white 0%, white 100%);
+  border: 2px solid #333;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -348,6 +342,9 @@ export default {
   transition: all 0.3s ease;
   color: black;
   flex-shrink: 0;
+  font-size: 1.5rem;
+  padding: 0;
+  outline: none;
 }
 
 .nav-button:hover {
@@ -355,6 +352,13 @@ export default {
   border-color: #FFD700;
   transform: scale(1.1);
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.nav-icon {
+  font-size: 2rem;
+  line-height: 1;
+  display: block;
+  margin-top: -2px;
 }
 
 /* Testimonial Card */
@@ -426,8 +430,8 @@ export default {
 }
 
 .overlay-icon {
-  color: #000000 !important;
-  font-size: 1.2rem !important;
+  font-size: 1.2rem;
+  display: block;
 }
 
 .overlay-text {
@@ -500,22 +504,33 @@ export default {
 }
 
 .learn-more-btn {
-  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%) !important;
-  color: #000000 !important;
-  font-weight: 600 !important;
-  font-family: 'Inter', sans-serif !important;
-  border: 2px solid transparent !important;
-  border-radius: 25px !important;
-  padding: 0.75rem 2rem !important;
-  text-transform: none !important;
-  transition: all 0.3s ease !important;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  color: #000000;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  text-transform: none;
+  transition: all 0.3s ease;
   min-width: 160px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
 }
 
 .learn-more-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4) !important;
-  border-color: #FFD700 !important;
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+  border-color: #FFD700;
+}
+
+.btn-icon {
+  font-size: 1rem;
+  display: block;
 }
 
 /* Pagination Dots */
@@ -536,6 +551,8 @@ export default {
   cursor: pointer;
   transition: all 0.3s ease;
   flex-shrink: 0;
+  padding: 0;
+  outline: none;
 }
 
 .pagination-dot.active {
@@ -591,7 +608,11 @@ export default {
 }
 
 .videos-grid {
-  margin: 0 -12px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .video-card {
@@ -718,6 +739,10 @@ export default {
     gap: 1.5rem;
   }
   
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
   .nav-button {
     width: 50px;
     height: 50px;
@@ -757,6 +782,10 @@ export default {
   .testimonials-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+  }
+  
+  .videos-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .testimonials-carousel {
@@ -805,9 +834,9 @@ export default {
   }
   
   .learn-more-btn {
-    padding: 0.6rem 1.5rem !important;
+    padding: 0.6rem 1.5rem;
     min-width: 140px;
-    font-size: 0.9rem !important;
+    font-size: 0.9rem;
   }
   
   .video-container {
@@ -824,6 +853,10 @@ export default {
   .testimonials-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  
+  .videos-grid {
+    grid-template-columns: 1fr;
   }
   
   .testimonials-carousel {
@@ -879,9 +912,9 @@ export default {
   }
   
   .learn-more-btn {
-    padding: 0.5rem 1.25rem !important;
+    padding: 0.5rem 1.25rem;
     min-width: 130px;
-    font-size: 0.85rem !important;
+    font-size: 0.85rem;
   }
   
   .video-container {
@@ -908,6 +941,11 @@ export default {
     gap: 0.75rem;
   }
   
+  .videos-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
   .testimonials-carousel {
     flex-direction: column;
     gap: 0.75rem;
@@ -920,8 +958,8 @@ export default {
     order: 2;
   }
   
-  .nav-button .v-icon {
-    font-size: 1.2rem !important;
+  .nav-icon {
+    font-size: 1.5rem;
   }
   
   .intro-text {
@@ -974,10 +1012,10 @@ export default {
   }
   
   .learn-more-btn {
-    padding: 0.4rem 1rem !important;
+    padding: 0.4rem 1rem;
     min-width: 120px;
-    font-size: 0.8rem !important;
-    border-radius: 20px !important;
+    font-size: 0.8rem;
+    border-radius: 20px;
   }
   
   .video-container {
@@ -1069,11 +1107,8 @@ export default {
 /* Ensure proper spacing for video grid on mobile */
 @media (max-width: 599px) {
   .videos-grid {
-    margin: 0 -8px;
-  }
-  
-  .v-col {
-    padding: 8px !important;
+    gap: 1rem;
+    padding: 0 0.5rem;
   }
 }
 
@@ -1082,6 +1117,11 @@ export default {
   .nav-button,
   .pagination-dot,
   .learn-more-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .pagination-dot {
     min-height: 12px;
     min-width: 12px;
   }
