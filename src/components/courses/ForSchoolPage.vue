@@ -756,6 +756,7 @@ export default {
     font-size: 1rem;
     line-height: 1.6;
     color: #333;
+    text-align: justify;
 }
 
 .bullet-list {
@@ -815,6 +816,7 @@ export default {
 .accordion-content {
     padding: 0 20px 20px 20px;
     animation: slideDown 0.3s ease-out;
+    text-align: justify;
 }
 
 .accordion-content p {
@@ -930,7 +932,7 @@ export default {
     
     .paragraph {
         font-size: 18px;
-        text-align: left;
+        text-align: justify;
     }
     
     .content-row {
@@ -1018,6 +1020,7 @@ export default {
     
     .paragraph {
         font-size: 16px;
+        text-align: justify;
     }
     
     .content-image {
