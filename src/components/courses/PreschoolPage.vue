@@ -120,11 +120,21 @@
                         </div>
                     </div>
                     <div class="stats-col">
-                        <div class="custom-card" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
+                        <!-- Updated Age Card with Animation -->
+                        <div class="custom-card age-card" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1500">
                             <div class="card-content">
-                                <h1 class="card-age-title"><b>Age</b></h1>
+                                <!-- Age Animation Container -->
+                                <div class="age-animation-container">
+                                    <!-- Age Text Display -->
+                                    <div class="age-display">
+                                        <div class="age-number age-5">5</div>
+                                        <div class="age-dash">-</div>
+                                        <div class="age-number age-6">6</div>
+                                    </div>
+                                </div>
+                                
                                 <h5 class="card-title"><b>Age Group</b></h5>
-                                <p class="card-text">5-6 Years</p>
+                                <p class="card-text">Years</p>
                             </div>
                         </div>
                     </div>
@@ -134,7 +144,6 @@
 
         <div class="button-container">
             <a href="/contact" class="custom-btn-contact">
-                <!-- <span class="btn-icon">📞</span> -->
                 Contact Us
             </a>
         </div>
@@ -183,6 +192,8 @@ export default {
 </script>
 
 <style scoped>
+/* All existing styles remain the same until the Age Card section */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -218,6 +229,7 @@ export default {
 .content-col {
     flex: 1;
     min-width: 300px;
+    text-align: justify;
 }
 
 .image-col {
@@ -296,6 +308,264 @@ export default {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* Age Card Specific Styles */
+.age-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.age-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(255, 95, 21, 0.2);
+}
+
+.age-card:hover .rotating-blocks {
+    animation-play-state: paused;
+}
+
+.age-card:hover .age-display {
+    animation: ageBounce 0.8s ease;
+}
+
+.age-card:hover .balloon-5 {
+    animation: floatUp 3s ease-in-out infinite;
+}
+
+.age-card:hover .balloon-6 {
+    animation: floatUp 3s ease-in-out infinite 0.5s;
+}
+
+.age-animation-container {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+/* Rotating Blocks Animation */
+.rotating-blocks {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 5px;
+    animation: rotateBlocks 10s linear infinite;
+}
+
+@keyframes rotateBlocks {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(180deg);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate(270deg);
+    }
+}
+
+.block {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.block-5 {
+    background: linear-gradient(135deg, #FF5F15 0%, #FF8A00 100%);
+    color: white;
+    animation: colorShift5 4s infinite alternate;
+}
+
+.block-6 {
+    background: linear-gradient(135deg, #FBB700 0%, #FFD700 100%);
+    color: black;
+    animation: colorShift6 4s infinite alternate 0.5s;
+}
+
+.block-year {
+    background: linear-gradient(135deg, #4CAF50 0%, #81C784 100%);
+    color: white;
+    font-size: 10px;
+    animation: pulseYear 2s infinite;
+}
+
+@keyframes colorShift5 {
+    0% {
+        background: linear-gradient(135deg, #FF5F15 0%, #FF8A00 100%);
+        transform: scale(1);
+    }
+    100% {
+        background: linear-gradient(135deg, #FF8A00 0%, #FF5F15 100%);
+        transform: scale(1.1);
+    }
+}
+
+@keyframes colorShift6 {
+    0% {
+        background: linear-gradient(135deg, #FBB700 0%, #FFD700 100%);
+        transform: scale(1);
+    }
+    100% {
+        background: linear-gradient(135deg, #FFD700 0%, #FBB700 100%);
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pulseYear {
+    0%, 100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* Balloons Animation */
+.balloons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.balloon {
+    position: absolute;
+    width: 20px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 0;
+}
+
+.balloon-5 {
+    top: 10px;
+    left: 30px;
+    background: linear-gradient(135deg, #FF5F15, #FF8A00);
+    animation: balloonFloat 4s ease-in-out infinite;
+}
+
+.balloon-6 {
+    top: 20px;
+    right: 30px;
+    background: linear-gradient(135deg, #FBB700, #FFD700);
+    animation: balloonFloat 4s ease-in-out infinite 0.5s;
+}
+
+@keyframes balloonFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-20px) rotate(10deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes floatUp {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-30px);
+        opacity: 0.8;
+    }
+}
+
+/* Age Display Animation */
+.age-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.age-number {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    animation: numberGlow 2s infinite alternate;
+}
+
+.age-5 {
+    background: linear-gradient(135deg, #FF5F15 0%, #FF8A00 100%);
+    color: white;
+    animation-delay: 0s;
+}
+
+.age-6 {
+    background: linear-gradient(135deg, #FBB700 0%, #FFD700 100%);
+    color: black;
+    animation-delay: 0.5s;
+}
+
+.age-dash {
+    color: #FF5F15;
+    font-weight: bold;
+    animation: dashPulse 2s infinite;
+}
+
+@keyframes numberGlow {
+    0% {
+        box-shadow: 0 0 5px rgba(255, 95, 21, 0.3);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 95, 21, 0.6);
+        transform: scale(1.1);
+    }
+}
+
+@keyframes dashPulse {
+    0%, 100% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes ageBounce {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    30% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(0.95);
+    }
+    70% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
 .card-content {
     display: flex;
     flex-direction: column;
@@ -321,12 +591,6 @@ export default {
     font-size: 0.9rem;
     color: #666;
     margin: 4px 0;
-}
-
-.card-age-title {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
 }
 
 .button-container {
@@ -358,10 +622,6 @@ export default {
     background-color: #FFCC00;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
-}
-
-.btn-icon {
-    font-size: 20px;
 }
 
 .important-notice {
@@ -398,7 +658,7 @@ export default {
     
     .paragraph {
         font-size: 18px;
-        text-align: left;
+        text-align: justify;
     }
     
     .content-row {
@@ -411,6 +671,7 @@ export default {
     
     .content-col {
         min-width: 100%;
+        text-align: justify;
     }
     
     .content-image {
@@ -425,6 +686,47 @@ export default {
         width: 160px;
         height: 160px;
         padding: 15px;
+    }
+    
+    .age-animation-container {
+        height: 80px;
+    }
+    
+    .rotating-blocks {
+        gap: 3px;
+    }
+    
+    .block {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+    }
+    
+    .block-year {
+        font-size: 9px;
+    }
+    
+    .age-display {
+        font-size: 22px;
+        gap: 8px;
+    }
+    
+    .age-number {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .balloon {
+        width: 15px;
+        height: 25px;
+    }
+    
+    .balloon-5 {
+        left: 20px;
+    }
+    
+    .balloon-6 {
+        right: 20px;
     }
     
     .card-image {
@@ -462,6 +764,7 @@ export default {
     
     .paragraph {
         font-size: 16px;
+        text-align: justify;
     }
     
     .content-image {
@@ -474,8 +777,52 @@ export default {
     
     .custom-card {
         width: 140px;
-        height: 140px;
+        height: 170px;
         padding: 10px;
+    }
+    
+    .age-animation-container {
+        height: 70px;
+        margin-bottom: 5px;
+    }
+    
+    .rotating-blocks {
+        gap: 2px;
+    }
+    
+    .block {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+    
+    .block-year {
+        font-size: 8px;
+    }
+    
+    .age-display {
+        font-size: 18px;
+        gap: 6px;
+    }
+    
+    .age-number {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .balloon {
+        width: 12px;
+        height: 20px;
+    }
+    
+    .balloon-5 {
+        left: 15px;
+        top: 5px;
+    }
+    
+    .balloon-6 {
+        right: 15px;
+        top: 10px;
     }
     
     .card-image {
@@ -485,10 +832,6 @@ export default {
     
     .card-title {
         font-size: 0.85rem;
-    }
-    
-    .card-age-title {
-        font-size: 1.2rem;
     }
     
     .custom-btn-contact {
@@ -508,7 +851,27 @@ export default {
     
     .custom-card {
         width: 130px;
-        height: 130px;
+        height: 150px;
+    }
+    
+    .age-animation-container {
+        height: 60px;
+    }
+    
+    .block {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+    
+    .age-display {
+        font-size: 16px;
+        gap: 5px;
+    }
+    
+    .age-number {
+        width: 28px;
+        height: 28px;
     }
     
     .card-image {
