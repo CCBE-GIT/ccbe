@@ -166,7 +166,7 @@
         
         <div class="program-levels">
             <div class="level-card" style="border-left: 4px solid #FBB700;" data-aos="fade-left" data-aos-duration="1500">
-                <div class="level-header" style="background: linear-gradient(135deg, #FBB700, #FFCC00);">
+                <div class="level-header level-header-style1" >
                     <h3>Elementary Level (A2 Key)</h3>
                 </div>
                 <div class="level-body">
@@ -183,7 +183,7 @@
             </div>
             
             <div class="level-card" style="border-left: 4px solid #FF9800;" data-aos="fade-right" data-aos-duration="2000">
-                <div class="level-header" style="background: linear-gradient(135deg, #FF9800, #FFB74D);">
+                <div class="level-header level-header-style2">
                     <h3>Pre-Intermediate Level (B1 Preliminary)</h3>
                 </div>
                 <div class="level-body">
@@ -200,7 +200,7 @@
             </div>
             
             <div class="level-card" style="border-left: 4px solid #4CAF50;" data-aos="fade-left" data-aos-duration="2500">
-                <div class="level-header" style="background: linear-gradient(135deg, #4CAF50, #81C784);">
+                <div class="level-header level-header-style3">
                     <h3>Upper-Intermediate Level (B2 First)</h3>
                 </div>
                 <div class="level-body">
@@ -216,7 +216,7 @@
             </div>
             
             <div class="level-card" style="border-left: 4px solid #2196F3;" data-aos="fade-right" data-aos-duration="3000">
-                <div class="level-header" style="background: linear-gradient(135deg, #2196F3, #64B5F6);">
+                <div class="level-header level-header-style4">
                     <h3>Advanced Level (C1 Advanced)</h3>
                 </div>
                 <div class="level-body">
@@ -233,7 +233,7 @@
             </div>
             
             <div class="level-card" style="border-left: 4px solid #E91E63;" data-aos="fade-left" data-aos-duration="3000">
-                <div class="level-header" style="background: linear-gradient(135deg, #E91E63, #F48FB1);">
+                <div class="level-header level-header-style5">
                     <h3>Proficient Level (C2 Proficiency)</h3>
                 </div>
                 <div class="level-body">
@@ -606,6 +606,8 @@ export default {
     animation-delay: 0.5s;
 }
 
+
+
 @keyframes pulseAge {
     0%, 100% {
         transform: scale(1);
@@ -727,6 +729,26 @@ export default {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+}
+
+.level-header-style1{
+    background: linear-gradient(135deg, #FBB700, #FFCC00);
+}
+
+.level-header-style2{
+    background: linear-gradient(135deg, #FF9800, #FFB74D);
+}
+
+.level-header-style3{
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+}
+
+.level-header-style4{
+    background: linear-gradient(135deg, #2196F3, #64B5F6);
+}
+
+.level-header-style5{
+    background: linear-gradient(135deg, #E91E63, #F48FB1);
 }
 
 .level-body {
