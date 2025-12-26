@@ -718,7 +718,7 @@ export default {
 
 .level-header {
     padding: 20px;
-    color: white;
+    color: black;
 }
 
 .level-header h3 {
