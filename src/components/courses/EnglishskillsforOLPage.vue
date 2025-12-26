@@ -179,7 +179,7 @@
         <br />
         
         <div class="program-levels">
-            <div class="level-card" style="border-left: 4px solid #FBB700;" data-aos="fade-left" data-aos-duration="1500">
+            <div class="level-card level-card-style" data-aos="fade-left" data-aos-duration="1500">
                 <div class="level-header level-header-style">
                     <h3>Elementary Level (KEY)</h3>
                 </div>
@@ -196,7 +196,7 @@
                 </div>
             </div>
             
-            <div class="level-card" style="border-left: 4px solid #FF9800;" data-aos="fade-right" data-aos-duration="2000">
+            <div class="level-card level-card-style1" data-aos="fade-right" data-aos-duration="2000">
                 <div class="level-header level-header-style1">
                     <h3>Pre-Intermediate Level (PET)</h3>
                 </div>
@@ -741,6 +741,14 @@ export default {
 .level-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.level-card-style {
+    border-left: 4px solid #FBB700;
+}
+
+.level-card-style1 {
+    border-left: 4px solid #FF9800;
 }
 
 .level-header {
