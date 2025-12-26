@@ -5,7 +5,7 @@
       <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
         <span class="highlight">Careers</span>
       </h1>
-      <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
+      <p class="paragraph" data-aos="fade-up" data-aos-duration="3000" style="text-align: justify;">
         <b>Cambridge College of British English (CCBE)</b> Careers is your gateway to a world of possibilities and a launchpad for your professional aspirations. Be part of a prestigious institution that not only prioritizes academic excellence but also nurtures a thriving community of dedicated professionals. Together, we inspire confidence, build futures, and redefine what it means to succeed.
         Your career journey begins here at Cambridge College of British English!
       </p>
@@ -220,9 +220,6 @@ export default {
           image: "https://ik.imagekit.io/u3wbiya66/Careers/C1.jpg?updatedAt=1760439871391",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/Careers/C2.jpg?updatedAt=1760439871237",
-        },
-        {
           image: "https://ik.imagekit.io/u3wbiya66/Careers/WhatsApp%20Image%202025-08-22%20at%2008.47.25_0277efb2.jpg?updatedAt=1755832794043",
         },
         {
@@ -254,9 +251,6 @@ export default {
         },
         {
           image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0015.jpg?updatedAt=1737435219046",
-        },
-        {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0014.jpg?updatedAt=1737435219125",
         },
       ],
     };
@@ -367,7 +361,7 @@ export default {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-style: normal;
-  text-align: center;
+  text-align: justify;
   line-height: 1.6;
   margin-top: 1rem;
 }
@@ -677,6 +671,7 @@ export default {
   .paragraph {
     font-size: 18px;
     padding: 0 10px;
+    text-align: justify;
   }
   
   .careers-grid {
@@ -718,6 +713,7 @@ export default {
   
   .paragraph {
     font-size: 16px;
+    text-align: justify;
   }
   
   .careers-grid {
