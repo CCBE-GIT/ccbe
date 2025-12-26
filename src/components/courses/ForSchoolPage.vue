@@ -165,7 +165,7 @@
         <br />
         
         <div class="program-levels">
-            <div class="level-card" style="border-left: 4px solid #FBB700;" data-aos="fade-left" data-aos-duration="1500">
+            <div class="level-card level-card-style" data-aos="fade-left" data-aos-duration="1500">
                 <div class="level-header level-header-style1" >
                     <h3>Elementary Level (A2 Key)</h3>
                 </div>
@@ -182,7 +182,7 @@
                 </div>
             </div>
             
-            <div class="level-card" style="border-left: 4px solid #FF9800;" data-aos="fade-right" data-aos-duration="2000">
+            <div class="level-card level-card-style1" data-aos="fade-right" data-aos-duration="2000">
                 <div class="level-header level-header-style2">
                     <h3>Pre-Intermediate Level (B1 Preliminary)</h3>
                 </div>
@@ -199,7 +199,7 @@
                 </div>
             </div>
             
-            <div class="level-card" style="border-left: 4px solid #4CAF50;" data-aos="fade-left" data-aos-duration="2500">
+            <div class="level-card level-card-style2" data-aos="fade-left" data-aos-duration="2500">
                 <div class="level-header level-header-style3">
                     <h3>Upper-Intermediate Level (B2 First)</h3>
                 </div>
@@ -215,7 +215,7 @@
                 </div>
             </div>
             
-            <div class="level-card" style="border-left: 4px solid #2196F3;" data-aos="fade-right" data-aos-duration="3000">
+            <div class="level-card level-card-style3" data-aos="fade-right" data-aos-duration="3000">
                 <div class="level-header level-header-style4">
                     <h3>Advanced Level (C1 Advanced)</h3>
                 </div>
@@ -232,7 +232,7 @@
                 </div>
             </div>
             
-            <div class="level-card" style="border-left: 4px solid #E91E63;" data-aos="fade-left" data-aos-duration="3000">
+            <div class="level-card level-card-style4" data-aos="fade-left" data-aos-duration="3000">
                 <div class="level-header level-header-style5">
                     <h3>Proficient Level (C2 Proficiency)</h3>
                 </div>
@@ -717,6 +717,27 @@ export default {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
+
+.level-card-style{
+    border-left: 4px solid #FBB700;
+}
+
+.level-card-style1{
+    border-left: 4px solid #FF9800;
+}
+
+.level-card-style2{
+    border-left: 4px solid #4CAF50;
+}
+
+.level-card-style3{
+    border-left: 4px solid #2196F3;
+}
+
+.level-card-style4{
+    border-left: 4px solid #E91E63;
+}
+
 
 .level-header {
     padding: 20px;
