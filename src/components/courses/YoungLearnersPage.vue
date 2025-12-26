@@ -192,9 +192,9 @@
             <div class="timeline-container">
                 <div class="timeline">
                     <div class="timeline-item" data-aos="fade-left" data-aos-duration="1500">
-                        <div class="timeline-dot" style="background-color: #FF5722;"></div>
+                        <div class="timeline-dot timeline-dot-style"></div>
                         <div class="timeline-content">
-                            <div class="level-card" style="border-left: 4px solid #FF5722;">
+                            <div class="level-card level-card-style">
                                 <div class="level-header" style="color: #FF5722;">
                                     <h3>Beginner Level (Starters)</h3>
                                 </div>
@@ -211,9 +211,9 @@
                     </div>
                     
                     <div class="timeline-item" data-aos="fade-left" data-aos-duration="2000">
-                        <div class="timeline-dot" style="background-color: #FF9800;"></div>
+                        <div class="timeline-dot timeline-dot-style1"></div>
                         <div class="timeline-content">
-                            <div class="level-card" style="border-left: 4px solid #FF9800;">
+                            <div class="level-card level-card-style1">
                                 <div class="level-header" style="color: #FF9800;">
                                     <h3>Intermediate Level (Movers)</h3>
                                 </div>
@@ -230,9 +230,9 @@
                     </div>
                     
                     <div class="timeline-item" data-aos="fade-left" data-aos-duration="2500">
-                        <div class="timeline-dot" style="background-color: #4CAF50;"></div>
+                        <div class="timeline-dot timeline-dot-style2"></div>
                         <div class="timeline-content">
-                            <div class="level-card" style="border-left: 4px solid #4CAF50;">
+                            <div class="level-card level-card-style2">
                                 <div class="level-header" style="color: #4CAF50;">
                                     <h3>Higher Level (Flyers)</h3>
                                 </div>
@@ -465,6 +465,7 @@ export default {
     font-size: 1rem;
     color: #333;
     line-height: 1.6;
+    text-align: center;
 }
 
 /* Course Details */
@@ -702,6 +703,18 @@ export default {
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
+.timeline-dot-style{
+    background-color: #FF5722;
+}
+
+.timeline-dot-style1{
+    background-color: #FF9800;
+}
+
+.timeline-dot-style2{
+    background-color: #4CAF50;
+}
+
 .timeline-content {
     margin-left: 20px;
 }
@@ -717,6 +730,18 @@ export default {
 .level-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.level-card-style{
+    border-left: 4px solid #FF5722;
+}
+
+.level-card-style1{
+    border-left: 4px solid #FF9800;
+}
+
+.level-card-style2{
+    border-left: 4px solid #4CAF50;
 }
 
 .level-header h3 {
@@ -827,7 +852,7 @@ export default {
     
     .paragraph {
         font-size: 18px;
-        text-align: left;
+        text-align: justify;
     }
     
     .content-row {
@@ -919,6 +944,7 @@ export default {
     
     .paragraph {
         font-size: 16px;
+        text-align: justify;
     }
     
     .content-image {
