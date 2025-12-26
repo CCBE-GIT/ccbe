@@ -495,7 +495,7 @@ export default {
 
 .custom-card {
     width: 200px;
-    height: 200px;
+    height: 250px;
     border: 2px solid #FF5F15;
     border-radius: 10px;
     display: flex;
