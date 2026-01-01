@@ -74,8 +74,8 @@
 // Import images
 import topWebImage from '@/assets/TopWeb.jpg';
 import anniversaryImage from '@/assets/Aniversary.png';
-import snowflakeImage from '@/assets/festivel/snow.png';
-import santaCapImage from '@/assets/festivel/bells.png'; // Add this import
+//import snowflakeImage from '@/assets/festivel/snow.png';
+//import santaCapImage from '@/assets/festivel/bells.png'; // Add this import
 
 export default {
   name: 'CarouselPage',
@@ -84,8 +84,8 @@ export default {
       currentSlide: 0,
       topWebImage: topWebImage,
       anniversaryImage: anniversaryImage,
-      snowflakeImage: snowflakeImage,
-      santaCapImage: santaCapImage, // Add this
+      //snowflakeImage: snowflakeImage,
+      //santaCapImage: santaCapImage, // Add this
       snowCount: 35, // Optimized count for snow
       santaCapCount: 8, // Fewer Santa caps (adjust as needed)
       isMobile: false,
@@ -203,7 +203,7 @@ export default {
         top: '-20px',
         width: `${size}px`,
         height: `${size}px`,
-        backgroundImage: `url(${this.snowflakeImage})`,
+        //backgroundImage: `url(${this.snowflakeImage})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
@@ -246,7 +246,7 @@ export default {
         top: '-30px',
         width: `${size}px`,
         height: `${size}px`,
-        backgroundImage: `url(${this.santaCapImage})`,
+        //backgroundImage: `url(${this.santaCapImage})`,
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
