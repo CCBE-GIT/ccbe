@@ -138,7 +138,7 @@ export default {
           //type: 'video',
           //src: independenceVideo,
           src: "https://ik.imagekit.io/u3wbiya66/NationalFla.gif",
-          title: "Sri Lanka Independence",
+          title: "Celebrating 78 Years of Independence",
           subtitle: "Strength, Confidence & Unity as One Nation",
           category: "NATIONAL PRIDE",
           icon: "mdi-flag",
