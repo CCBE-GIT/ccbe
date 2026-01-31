@@ -5,20 +5,67 @@
       <img :src="topWebImage" alt="TopWeb Logo" class="top-left-image" />
     </a>
 
-    <!-- Falling Snowflakes and Santa Caps only on carousel area -->
-    <div class="snow-container">
-      <!-- Snowflakes -->
-      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateSnowflakeStyle()"></div>
-      
-      <!-- Santa Caps - fewer than snowflakes -->
-      <div v-for="(cap, index) in santaCapCount" :key="'cap-' + index" class="santa-cap" :style="generateSantaCapStyle()"></div>
-    </div>
-
-    <!-- Main Carousel - Snow will fall only on this area -->
+    <!-- Main Carousel -->
     <v-carousel v-model="currentSlide" cycle interval="10000" height="500" show-arrows="hover" hide-delimiter-background
-      class="festive-carousel snow-target-area">
+      class="festive-carousel">
       <v-carousel-item v-for="(item, i) in items" :key="i">
-        <div class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
+        <!-- Video Background for Independence Day Slide -->
+        <div v-if="item.type === 'video'" class="video-background-wrapper">
+          <div class="video-container">
+            <video 
+              :src="item.src" 
+              autoplay 
+              muted 
+              loop 
+              playsinline
+              class="background-video"
+              ref="videoPlayer"
+              @loadeddata="onVideoLoad"
+            ></video>
+            
+            <!-- Video overlay for better text readability -->
+            <div class="video-overlay"></div>
+          </div>
+          
+          <!-- Content Overlay for video -->
+          <div class="content-overlay">
+            <!-- Icon Badge with Independence Day theme -->
+            <div class="icon-badge" style="background: linear-gradient(135deg, #8B0000, #FFB300); box-shadow: 0 8px 25px rgba(139, 0, 0, 0.4);">
+              <v-icon large color="white">{{ item.icon }}</v-icon>
+            </div>
+
+            <!-- Main Content -->
+            <div class="parallax-overlay text-content-area">
+              <div class="title-container">
+                <!-- Category Tag -->
+                <div class="category-tag" style="background: linear-gradient(135deg, #8B0000, #FFB300);">
+                  {{ item.category }}
+                </div>
+
+                <h2 class="carousel-title" style="background: linear-gradient(135deg, #FFB300, #FFFFFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                  {{ item.title }}
+                </h2>
+                <div class="title-decoration">
+                  <div class="decoration-line left"></div>
+                  <v-icon color="#FFB300" class="decoration-icon">{{ item.decorationIcon }}</v-icon>
+                  <div class="decoration-line right"></div>
+                </div>
+                <p class="carousel-subtitle">{{ item.subtitle }}</p>
+
+                <!-- Features List -->
+                <div class="features-list" v-if="item.features">
+                  <div v-for="(feature, fIndex) in item.features" :key="fIndex" class="feature-item" style="background: rgba(139, 0, 0, 0.2); border-left: 3px solid #FFB300;">
+                    <v-icon small color="#FFB300" class="mr-2">mdi-star</v-icon>
+                    <span>{{ feature }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Regular Image Background for other slides -->
+        <div v-else class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
           <!-- Content Overlay -->
           <div class="content-overlay">
             <!-- Icon Badge -->
@@ -26,7 +73,7 @@
               <v-icon large color="white">{{ item.icon }}</v-icon>
             </div>
 
-            <!-- Main Content - Snow will fall on this text area -->
+            <!-- Main Content -->
             <div class="parallax-overlay text-content-area">
               <div class="title-container">
                 <!-- Category Tag -->
@@ -63,7 +110,7 @@
     <div class="custom-indicators">
       <div v-for="(item, index) in items" :key="index" class="indicator" :class="{ active: currentSlide === index }"
         @click="currentSlide = index">
-        <div class="indicator-progress"></div>
+        <div class="indicator-progress" :style="currentSlide === 0 && currentSlide === index ? { background: 'linear-gradient(90deg, #8B0000, #FFB300)' } : {}"></div>
         <span class="indicator-label">{{ item.indicatorLabel }}</span>
       </div>
     </div>
@@ -74,8 +121,7 @@
 // Import images
 import topWebImage from '@/assets/TopWeb.jpg';
 import anniversaryImage from '@/assets/Aniversary.png';
-//import snowflakeImage from '@/assets/festivel/snow.png';
-//import santaCapImage from '@/assets/festivel/bells.png'; // Add this import
+//import independenceVideo from '@/assets/videos/sri_lanka_independence.mp4';
 
 export default {
   name: 'CarouselPage',
@@ -84,12 +130,28 @@ export default {
       currentSlide: 0,
       topWebImage: topWebImage,
       anniversaryImage: anniversaryImage,
-      //snowflakeImage: snowflakeImage,
-      //santaCapImage: santaCapImage, // Add this
-      snowCount: 35, // Optimized count for snow
-      santaCapCount: 8, // Fewer Santa caps (adjust as needed)
+      //independenceVideo: independenceVideo,
       isMobile: false,
+      videoLoaded: false,
       items: [
+        {
+          //type: 'video',
+          //src: independenceVideo,
+          src: "https://ik.imagekit.io/u3wbiya66/NationalFla.gif",
+          title: "Sri Lanka Independence",
+          subtitle: "Celebrating 78 Years of Sovereignty and Educational Excellence.",
+          category: "NATIONAL PRIDE",
+          icon: "mdi-flag",
+          decorationIcon: "mdi-star",
+          features: [
+            "78 Years of Independence",
+            "National Heritage Celebration",
+            "Educational Progress & Growth"
+          ],
+          ctaPrimary: "View Awards",
+          ctaIcon: "mdi-award",
+          indicatorLabel: "Independence"
+        },  
         {
           src: "https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356",
           title: "Our Recognition",
@@ -174,95 +236,13 @@ export default {
     };
   },
   methods: {
-    generateSnowflakeStyle() {
-      const isMobile = this.isMobile;
-      
-      // Random size - smaller snowflakes for better effect
-      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
-      
-      // Random horizontal position - limited to carousel width
-      const positionX = Math.random() * 80 + 10; // 10% to 90% of container
-      
-      // Random fall duration - slower for natural effect
-      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
-      
-      // Random delay for staggered appearance
-      const delay = Math.random() * 10;
-      
-      // Subtle horizontal drift
-      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
-      
-      // Random opacity for variety
-      const opacity = Math.random() * 0.7 + 0.3;
-      
-      // Random rotation
-      const rotation = Math.random() * 360;
-
-      return {
-        left: `${positionX}%`,
-        top: '-20px',
-        width: `${size}px`,
-        height: `${size}px`,
-        //backgroundImage: `url(${this.snowflakeImage})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: `${opacity}`,
-        transform: `rotate(${rotation}deg)`,
-        filter: 'none'
-      };
-    },
-    
-    // New method for Santa Caps
-    generateSantaCapStyle() {
-      const isMobile = this.isMobile;
-      
-      // Larger size for Santa Caps (bigger than snowflakes)
-      const size = isMobile ? Math.random() * 35 + 30 : Math.random() * 45 + 35;
-      
-      // Random horizontal position
-      const positionX = Math.random() * 80 + 10;
-      
-      // Slower fall duration for Santa Caps (they're heavier)
-      const duration = isMobile ? Math.random() * 20 + 15 : Math.random() * 25 + 20;
-      
-      // Random delay
-      const delay = Math.random() * 15;
-      
-      // More dramatic drift for Santa Caps
-      const driftAmount = isMobile ? Math.random() * 25 - 12.5 : Math.random() * 40 - 20;
-      
-      // Slightly less opacity variation for Santa Caps
-      const opacity = 1;
-      
-      // Less rotation for Santa Caps (more natural falling)
-      const rotation = Math.random() * 180 - 90; // -90 to 90 degrees
-
-      return {
-        left: `${positionX}%`,
-        top: '-30px',
-        width: `${size}px`,
-        height: `${size}px`,
-        //backgroundImage: `url(${this.santaCapImage})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: `${opacity}`,
-        transform: `rotate(${rotation}deg)`,
-        filter: 'none'
-      };
+    onVideoLoad() {
+      this.videoLoaded = true;
+      console.log('Video loaded successfully');
     },
     
     checkMobile() {
       this.isMobile = window.innerWidth <= 768;
-      this.snowCount = this.isMobile ? 20 : 35;
-      this.santaCapCount = this.isMobile ? 5 : 8; // Adjust Santa cap count for mobile
     }
   },
   mounted() {
@@ -281,160 +261,77 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+  min-height: 500px;
   background: linear-gradient(135deg, rgba(26, 42, 58, 0.7) 0%, rgba(44, 62, 80, 0.7) 100%);
 }
 
-/* Snow Container - Positioned over carousel only */
-.snow-container {
+/* Video Background Styles - Enhanced */
+.video-background-wrapper {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 500px; /* Match carousel height */
-  pointer-events: none;
-  z-index: 2; /* Above carousel background but below content */
+  height: 100%;
   overflow: hidden;
+  z-index: 0;
 }
 
-/* Target area where snow falls */
-.snow-target-area {
-  position: relative;
-  z-index: 1; /* Carousel stays below snow */
-}
-
-/* Text content area - snow falls on this */
-.text-content-area {
-  position: relative;
-  z-index: 3; /* Text above snow */
-}
-
-.snowflake {
+.background-video {
   position: absolute;
-  animation-name: snowFall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  
+  /* Smooth transitions */
+  transition: opacity 0.5s ease-in-out;
+  
+  /* Ensure video covers area properly */
+  min-width: 100%;
+  min-height: 100%;
+  
+  /* Optimize video rendering */
   transform: translateZ(0);
   backface-visibility: hidden;
-  perspective: 1000;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
 }
 
-/* Santa Cap styles - similar to snowflakes but with different animation */
-.santa-cap {
+/* Video overlay for better text contrast */
+.video-overlay {
   position: absolute;
-  animation-name: santaCapFall;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-@keyframes snowFall {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: var(--start-opacity, 0.8);
-  }
-  30% {
-    transform: translateY(150px) translateX(var(--drift-distance)) rotate(180deg);
-  }
-  60% {
-    transform: translateY(300px) translateX(calc(-0.5 * var(--drift-distance))) rotate(360deg);
-  }
-  90% {
-    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.8)) rotate(540deg);
-  }
-  100% {
-    transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-/* Different animation for Santa Caps - more bouncy/floaty */
-@keyframes santaCapFall {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: var(--start-opacity, 0.9);
-  }
-  25% {
-    transform: translateY(125px) translateX(calc(var(--drift-distance) * 0.5)) rotate(45deg);
-  }
-  50% {
-    transform: translateY(250px) translateX(calc(-0.3 * var(--drift-distance))) rotate(-30deg);
-  }
-  75% {
-    transform: translateY(375px) translateX(calc(var(--drift-distance) * 0.7)) rotate(60deg);
-  }
-  100% {
-    transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-    opacity: 0;
-  }
-}
-
-/* Logo Styles - Ensure they stay above snow */
-.logo-link {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 25; /* Above snow */
-  transition: transform 0.3s ease;
-}
-
-.logo-link:hover {
-  transform: scale(1.05);
-}
-
-.top-left-image {
-  width: 80px;
-  height: 160px;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  object-fit: cover;
-}
-
-.logo-container {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 25; /* Above snow */
-}
-
-.top-right-image {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.3);
-  position: relative;
-  z-index: 2;
-  object-fit: cover;
-}
-
-.logo-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, transparent 70%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.4) 20%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.4) 80%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
   z-index: 1;
-  animation: pulse 3s infinite alternate;
+  pointer-events: none;
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 0.4;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  100% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(1.05);
-  }
-}
-
-/* Carousel Styles */
+/* Rest of your existing styles (keep all CSS below this line) */
 .festive-carousel {
   border-radius: 0 0 20px 20px;
   overflow: hidden;
@@ -470,7 +367,7 @@ export default {
 
 .content-overlay {
   position: relative;
-  z-index: 10; /* High z-index to ensure content is above snow */
+  z-index: 10;
   width: 100%;
   height: 100%;
   display: flex;
@@ -493,16 +390,16 @@ export default {
 }
 
 .parallax-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.6); /* Darker for video contrast */
   color: white;
   text-align: center;
   padding: 25px;
   border-radius: 16px;
   width: 90%;
   max-width: 750px;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
 
 .title-container {
@@ -527,10 +424,9 @@ export default {
   font-size: 2.2rem;
   font-weight: 700;
   margin-bottom: 12px;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   color: white;
   line-height: 1.1;
-  position: relative; /* Ensure text is above snow */
 }
 
 .carousel-subtitle {
@@ -542,7 +438,6 @@ export default {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
-  position: relative; /* Ensure text is above snow */
 }
 
 .title-decoration {
@@ -550,7 +445,6 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 18px 0;
-  position: relative; /* Ensure decoration is above snow */
 }
 
 .decoration-line {
@@ -571,7 +465,6 @@ export default {
   gap: 8px;
   margin: 20px auto;
   max-width: 450px;
-  position: relative; /* Ensure features are above snow */
 }
 
 .feature-item {
@@ -583,7 +476,6 @@ export default {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   backdrop-filter: blur(5px);
-  position: relative; /* Ensure feature items are above snow */
 }
 
 .feature-item .v-icon {
@@ -591,7 +483,28 @@ export default {
   margin-right: 6px;
 }
 
-/* Custom Indicators - Ensure they stay below snow */
+/* Logo Styles */
+.logo-link {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 25;
+  transition: transform 0.3s ease;
+}
+
+.logo-link:hover {
+  transform: scale(1.05);
+}
+
+.top-left-image {
+  width: 80px;
+  height: 160px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+/* Carousel Indicators */
 .custom-indicators {
   display: flex;
   justify-content: center;
@@ -599,7 +512,7 @@ export default {
   margin-top: 25px;
   padding: 0 20px;
   position: relative;
-  z-index: 1; /* Below snow container */
+  z-index: 2;
 }
 
 .indicator {
@@ -653,63 +566,13 @@ export default {
 }
 
 /* Enhanced Mobile Responsive Design */
-@media (max-width: 960px) {
-  .snow-container {
-    height: 400px; /* Adjust snow container height for tablet */
-  }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.8);
-    }
-    100% {
-      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.9);
-    }
-    100% {
-      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-}
-
 @media (max-width: 768px) {
-  .snow-container {
-    height: 350px; /* Adjust for mobile carousel height */
+  .parallax-carousel-container {
+    min-height: 350px;
   }
   
-  .snowflake {
-    filter: none; /* Removed blur for mobile */
-  }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.7);
-    }
-    100% {
-      transform: translateY(350px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.8);
-    }
-    100% {
-      transform: translateY(350px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
+  .video-background-wrapper {
+    height: 350px;
   }
   
   .festive-carousel {
@@ -719,26 +582,23 @@ export default {
   .parallax-overlay {
     padding: 18px 15px;
     width: 92%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
     border-radius: 12px;
   }
   
   .carousel-title {
     font-size: 1.6rem;
-    margin-bottom: 10px;
   }
   
   .carousel-subtitle {
     font-size: 0.95rem;
-    margin-bottom: 15px;
     max-width: 450px;
   }
   
   .icon-badge {
     width: 50px;
     height: 50px;
-    margin-bottom: 12px;
   }
   
   .icon-badge .v-icon {
@@ -747,50 +607,28 @@ export default {
 }
 
 @media (max-width: 480px) {
-  .snow-container {
-    height: 320px; /* Adjust for small mobile */
+  .parallax-carousel-container {
+    min-height: 320px;
   }
   
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.6);
-    }
-    100% {
-      transform: translateY(320px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-      opacity: var(--start-opacity, 0.7);
-    }
-    100% {
-      transform: translateY(320px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-  
-  .snowflake {
-    opacity: 0.5 !important;
+  .video-background-wrapper {
+    height: 320px;
   }
   
   .festive-carousel {
     height: 320px !important;
   }
+  
+  .features-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Performance optimizations */
-.snow-container {
+.video-container {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000;
-}
-
-.snowflake, .santa-cap {
-  will-change: transform, opacity;
 }
 
 /* Smooth transitions for all elements */
@@ -800,5 +638,14 @@ export default {
 .carousel-subtitle,
 .feature-item {
   transition: all 0.3s ease;
+}
+
+/* Video loading state */
+.background-video:not([src]) {
+  opacity: 0;
+}
+
+.background-video {
+  opacity: 1;
 }
 </style>
