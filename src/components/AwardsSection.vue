@@ -99,7 +99,7 @@
                       </div>
                       <h3 class="text-h6 font-weight-bold mb-2">{{ award.title }}</h3>
                       <p class="text-body-2 opacity-90">{{ award.subtitle }}</p>
-                      <v-btn 
+                      <!-- <v-btn 
                         variant="outlined" 
                         color="white" 
                         size="small"
@@ -109,7 +109,7 @@
                       >
                         View Details
                         <v-icon right size="16">mdi-arrow-right</v-icon>
-                      </v-btn>
+                      </v-btn> -->
                     </div>
                   </v-expand-transition>
                 </v-img>
