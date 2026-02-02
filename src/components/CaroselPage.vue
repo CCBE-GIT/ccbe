@@ -137,7 +137,7 @@ export default {
         {
           //type: 'video',
           //src: independenceVideo,
-          src: "https://ik.imagekit.io/u3wbiya66/NF.gif",
+          src: "https://ik.imagekit.io/u3wbiya66/NFlag.gif",
           title: "Celebrating 78 Years of Independence",
           subtitle: "Strength, Confidence & Unity as One Nation",
           category: "NATIONAL PRIDE",
