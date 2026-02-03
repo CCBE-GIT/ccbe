@@ -217,40 +217,40 @@ export default {
       },
       careers: [
         {
-          image: "https://ik.imagekit.io/u3wbiya66/Careers/C1.jpg?updatedAt=1760439871391",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/4.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/Careers/WhatsApp%20Image%202025-08-22%20at%2008.47.25_0277efb2.jpg?updatedAt=1755832794043",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/10.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/Careers/WhatsApp%20Image%202025-08-22%20at%2008.46.00_3a637631.jpg?updatedAt=1755832782647",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/6.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/Careers/2.png?updatedAt=1755833509742",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/8.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0006.jpg?updatedAt=1737434201584",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/5.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0011.jpg?updatedAt=1737435218639",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/9.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0009.jpg?updatedAt=1737435218715",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/12.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0007.jpg?updatedAt=1737435218724",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/7.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0010.jpg?updatedAt=1737435218885",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/3.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0012.jpg?updatedAt=1737435219022",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/1.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0008.jpg?updatedAt=1737435219045",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/2.jpeg",
         },
         {
-          image: "https://ik.imagekit.io/u3wbiya66/IMG-20250121-WA0015.jpg?updatedAt=1737435219046",
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/11.jpeg",
         },
       ],
     };
