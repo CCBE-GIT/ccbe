@@ -6,7 +6,7 @@
     </a>
 
     <!-- Main Carousel -->
-    <v-carousel v-model="currentSlide" cycle interval="10000" height="500" show-arrows="hover" hide-delimiter-background
+    <v-carousel v-model="currentSlide" cycle interval="10000" :height="carouselHeight" show-arrows="hover" hide-delimiter-background
       class="festive-carousel">
       <v-carousel-item v-for="(item, i) in items" :key="i">
         <!-- Video Background for Independence Day Slide -->
@@ -31,7 +31,7 @@
           <div class="content-overlay">
             <!-- Icon Badge with Independence Day theme -->
             <div class="icon-badge" style="background: linear-gradient(135deg, #8B0000, #FFB300); box-shadow: 0 8px 25px rgba(139, 0, 0, 0.4);">
-              <v-icon large color="white">{{ item.icon }}</v-icon>
+              <v-icon :large="!isMobile" :small="isMobile" color="white">{{ item.icon }}</v-icon>
             </div>
 
             <!-- Main Content -->
@@ -70,7 +70,7 @@
           <div class="content-overlay">
             <!-- Icon Badge -->
             <div class="icon-badge">
-              <v-icon large color="white">{{ item.icon }}</v-icon>
+              <v-icon :large="!isMobile" :small="isMobile" color="white">{{ item.icon }}</v-icon>
             </div>
 
             <!-- Main Content -->
@@ -133,6 +133,7 @@ export default {
       //independenceVideo: independenceVideo,
       isMobile: false,
       videoLoaded: false,
+      carouselHeight: 500,
       items: [
         {
           //type: 'video',
@@ -241,15 +242,31 @@ export default {
     },
     
     checkMobile() {
-      this.isMobile = window.innerWidth <= 768;
+      const width = window.innerWidth;
+      this.isMobile = width <= 768;
+      
+      // Adjust carousel height based on screen size
+      if (width <= 480) {
+        this.carouselHeight = 400;
+      } else if (width <= 768) {
+        this.carouselHeight = 450;
+      } else if (width <= 1024) {
+        this.carouselHeight = 500;
+      } else {
+        this.carouselHeight = 550;
+      }
+    },
+    
+    handleResize() {
+      this.checkMobile();
     }
   },
   mounted() {
     this.checkMobile();
-    window.addEventListener('resize', this.checkMobile);
+    window.addEventListener('resize', this.handleResize);
   },
   beforeUnmount() {
-    window.removeEventListener('resize', this.checkMobile);
+    window.removeEventListener('resize', this.handleResize);
   }
 };
 </script>
@@ -268,7 +285,7 @@ export default {
 .video-background-wrapper {
   position: relative;
   width: 100%;
-  height: 500px;
+  height: 100%;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -287,23 +304,17 @@ export default {
 
 .background-video {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  
-  /* Smooth transitions */
+  transform: translate(-50%, -50%);
   transition: opacity 0.5s ease-in-out;
-  
-  /* Ensure video covers area properly */
   min-width: 100%;
   min-height: 100%;
-  
-  /* Optimize video rendering */
-  transform: translateZ(0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -330,7 +341,6 @@ export default {
   pointer-events: none;
 }
 
-/* Rest of your existing styles (keep all CSS below this line) */
 .festive-carousel {
   border-radius: 0 0 20px 20px;
   overflow: hidden;
@@ -344,7 +354,7 @@ export default {
   justify-content: center;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: scroll;
   position: relative;
   width: 100%;
   overflow: hidden;
@@ -373,6 +383,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .icon-badge {
@@ -386,10 +397,11 @@ export default {
   margin-bottom: 20px;
   box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
   border: 3px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .parallax-overlay {
-  background: rgba(0, 0, 0, 0.6); /* Darker for video contrast */
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   text-align: center;
   padding: 25px;
@@ -425,7 +437,9 @@ export default {
   margin-bottom: 12px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   color: white;
-  line-height: 1.1;
+  line-height: 1.2;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 .carousel-subtitle {
@@ -437,6 +451,7 @@ export default {
   max-width: 550px;
   margin-left: auto;
   margin-right: auto;
+  word-wrap: break-word;
 }
 
 .title-decoration {
@@ -462,8 +477,8 @@ export default {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
-  margin: 20px auto;
-  max-width: 450px;
+  margin: 20px auto 0;
+  max-width: 500px;
 }
 
 .feature-item {
@@ -471,22 +486,30 @@ export default {
   align-items: center;
   text-align: left;
   font-size: 0.85rem;
-  padding: 6px 10px;
+  padding: 8px 10px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 8px;
   backdrop-filter: blur(5px);
+  word-wrap: break-word;
+  min-height: 36px;
 }
 
 .feature-item .v-icon {
   font-size: 16px;
   margin-right: 6px;
+  flex-shrink: 0;
+}
+
+.feature-item span {
+  flex: 1;
+  line-height: 1.3;
 }
 
 /* Logo Styles */
 .logo-link {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
   z-index: 25;
   transition: transform 0.3s ease;
 }
@@ -507,11 +530,13 @@ export default {
 .custom-indicators {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 15px;
   margin-top: 25px;
-  padding: 0 20px;
+  padding: 0 20px 20px;
   position: relative;
   z-index: 2;
+  flex-wrap: wrap;
 }
 
 .indicator {
@@ -520,7 +545,9 @@ export default {
   align-items: center;
   cursor: pointer;
   position: relative;
-  width: 70px;
+  min-width: 60px;
+  max-width: 80px;
+  flex: 0 1 auto;
   transition: all 0.3s ease;
 }
 
@@ -544,6 +571,11 @@ export default {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .indicator.active .indicator-label {
@@ -564,62 +596,267 @@ export default {
   }
 }
 
-/* Enhanced Mobile Responsive Design */
+/* Tablet Responsive Design */
+@media (max-width: 1024px) {
+  .parallax-carousel-container {
+    min-height: 450px;
+  }
+  
+  .carousel-title {
+    font-size: 1.9rem;
+  }
+  
+  .carousel-subtitle {
+    font-size: 1rem;
+  }
+  
+  .icon-badge {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .parallax-overlay {
+    padding: 20px;
+    max-width: 650px;
+  }
+  
+  .top-left-image {
+    width: 70px;
+    height: 140px;
+  }
+}
+
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
   .parallax-carousel-container {
-    min-height: 350px;
+    min-height: 400px;
   }
   
-  .video-background-wrapper {
-    height: 350px;
+  .parallax-item {
+    background-attachment: scroll;
   }
   
-  .festive-carousel {
-    height: 350px !important;
+  .content-overlay {
+    padding: 15px 10px;
   }
   
   .parallax-overlay {
     padding: 18px 15px;
-    width: 92%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
+    width: 95%;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
     border-radius: 12px;
   }
   
   .carousel-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
   }
   
   .carousel-subtitle {
-    font-size: 0.95rem;
-    max-width: 450px;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
   }
   
   .icon-badge {
     width: 50px;
     height: 50px;
+    margin-bottom: 15px;
   }
   
-  .icon-badge .v-icon {
-    font-size: 1.5rem !important;
+  .category-tag {
+    font-size: 0.65rem;
+    padding: 4px 12px;
+    margin-bottom: 12px;
+  }
+  
+  .title-decoration {
+    margin: 12px 0;
+  }
+  
+  .decoration-line {
+    width: 30px;
+  }
+  
+  .features-list {
+    gap: 6px;
+    margin-top: 15px;
+  }
+  
+  .feature-item {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+  
+  .top-left-image {
+    width: 60px;
+    height: 120px;
+  }
+  
+  .logo-link {
+    top: 10px;
+    right: 10px;
+  }
+  
+  .custom-indicators {
+    gap: 10px;
+    margin-top: 20px;
+    padding: 0 15px 15px;
+  }
+  
+  .indicator {
+    min-width: 50px;
+    max-width: 70px;
+  }
+  
+  .indicator-label {
+    font-size: 0.65rem;
   }
 }
 
+/* Small Mobile Responsive Design */
 @media (max-width: 480px) {
   .parallax-carousel-container {
-    min-height: 320px;
+    min-height: 380px;
   }
   
-  .video-background-wrapper {
-    height: 320px;
+  .content-overlay {
+    padding: 10px 5px;
   }
   
-  .festive-carousel {
-    height: 320px !important;
+  .parallax-overlay {
+    padding: 15px 12px;
+    width: 96%;
+    border-radius: 10px;
+  }
+  
+  .carousel-title {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  .carousel-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 12px;
+  }
+  
+  .icon-badge {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 12px;
+  }
+  
+  .category-tag {
+    font-size: 0.6rem;
+    padding: 3px 10px;
+    margin-bottom: 10px;
   }
   
   .features-list {
     grid-template-columns: 1fr;
+    gap: 5px;
+    margin-top: 12px;
+  }
+  
+  .feature-item {
+    font-size: 0.7rem;
+    padding: 5px 7px;
+  }
+  
+  .feature-item .v-icon {
+    font-size: 14px;
+  }
+  
+  .top-left-image {
+    width: 50px;
+    height: 100px;
+  }
+  
+  .custom-indicators {
+    gap: 8px;
+    margin-top: 15px;
+    padding: 0 10px 10px;
+  }
+  
+  .indicator {
+    min-width: 45px;
+    max-width: 60px;
+  }
+  
+  .indicator-label {
+    font-size: 0.6rem;
+  }
+  
+  .indicator-progress {
+    height: 3px;
+    margin-bottom: 6px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+  .carousel-title {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-subtitle {
+    font-size: 0.8rem;
+  }
+  
+  .parallax-overlay {
+    padding: 12px 10px;
+  }
+  
+  .custom-indicators {
+    gap: 6px;
+  }
+  
+  .indicator {
+    min-width: 40px;
+  }
+  
+  .indicator-label {
+    font-size: 0.55rem;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .parallax-carousel-container {
+    min-height: 300px;
+  }
+  
+  .icon-badge {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+  }
+  
+  .parallax-overlay {
+    padding: 12px;
+  }
+  
+  .carousel-title {
+    font-size: 1.2rem;
+  }
+  
+  .carousel-subtitle {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .features-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+    margin-top: 8px;
+  }
+  
+  .feature-item {
+    font-size: 0.7rem;
+    padding: 4px 6px;
   }
 }
 
@@ -646,5 +883,23 @@ export default {
 
 .background-video {
   opacity: 1;
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  .indicator:hover {
+    transform: none;
+  }
+  
+  .logo-link:hover {
+    transform: none;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .top-left-image {
+    image-rendering: -webkit-optimize-contrast;
+  }
 }
 </style>
