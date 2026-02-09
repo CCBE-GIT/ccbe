@@ -130,10 +130,10 @@
                   <v-divider class="mb-3"></v-divider>
                   <div class="d-flex justify-space-between align-center">
                     <div class="d-flex align-center">
-                      <v-avatar size="24" class="mr-2">
-                        <v-img src="https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"  alt="British Council Organization Logo"></v-img>
-                      </v-avatar>
-                      <span class="text-caption text-grey-darken-1">British Council</span>
+                      <!-- <v-avatar size="24" class="mr-2">
+                        <v-img :src="award.organizationLogo"  :alt="`${award.organization} Organization Logo`"></v-img>
+                      </v-avatar> -->
+                      <span class="text-caption text-grey-darken-1">{{ award.organization }}</span>
                     </div>
                     <div class="d-flex align-center">
                       <v-icon size="16" color="orange" class="mr-1">mdi-calendar</v-icon>
@@ -196,12 +196,24 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/u3wbiya66/Awards/AW1.jpeg", 
+          title: "CIPM HR Awards 2025", 
+          subtitle: "Certificate of Commendation at the CIPM HR Awards 2025 – Cambridge College of British English", 
+          description: "Recognized by CIPM Sri Lanka, in collaboration with Mercer, for valuable contributions to human resource management at The Great HR Awards 2025.",
+          year: "2025",
+          category: "THE GREAT HR AWARDS",
+          organization: "CIPM Sri Lanka",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/cipm-logo.png?updatedAt=1757647128110"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/Awards/Platinum.jpg?updatedAt=1757935994777", 
           title: "Excellence Beyond Gold", 
           subtitle: "British Council Platinum Category Recognition for Outstanding Performance – Cambridge College of British English (2025)", 
           description: "Awarded by the British Council for outstanding performance and exclusivity as a Cambridge English registration centre.",
           year: "2025",
-          category: "Platinum"
+          category: "Platinum",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Awards/Gold.jpg?updatedAt=1757647128110", 
@@ -209,7 +221,9 @@ export default {
           subtitle: "Gold Category Recognition by the British Council for Outstanding Registration Centre Achievements – Cambridge College of British English (2024)", 
           description: "Honoured by the British Council for exceptional achievements as a Cambridge English registration centre.",
           year: "2024",
-          category: "Gold"
+          category: "Gold",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Awards/Southern.jpg?updatedAt=1757647127985", 
@@ -217,7 +231,9 @@ export default {
           subtitle: "Southern Province Recognition by the British Council for Cambridge English Registration Centres – Cambridge College of British English (2025)", 
           description: "Recognized by the British Council for the highest regional contribution in Cambridge English registrations.",
           year: "2025",
-          category: "Regional"
+          category: "Regional",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Awards/Star.jpg?updatedAt=1757937143732", 
@@ -225,7 +241,9 @@ export default {
           subtitle: "Cambridge University Press & Assessment Recognition – Cambridge College of British English, Ambalangoda (2023)", 
           description: "Recognized as an Emerging Star at the 2023 Annual Coordinators' Conference for outstanding growth in Cambridge English.",
           year: "2023",
-          category: "Emerging"
+          category: "Emerging",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/cambridge-logo.png?updatedAt=1757647128110"
         },
       ],
     };

@@ -66,6 +66,34 @@ export default {
       // Array of card data
       cards: [
         {
+          image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE1.jpeg",
+          title: "CAMBRIANS DAY 2026",
+          subtitle: "Celebrating Unity, Talent & the Spirit of Cambrians",
+          content: " Cambrians Day 2026 was a vibrant celebration that brought together staff members from all branches to honor the true spirit of being a Cambrian. The day was filled with engaging activities, inspiring moments, and unforgettable memories that strengthened our sense of unity and teamwork. This event highlighted the strong bond and collaboration that connects the entire CCBE staff community. Thank you to everyone who contributed to making Cambrians Day 2026 a meaningful and joyful celebration. Together, we continue to grow stronger as one team.",
+          show: false,
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE2.jpeg",
+          title: "Staff Wellness & Medical Screening Program 2025",
+          subtitle: "Caring for Our Team, Building a Healthier CCBE",
+          content: "The Staff Wellness & Medical Screening Program 2025 was organized to promote the health and well-being of our dedicated staff members across all branches. This initiative aimed to encourage a healthier lifestyle and early detection of health concerns. At CCBE, we believe that a strong institution begins with a healthy team. We extend our sincere appreciation to all medical professionals and staff who took part in making this program a meaningful step towards a healthier and happier working environment.",
+          show: false,
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE3.jpeg",
+          title: "Cambrians Fit to Fight 2025",
+          subtitle: "Standing Together to Support Flood-Affected Communities",
+          content: "Cambrians Fit to Fight 2025 was a meaningful humanitarian initiative organized by CCBE and CCIT to support families affected by recent floods. Through collective effort and compassion, our Cambrians community: including students, parents, and all staff members from every branch came together to provide essential aid and extend a helping hand to those facing difficult times. This project reflects our commitment to social responsibility and the power of unity in moments of need. We sincerely thank everyone who contributed their time, effort, and support to make this initiative a success. Together, we stand strong with our communities.",
+          show: false,
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE5.jpeg",
+          title: "කංචුක පූජාව, කිරිපිඬු දානය හා අෂ්ඨපාන පූජාව 2025",
+          subtitle: "ස්වර්ණමාලි මහා සෑය – අනුරාධපුරය",
+          content: " 2025 වසරේදී අනුරාධපුර ශ්‍රී ස්වර්ණමාලි මහා සෑය වෙත කංචුක පූජාව, කිරිපිඬු දානය සහ අෂ්ඨපාන පූජාව භක්තිසම්පන්නව පැවැත්වුණි.",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/WhatsApp%20Image%202025-06-08%20at%2010.12.15_fb599a49.jpg?updatedAt=1749452636230",
           title: "🌿 Husma Fluit Plant Dansal 2025",
           subtitle: "Thank You for Being a Part of the Husma Project 2025",

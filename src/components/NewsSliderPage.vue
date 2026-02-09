@@ -41,7 +41,7 @@
                 <h3 class="card-title">{{ award.title }}</h3>
                 <p class="card-description">{{ award.description }}</p>
                 <div class="card-footer">
-                  <span class="date-badge">2025</span>
+                  <span class="date-badge">{{ award.year }}</span>
                   <div class="social-icons" aria-label="Social media sharing options">
                     <button class="icon-btn" aria-label="Share on Facebook">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -103,34 +103,53 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE6.jpeg", 
+          title: "CAMBRIANS DAY 2026", 
+          subtitle: "Celebrating Unity, Talent & the Spirit of Cambrians", 
+          description: "Cambrians Day 2026 brought together staff from all branches to celebrate the true spirit of being a Cambrian through engaging activities and inspiring moments that strengthened unity and teamwork.",
+          year: "2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE4.jpeg", 
+          title: "Staff Wellness & Medical Screening Program 2025", 
+          subtitle: "Caring for Our Team, Building a Healthier CCBE", 
+          description: "The Staff Wellness & Medical Screening Program 2025 promoted the health and well-being of staff across all branches, encouraging healthy lifestyles and early detection of health concerns.",
+          year: "2025"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg?updatedAt=1760438874157", 
           title: "Children's Day Awareness", 
           subtitle: "Empowering our kids through an insightful session", 
-          description: "Collaboration with Sri Lanka Police for a 'Good Touch and Bad Touch' session to help children learn, understand, and stay confident in their safety."
+          description: "Collaboration with Sri Lanka Police for a 'Good Touch and Bad Touch' session to help children learn, understand, and stay confident in their safety.",
+          year: "2025"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg?updatedAt=1760438873819", 
           title: "Happy Children's Day!", 
           subtitle: "Celebrating our bright, kind, and curious stars", 
-          description: "To our bright, kind, and curious little stars — keep dreaming big and believing in yourself every step of the way."
+          description: "To our bright, kind, and curious little stars — keep dreaming big and believing in yourself every step of the way.",
+          year: "2025"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/3.jpg?updatedAt=1760438873618", 
           title: "Honoring Our Everyday Heroes", 
           subtitle: "They don't wear capes, but they build heroes", 
-          description: "To all our teachers who inspire, guide, and ignite dreams — we thank you today and always for your dedication and passion."
+          description: "To all our teachers who inspire, guide, and ignite dreams — we thank you today and always for your dedication and passion.",
+          year: "2025"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/2.jpg?updatedAt=1760438875073", 
           title: "A Decade of Dedication", 
           subtitle: "Ten years of redefining English education", 
-          description: "Marking ten years of excellence, our institute held a Pirith Chanting and Almsgiving ceremony with the blessings of the Maha Sangha."
+          description: "Marking ten years of excellence, our institute held a Pirith Chanting and Almsgiving ceremony with the blessings of the Maha Sangha.",
+          year: "2025"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg?updatedAt=1760438875365", 
           title: "Cambridge English Awards 2025", 
           subtitle: "Honoring our Pro School Achievers", 
-          description: "Celebrating our High Achievers and Top Achievers — a night of pride, passion, and excellence that truly lit up the stage."
+          description: "Celebrating our High Achievers and Top Achievers — a night of pride, passion, and excellence that truly lit up the stage.",
+          year: "2025"
         },
       ]
     }
