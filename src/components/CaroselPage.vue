@@ -135,23 +135,23 @@ export default {
       videoLoaded: false,
       carouselHeight: 500,
       items: [
-        {
-          //type: 'video',
-          //src: independenceVideo,
-          src: "https://ik.imagekit.io/u3wbiya66/NFlag.gif",
-          title: "Celebrating 78 Years of Independence",
-          subtitle: "Strength, Confidence & Unity as One Nation",
-          category: "NATIONAL PRIDE",
-          icon: "mdi-flag",
-          decorationIcon: "mdi-star",
-          features: [
-            "78 Years of Independence",
-            "National Heritage Celebration"
-          ],
-          ctaPrimary: "View Awards",
-          ctaIcon: "mdi-award",
-          indicatorLabel: "Independence"
-        },  
+        // {
+        //   //type: 'video',
+        //   //src: independenceVideo,
+        //   // src: "https://ik.imagekit.io/u3wbiya66/NFlag.gif",
+        //   // title: "Celebrating 78 Years of Independence",
+        //   // subtitle: "Strength, Confidence & Unity as One Nation",
+        //   // category: "NATIONAL PRIDE",
+        //   // icon: "mdi-flag",
+        //   // decorationIcon: "mdi-star",
+        //   // features: [
+        //   //   "78 Years of Independence",
+        //   //   "National Heritage Celebration"
+        //   // ],
+        //   // ctaPrimary: "View Awards",
+        //   // ctaIcon: "mdi-award",
+        //   // indicatorLabel: "Independence"
+        // },  
         {
           src: "https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356",
           title: "Our Recognition",
