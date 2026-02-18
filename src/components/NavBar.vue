@@ -569,12 +569,12 @@ body {
     font-family: 'Poppins', sans-serif;
     font-weight: 800;
     font-size: 2.5rem;
-    background: linear-gradient(135deg, #FF6B00 0%, #FFD700 50%, #FFED4E 100%);
+    background: linear-gradient(135deg, #FF6B00 0%, #FF6B00 50%, #FFED4E 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    text-shadow: 0 4px 8px rgba(255, 107, 0, 0.3);
+    /* text-shadow: 0 4px 8px rgba(255, 107, 0, 0.3); */
     position: relative;
 }
 
