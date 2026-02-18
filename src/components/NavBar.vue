@@ -1063,7 +1063,7 @@ body {
 }
 
 .mobile-nav-link:hover {
-    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    background: linear-gradient(white);
     color: #1a1a1a;
     transform: translateX(10px);
 }
@@ -1114,7 +1114,7 @@ body {
 }
 
 .mobile-secondary-link:hover {
-    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    background: linear-gradient(white);
     color: #1a1a1a;
     transform: translateX(8px);
 }
