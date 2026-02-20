@@ -9,9 +9,12 @@
                     <div class="logo-section">
                         <div class="logo-wrapper">
                             <div class="brand-main">
-                                <h1 class="brand-title">CCBE</h1>
                                 <div class="logo-image">
                                     <img :src="logoPath" alt="CCBE Logo" class="logo-img" />
+                                </div>
+                                <div class="brand-text">
+                                    <h2 class="brand-title">CCBE</h2>
+                                    <small class="brand-subtext">Cambridge College of British English</small>
                                 </div>
                             </div>
                         </div>
@@ -562,23 +565,29 @@ body {
 .brand-main {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .brand-title {
     font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, #FF6B00 0%, #FF6B00 50%, #FFED4E 100%);
+    font-weight: 700;
+    font-size: 1.4rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FF6B00 50%, #FFD700 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
-    /* text-shadow: 0 4px 8px rgba(255, 107, 0, 0.3); */
+    line-height: 1;
     position: relative;
 }
 
-.brand-title::after {
+/* .brand-title::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -587,6 +596,15 @@ body {
     height: 2px;
     background: linear-gradient(90deg, #FF6B00, #FFD700, #FFED4E);
     border-radius: 2px;
+} */
+
+.brand-subtext {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 550;
+    color: #666;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
 }
 
 .logo-image {
@@ -594,9 +612,9 @@ body {
 }
 
 .logo-img {
-    height: 70px;
+    height: 75px;
     width: auto;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    /* filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2)); */
     transition: all 0.3s ease;
 }
 
@@ -794,12 +812,12 @@ body {
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 25px;
+    padding: 10px 30px;
     color: #1a1a1a;
     text-decoration: none;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     overflow: hidden;
@@ -1501,6 +1519,10 @@ select.form-control:focus {
         font-size: 2rem;
     }
     
+    .brand-subtext {
+        font-size: 0.7rem;
+    }
+    
     .logo-img {
         height: 60px;
     }
@@ -1520,8 +1542,16 @@ select.form-control:focus {
         padding: 12px 15px;
     }
     
+    .brand-main {
+        gap: 15px;
+    }
+    
     .brand-title {
         font-size: 1.8rem;
+    }
+    
+    .brand-subtext {
+        font-size: 0.65rem;
     }
     
     .logo-img {
@@ -1583,6 +1613,10 @@ select.form-control:focus {
 @media (max-width: 576px) {
     .brand-title {
         font-size: 1.5rem;
+    }
+    
+    .brand-subtext {
+        font-size: 0.6rem;
     }
     
     .logo-img {
