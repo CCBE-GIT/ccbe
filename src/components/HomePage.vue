@@ -415,8 +415,8 @@ export default {
 <style>
 .title {
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .highlight {
