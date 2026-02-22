@@ -751,6 +751,7 @@ export default {
   .intro-text {
     font-size: 1.1rem;
     padding: 0 1rem;
+    text-align: center;
   }
   
   .section-title {
@@ -799,8 +800,8 @@ export default {
   
   .intro-text {
     font-size: 1rem;
-    text-align: left;
     padding: 0;
+    text-align: center;
   }
   
   .header-section {
@@ -877,7 +878,7 @@ export default {
   
   .intro-text {
     font-size: 0.95rem;
-    text-align: left;
+    text-align: center;
     line-height: 1.6;
   }
   
@@ -964,7 +965,7 @@ export default {
   
   .intro-text {
     font-size: 0.9rem;
-    text-align: left;
+    text-align: center;
     line-height: 1.5;
   }
   
@@ -1055,6 +1056,7 @@ export default {
   
   .intro-text {
     font-size: 0.85rem;
+    text-align: center;
   }
   
   .section-title {
