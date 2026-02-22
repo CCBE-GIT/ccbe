@@ -285,15 +285,15 @@ export default {
 /* Header Section */
 .header-section {
   text-align: center;
-  padding: 2rem 0;
-  margin-bottom: 2rem;
+  padding: 0.5rem 0;
+  margin-bottom: 0.5rem;
 }
 
 .intro-text {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 1.1rem;
   line-height: 1.7;
-  color: black;
+  color: #6c757d;;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -435,7 +435,7 @@ export default {
 }
 
 .overlay-text {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 0.8rem;
   font-weight: 600;
   color: #000000;
@@ -453,7 +453,7 @@ export default {
 }
 
 .testimonial-badge {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 0.8rem;
   font-weight: 700;
   color: #FFD700;
@@ -468,7 +468,7 @@ export default {
 }
 
 .testimonial-title {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 1.4rem;
   font-weight: 700;
   color: #ffffff;
@@ -482,7 +482,7 @@ export default {
 }
 
 .testimonial-text {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 0.95rem;
   line-height: 1.6;
   color: #e0e0e0;
@@ -507,7 +507,7 @@ export default {
   background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
   color: #000000;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   border: 2px solid transparent;
   border-radius: 25px;
   padding: 0.75rem 2rem;
@@ -572,24 +572,24 @@ export default {
 }
 
 .section-title {
-  font-family: 'Inter', 'Poppins', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
-  color: black;
+  /* font-family: 'Inter', 'Poppins', sans-serif; */
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #FFD700;
   margin-bottom: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .highlight {
-  background: linear-gradient(135deg, #ff6b35 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #ff6b35 0%, #ff6b35 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   position: relative;
 }
 
-.highlight::after {
+/* .highlight::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -598,12 +598,12 @@ export default {
   height: 2px;
   background: linear-gradient(90deg, transparent, #FFD700, transparent);
   opacity: 0.7;
-}
+} */
 
 .section-subtitle {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
   font-size: 1.1rem;
-  color: black;
+  color: #6c757d;;
   margin-bottom: 3rem;
 }
 
@@ -699,7 +699,7 @@ export default {
 /* Large Desktop (1200px and above) */
 @media (min-width: 1200px) {
   .main-container {
-    padding: 3rem 2rem;
+    padding: 0 1rem 1rem;
   }
   
   .testimonials-grid {
