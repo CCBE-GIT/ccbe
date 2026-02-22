@@ -340,7 +340,7 @@ export default {
   }
 
 .feature-pill:hover {
-  background: rgba(255,107,53,0.3);
+  background: white;
   border-color: rgba(255,107,53,0.5);
 }
 
