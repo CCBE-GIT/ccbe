@@ -27,9 +27,9 @@
                             <a href="https://classroom.google.com/" target="_blank" class="action-btn lms-btn">
                                 <span class="btn-text">LMS Portal</span>
                             </a>
-                            <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
+                            <!-- <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
                                 <span class="btn-text">Make Payment</span>
-                            </a>
+                            </a> -->
                         </div>
 
                         <!-- Main Navigation Links -->
@@ -106,9 +106,9 @@
                     <a href="https://classroom.google.com/" target="_blank" class="mobile-action-btn lms-btn" @click="closeMobileMenu">
                         <span>LMS Portal</span>
                     </a>
-                    <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
+                    <!-- <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
                         <span>Make Payment</span>
-                    </a>
+                    </a> -->
                 </div>
 
                 <!-- Mobile Main Navigation Links -->
