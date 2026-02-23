@@ -1,7 +1,7 @@
 <template>
-  <v-container class="awards-section my-16">
+  <v-container class="awards-section">
     <!-- Section Header -->
-    <div class="section-header text-center mb-12">
+    <div class="section-header text-center mb-6">
       <div class="header-decoration">
         <div class="decoration-line left"></div>
         <div class="decoration-icon">
@@ -10,7 +10,7 @@
         <div class="decoration-line right"></div>
       </div>
       <h2 class="title mb-4" data-aos="fade-up">
-        <span class="highlight">Awards & Recognitions</span>
+        Awards <span class="highlight"> & Recognitions</span>
       </h2>
       <p class="section-subtitle text-grey-darken-1">
         Celebrating excellence and achievements in English education
@@ -267,13 +267,13 @@ export default {
 
 <style scoped>
 .awards-section {
-  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
+  background: transparent;
   position: relative;
-  padding: 80px 0;
+  padding: 30px 0 80px;
   overflow: hidden;
 }
 
-.awards-section::before {
+/* .awards-section::before {
   content: '';
   position: absolute;
   top: 0;
@@ -284,7 +284,7 @@ export default {
     radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
     radial-gradient(circle at 80% 20%, rgba(255, 140, 0, 0.05) 0%, transparent 50%);
   pointer-events: none;
-}
+} */
 
 .section-header {
   position: relative;
@@ -319,7 +319,7 @@ export default {
 .title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color:  #FBB700;
   position: relative;
   display: inline-block;
   margin-bottom: 16px;
@@ -330,7 +330,7 @@ export default {
   position: relative;
 }
 
-.highlight::after {
+/* .highlight::after {
   content: '';
   position: absolute;
   bottom: -8px;
@@ -341,7 +341,7 @@ export default {
   border-radius: 2px;
   transform: scaleX(0.8);
   transform-origin: center;
-}
+} */
 
 .section-subtitle {
   font-size: 1.1rem;
