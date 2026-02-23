@@ -3,7 +3,7 @@
     <div class="container">
       <div class="section-header" data-aos="fade-up">
         <h1 class="section-title">
-          Our <span class="highlight">Highlights</span>
+          OUR <span class="highlight">HIGHLIGHTS</span>
         </h1>
         <p class="section-subtitle">Celebrating our achievements and memorable moments</p>
       </div>
@@ -199,8 +199,8 @@ export default {
 
 <style scoped>
 .awards-section {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 30px 0 80px;
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -213,13 +213,13 @@ export default {
 
 .section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .section-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #FBB700;
   margin-bottom: 15px;
   position: relative;
   display: inline-block;
@@ -230,7 +230,7 @@ export default {
   position: relative;
 }
 
-.highlight::after {
+/* .highlight::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -239,7 +239,7 @@ export default {
   height: 3px;
   background: linear-gradient(90deg, #ff6b35, #f7931e);
   border-radius: 3px;
-}
+} */
 
 .section-subtitle {
   font-size: 1.1rem;
@@ -375,6 +375,7 @@ export default {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-align: justify;
 }
 
 .card-footer {
