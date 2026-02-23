@@ -10,6 +10,8 @@ const CoreValuesPage = () => import('../components/CoreValuesPage.vue');
 const ContactUsPage = () => import('../components/ContactUsPage.vue');
 const NewsEventPage = () => import('../components/NewsEventPage.vue');
 const CareersPage = () => import('../components/CareersPage.vue');
+const GalleryPage = () => import('../components/GalleryPage.vue');
+
 
 //Cources
 const PreschoolPage = () => import('../components/courses/PreschoolPage.vue');
@@ -35,6 +37,7 @@ const routes = [
   {path: '/contact',name: 'contact',component: ContactUsPage,},
   {path: '/news',name: 'NewsEventPage',component: NewsEventPage ,},
   {path: '/careers',name: 'CareersPage',component: CareersPage ,},
+  {path: '/gallery',name: 'GalleryPage',component: GalleryPage ,},
 
 
   {path: '/courses/preschool',name: 'PreschoolPage',component: PreschoolPage,},

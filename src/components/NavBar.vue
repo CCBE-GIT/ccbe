@@ -319,6 +319,11 @@ export default {
                     text: "Careers",
                     link: "/careers",
                     icon: "work"
+                },
+                {
+                    text: "Gallery",
+                    link: "/gallery",
+                    icon: "camera"
                 }
             ]
         };
