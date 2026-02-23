@@ -1,31 +1,60 @@
 <template>
     <NavBar></NavBar>
-    <v-container>
-        <div>
-            <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
-                OUR <span class="highlight">CORE VALUES</span>
-            </h1>
 
-            <h4 class="mt-2" data-aos="fade-up" data-aos-duration="2000">
-                At the heart of our institution lie the following core values, each meticulously cultivated to foster an
-                environment of academic excellence.
-            </h4>
+    <div class="core-values-wrapper">
+        <!-- Decorative background elements -->
+        <div class="bg-accent bg-accent--1"></div>
+        <div class="bg-accent bg-accent--2"></div>
+        <div class="bg-accent bg-accent--3"></div>
 
-            <v-row justify="center" class="mt-5" data-aos="fade-up" data-aos-duration="3000">
-                <v-col v-for="(value, index) in coreValues" :key="index" cols="12" md="6" lg="4"
-                    :class="{ 'zigzag-right': index % 2 === 1, 'zigzag-left': index % 2 === 0 }">
+        <v-container class="cv-container">
+
+            <!-- Header -->
+            <div class="header-block" data-aos="fade-up" data-aos-duration="1000">
+                <!-- <p class="section-eyebrow">Who We Are</p> -->
+                <h1 class="title mt-5">
+                    OUR <span class="highlight">CORE VALUES</span>
+                </h1>
+                <div class="title-rule"></div>
+                <h4 class="mt-2 core-values-text">
+                    At the heart of our institution lie the following core values, each meticulously cultivated to foster an
+                    environment of academic excellence.
+                </h4>
+            </div>
+
+            <!-- Cards Grid -->
+            <v-row justify="center" class="mt-5 cards-row" data-aos="fade-up" data-aos-duration="3000">
+                <v-col
+                    v-for="(value, index) in coreValues"
+                    :key="index"
+                    cols="12" md="6" lg="4"
+                    :class="{ 'zigzag-right': index % 2 === 1, 'zigzag-left': index % 2 === 0 }"
+                >
                     <v-hover v-slot="{ isHovering, props }">
-                        <v-card class="mx-auto" color="grey-lighten-4" max-width="500" v-bind="props">
+                        <v-card
+                            class="mx-auto cv-card"
+                            :class="{ 'cv-card--hovered': isHovering }"
+                            color="grey-lighten-4"
+                            max-width="500"
+                            v-bind="props"
+                        >
+                            <!-- Number badge -->
+                            <div class="card-number">{{ String(index + 1).padStart(2, '0') }}</div>
+
                             <v-img :aspect-ratio="16 / 9" :src="value.image" cover>
                                 <v-expand-transition>
-                                    <div v-if="isHovering"
+                                    <div
+                                        v-if="isHovering"
                                         class="d-flex transition-fast-in-fast-out bg-yellow-darken-2 v-card--reveal text-h6"
-                                        style="height: 100%; display: flex; justify-content: center; align-items: center; text-align: center;">
+                                        style="height: 100%; display: flex; justify-content: center; align-items: center; text-align: center;"
+                                    >
                                         {{ value.description }}
                                     </div>
                                 </v-expand-transition>
                             </v-img>
-                            <v-card-text class="pt-6">
+
+                            <v-card-text class="pt-6 card-body">
+                                <div class="card-title-bar"></div>
                                 <h3 class="text-h5 font-weight-bold text-brown-darken-4 mb-2">
                                     {{ value.title }}
                                 </h3>
@@ -34,8 +63,10 @@
                     </v-hover>
                 </v-col>
             </v-row>
-        </div>
-    </v-container>
+
+        </v-container>
+    </div>
+
     <ArrowButton></ArrowButton>
     <ChatBot></ChatBot>
     <FooterPage></FooterPage>
@@ -114,17 +145,91 @@ export default {
 
 <style>
 
+/* ── Page Wrapper ─────────────────────────────────────── */
+.core-values-wrapper {
+    background: linear-gradient(160deg, #fffdf8 0%, #ffffff 50%, #fff8f2 100%);
+    min-height: 100vh;
+    padding: 60px 0 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+.core-values-text{
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ── Decorative background accents ───────────────────── */
+.bg-accent {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+.bg-accent--1 {
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(251, 183, 0, 0.12) 0%, transparent 70%);
+    top: -120px; left: -150px;
+}
+.bg-accent--2 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255, 95, 21, 0.09) 0%, transparent 70%);
+    bottom: 80px; right: -130px;
+}
+.bg-accent--3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(251, 183, 0, 0.07) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+
+/* ── Container ────────────────────────────────────────── */
+.cv-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Header Block ─────────────────────────────────────── */
+.header-block {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #FF5F15;
+    margin-bottom: 0;
+}
+
 .title {
-    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
     color: #FBB700;
     text-transform: uppercase;
     font-weight: bold;
     text-align: center;
     margin-bottom: 3px;
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .highlight {
     color: #FF5F15;
+}
+
+/* Animated underline rule */
+.title-rule {
+    width: 70px;
+    height: 4px;
+    background: linear-gradient(90deg, #FBB700, #FF5F15);
+    margin: 16px auto 20px;
+    border-radius: 2px;
 }
 
 .subtitle {
@@ -132,6 +237,7 @@ export default {
     color: #555;
     margin: 20px 0;
 }
+
 .name {
     font-weight: bold;
     font-size: 1.1rem;
@@ -139,14 +245,14 @@ export default {
 }
 
 .title-intro {
-    font-family: "Arial", sans-serif;
+    /* font-family: "Arial", sans-serif; */
     font-weight: 400;
     font-style: normal;
     text-align: center;
 }
 
 .paragraph {
-    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
     font-weight: 14px;
     font-size: 20px;
     font-style: normal;
@@ -164,42 +270,29 @@ export default {
     margin-top: 20px;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 20px 0;
-}
-
 .title-intro {
-    font-family: "Anton", sans-serif;
+    /* font-family: "Anton", sans-serif; */
     font-weight: 400;
     font-style: normal;
     text-align: center;
 }
 
 .paragraph {
-    font-family: "Roboto", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
     font-weight: 14px;
     font-size: 20px;
     font-style: normal;
     text-align: justify;
 }
 
-#logo {
-    justify-content: center;
-}
-
 h4 {
     justify-content: center;
     text-align: center;
-}
-
-.logo-container {
-    display: flex;
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-    margin-top: 20px;
+    color: #555;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
 }
 
 .center-container {
@@ -209,6 +302,72 @@ h4 {
     display: flex;
 }
 
+/* ── Core Values Card ─────────────────────────────────── */
+.cv-card {
+    border-radius: 18px !important;
+    overflow: hidden !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.09) !important;
+    transition: transform 0.38s cubic-bezier(0.165, 0.84, 0.44, 1),
+                box-shadow 0.38s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    position: relative;
+    background: #ffffff !important;
+}
+
+.cv-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 18px;
+    border: 2px solid transparent;
+    background:
+        linear-gradient(135deg, rgba(251, 183, 0, 0.45), rgba(255, 95, 21, 0.3) 60%, transparent) border-box;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    z-index: 4;
+}
+
+.cv-card--hovered {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 22px 48px rgba(251, 183, 0, 0.18) !important;
+}
+
+.cv-card--hovered::before {
+    opacity: 1;
+}
+
+/* Number badge */
+.card-number {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    z-index: 3;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: white;
+    background: linear-gradient(135deg, #FBB700, #FF5F15);
+    border-radius: 20px;
+    padding: 3px 10px;
+    line-height: 1.6;
+    box-shadow: 0 3px 10px rgba(255, 95, 21, 0.35);
+}
+
+/* Card bottom content */
+.card-body {
+    padding: 20px 22px 22px !important;
+}
+
+/* Coloured accent bar above title */
+.card-title-bar {
+    width: 36px;
+    height: 3px;
+    background: linear-gradient(90deg, #FBB700, #FF5F15);
+    border-radius: 2px;
+    margin-bottom: 12px;
+}
+
+/* ── Hover reveal overlay (kept exactly as original) ──── */
 .v-card--reveal {
     align-items: center;
     bottom: 0;
@@ -218,22 +377,44 @@ h4 {
     width: 100%;
 }
 
+/* ── Zigzag stagger effect (original) ────────────────── */
 .zigzag-left {
     margin-top: 20px;
-    /* Adjust spacing for the zigzag effect */
 }
 
 .zigzag-right {
     margin-top: 60px;
-    /* Create staggered spacing */
 }
 
-@media (max-width: 960px) {
+/* ── Cards row spacing ────────────────────────────────── */
+.cards-row {
+    gap: 0;
+    row-gap: 8px;
+}
 
-    /* For smaller screens, remove zigzag effect to keep a clean layout */
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 960px) {
     .zigzag-left,
     .zigzag-right {
         margin-top: 20px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .core-values-wrapper {
+        padding: 40px 0 70px;
+    }
+
+    .title {
+        font-size: 1.7rem;
+    }
+
+    .section-eyebrow {
+        font-size: 0.7rem;
     }
 }
 
