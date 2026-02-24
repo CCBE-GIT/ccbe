@@ -265,16 +265,12 @@
         </v-row>
       </v-container>
     </section>
-
-    <br />
+    <!-- Awards Section -->
     <AwardsSection></AwardsSection>
-
-    <br />
     <!-- News Feed Section -->
     <NewsSliderPage></NewsSliderPage>
-    <br />
 
-    <br />
+    <!-- Testimology Section -->
     <h1 class="title mt-2" data-aos="fade-up" data-aos-duration="3000">
       <span class="highlight">TESTIMONIALS</span>
     </h1>
@@ -416,11 +412,12 @@ export default {
 .title {
   text-align: center;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .highlight {
   color: #ff5f15;
+  font-size: 2.5rem;
 }
 
 .subtitle {
