@@ -53,7 +53,7 @@
         class="title mt-1 text-center"
         style="
           color: #fbb700;
-          font-family: 'Roboto', sans-serif;
+          /* font-family: 'Roboto', sans-serif; */
           font-size: 36px;
           font-weight: bold;
         "
@@ -93,7 +93,7 @@
                     color: #5e0000;
                     font-weight: bold;
                     font-size: 22px;
-                    font-family: Arial, Helvetica, sans-serif;
+                    /* font-family: Arial, Helvetica, sans-serif; */
                   "
                 >
                   Happy Students
@@ -141,7 +141,7 @@
                     color: #5e0000;
                     font-weight: bold;
                     font-size: 22px;
-                    font-family: Arial, Helvetica, sans-serif;
+                    /* font-family: Arial, Helvetica, sans-serif; */
                   "
                 >
                   Teachers
@@ -189,7 +189,7 @@
                     color: #5e0000;
                     font-weight: bold;
                     font-size: 20px;
-                    font-family: Arial, Helvetica, sans-serif;
+                    /* font-family: Arial, Helvetica, sans-serif; */
                   "
                 >
                   Years In The Field
@@ -237,7 +237,7 @@
                     color: #5e0000;
                     font-weight: bold;
                     font-size: 22px;
-                    font-family: Arial, Helvetica, sans-serif;
+                    /* font-family: Arial, Helvetica, sans-serif; */
                   "
                 >
                   Branches
@@ -437,14 +437,14 @@ export default {
 }
 
 .title-intro {
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   font-weight: 400;
   font-style: normal;
   text-align: center;
 }
 
 .paragraph {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   font-weight: 14px;
   font-size: 20px;
   font-style: normal;
@@ -486,7 +486,7 @@ export default {
 .section-title {
   font-size: 2.5rem;
   color: #272643;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   margin-bottom: 20px;
 }
 
@@ -532,7 +532,7 @@ export default {
 }
 
 .title {
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
   color: #fbb700;
   text-transform: uppercase;
   font-weight: bold;
@@ -566,7 +566,7 @@ export default {
 .stat-label {
   font-size: 18px;
   color: rgb(20, 10, 10);
-  font-family: "Roboto", sans-serif;
+  /* font-family: "Roboto", sans-serif; */
 }
 
 .v-card:hover {
