@@ -411,13 +411,13 @@ export default {
 <style>
 .title {
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2 rem;
   font-weight: bold;
 }
 
 .highlight {
   color: #ff5f15;
-  font-size: 2.5rem;
+  font-size: 2 rem;
 }
 
 .subtitle {
