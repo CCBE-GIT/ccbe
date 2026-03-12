@@ -103,7 +103,7 @@ export default {
     return {
       awards: [
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/6.jpeg", 
+          src: "https://ik.imagekit.io/kp5tixhur/e1.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
@@ -124,35 +124,35 @@ export default {
           year: "2025"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg?updatedAt=1760438874157", 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg", 
           title: "Children's Day Awareness", 
           subtitle: "Empowering our kids through an insightful session", 
           description: "Collaboration with Sri Lanka Police for a 'Good Touch and Bad Touch' session to help children learn, understand, and stay confident in their safety.",
           year: "2025"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg?updatedAt=1760438873819", 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg", 
           title: "Happy Children's Day!", 
           subtitle: "Celebrating our bright, kind, and curious stars", 
           description: "To our bright, kind, and curious little stars keep dreaming big and believing in yourself every step of the way.",
           year: "2025"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/3.jpg?updatedAt=1760438873618", 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/3.jpg", 
           title: "Honoring Our Everyday Heroes", 
           subtitle: "They don't wear capes, but they build heroes", 
           description: "To all our teachers who inspire, guide, and ignite dreams — we thank you today and always for your dedication and passion.",
           year: "2025"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/2.jpg?updatedAt=1760438875073", 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/2.jpg", 
           title: "A Decade of Dedication", 
           subtitle: "Ten years of redefining English education", 
           description: "Marking ten years of excellence, our institute held a Pirith Chanting and Almsgiving ceremony with the blessings of the Maha Sangha.",
           year: "2025"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg?updatedAt=1760438875365", 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg", 
           title: "Cambridge English Awards 2025", 
           subtitle: "Honoring our Pro School Achievers", 
           description: "Celebrating our High Achievers and Top Achievers a night of pride, passion, and excellence that truly lit up the stage.",
@@ -295,7 +295,7 @@ export default {
 
 .card-image img {
   width: 100%;
-  height: 140%;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
