@@ -66,6 +66,13 @@ export default {
       // Array of card data
       cards: [
         {
+          image: "https://ik.imagekit.io/kp5tixhur/e1.jpeg",
+          title: "INTERNATIONAL WOMEN'S DAY 2026",
+          subtitle: "International Women’s Day 2026 was celebrated at CCBE",
+          content: "International Women’s Day 2026 was proudly celebrated at CCBE, honoring the strength, achievements, and inspiration of women everywhere. The occasion highlighted our commitment to empowering women through education, opportunity, and a supportive learning environment that encourages growth and success.",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE1.jpeg",
           title: "CAMBRIANS DAY 2026",
           subtitle: "Celebrating Unity, Talent & the Spirit of Cambrians",
