@@ -103,7 +103,7 @@ export default {
     return {
       awards: [
         { 
-          src: "https://ik.imagekit.io/kp5tixhur/e1.jpeg", 
+          src: "https://ik.imagekit.io/kp5tixhur/p1-edit.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
