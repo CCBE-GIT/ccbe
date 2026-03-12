@@ -217,6 +217,15 @@ export default {
       },
       careers: [
         {
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/15.jpeg",
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/14.jpeg",
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/Careers/13.jpeg",
+        },
+        {
           image: "https://ik.imagekit.io/u3wbiya66/Careers/4.jpeg",
         },
         {
