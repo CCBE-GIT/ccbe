@@ -103,6 +103,13 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/u3wbiya66/Highlights/6.jpeg", 
+          title: "INTERNATIONAL WOMEN'S DAY 2026", 
+          subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
+          description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
+          year: "2026"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE6.jpeg", 
           title: "CAMBRIANS DAY 2026", 
           subtitle: "Celebrating Unity, Talent & the Spirit of Cambrians", 
@@ -127,7 +134,7 @@ export default {
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg?updatedAt=1760438873819", 
           title: "Happy Children's Day!", 
           subtitle: "Celebrating our bright, kind, and curious stars", 
-          description: "To our bright, kind, and curious little stars — keep dreaming big and believing in yourself every step of the way.",
+          description: "To our bright, kind, and curious little stars keep dreaming big and believing in yourself every step of the way.",
           year: "2025"
         },
         { 
@@ -148,7 +155,7 @@ export default {
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg?updatedAt=1760438875365", 
           title: "Cambridge English Awards 2025", 
           subtitle: "Honoring our Pro School Achievers", 
-          description: "Celebrating our High Achievers and Top Achievers — a night of pride, passion, and excellence that truly lit up the stage.",
+          description: "Celebrating our High Achievers and Top Achievers a night of pride, passion, and excellence that truly lit up the stage.",
           year: "2025"
         },
       ]
@@ -288,7 +295,7 @@ export default {
 
 .card-image img {
   width: 100%;
-  height: 100%;
+  height: 140%;
   object-fit: cover;
   transition: transform 0.5s ease;
 }
