@@ -267,6 +267,31 @@ export default {
 
       groups: [
         {
+          groupKey: 'womens-day-2026',
+          groupLabel: "INTERNATIONAL WOMEN'S DAY 2026",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-flower',
+          items: [
+            { id: 601, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_2489.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 602, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4703.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 603, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1395.JPG', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 604, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1400.JPG', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 605, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1402.JPG', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 606, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4790.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 607, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4778.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 608, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1478.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 609, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1488.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 610, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1436.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 611, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1425.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 612, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1428.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 612, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4750.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 613, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_3433.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 614, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4807.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+          ]
+        },
+        {
           groupKey: 'cambrians-day-2026',
           groupLabel: 'Cambrians Day 2026',
           categoryKey: 'events',
