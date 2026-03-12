@@ -20,7 +20,7 @@
         </h1>
         <div class="hero-rule"></div>
         <p class="hero-subtitle">
-          Moments that define us — from classrooms to celebrations, every picture tells our story.
+          Moments that define us from classrooms to celebrations, every picture tells our story.
         </p>
       </div>
 
