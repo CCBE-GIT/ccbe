@@ -231,6 +231,7 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   margin: 40px 0;
+  align-items: start;
 }
 
 .card-col {
@@ -243,7 +244,7 @@ export default {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
 }
