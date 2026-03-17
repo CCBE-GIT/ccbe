@@ -88,7 +88,7 @@ export default {
         },
         {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE10.jpeg",
-          title: "Galdoowa Buddhist Monastery 2026",
+          title: "Galdoowa Buddhist Monastery Program 2026",
           subtitle: "A Day of Meritorious Deeds & Unity",
           content: "On this Madin Full Moon Poya Day, the staff and management of CCBE and CCIT came together to successfully organize our 2nd consecutive Charity Program at Kalyana Yogashramaya. \n\n Together, we were honored to conduct: \n ◾ Sathbudu Wandanawa Bodhi Poojawa \n ◾ Heel Daane (Breakfast) and Dahawal Daane (Lunch) offered to 50 venerable monks \n ◾ Meals and refreshments for over 750 Sil observers \n\n This meaningful initiative was made possible through the dedication, generosity, and collective effort of our team. \n A heartfelt thank you to everyone who contributed their time, support, and kindness to make this meritorious event a success.",
           show: false,

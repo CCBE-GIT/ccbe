@@ -292,6 +292,26 @@ export default {
           ]
         },
         {
+          groupKey: 'galdoowa-day-2026',
+          groupLabel: "Galdoowa Buddhist Monastery Program 2026",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-meditation',
+          items: [
+            { id: 701, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja04.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 702, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja10.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 703, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja07.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 704, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja03.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 705, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja09.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 706, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja08.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 707, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja02.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 708, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja05.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 709, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja01.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+            { id: 710, src: 'https://ik.imagekit.io/kp5tixhur/Galduwa%202026/podipuja06.jpeg', title: "Galdoowa Buddhist Monastery Program 2026", category: 'Events', year: '2026' },
+          ]
+        },
+        {
           groupKey: 'cambrians-day-2026',
           groupLabel: 'Cambrians Day 2026',
           categoryKey: 'events',
