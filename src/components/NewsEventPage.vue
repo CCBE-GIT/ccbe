@@ -163,13 +163,13 @@ export default {
           "content": "Throwback to the unforgettable moments from our annual trip! 🌟 From breathtaking views and laughter-filled adventures to team bonding and endless joy, every memory is a treasure we'll cherish forever. \n\nHere's to more journeys, stronger connections, and creating magic together! 🏞️✨",
           show: false,
         },
-        {
-          image: "https://ik.imagekit.io/u3wbiya66/News&Events/FB_IMG_1738984882674.jpg?updatedAt=1738985253221",
-          "title": "Celebrating Success at Cambridge College of British English",
-          "subtitle": "Congratulations to Our Students on Achieving A2 Flyers Level!",
-          "content": "🎉 Exciting News from Cambridge College of British English 📚\n\nA big congratulations to our incredible students for achieving the Cambridge English Assessment A2 Flyers Level! 🏆✨ Your hard work and dedication continue to inspire us every day. This milestone is just the beginning of your amazing language-learning journey! 🌟🙌\n\nKeep aiming high and chasing your dreams! 🚀✨",
-          show: false,
-        },
+        // {
+        //   image: "https://ik.imagekit.io/u3wbiya66/News&Events/FB_IMG_1738984882674.jpg?updatedAt=1738985253221",
+        //   "title": "Celebrating Success at Cambridge College of British English",
+        //   "subtitle": "Congratulations to Our Students on Achieving A2 Flyers Level!",
+        //   "content": "🎉 Exciting News from Cambridge College of British English 📚\n\nA big congratulations to our incredible students for achieving the Cambridge English Assessment A2 Flyers Level! 🏆✨ Your hard work and dedication continue to inspire us every day. This milestone is just the beginning of your amazing language-learning journey! 🌟🙌\n\nKeep aiming high and chasing your dreams! 🚀✨",
+        //   show: false,
+        // },
         {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/FB_IMG_1738984825665.jpg?updatedAt=1738985254002",
           title: "Fit to Fight 2024",
