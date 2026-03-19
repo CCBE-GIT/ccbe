@@ -9,7 +9,8 @@
                 <div class="mt-2">
                     <strong class="contact-info">
                         <span aria-label="Contact information">
-                            Hot Line: 071 3 999 666 | Email: info@ccbe.lk
+                            <!-- Hot Line: 071 3 999 666 | Email: info@ccbe.lk -->
+                            <p><a href="tel:+94713999666">+94 713 999 666</a> (Hot Line) | <a href="mailto:info@ccbe.lk">info@ccbe.lk</a></p> 
                         </span>
                     </strong>
                 </div>
@@ -134,7 +135,9 @@
                     <p>We may update this policy periodically. Please review it regularly for changes.</p>
 
                     <h4 class="policy-heading">11. Contact Us</h4>
-                    <p>Email: info@ccbe.lk<br>Tel No: 071 3 999 666</p>
+                    <!-- <p>Email: info@ccbe.lk<br>Tel No: 071 3 999 666</p> -->
+                    <p>Tel No:<a href="tel:+94713999666"> +94 713 999 666</a> (Hot Line)</p> 
+                    <p>Email:<a href="mailto:info@ccbe.lk"> info@ccbe.lk</a></p> 
                 </div>
                 <div class="modal-actions">
                     <button class="btn btn-text" @click="showPrivacyPolicy = false" aria-label="Close privacy policy dialog">Close</button>
@@ -241,8 +244,8 @@
                         If you have any questions about these Terms and Conditions, please contact us at:
                     </p>
                     <ul>
-                        <li><strong>Email:</strong> info@ccbe.lk</li>
-                        <li><strong>Phone:</strong> 071 3 999 666</li>
+                        <li><p>Tel No:<a href="tel:+94713999666"> +94 713 999 666</a> (Hot Line)</p></li> 
+                        <li><p>Email:<a href="mailto:info@ccbe.lk"> info@ccbe.lk</a></p></li>
                     </ul>
                 </div>
                 <div class="modal-actions">

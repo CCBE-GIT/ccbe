@@ -59,6 +59,12 @@ const routes = [
   {path: '/contact/matara',name: 'MataraBranch',component: MataraBranch,},
   {path: '/contact/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
   {path: '/contact/horana',name: 'HoranaBranch',component: HoranaBranch,},*/
+
+  {
+  path: '/privacy-policy',
+  name: 'PrivacyPolicy',
+  component: () => import('@/components/PrivacyPolicy.vue')
+  }
 ];
 
 const router = createRouter({

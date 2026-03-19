@@ -80,6 +80,7 @@
                                     <div class="nav-underline" :class="{ 'active': activeIndex === index }"></div>
                                 </a>
                             </li>
+                            <SearchModal />
                         </ul>
                     </div>
                 </div>
@@ -140,6 +141,7 @@
                                 <span>{{ item.text }}</span>
                             </a>
                         </li>
+                        <SearchModal />
                     </ul>
                 </div>
 
@@ -263,8 +265,10 @@
 
 <script>
 import emailjs from "emailjs-com";
+import SearchModal from '@/components/SearchModal.vue';
 
 export default {
+    components: { SearchModal },
     name: 'UnifiedNavBar',
     data() {
         return {
@@ -676,6 +680,8 @@ body {
     background: linear-gradient(135deg, #FFD700 0%, #eb8808 100%);
     color: black;
     border-color: #FFD700;
+    width: 100%;
+    height: 100%;
 }
 
 .payment-btn {
