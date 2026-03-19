@@ -29,6 +29,9 @@ const PiliyandalaBranch = () => import('../components/branches/PiliyandalaBranch
 const HoranaBranch = () => import('../components/branches/HoranaBranch.vue');
 const KalutaraBranch = () => import('../components/branches/KalutaraBranch.vue');
 
+//PrivacyPolicy
+const PrivacyPolicy = ()=> import('../components/PrivacyPolicy.vue')
+
 const routes = [
   {path: '/', name: 'HomePage',component: HomePage},
   {path: '/about',name: 'AboutUs',component: AboutUs},
@@ -60,11 +63,7 @@ const routes = [
   {path: '/contact/piliyandala',name: 'PiliyandalaBranch',component: PiliyandalaBranch,},
   {path: '/contact/horana',name: 'HoranaBranch',component: HoranaBranch,},*/
 
-  {
-  path: '/privacy-policy',
-  name: 'PrivacyPolicy',
-  component: () => import('@/components/PrivacyPolicy.vue')
-  }
+  {path: '/privacy-policy',name: 'PrivacyPolicy',component: PrivacyPolicy,}
 ];
 
 const router = createRouter({
