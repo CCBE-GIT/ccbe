@@ -24,7 +24,20 @@
         </div>
       </div>
     </div>
-
+    <!-- ── Back to Home Link ── -->
+      <div class="home-link-section1" data-aos="fade-up" data-aos-duration="1500">
+        <p>Looking for something else?</p>
+        <a href="/" class="home-link-btn1">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9L12 2L21 9V20a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          Back to Home
+        </a>
+        <div class="quick-nav-links1">
+          <a href="/courses" class="qnl">Our Programmes</a>
+          <a href="/about" class="qnl">About CCBE</a>
+          <a href="/news" class="qnl">News & Events</a>
+          <a href="/corevalues" class="qnl">Core Values</a>
+        </div>
+      </div>
     <ChatBot></ChatBot>
     <FooterPage></FooterPage>
 
@@ -666,6 +679,75 @@ export default {
 .text-center {
   text-align: center;
 }
+
+/* ── Back to Home ───────────────────────────────── */
+.home-link-section1 {
+  text-align: center;
+  padding: 32px 0 16px;
+}
+
+.home-link-section1 > p {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.home-link-btn1 {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 28px;
+  background: #FBB700;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(251,183,0,0.3);
+}
+
+.home-link-btn1:hover {
+  background: #e0a500;
+  transform: translateY(-2px);
+}
+
+.quick-nav-links1 {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.qnl {
+  font-size: 0.85rem;
+  color: #FF5F15;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 5px 14px;
+  border: 1px solid rgba(255,95,21,0.25);
+  border-radius: 30px;
+  transition: all 0.25s;
+}
+
+.qnl:hover {
+  background: #FF5F15;
+  color: #fff;
+  border-color: #FF5F15;
+}
+
+.text-center1 {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.text-center1 h3 { color: #FBB700; margin-bottom: 10px; }
+.text-center1 p  { color: #555; margin: 5px 0; font-size: 1rem; }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
