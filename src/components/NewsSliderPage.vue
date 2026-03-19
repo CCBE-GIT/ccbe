@@ -110,7 +110,7 @@ export default {
           year: "2026"
         },
         { 
-          src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE9.jpeg", 
+          src: "https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/post%203.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
