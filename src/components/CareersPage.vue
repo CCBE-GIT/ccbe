@@ -403,7 +403,7 @@ export default {
 .career-card {
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 1000px;
   margin: 0 auto;
@@ -434,7 +434,7 @@ export default {
 
 .card-actions {
   padding: 1.5rem;
-  background: white;
+  background: transparent;
   text-align: center;
   flex-shrink: 0; /* Prevent button area from shrinking */
   margin-top: auto; 
