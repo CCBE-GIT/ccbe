@@ -11,7 +11,7 @@
         CONTACT <span class="highlight">US</span>
       </h1>
 
-      <h4 class="subtitle1" data-aos="fade-up" data-aos-duration="2000">
+      <h4 class="subtitle" data-aos="fade-up" data-aos-duration="2000">
         At the heart of our commitment to communication and service lies our dedication to ensuring every interaction is meaningful, responsive, and supportive.
       </h4>
 
@@ -357,7 +357,7 @@ export default {
 
 .highlight { color: #FF5F15; }
 
-.subtitle1 {
+.subtitle {
   font-size: 1.2rem;
   color: #555;
   text-align: center;
@@ -749,6 +749,37 @@ export default {
 .fade-msg-leave-active { transition: opacity 0.4s, transform 0.4s; }
 .fade-msg-enter-from,
 .fade-msg-leave-to { opacity: 0; transform: translateY(-6px); }
+
+/* Force left-alignment inside branch cards — override any global CSS */
+.branch-card,
+.branch-card * {
+  text-align: left !important;
+}
+
+.branch-card-name {
+  font-size: 0.9rem;
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  margin: 0 0 4px;
+  text-align: left !important;
+}
+
+.branch-card-addr {
+  font-size: 0.78rem;
+  color: #888 !important;
+  margin: 0 0 4px;
+  line-height: 1.3;
+  text-align: left !important;
+}
+
+.branch-card-phone {
+  font-size: 0.82rem;
+  font-weight: 600 !important;
+  color: #FF5F15 !important;
+  text-decoration: none;
+  text-align: left !important;
+  display: block;
+}
 
 /* ── Back to Home ───────────────────────────────── */
 .home-link-section {
