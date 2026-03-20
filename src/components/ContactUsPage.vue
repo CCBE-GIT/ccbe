@@ -279,7 +279,7 @@ export default {
         { name: "Galle College",       address: "No 118, Old Matara Rd, Galle, 80000",           phone: "+94 91 223 7373" },
         { name: "Ambalangoda College", address: "No 97, New Rd, Ambalangoda, 80300",             phone: "+94 91 225 2452" },
         { name: "Matara College",      address: "No 352, Kumarathunga Mw, Matara, 81000",        phone: "+94 41 205 0200" },
-        { name: "Piliyandala College", address: "No 119, Moratuwa Rd, Piliyandala, 10300",       phone: "+94 11 218 0008" },
+        { name: "Piliyandala College", address: "No 119, Moratuwa Rd, Suwarapola, Piliyandala, 10300",       phone: "+94 11 218 0008" },
         { name: "Horana College",      address: "No 149, Graceland Circular Rd, Horana, 12400",  phone: "+94 34 220 5503" }, 
         { name: "Kalutara College",    address: "No 85, Maha Waskaduwa, 12580",                  phone: "+94 34 212 1210" }, 
       ],
