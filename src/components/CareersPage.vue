@@ -32,10 +32,10 @@
           Back to Home
         </a>
         <div class="quick-nav-links1">
-          <a href="/courses" class="qnl">Our Programmes</a>
-          <a href="/about" class="qnl">About CCBE</a>
-          <a href="/news" class="qnl">News & Events</a>
-          <a href="/corevalues" class="qnl">Core Values</a>
+          <a href="/courses" class="qnl1">Our Programmes</a>
+          <a href="/about" class="qnl1">About CCBE</a>
+          <a href="/news" class="qnl1">News & Events</a>
+          <a href="/corevalues" class="qnl1">Core Values</a>
         </div>
       </div>
     <ChatBot></ChatBot>
@@ -720,7 +720,7 @@ export default {
   margin-top: 16px;
 }
 
-.qnl {
+.qnl1 {
   font-size: 0.85rem;
   color: #FF5F15;
   text-decoration: none;
@@ -731,7 +731,7 @@ export default {
   transition: all 0.25s;
 }
 
-.qnl:hover {
+.qnl1:hover {
   background: #FF5F15;
   color: #fff;
   border-color: #FF5F15;
