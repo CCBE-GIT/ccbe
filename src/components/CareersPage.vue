@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar></NavBar>
-    <div class="container">
+    <div class="careers-container">
       <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
         <span class="highlight">Careers</span>
       </h1>
@@ -359,7 +359,7 @@ export default {
 
 <style scoped>
 /* Container */
-.container {
+.careers-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
@@ -751,7 +751,7 @@ export default {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-  .container {
+  .careers-container {
     padding: 0 10px;
   }
   
