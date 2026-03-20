@@ -11,7 +11,7 @@
         CONTACT <span class="highlight">US</span>
       </h1>
 
-      <h4 class="subtitle" data-aos="fade-up" data-aos-duration="2000">
+      <h4 class="subtitle1" data-aos="fade-up" data-aos-duration="2000">
         At the heart of our commitment to communication and service lies our dedication to ensuring every interaction is meaningful, responsive, and supportive.
       </h4>
 
@@ -276,12 +276,12 @@ export default {
       logo: require('@/assets/Logo.png'),
       branchNetworkImage: require('@/assets/Branch_Network.png'),
       offices: [
-        { name: "Galle College",       address: "No 118, Old Matara Rd, Galle, 80000",                     phone: "+94 91 223 7373" },
-        { name: "Ambalangoda College", address: "No 97, New Rd, Ambalangoda, 80300",                    phone: "+94 91 225 2452" },
-        { name: "Matara College",      address: "No 352, Kumarathunga Mw, Matara, 81000",               phone: "+94 41 205 0200" },
+        { name: "Galle College",       address: "No 118, Old Matara Rd, Galle, 80000",           phone: "+94 91 223 7373" },
+        { name: "Ambalangoda College", address: "No 97, New Rd, Ambalangoda, 80300",             phone: "+94 91 225 2452" },
+        { name: "Matara College",      address: "No 352, Kumarathunga Mw, Matara, 81000",        phone: "+94 41 205 0200" },
         { name: "Piliyandala College", address: "No 119, Moratuwa Rd, Piliyandala, 10300",       phone: "+94 11 218 0008" },
-        { name: "Horana College",      address: "No 149, Graceland Circular Rd, Horana, 12400",         phone: "+94 34 220 5503" }, 
-        { name: "Kalutara College",    address: "No 85, Maha Waskaduwa, 12580",                         phone: "+94 34 212 1210" }, 
+        { name: "Horana College",      address: "No 149, Graceland Circular Rd, Horana, 12400",  phone: "+94 34 220 5503" }, 
+        { name: "Kalutara College",    address: "No 85, Maha Waskaduwa, 12580",                  phone: "+94 34 212 1210" }, 
       ],
       selectedOffice: null,
       tooltipVisible: false,
@@ -357,7 +357,7 @@ export default {
 
 .highlight { color: #FF5F15; }
 
-.subtitle {
+.subtitle1 {
   font-size: 1.2rem;
   color: #555;
   text-align: center;
