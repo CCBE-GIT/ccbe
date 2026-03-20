@@ -11,9 +11,9 @@
         CONTACT <span class="highlight">US</span>
       </h1>
 
-      <h4 class="subtitle" data-aos="fade-up" data-aos-duration="2000">
+      <p class="subtitle" data-aos="fade-up" data-aos-duration="2000">
         At the heart of our commitment to communication and service lies our dedication to ensuring every interaction is meaningful, responsive, and supportive.
-      </h4>
+      </p>
 
       <!-- ── Contact Info Cards ── -->
       <div class="contact-info-grid" data-aos="fade-up" data-aos-duration="2000">
