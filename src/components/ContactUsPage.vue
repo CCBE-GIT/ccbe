@@ -358,11 +358,12 @@ export default {
 .highlight { color: #FF5F15; }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: #555;
-  text-align: center;
-  margin: 20px 0;
-  line-height: 1.5;
+  font-size: 1.2rem !important;
+  color: #555 !important;
+  text-align: center !important;
+  margin: 20px 0 !important;
+  line-height: 1.5 !important;
+  font-weight: normal !important;
 }
 
 .logo-container {
