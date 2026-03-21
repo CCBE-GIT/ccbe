@@ -19,7 +19,7 @@
           <p class="pp-meta">
             Cambridge College of British English (CCBE) &nbsp;·&nbsp;
             Effective Date: <strong>01 January 2025</strong> &nbsp;·&nbsp;
-            Last Updated: <strong>19 March 2026</strong>
+            Last Updated: <strong>01 January 2026</strong>
           </p>
           <p class="pp-intro">
             At CCBE, your privacy is important to us. This Privacy Policy explains how we collect,
@@ -307,7 +307,7 @@
                 </div>
                 <div class="contact-detail">
                   <span class="cd-label">Head Office</span>
-                  <span class="cd-value">118, Old Matara Rd, Galle, 80000, Sri Lanka</span>
+                  <span class="cd-value">No 118, Old Matara Rd, Galle, 80000, Sri Lanka</span>
                 </div>
                 <div class="contact-detail">
                   <span class="cd-label">Website</span>
