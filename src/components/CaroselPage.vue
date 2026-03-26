@@ -7,14 +7,10 @@
 
     <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
     <div class="snow-container">
-      <!-- Snowflakes -->
       <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateKokisflakeStyle()"></div>
-      
-      <!-- Santa Caps - fewer than snowflakes -->
       <div v-for="(cap, index) in santaCapCount" :key="'cap-' + index" class="santa-cap" :style="generateCashewStyle()"></div>
-
-      <!-- Snowflakes -->
       <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateFlowerStyle()"></div>
+      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateFlowerStyle1()"></div>
     </div>
 
     <!-- Main Carousel -->
