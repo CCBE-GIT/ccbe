@@ -5,6 +5,18 @@
       <img :src="topWebImage" alt="TopWeb Logo" class="top-left-image" />
     </a>
 
+    <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
+    <div class="snow-container">
+      <!-- Snowflakes -->
+      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateKokisflakeStyle()"></div>
+      
+      <!-- Santa Caps - fewer than snowflakes -->
+      <div v-for="(cap, index) in santaCapCount" :key="'cap-' + index" class="santa-cap" :style="generateCashewStyle()"></div>
+
+      <!-- Snowflakes -->
+      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateFlowerStyle()"></div>
+    </div>
+
     <!-- Main Carousel -->
     <div class="festive-carousel" @mouseenter="pauseAutoPlay" @mouseleave="startAutoPlay">
       <!-- Slides Track -->
@@ -70,6 +82,13 @@
 
 <script>
 import topWebImage from '@/assets/TopWeb.jpg';
+//import snowflakeImage from '@/assets/festivel/snow.png';
+//import santaCapImage from '@/assets/festivel/bells.png';
+import kokisImage from '@/assets/festivel/kokis.png';
+import cashewImage from '@/assets/festivel/cashew.png';
+import flowerImage from '@/assets/festivel/flower1.png';
+import flowerImage1 from '@/assets/festivel/flower2.png';
+
 
 export default {
   name: 'CarouselPage',
@@ -77,6 +96,14 @@ export default {
     return {
       currentSlide: 0,
       topWebImage,
+      //snowflakeImage,
+      //santaCapImage,
+      kokisImage,
+      cashewImage,
+      flowerImage,
+      flowerImage1,
+      snowCount: 35,
+      santaCapCount: 8,
       isMobile: false,
       videoLoaded: false,
       autoPlayTimer: null,
@@ -150,6 +177,8 @@ export default {
     },
     checkMobile() {
       this.isMobile = window.innerWidth <= 768;
+      this.snowCount = this.isMobile ? 20 : 35;
+      this.santaCapCount = this.isMobile ? 5 : 8;
     },
     handleKeydown(e) {
       if (e.key === 'ArrowRight') this.next();
@@ -161,7 +190,114 @@ export default {
     handleTouchEnd(e) {
       const diff = this._touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
-    }
+    },
+    generateKokisflakeStyle() {
+      const isMobile = this.isMobile;
+      
+      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
+      const positionX = Math.random() * 80 + 10;
+      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
+      const delay = Math.random() * 10;
+      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
+      const opacity = Math.random() * 0.7 + 0.3;
+      const rotation = Math.random() * 360;
+
+      return {
+        left: `${positionX}%`,
+        top: '-20px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.kokisImage})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift-distance': `${driftAmount}px`,
+        opacity: `${opacity}`,
+        transform: `rotate(${rotation}deg)`
+      };
+    },
+    generateCashewStyle() {
+      const isMobile = this.isMobile;
+      
+      const size = isMobile ? Math.random() * 35 + 30 : Math.random() * 45 + 35;
+      const positionX = Math.random() * 80 + 10;
+      const duration = isMobile ? Math.random() * 20 + 15 : Math.random() * 25 + 20;
+      const delay = Math.random() * 15;
+      const driftAmount = isMobile ? Math.random() * 25 - 12.5 : Math.random() * 40 - 20;
+      const rotation = Math.random() * 180 - 90;
+
+      return {
+        left: `${positionX}%`,
+        top: '-30px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.cashewImage})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift-distance': `${driftAmount}px`,
+        opacity: '1',
+        transform: `rotate(${rotation}deg)`
+      };
+    },
+    generateFlowerStyle() {
+      const isMobile = this.isMobile;
+      
+      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
+      const positionX = Math.random() * 80 + 10;
+      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
+      const delay = Math.random() * 10;
+      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
+      const opacity = Math.random() * 0.7 + 0.3;
+      const rotation = Math.random() * 360;
+
+      return {
+        left: `${positionX}%`,
+        top: '-20px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.flowerImage})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift-distance': `${driftAmount}px`,
+        opacity: `${opacity}`,
+        transform: `rotate(${rotation}deg)`
+      };
+    },
+    generateFlowerStyle1() {
+      const isMobile = this.isMobile;
+      
+      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
+      const positionX = Math.random() * 80 + 10;
+      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
+      const delay = Math.random() * 10;
+      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
+      const opacity = Math.random() * 0.7 + 0.3;
+      const rotation = Math.random() * 360;
+
+      return {
+        left: `${positionX}%`,
+        top: '-20px',
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundImage: `url(${this.flowerImage1})`,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        animationDuration: `${duration}s`,
+        animationDelay: `${delay}s`,
+        '--drift-distance': `${driftAmount}px`,
+        opacity: `${opacity}`,
+        transform: `rotate(${rotation}deg)`
+      };
+    },
   },
   mounted() {
     this.checkMobile();
@@ -186,7 +322,7 @@ export default {
 .parallax-carousel-container {
   width: 100%;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   background: #000;
 }
 
@@ -210,12 +346,87 @@ export default {
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
 
+/* ===== SNOW CONTAINER - ANIMATION FROM OLD VERSION ===== */
+.snow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.snowflake {
+  position: absolute;
+  animation-name: snowFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+.santa-cap {
+  position: absolute;
+  animation-name: santaCapFall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+@keyframes snowFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: var(--start-opacity, 0.8);
+  }
+  30% {
+    transform: translateY(150px) translateX(var(--drift-distance)) rotate(180deg);
+  }
+  60% {
+    transform: translateY(300px) translateX(calc(-0.5 * var(--drift-distance))) rotate(360deg);
+  }
+  90% {
+    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.8)) rotate(540deg);
+  }
+  100% {
+    transform: translateY(600px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes santaCapFall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: var(--start-opacity, 0.9);
+  }
+  25% {
+    transform: translateY(150px) translateX(calc(var(--drift-distance) * 0.5)) rotate(45deg);
+  }
+  50% {
+    transform: translateY(300px) translateX(calc(-0.3 * var(--drift-distance))) rotate(-30deg);
+  }
+  75% {
+    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.7)) rotate(60deg);
+  }
+  100% {
+    transform: translateY(600px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+    opacity: 0;
+  }
+}
+
 /* ===== CAROUSEL WRAPPER ===== */
 .festive-carousel {
   position: relative;
   width: 100%;
   height: 600px;
   overflow: visible;
+  z-index: 1;
 }
 
 .carousel-track {
@@ -261,7 +472,7 @@ export default {
 .content-overlay {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -272,6 +483,8 @@ export default {
   max-width: 700px;
   color: white;
   animation: fadeInUp 1s ease forwards;
+  position: relative;
+  z-index: 15;
 }
 
 @keyframes fadeInUp {
@@ -337,7 +550,7 @@ export default {
   border: 1px solid rgba(255,255,255,0.2);
   color: black;
   transition: all 0.3s ease;
-  }
+}
 
 .feature-pill:hover {
   background: white;
@@ -360,7 +573,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  z-index: 20;
   transition: all 0.3s ease;
   opacity: 0;
 }
@@ -392,7 +605,7 @@ export default {
   display: flex;
   justify-content: center;
   gap: 10px;
-  z-index: 10;
+  z-index: 20;
 }
 
 .dot {
@@ -425,6 +638,30 @@ export default {
     height: 500px;
   }
   
+  .snow-container {
+    height: 500px;
+  }
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
+  }
+  
   .slide-title {
     font-size: 2.5rem;
   }
@@ -437,6 +674,30 @@ export default {
 @media (max-width: 768px) {
   .festive-carousel {
     height: 450px;
+  }
+  
+  .snow-container {
+    height: 450px;
+  }
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(450px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(450px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
   }
   
   .content-overlay {
@@ -488,6 +749,30 @@ export default {
 @media (max-width: 480px) {
   .festive-carousel {
     height: 400px;
+  }
+  
+  .snow-container {
+    height: 400px;
+  }
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
   }
   
   .slide-title {
@@ -545,6 +830,30 @@ export default {
     height: 300px;
   }
   
+  .snow-container {
+    height: 300px;
+  }
+  
+  @keyframes snowFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(300px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
+      opacity: 0;
+    }
+  }
+  
+  @keyframes santaCapFall {
+    0% {
+      transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(300px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
+      opacity: 0;
+    }
+  }
+  
   .slide-title {
     font-size: 1.4rem;
     margin-bottom: 5px;
@@ -565,5 +874,16 @@ export default {
   .parallax-item {
     image-rendering: -webkit-optimize-contrast;
   }
+}
+
+/* Performance optimizations */
+.snow-container {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000;
+}
+
+.snowflake, .santa-cap {
+  will-change: transform, opacity;
 }
 </style>
