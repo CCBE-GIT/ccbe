@@ -27,9 +27,9 @@
                             <a href="https://classroom.google.com/" target="_blank" class="action-btn lms-btn">
                                 <span class="btn-text">LMS Portal</span>
                             </a>
-                            <!-- <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
+                            <a href="https://pay.ccbe.lk/" target="_blank" class="action-btn payment-btn">                                
                                 <span class="btn-text">Make Payment</span>
-                            </a> -->
+                            </a>
                         </div>
 
                         <!-- Main Navigation Links -->
@@ -107,9 +107,9 @@
                     <a href="https://classroom.google.com/" target="_blank" class="mobile-action-btn lms-btn" @click="closeMobileMenu">
                         <span>LMS Portal</span>
                     </a>
-                    <!-- <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
+                    <a href="https://pay.ccbe.lk/" target="_blank" class="mobile-action-btn payment-btn" @click="closeMobileMenu">                        
                         <span>Make Payment</span>
-                    </a> -->
+                    </a>
                 </div>
 
                 <!-- Mobile Main Navigation Links -->
@@ -648,6 +648,7 @@ body {
 .action-btn {
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: 10px;
     padding: 12px 20px;
     border-radius: 25px;
@@ -688,6 +689,16 @@ body {
     background: linear-gradient(135deg, #0f0f0f 0%, #1c1d1d 100%);
     color: white;
     border-color: #2c2e30;
+    width: 100%;
+    height: 100%;
+}
+
+.payment-btn .btn-text {
+    font-size: 13px !important;
+}
+
+.lms-btn .btn-text {
+    font-size: 13px !important;
 }
 
 .action-btn:hover {

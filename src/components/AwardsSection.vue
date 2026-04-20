@@ -196,6 +196,36 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/Certificate1.jpg", 
+          title: "Certificate - ISO 9001:2015", 
+          subtitle: "Officially awarded the ISO 9001:2015 Quality Management System certification by Otabu Certification Pvt. Ltd.", 
+          description: "This certificate confirms that CCBE has been officially awarded the ISO 9001:2015 Quality Management System certification by Otabu Certification Pvt. Ltd.",
+          year: "2026",
+          category: "Recognition",
+          organization: "OTABU CERTIFICATION PVT.LTD.",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/IMG_5899-copy5.jpg", 
+          title: "Highest Regional Contribution", 
+          subtitle: "Southern Province Recognition by the British Council for Cambridge English Registration Centres – Cambridge College of British English (2026)", 
+          description: "Recognized by the British Council for the highest regional contribution in Cambridge English registrations.",
+          year: "2026",
+          category: "Regional - 4th Consecutive year",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
+        {  
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/IMG_5899-copy4.jpg", 
+          title: "Excellence Beyond Gold", 
+          subtitle: "British Council Platinum Category Recognition for Outstanding Performance – Cambridge College of British English (2026)", 
+          description: "Awarded by the British Council for outstanding performance and exclusivity as a Cambridge English registration centre.",
+          year: "2026",
+          category: "Platinum -  2nd Consecutive Year",
+          organization: "British Council",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/cipm-logo.png?updatedAt=1757647128110"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/Awards/AW1.jpeg", 
           title: "CIPM HR Awards 2025", 
           subtitle: "Certificate of Commendation at the CIPM HR Awards 2025 – Cambridge College of British English", 
