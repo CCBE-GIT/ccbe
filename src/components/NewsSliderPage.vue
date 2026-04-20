@@ -103,32 +103,81 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/Trinity%20College/Trinity%20College.jpg", 
+          title: "Trinity College Sign Up", 
+          subtitle: "Opening Doors to Academic Excellence", 
+          description: "Proud to announce the Trinity College sign-up initiative, providing students with new opportunities to access world-class education pathways and strengthen their academic journey through trusted international programs.",
+          year: "APR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/TopWeb/TopWeb%20-%20March.jpeg", 
+          title: "TopWeb - March 2026", 
+          subtitle: "Empowering Digital Innovation & Web Excellence", 
+          description: "Our website www.ccbe.lk has been recognized with the TopWeb.lk Award – March 2026, highlighting our commitment to quality, innovation, and digital excellence.",
+          year: "MAR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Iftar%20celebration/Iftar1.jpg", 
+          title: "Iftar Celebration 2026", 
+          subtitle: "An Evening of Unity, Reflection & Togetherness", 
+          description: "The Iftar Celebration 2026 at CCBE was a meaningful gathering that brought staff together to break fast during the holy month of Ramadan. The event reflected the values of unity, respect, and cultural diversity, creating a warm and inclusive atmosphere for everyone.",
+          year: "MAR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/IELTS%20Partner%20Forum%202026/ielts3.jpeg", 
+          title: "IELTS Partner Forum 2026", 
+          subtitle: "Strengthening Partnerships for Global Education", 
+          description: "Honored to participate in the IELTS Partner Forum 2026 - an inspiring evening of partnership, dialogue, and shared vision for the future. Our participation reflects a shared dedication to building partnerships and advancing excellence together.",
+          year: "MAR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20English%20Awards%20Ceremony%202026/BC-South.jpeg", 
+          title: "British Council Awards Ceremony 2026", 
+          subtitle: "Celebrating Excellence in English Language Achievement", 
+          description: "CCBE is proud to receive the Southern Regional Award at British Council Ceremony 2026. This achievement reflects our continued excellence and strong presence in the region. ",
+          year: "MAR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20English%20Awards%20Ceremony%202026/IELTS%202.jpeg", 
+          title: "British Council Awards Ceremony 2026", 
+          subtitle: "Celebrating Excellence in English Language Achievement", 
+          description: "CCBE is Proudly recognized as the Platinum Award Winner for Cambridge English Qualifications registrations in 2026.",
+          year: "MAR 2026"
+        },
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Galduwa%202026/WhatsApp%20Image%202026-04-20%20at%2011.57.24%20AM.jpeg", 
+          title: "Galdoowa Buddhist Monastery Program 2026", 
+          subtitle: "A Day of Meritorious Deeds & Unity", 
+          description: "On this Madin Full Moon Poya Day, the staff and management of CCBE and CCIT came together to successfully organize our 2nd consecutive Charity Program at Kalyana Yogashramaya.",
+          year: "MAR 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE8.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
-          year: "2026"
+          year: "MAR 2026"
         },
         { 
           src: "https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/post%203.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
-          year: "2026"
+          year: "MAR 2026"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE7.jpeg", 
           title: "INTERNATIONAL WOMEN'S DAY 2026", 
           subtitle: "International Women’s Day 2026 was celebrated at CCBE", 
           description: "International Women’s Day 2026 was celebrated at CCBE, honoring the strength and achievements of women while highlighting our commitment to empowering them through education and opportunities.",
-          year: "2026"
+          year: "MAR 2026"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE6.jpeg", 
           title: "CAMBRIANS DAY 2026", 
           subtitle: "Celebrating Unity, Talent & the Spirit of Cambrians", 
           description: "Cambrians Day 2026 brought together staff from all branches to celebrate the true spirit of being a Cambrian through engaging activities and inspiring moments that strengthened unity and teamwork.",
-          year: "2026"
+          year: "JAN 2026"
         },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/News&Events/NE4.jpeg", 
@@ -137,27 +186,27 @@ export default {
           description: "The Staff Wellness & Medical Screening Program 2025 promoted the health and well-being of staff across all branches, encouraging healthy lifestyles and early detection of health concerns.",
           year: "2025"
         },
-        { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg", 
-          title: "Children's Day Awareness", 
-          subtitle: "Empowering our kids through an insightful session", 
-          description: "Collaboration with Sri Lanka Police for a 'Good Touch and Bad Touch' session to help children learn, understand, and stay confident in their safety.",
-          year: "2025"
-        },
-        { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg", 
-          title: "Happy Children's Day!", 
-          subtitle: "Celebrating our bright, kind, and curious stars", 
-          description: "To our bright, kind, and curious little stars keep dreaming big and believing in yourself every step of the way.",
-          year: "2025"
-        },
-        { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/3.jpg", 
-          title: "Honoring Our Everyday Heroes", 
-          subtitle: "They don't wear capes, but they build heroes", 
-          description: "To all our teachers who inspire, guide, and ignite dreams — we thank you today and always for your dedication and passion.",
-          year: "2025"
-        },
+        // { 
+        //   src: "https://ik.imagekit.io/u3wbiya66/Highlights/1.jpg", 
+        //   title: "Children's Day Awareness", 
+        //   subtitle: "Empowering our kids through an insightful session", 
+        //   description: "Collaboration with Sri Lanka Police for a 'Good Touch and Bad Touch' session to help children learn, understand, and stay confident in their safety.",
+        //   year: "2025"
+        // },
+        // { 
+        //   src: "https://ik.imagekit.io/u3wbiya66/Highlights/4.jpg", 
+        //   title: "Happy Children's Day!", 
+        //   subtitle: "Celebrating our bright, kind, and curious stars", 
+        //   description: "To our bright, kind, and curious little stars keep dreaming big and believing in yourself every step of the way.",
+        //   year: "2025"
+        // },
+        // { 
+        //   src: "https://ik.imagekit.io/u3wbiya66/Highlights/3.jpg", 
+        //   title: "Honoring Our Everyday Heroes", 
+        //   subtitle: "They don't wear capes, but they build heroes", 
+        //   description: "To all our teachers who inspire, guide, and ignite dreams — we thank you today and always for your dedication and passion.",
+        //   year: "2025"
+        // },
         { 
           src: "https://ik.imagekit.io/u3wbiya66/Highlights/2.jpg", 
           title: "A Decade of Dedication", 
@@ -165,13 +214,13 @@ export default {
           description: "Marking ten years of excellence, our institute held a Pirith Chanting and Almsgiving ceremony with the blessings of the Maha Sangha.",
           year: "2025"
         },
-        { 
-          src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg", 
-          title: "Cambridge English Awards 2025", 
-          subtitle: "Honoring our Pro School Achievers", 
-          description: "Celebrating our High Achievers and Top Achievers a night of pride, passion, and excellence that truly lit up the stage.",
-          year: "2025"
-        },
+        // { 
+        //   src: "https://ik.imagekit.io/u3wbiya66/Highlights/5.jpg", 
+        //   title: "Cambridge English Awards 2025", 
+        //   subtitle: "Honoring our Pro School Achievers", 
+        //   description: "Celebrating our High Achievers and Top Achievers a night of pride, passion, and excellence that truly lit up the stage.",
+        //   year: "2025"
+        // },
       ]
     }
   },
