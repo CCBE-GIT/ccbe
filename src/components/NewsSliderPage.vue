@@ -103,6 +103,13 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/New%20Year/new%20year.jpeg", 
+          title: "New Year Celebrations 2026", 
+          subtitle: "Celebrating the Spirit of Sinhala & Tamil New Year", 
+          description: " CCBE All Branches wishes you a joyful and prosperous Sinhala & Tamil New Year!!. May this festive season bring happiness, success, and new beginnings to everyone as we celebrate the true spirit of Aurudu together",
+          year: "APR 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/Trinity%20College/Trinity%20College.jpg", 
           title: "Trinity College Sign Up", 
           subtitle: "Opening Doors to Academic Excellence", 
