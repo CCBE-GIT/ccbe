@@ -110,7 +110,7 @@ export default {
           year: "APR 2026"
         },
         { 
-          src: "https://ik.imagekit.io/kp5tixhur/Trinity%20College/Trinity%20College.jpg", 
+          src: "https://ik.imagekit.io/kp5tixhur/Trinity%20College/GESE.jpeg", 
           title: "Trinity College Sign Up", 
           subtitle: "Opening Doors to Academic Excellence", 
           description: "Proud to announce the Trinity College sign-up initiative, providing students with new opportunities to access world-class education pathways and strengthen their academic journey through trusted international programs.",
