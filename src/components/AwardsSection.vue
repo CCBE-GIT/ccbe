@@ -196,6 +196,16 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/Trinity%20College-%20approval1.jpeg", 
+          title: "GESE Preparation Centre Approval", 
+          subtitle: "Cambridge College of British English (CCBE) is now officially recognized as an Authorized Preparation Centre.", 
+          description: "Cambridge College of British English (CCBE) is now officially recognized as an Authorized Preparation Centre.",
+          year: "2026",
+          category: "Recognition",
+          organization: "Trinity College London",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/Awards/Certificate1.jpg", 
           title: "Certificate - ISO 9001:2015", 
           subtitle: "Officially awarded the ISO 9001:2015 Quality Management System certification by Otabu Certification Pvt. Ltd.", 
