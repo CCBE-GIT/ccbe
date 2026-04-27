@@ -175,6 +175,11 @@ export default {
         email: "",
       },
       careers: [
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2020.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2019.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2018.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2017.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2016.jpeg" },
         { image: "https://ik.imagekit.io/u3wbiya66/Careers/15.jpeg" },
         { image: "https://ik.imagekit.io/u3wbiya66/Careers/14.jpeg" },
         { image: "https://ik.imagekit.io/u3wbiya66/Careers/13.jpeg" },
