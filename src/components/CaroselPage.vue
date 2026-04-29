@@ -80,10 +80,10 @@
 import topWebImage from '@/assets/TopWeb.jpg';
 //import snowflakeImage from '@/assets/festivel/snow.png';
 //import santaCapImage from '@/assets/festivel/bells.png';
-import kokisImage from '@/assets/festivel/kokis.png';
-import cashewImage from '@/assets/festivel/cashew.png';
-import flowerImage from '@/assets/festivel/flower1.png';
-import flowerImage1 from '@/assets/festivel/flower2.png';
+//import kokisImage from '@/assets/festivel/kokis.png';
+//import cashewImage from '@/assets/festivel/cashew.png';
+//import flowerImage from '@/assets/festivel/flower1.png';
+//import flowerImage1 from '@/assets/festivel/flower2.png';
 
 
 export default {
@@ -94,10 +94,10 @@ export default {
       topWebImage,
       //snowflakeImage,
       //santaCapImage,
-      kokisImage,
-      cashewImage,
-      flowerImage,
-      flowerImage1,
+      //kokisImage,
+      //cashewImage,
+      //flowerImage,
+      //flowerImage1,
       snowCount: 35,
       santaCapCount: 8,
       isMobile: false,
