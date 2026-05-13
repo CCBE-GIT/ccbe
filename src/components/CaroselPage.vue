@@ -77,7 +77,7 @@
 </template>
 
 <script>
-import topWebImage from '@/assets/TopWeb.jpg';
+import topWebImage from '@/assets/TopWeb2026.png';
 //import snowflakeImage from '@/assets/festivel/snow.png';
 //import santaCapImage from '@/assets/festivel/bells.png';
 //import kokisImage from '@/assets/festivel/kokis.png';
