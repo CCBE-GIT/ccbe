@@ -175,6 +175,10 @@ export default {
         email: "",
       },
       careers: [
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Assistant%20BM.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Admin%20-%20Matugama.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Ass.Branch%20Manager%20-%20KLT.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/English%20Teacher.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2020.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2018.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2017.jpeg" },
