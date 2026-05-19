@@ -39,7 +39,10 @@
               </div>
               <div class="card-content">
                 <h3 class="card-title">{{ award.title }}</h3>
-                <p class="card-description">{{ award.description }}</p>
+                <p class="card-description">
+                  {{ award.description }}
+                  <a v-if="award.link" :href="award.link" target="_blank" rel="noopener noreferrer" class="card-link">Watch here</a>
+                </p>
                 <div class="card-footer">
                   <span class="date-badge">{{ award.year }}</span>
                   <div class="social-icons" aria-label="Social media sharing options">
@@ -103,6 +106,14 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/Cover%20Song.jpeg", 
+          title: "♪ අම්මේ, මං නුඹට ආදරෙයි... | Official Cover Song by CCBE Students", 
+          subtitle: "Celebrating the Mother's Day 2026", 
+          link: "https://youtu.be/Cp0hjgMYsdI",
+          description: "For the never-ending, silent love of a mother, CCBE presents to you, අම්මේ, මං නුඹට ආදරෙයි..!!, a song sung by our own children.",
+          year: "May 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/New%20Year/new%20year.jpeg", 
           title: "New Year Celebrations 2026", 
           subtitle: "Celebrating the Spirit of Sinhala & Tamil New Year", 
@@ -123,13 +134,13 @@ export default {
           description: "Our website www.ccbe.lk has been recognized with the TopWeb.lk Award – March 2026, highlighting our commitment to quality, innovation, and digital excellence.",
           year: "MAR 2026"
         },
-        { 
-          src: "https://ik.imagekit.io/kp5tixhur/Iftar%20celebration/Iftar1.jpg", 
-          title: "Iftar Celebration 2026", 
-          subtitle: "An Evening of Unity, Reflection & Togetherness", 
-          description: "The Iftar Celebration 2026 at CCBE was a meaningful gathering that brought staff together to break fast during the holy month of Ramadan. The event reflected the values of unity, respect, and cultural diversity, creating a warm and inclusive atmosphere for everyone.",
-          year: "MAR 2026"
-        },
+        //{ 
+          //src: "https://ik.imagekit.io/kp5tixhur/Iftar%20celebration/Iftar1.jpg", 
+          //title: "Iftar Celebration 2026", 
+          //subtitle: "An Evening of Unity, Reflection & Togetherness", 
+          //description: "The Iftar Celebration 2026 at CCBE was a meaningful gathering that brought staff together to break fast during the holy month of Ramadan. The event reflected the values of unity, respect, and cultural diversity, creating a warm and inclusive atmosphere for everyone.",
+          //year: "MAR 2026"
+        //},
         { 
           src: "https://ik.imagekit.io/kp5tixhur/IELTS%20Partner%20Forum%202026/ielts3.jpeg", 
           title: "IELTS Partner Forum 2026", 
@@ -354,6 +365,18 @@ export default {
 .award-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-link {
+  display: inline-block;
+  margin-left: 4px;
+  color: #ff6b35;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
 }
 
 .card-image {
