@@ -33,7 +33,10 @@
             <div class="expand-transition" :style="{ maxHeight: card.show ? '500px' : '0' }">
               <div class="divider"></div>
               
-              <div class="card-content">{{ card.content }}</div>
+              <div class="card-content">
+                {{ card.content }}
+                <a v-if="card.link" :href="card.link" target="_blank" rel="noopener noreferrer" class="card-link">▶ Watch here</a>
+              </div>
             </div>
           </div>
         </div>
@@ -79,6 +82,14 @@ export default {
     return {
       // Array of card data
       cards: [
+        {
+          image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/Cover%20Song.jpeg",
+          title: "♪ අම්මේ, මං නුඹට ආදරෙයි... | Official Cover Song by CCBE Students",
+          subtitle: "Celebrating the Mother's Day 2026",
+          content: "For the never-ending, silent love of a mother, CCBE presents to you, අම්මේ, මං නුඹට ආදරෙයි..!!, a song sung by our own children.",
+          link: "https://youtu.be/Cp0hjgMYsdI",
+          show: false,
+        },
         {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE8.jpeg",
           title: "INTERNATIONAL WOMEN'S DAY 2026",
@@ -186,7 +197,7 @@ export default {
         // },
         {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/FB_IMG_1738984825665.jpg?updatedAt=1738985254002",
-          title: "Fit to Fight 2024",
+          title: "Fit to Fight 2025",
           subtitle: "Our 9th Annual Event a Huge Success!",
           content: "Heartfelt thanks to everyone who contributed to and supported our 9th annual Fit to Fight event! Your unwavering generosity and dedication have once again demonstrated the power of community and compassion.\n\nThis year's event was a remarkable success, with participants, sponsors, and volunteers coming together to support a noble cause. The funds raised during this event will directly benefit the Cancer Hospital in Karapitiya, providing vital resources for patients and their families.\n\nTogether, we have shown that strength lies in unity, and with your support, we have made a meaningful difference in the lives of those who need it most.\n\nThank you for being a part of this incredible journey. Here's to continuing the fight and spreading hope, one step at a time!\n\nStay tuned for updates, photos, and highlights from the event!",
           show: false,
@@ -299,6 +310,18 @@ export default {
   padding: 8px 16px;
   display: flex;
   align-items: center;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #FF5F15;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.card-link:hover {
+  text-decoration: underline;
 }
 
 .spacer {
