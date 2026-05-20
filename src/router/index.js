@@ -158,7 +158,7 @@ const routes = [
 
   // ── Branches ────────────────────────────────────────────────────────────
   {
-    path: '/about/ambalangoda', name: 'AmabalngodaBranch', component: AmbalangodaBranch,
+    path: '/about/ambalangoda', name: 'AmbalngodaBranch', component: AmbalangodaBranch,
     meta: {
       title: 'CCBE Ambalangoda Branch',
       description: 'Cambridge College of British English Ambalangoda — No 97, New Rd, Ambalangoda 80300. Call: +94 91 2252 452. Enrol in English courses near you.',
