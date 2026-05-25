@@ -21,7 +21,8 @@
                     </p>
                     <p>
                         <v-icon class="icon">mdi-phone</v-icon>
-                        <a href="tel:091 22 37 37 3">+94 34 212 1477 / +94 70 506 0666</a>
+                        <a href="tel:091 22 37 37 3">+94 34 212 1477</a> |
+                        <a href="tel:091 22 37 37 3">+94 70 506 0666</a>
                     </p>
                     <p>
                         <v-icon class="icon">mdi-email</v-icon>
