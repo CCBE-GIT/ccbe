@@ -101,6 +101,12 @@
                @mouseleave="hideTooltip">
             <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Horana College'">{{ tooltipText }}</div>
           </div>
+          <div class="point" :style="{ top: '67%', left: '36.5%' }"
+               @click="navigateTo('/about/matugama')"
+               @mouseenter="showTooltip('Matugama College')"
+               @mouseleave="hideTooltip">
+            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Matugama College'">{{ tooltipText }}</div>
+          </div>
         </div>
       </div>
 
@@ -124,117 +130,8 @@
             <p class="branch-card-addr">{{ office.address }}</p>
             <a :href="'tel:' + office.phone.replace(/\s/g,'')" class="branch-card-phone" @click.stop>{{ office.phone }}</a>
           </div>
-          <!-- <a
-            :href="'https://maps.google.com/?q=' + encodeURIComponent(office.address)"
-            target="_blank"
-            rel="noopener"
-            class="branch-map-btn"
-            @click.stop
-            aria-label="View on map"
-          >🗺️</a> -->
         </div>
       </div>
-
-      <!-- ── Feedback / Contact Form ── -->
-      <!-- <div class="contact-form-section" data-aos="fade-up" data-aos-duration="2000">
-        <h1 class="title">SEND US A <span class="highlight">MESSAGE</span></h1>
-        <p class="form-subtitle">Have a question or want to enrol? Fill in the form below and we'll get back to you shortly.</p>
-
-        <div class="form-wrapper">
-          <form class="contact-form" @submit.prevent="submitForm" novalidate>
-            <div class="form-row">
-              <div class="form-group" :class="{ error: errors.name }">
-                <label for="cf-name">Full Name <span class="required">*</span></label>
-                <input
-                  id="cf-name"
-                  v-model="form.name"
-                  type="text"
-                  placeholder="e.g. Kamal Perera"
-                  autocomplete="name"
-                  @blur="validateField('name')"
-                />
-                <span class="error-msg" v-if="errors.name">{{ errors.name }}</span>
-              </div>
-              <div class="form-group" :class="{ error: errors.email }">
-                <label for="cf-email">Email Address <span class="required">*</span></label>
-                <input
-                  id="cf-email"
-                  v-model="form.email"
-                  type="email"
-                  placeholder="e.g. kamal@email.com"
-                  autocomplete="email"
-                  @blur="validateField('email')"
-                />
-                <span class="error-msg" v-if="errors.email">{{ errors.email }}</span>
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group" :class="{ error: errors.phone }">
-                <label for="cf-phone">Phone Number</label>
-                <input
-                  id="cf-phone"
-                  v-model="form.phone"
-                  type="tel"
-                  placeholder="e.g. +94 77 123 4567"
-                  autocomplete="tel"
-                />
-              </div>
-              <div class="form-group">
-                <label for="cf-branch">Branch of Interest</label>
-                <select id="cf-branch" v-model="form.branch">
-                  <option value="">Select a branch</option>
-                  <option v-for="o in offices" :key="o.name" :value="o.name">{{ o.name }}</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group" :class="{ error: errors.subject }">
-              <label for="cf-subject">Subject <span class="required">*</span></label>
-              <input
-                id="cf-subject"
-                v-model="form.subject"
-                type="text"
-                placeholder="e.g. Enquiry about IELTS programme"
-                @blur="validateField('subject')"
-              />
-              <span class="error-msg" v-if="errors.subject">{{ errors.subject }}</span>
-            </div>
-
-            <div class="form-group" :class="{ error: errors.message }">
-              <label for="cf-message">Message <span class="required">*</span></label>
-              <textarea
-                id="cf-message"
-                v-model="form.message"
-                rows="5"
-                placeholder="Write your message here..."
-                @blur="validateField('message')"
-              ></textarea>
-              <span class="char-count">{{ form.message.length }} / 1000</span>
-              <span class="error-msg" v-if="errors.message">{{ errors.message }}</span>
-            </div> -->
-
-            <!-- Success / Error Feedback -->
-            <!-- <transition name="fade-msg">
-              <div v-if="submitStatus === 'success'" class="form-feedback success" role="alert">
-                ✅ Thank you, <strong>{{ form.name }}</strong>! Your message has been sent. We'll contact you soon.
-              </div>
-              <div v-else-if="submitStatus === 'error'" class="form-feedback error-feedback" role="alert">
-                ❌ Something went wrong. Please try again or call us directly.
-              </div>
-            </transition> -->
-
-            <!-- <div class="form-footer">
-              <p class="form-note">Fields marked <span class="required">*</span> are required.</p>
-              <button type="submit" class="submit-btn" :disabled="isSubmitting">
-                <span v-if="isSubmitting">Sending…</span>
-                <span v-else>Send Message</span>
-                <svg v-if="!isSubmitting" class="send-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-              </button>
-            </div>
-          </form>
-        </div>
-      </div> -->
 
       <!-- ── Back to Home Link ── -->
       <div class="home-link-section" data-aos="fade-up" data-aos-duration="1500">
@@ -274,14 +171,15 @@ export default {
   data() {
     return {
       logo: require('@/assets/Logo.png'),
-      branchNetworkImage: require('@/assets/Branch_Network.png'),
+      branchNetworkImage: require('@/assets/Branch_Network1.png'),
       offices: [
-        { name: "Galle College",       address: "No 118, Old Matara Rd, Galle, 80000",           phone: "+94 91 223 7373" },
-        { name: "Ambalangoda College", address: "No 97, New Rd, Ambalangoda, 80300",             phone: "+94 91 225 2452" },
-        { name: "Matara College",      address: "No 352, Kumarathunga Mw, Matara, 81000",        phone: "+94 41 205 0200" },
-        { name: "Piliyandala College", address: "No 119, Moratuwa Rd, Suwarapola, Piliyandala, 10300",       phone: "+94 11 218 0008" },
-        { name: "Horana College",      address: "No 149, Graceland Circular Rd, Horana, 12400",  phone: "+94 34 220 5503" }, 
-        { name: "Kalutara College",    address: "No 85, Maha Waskaduwa, 12580",                  phone: "+94 34 212 1210" }, 
+        { name: "Galle College",       address: "No 118, Old Matara Rd, Galle, 80000",                  phone: "+94 91 223 7373" },
+        { name: "Ambalangoda College", address: "No 97, New Rd, Ambalangoda, 80300",                    phone: "+94 91 225 2452" },
+        { name: "Matara College",      address: "No 352, Kumarathunga Mw, Matara, 81000",               phone: "+94 41 205 0200" },
+        { name: "Piliyandala College", address: "No 119, Moratuwa Rd, Suwarapola, Piliyandala, 10300",  phone: "+94 11 218 0008" },
+        { name: "Horana College",      address: "No 149, Graceland Circular Rd, Horana, 12400",         phone: "+94 34 220 5503" }, 
+        { name: "Kalutara College",    address: "No 85, Maha Waskaduwa, Waskaduwa, 12580",              phone: "+94 34 212 1210" },
+        { name: "Matugama College",    address: "No 57/D, Aluthgama Rd, Matugama, 12100",               phone: "+94 34 212 1477" }, 
       ],
       selectedOffice: null,
       tooltipVisible: false,
