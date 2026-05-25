@@ -15,10 +15,9 @@
         At the heart of our commitment to communication and service lies our dedication to ensuring every interaction is meaningful, responsive, and supportive.
       </p>
 
-      <!-- ── Contact Info Cards ── -->
+      <!-- Contact Info Cards -->
       <div class="contact-info-grid" data-aos="fade-up" data-aos-duration="2000">
         <div class="contact-info-card">
-          <!-- <div class="info-icon">📞</div> -->
           <div class="info-body">
             <h3 class="info-title">Call Us</h3>
             <p><a href="tel:+94713999666" class="info-link">+94 71 399 9666</a> (Hot Line)</p>
@@ -26,7 +25,6 @@
           </div>
         </div>
         <div class="contact-info-card">
-          <!-- <div class="info-icon">✉️</div> -->
           <div class="info-body">
             <h3 class="info-title">Email Us</h3>
             <p><a href="mailto:info@ccbe.lk" class="info-link">info@ccbe.lk</a></p>
@@ -34,7 +32,6 @@
           </div>
         </div>
         <div class="contact-info-card">
-          <!-- <div class="info-icon">🕘</div> -->
           <div class="info-body">
             <h3 class="info-title">Opening Hours</h3>
             <p><b>Mon – Fri :</b> 8:15 AM – 6:00 PM</p>
@@ -42,7 +39,6 @@
           </div>
         </div>
         <div class="contact-info-card">
-          <!-- <div class="info-icon">🌐</div> -->
           <div class="info-body">
             <h3 class="info-title">Follow Us</h3>
             <div class="social-links">
@@ -63,50 +59,79 @@
         <!-- Image Container -->
         <div class="image-container">
           <!-- Main Image -->
-          <img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" :src="branchNetworkImage" alt="Branch Network" class="branch-image">
-          <!-- Interactive Points -->
-          <div class="point" :style="{ top: '73%', left: '34%' }"
-               @click="navigateTo('/about/ambalangoda')"
-               @mouseenter="showTooltip('Ambalangoda College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Ambalangoda College'">{{ tooltipText }}</div>
+          <img
+            data-aos="zoom-out"
+            data-aos-duration="2000"
+            width="390"
+            height="490"
+            :src="branchNetworkImage"
+            alt="Branch Network"
+            class="branch-image"
+          >
+
+          <!-- Ambalangoda -->
+          <div
+            class="point"
+            :style="{ top: '74.5%', left: '36%' }"
+            @click="navigateTo('/about/ambalangoda')"
+          >
+            <span class="point-tooltip">Ambalangoda College</span>
           </div>
-          <div class="point" :style="{ top: '80.5%', left: '40%' }"
-               @click="navigateTo('/about/galle')"
-               @mouseenter="showTooltip('Galle College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Galle College'">{{ tooltipText }}</div>
+
+          <!-- Galle -->
+          <div
+            class="point"
+            :style="{ top: '82%', left: '42%' }"
+            @click="navigateTo('/about/galle')"
+          >
+            <span class="point-tooltip">Galle College</span>
           </div>
-          <div class="point" :style="{ top: '79%', left: '55%' }"
-               @click="navigateTo('/about/matara')"
-               @mouseenter="showTooltip('Matara College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Matara College'">{{ tooltipText }}</div>
+
+          <!-- Matara -->
+          <div
+            class="point"
+            :style="{ top: '81%', left: '57%'}"
+            @click="navigateTo('/about/matara')"
+          >
+            <span class="point-tooltip point-tooltip-right">Matara College</span>
           </div>
-          <div class="point" :style="{ top: '63%', left: '35%' }"
-               @click="navigateTo('/about/piliyandala')"
-               @mouseenter="showTooltip('Piliyandala College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Piliyandala College'">{{ tooltipText }}</div>
+
+          <!-- Piliyandala -->
+          <div
+            class="point"
+            :style="{ top: '64.8%', left: '36.5%' }"
+            @click="navigateTo('/about/piliyandala')"
+          >
+            <span class="point-tooltip">Piliyandala College</span>
           </div>
-          <div class="point" :style="{ top: '63%', left: '28.5%' }"
-               @click="navigateTo('/about/kalutara')"
-               @mouseenter="showTooltip('Kalutara College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Kalutara College'">{{ tooltipText }}</div>
+
+          <!-- Kalutara -->
+          <div
+            class="point"
+            :style="{ top: '65%', left: '30.5%' }"
+            @click="navigateTo('/about/kalutara')"
+          >
+            <span class="point-tooltip">Kalutara College</span>
           </div>
-          <div class="point" :style="{ top: '67%', left: '32.5%' }"
-               @click="navigateTo('/about/horana')"
-               @mouseenter="showTooltip('Horana College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Horana College'">{{ tooltipText }}</div>
+
+          <!-- Horana -->
+          <div
+            class="point"
+            :style="{ top: '68.5%', left: '34%' }"
+            @click="navigateTo('/about/horana')"
+          >
+            <span class="point-tooltip">Horana College</span>
           </div>
-          <div class="point" :style="{ top: '67%', left: '36.5%' }"
-               @click="navigateTo('/about/matugama')"
-               @mouseenter="showTooltip('Matugama College')"
-               @mouseleave="hideTooltip">
-            <div class="tooltip" v-if="tooltipVisible && tooltipText === 'Matugama College'">{{ tooltipText }}</div>
+
+          <!-- Matugama -->
+          <div
+            class="point"
+            :style="{ top: '68.5%', left: '38.5%' }"
+            @click="navigateTo('/about/matugama')"
+          >
+            <span class="point-tooltip">Matugama College</span>
           </div>
+
         </div>
       </div>
 
@@ -116,15 +141,15 @@
         <p>{{ selectedOffice.phone }}</p>
       </div>
 
-      <!-- ── Branch Cards ── -->
+      <!-- Branch Cards -->
       <div class="branch-cards-grid" data-aos="fade-up" data-aos-duration="2000">
         <div
           v-for="(office, index) in offices"
           :key="index"
           class="branch-card"
           :class="{ 'branch-card--active': selectedOffice && selectedOffice.name === office.name }"
+          @click="selectOffice(office)"
         >
-          <!-- <div class="branch-card-icon">📍</div> -->
           <div class="branch-card-body">
             <h4 class="branch-card-name">{{ office.name }}</h4>
             <p class="branch-card-addr">{{ office.address }}</p>
@@ -133,7 +158,7 @@
         </div>
       </div>
 
-      <!-- ── Back to Home Link ── -->
+      <!-- Back to Home Link -->
       <div class="home-link-section" data-aos="fade-up" data-aos-duration="1500">
         <p>Looking for something else?</p>
         <a href="/" class="home-link-btn">
@@ -182,57 +207,19 @@ export default {
         { name: "Matugama College",    address: "No 57/D, Aluthgama Rd, Matugama, 12100",               phone: "+94 34 212 1477" }, 
       ],
       selectedOffice: null,
-      tooltipVisible: false,
-      tooltipText: '',
-      tooltipTimer: null,
-      // Form
-      form: { name: '', email: '', phone: '', branch: '', subject: '', message: '' },
-      errors: {},
-      isSubmitting: false,
-      submitStatus: null
     };
   },
   methods: {
-    navigateTo(route) { this.$router.push(route); },
-    selectOffice(office) { this.selectedOffice = office; },
-    showTooltip(text) {
-      this.tooltipText = text;
-      clearTimeout(this.tooltipTimer);
-      this.tooltipVisible = true;
+    navigateTo(route) { 
+      this.$router.push(route); 
     },
-    hideTooltip() {
-      this.tooltipTimer = setTimeout(() => { this.tooltipVisible = false; }, 100);
+    selectOffice(office) { 
+      this.selectedOffice = office; 
     },
-    validateField(field) {
-      const v = this.form[field];
-      if (field === 'name')    this.errors.name    = v.trim().length < 2 ? 'Please enter your full name.' : '';
-      if (field === 'email')   this.errors.email   = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) ? '' : 'Please enter a valid email address.';
-      if (field === 'subject') this.errors.subject = v.trim().length < 3 ? 'Please enter a subject.' : '';
-      if (field === 'message') this.errors.message = v.trim().length < 10 ? 'Message must be at least 10 characters.' : '';
-    },
-    validateAll() {
-      ['name', 'email', 'subject', 'message'].forEach(f => this.validateField(f));
-      return !Object.values(this.errors).some(e => e);
-    },
-    async submitForm() {
-      if (!this.validateAll()) return;
-      this.isSubmitting = true;
-      this.submitStatus = null;
-      // Simulate network request (replace with actual API call)
-      await new Promise(r => setTimeout(r, 1200));
-      this.isSubmitting = false;
-      this.submitStatus = 'success';
-      this.form = { name: '', email: '', phone: '', branch: '', subject: '', message: '' };
-      this.errors = {};
-      setTimeout(() => { this.submitStatus = null; }, 6000);
-    }
   },
   mounted() {
     AOS.init();
   },
-  beforeUnmount() {
-    clearTimeout(this.tooltipTimer);
-  }
 };
 </script>
 
@@ -273,7 +260,7 @@ export default {
 
 #logo { display: block; }
 
-/* ── Contact Info Cards ─────────────────────────── */
+/* Contact Info Cards */
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -297,8 +284,6 @@ export default {
   transform: translateY(-4px);
   box-shadow: 0 10px 28px rgba(251,183,0,0.14);
 }
-
-.info-icon { font-size: 1.8rem; flex-shrink: 0; }
 
 .info-body { flex: 1; }
 
@@ -348,7 +333,7 @@ export default {
 .social-btn.yt { background: #dc2743; color: #fff; }
 .social-btn.tk { background: #333; color: #fff; }
 
-/* ── Branch Network Map ─────────────────────────── */
+/* Branch Network Map */
 .center-container-Branch {
   display: flex;
   justify-content: center;
@@ -374,67 +359,73 @@ export default {
 
 .point {
   position: absolute;
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main yellow dot */
+.point::before {
+  content: '';
+  position: absolute;
   width: 15px;
   height: 15px;
   background-color: rgb(255, 230, 0);
   border-radius: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  z-index: 10;
+  box-shadow: 0 0 18px rgba(255, 230, 0, 0.9);
   animation: pulse-grow 2s infinite;
-  box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
-  transition: transform 0.2s ease;
 }
 
-.point:hover {
-  transform: translate(-50%, -50%) scale(1.3);
-  box-shadow: 0 0 15px rgba(255, 230, 0, 1);
-}
-
-.point::before,
+/* Glow wave effect */
 .point::after {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 15px;
+  height: 15px;
   border: 2px solid rgba(255, 243, 7, 0.889);
   border-radius: 50%;
-  top: 0;
-  left: 0;
-  transform: scale(1);
   animation: wave 2s infinite;
 }
 
-.point::after { animation-delay: 1s; }
-
-.tooltip {
+/* Tooltip beside point */
+.point-tooltip {
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 6px 12px;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: white;
+  color: black;
+  padding: 10px 18px;
+  border: 2px solid #222;
   border-radius: 4px;
   font-size: 14px;
+  font-weight: 500;
   white-space: nowrap;
-  margin-bottom: 8px;
-  z-index: 20;
-  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  z-index: 100;
 }
 
-.tooltip::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: rgba(0,0,0,0.8) transparent transparent transparent;
+/* Tooltip for right side (Matara) */
+.point-tooltip-right {
+  left: auto;
+  right: 30px;
 }
 
-/* ── Branch Cards ───────────────────────────────── */
+/* Show tooltip on hover */
+.point:hover .point-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Branch Cards */
 .branch-cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -461,8 +452,6 @@ export default {
   transform: translateY(-2px);
 }
 
-.branch-card-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
-
 .branch-card-body { flex: 1; min-width: 0; }
 
 .branch-card-name {
@@ -470,6 +459,7 @@ export default {
   font-weight: 700;
   color: #2c3e50;
   margin: 0 0 4px;
+  text-align: left;
 }
 
 .branch-card-addr {
@@ -477,6 +467,7 @@ export default {
   color: #888;
   margin: 0 0 4px;
   line-height: 1.3;
+  text-align: left;
 }
 
 .branch-card-phone {
@@ -484,203 +475,13 @@ export default {
   font-weight: 600;
   color: #FF5F15;
   text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
 .branch-card-phone:hover { text-decoration: underline; }
 
-.branch-map-btn {
-  flex-shrink: 0;
-  font-size: 1.2rem;
-  padding: 4px;
-  border-radius: 6px;
-  transition: background 0.2s;
-  text-decoration: none;
-}
-
-.branch-map-btn:hover { background: #fef9f0; }
-
-/* ── Contact Form ───────────────────────────────── */
-.contact-form-section {
-  margin: 20px 0 40px;
-}
-
-.form-subtitle {
-  text-align: center;
-  color: #666;
-  font-size: 1rem;
-  margin: 0 0 30px;
-}
-
-.form-wrapper {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  padding: 36px 40px;
-  border: 1px solid #f0f0f0;
-}
-
-.contact-form { display: flex; flex-direction: column; gap: 20px; }
-
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  position: relative;
-}
-
-.form-group label {
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #444;
-}
-
-.required { color: #FF5F15; }
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 11px 16px;
-  border: 2px solid #e8e8e8;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  font-family: 'Roboto', sans-serif;
-  color: #333;
-  background: #fafafa;
-  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #FBB700;
-  background: #fff;
-  box-shadow: 0 0 0 3px rgba(251,183,0,0.12);
-}
-
-.form-group.error input,
-.form-group.error textarea {
-  border-color: #e74c3c;
-}
-
-.error-msg {
-  font-size: 0.78rem;
-  color: #e74c3c;
-  margin-top: 2px;
-}
-
-.char-count {
-  position: absolute;
-  bottom: -18px;
-  right: 0;
-  font-size: 0.72rem;
-  color: #bbb;
-}
-
-.form-group textarea { resize: vertical; min-height: 120px; }
-
-.form-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 4px;
-}
-
-.form-note { font-size: 0.8rem; color: #aaa; margin: 0; }
-
-.submit-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 32px;
-  background: #FF5F15;
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: 'Roboto', sans-serif;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 18px rgba(255,95,21,0.3);
-}
-
-.submit-btn:hover:not(:disabled) {
-  background: #e04f0d;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255,95,21,0.35);
-}
-
-.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; }
-
-.send-icon { flex-shrink: 0; }
-
-.form-feedback {
-  padding: 14px 20px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.form-feedback.success {
-  background: #e8f8f0;
-  border: 1px solid #a3d9b1;
-  color: #1e6b3e;
-}
-
-.form-feedback.error-feedback {
-  background: #fdecea;
-  border: 1px solid #f5c6c6;
-  color: #922b21;
-}
-
-.fade-msg-enter-active,
-.fade-msg-leave-active { transition: opacity 0.4s, transform 0.4s; }
-.fade-msg-enter-from,
-.fade-msg-leave-to { opacity: 0; transform: translateY(-6px); }
-
-/* Force left-alignment inside branch cards — override any global CSS */
-.branch-card,
-.branch-card * {
-  text-align: left !important;
-}
-
-.branch-card-name {
-  font-size: 0.9rem;
-  font-weight: 700 !important;
-  color: #2c3e50 !important;
-  margin: 0 0 4px;
-  text-align: left !important;
-}
-
-.branch-card-addr {
-  font-size: 0.78rem;
-  color: #888 !important;
-  margin: 0 0 4px;
-  line-height: 1.3;
-  text-align: left !important;
-}
-
-.branch-card-phone {
-  font-size: 0.82rem;
-  font-weight: 600 !important;
-  color: #FF5F15 !important;
-  text-decoration: none;
-  text-align: left !important;
-  display: block;
-}
-
-/* ── Back to Home ───────────────────────────────── */
+/* Back to Home */
 .home-link-section {
   text-align: center;
   padding: 32px 0 16px;
@@ -749,17 +550,18 @@ export default {
 .text-center h3 { color: #FBB700; margin-bottom: 10px; }
 .text-center p  { color: #555; margin: 5px 0; font-size: 1rem; }
 
-/* ── Animations ─────────────────────────────────── */
+/* Animations */
 @keyframes pulse-grow {
   0%, 100% { transform: translate(-50%, -50%) scale(1); }
   50%       { transform: translate(-50%, -50%) scale(1.2); }
 }
+
 @keyframes wave {
   0%   { opacity: 1; transform: scale(1); }
   100% { opacity: 0; transform: scale(3); }
 }
 
-/* ── Responsive ─────────────────────────────────── */
+/* Responsive */
 @media (max-width: 1024px) {
   .contact-info-grid { grid-template-columns: repeat(2, 1fr); }
   .branch-cards-grid { grid-template-columns: repeat(2, 1fr); }
@@ -772,8 +574,6 @@ export default {
   .center-container-Branch { width: 300px; height: 380px; }
   .contact-info-grid { grid-template-columns: 1fr; }
   .branch-cards-grid { grid-template-columns: 1fr; }
-  .form-wrapper { padding: 24px 20px; }
-  .form-row { grid-template-columns: 1fr; }
   #logo { width: 180px; height: auto; }
 }
 
@@ -783,11 +583,10 @@ export default {
   .subtitle { font-size: 1rem; }
   .center-container-Branch { width: 250px; height: 320px; }
   #logo { width: 150px; height: auto; }
-  .point { width: 12px; height: 12px; }
-  .tooltip { font-size: 12px; padding: 4px 8px; }
-  .form-wrapper { padding: 20px 14px; }
-  .submit-btn { width: 100%; justify-content: center; }
-  .form-footer { flex-direction: column; align-items: flex-start; }
+  .point { width: 22px; height: 22px; }
+  .point::before,
+  .point::after { width: 12px; height: 12px; }
+  .point-tooltip { font-size: 12px; padding: 6px 12px; white-space: nowrap; }
   .quick-nav-links { gap: 8px; }
 }
 </style>
