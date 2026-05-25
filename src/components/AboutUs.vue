@@ -160,7 +160,13 @@
       <div v-if="selectedOffice" class="text-center mt-5">
         <h3>{{ selectedOffice.name }}</h3>
         <p>{{ selectedOffice.address }}</p>
-        <p>{{ selectedOffice.phone }}</p>
+        <p><a
+            :href="'tel:' + selectedOffice.phone.split('/')[0].replace(/\s/g,'')"
+            class="branch-card-phone"
+            >
+            {{ selectedOffice.phone }}
+            </a>
+        </p>
       </div>
       
       <div>
