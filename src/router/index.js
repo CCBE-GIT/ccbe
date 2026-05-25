@@ -26,6 +26,7 @@ const MataraBranch      = () => import(/* webpackChunkName: "branches" */ '../co
 const PiliyandalaBranch = () => import(/* webpackChunkName: "branches" */ '../components/branches/PiliyandalaBranch.vue')
 const HoranaBranch      = () => import(/* webpackChunkName: "branches" */ '../components/branches/HoranaBranch.vue')
 const KalutaraBranch    = () => import(/* webpackChunkName: "branches" */ '../components/branches/KalutaraBranch.vue')
+const MatugamaBranch    = () => import(/* webpackChunkName: "branches" */ '../components/branches/MatugamaBranch.vue')
 
 // ─────────────────────────────────────────────────────────────────────────
 const BASE_URL = 'https://www.ccbe.lk'
@@ -203,6 +204,14 @@ const routes = [
       title: 'CCBE Kalutara Branch',
       description: 'Cambridge College of British English Kalutara — No 85, Maha Waskaduwa, Kalutara 12580. Quality Cambridge English courses now available in Kalutara.',
       canonical: `${BASE_URL}/about/kalutara`
+    }
+  },
+  {
+    path: '/about/matugama', name: 'MatugamaBranch', component: MatugamaBranch,
+    meta: {
+      title: 'CCBE Matugama Branch',
+      description: 'Cambridge College of British English Matugama — 118, Old Matara Rd, Galle 80000. Call: +94 91 22 37373. English courses and Cambridge exam preparation in Galle.',
+      canonical: `${BASE_URL}/about/matugama`
     }
   },
 ]

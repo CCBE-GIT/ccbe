@@ -75,6 +75,7 @@
           <div class="point" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')" @mouseenter="showTooltip($event, 'Piliyandala College')" @mouseleave="hideTooltip()"></div>
           <div class="point" :style="{ top: '67%', left: '32.5%' }" @click="navigateTo('/about/horana')" @mouseenter="showTooltip($event, 'Horana College')" @mouseleave="hideTooltip()"></div>
           <div class="point" :style="{ top: '63.5%', left: '28.5%' }" @click="navigateTo('/about/kalutara')" @mouseenter="showTooltip($event, 'Kalutara College')" @mouseleave="hideTooltip()"></div>
+          <div class="point" :style="{ top: '67%', left: '36.5%' }" @click="navigateTo('/about/matugama')" @mouseenter="showTooltip($event, 'Matugama College')" @mouseleave="hideTooltip()"></div>
         </div>
         
         <!-- Tooltip -->
@@ -170,37 +171,42 @@ export default {
   data() {
     return {
       logo: require('@/assets/Logo.png'),
-      branchImage: require('@/assets/Branch_Network.png'),
+      branchImage: require('@/assets/Branch_Network1.png'),
       offices: [
         {
           name: "Galle College",
-          address: "118, Old Matara Rd, Galle, 80000",
-          phone: "+94 91 22 37373"
+          address: "No 118, Old Matara Rd, Galle, 80000",
+          phone: "+94 91 223 7373"
         },
         {
           name: "Ambalangoda College",
           address: "No 97, New Rd, Ambalangoda, 80300",
-          phone: "+94 91 2252 452"
+          phone: "+94 91 225 2452"
         },
         {
           name: "Matara College",
           address: "No 352, Kumarathunga Mw, Matara, 81000",
-          phone: "+94 41 2050 200"
+          phone: "+94 41 205 0200"
         },
         {
           name: "Piliyandala College",
-          address: "No Moratuwa Rd, Suwarapola, Piliyandala, 10300",
-          phone: "+94 11 2 180 008"
+          address: "No 119, Moratuwa Rd, Suwarapola, Piliyandala, 10300",
+          phone: "+94 11 218 0008"
         },
         {
           name: "Horana College",
           address: "No 149, Graceland Circular Rd, Horana, 12400",
-          phone: "+94 2 180 008"
+          phone: "+94 34 220 5503"
         },
         {
           name: "Kalutara College",
-          address: "No 85, Maha Waskaduwa, 12580",
-          phone: "0342 121 210"
+          address: "No 85, Maha Waskaduwa, Waskaduwa, 12580",
+          phone: "+94 34 212 1210"
+        },
+        {
+          name: "Matugama College",
+          address: "No 57/D, Aluthgama Rd, Matugama, 12100",
+          phone: "+94 34 212 1477 / +94 70 506 0666"
         },
       ],
       selectedOffice: null,

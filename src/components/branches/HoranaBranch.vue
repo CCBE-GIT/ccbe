@@ -13,7 +13,7 @@
                 <div class="branch-info">
                     <p>
                         <v-icon class="icon">mdi-map-marker</v-icon>
-                        No: 149 Graceland,Circular Road,Horana,12400
+                        No 149, Graceland Circular Rd, Horana, 12400
                     </p>
                     <p>
                         <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,7 +21,7 @@
                     </p>
                     <p>
                         <v-icon class="icon">mdi-phone</v-icon>
-                        <a href="tel:034 2 205 503">034 2 205 503</a>
+                        <a href="tel:034 2 205 503">+94 34 220 5503</a>
                     </p>
                     <p>
                         <v-icon class="icon">mdi-email</v-icon>

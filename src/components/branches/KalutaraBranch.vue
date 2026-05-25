@@ -13,7 +13,7 @@
                 <div class="branch-info">
                     <p>
                         <v-icon class="icon">mdi-map-marker</v-icon>
-                        No 85, Maha Waskaduwa, 12580
+                        No 85, Maha Waskaduwa, Waskaduwa, 12580
                     </p>
                     <p>
                         <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,7 +21,7 @@
                     </p>
                     <p>
                         <v-icon class="icon">mdi-phone</v-icon>
-                        <a href="tel:091 2 252 452">0342 121 210</a>
+                        <a href="tel:091 2 252 452">+94 34 212 1210</a>
                     </p>
                     <p>
                         <v-icon class="icon">mdi-email</v-icon>

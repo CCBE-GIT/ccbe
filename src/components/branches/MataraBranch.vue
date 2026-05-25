@@ -13,7 +13,7 @@
             <div class="branch-info">
                 <p>
                     <v-icon class="icon">mdi-map-marker</v-icon>
-                    No: 352,Kumarathunga Mawatha,Matara,81000
+                    No: 352, Kumarathunga Mw, Matara, 81000
                 </p>
                 <p>
                     <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,7 +21,7 @@
                 </p>
                 <p>
                     <v-icon class="icon">mdi-phone</v-icon>
-                    <a href="tel:041 20 50 200">041 20 50 200</a>
+                    <a href="tel:041 20 50 200">+94 41 205 0200</a>
                 </p>
                 <p>
                     <v-icon class="icon">mdi-email</v-icon>

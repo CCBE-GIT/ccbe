@@ -2,7 +2,7 @@
     <NavBar></NavBar>
     <v-container>
         <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">
-            Welcome to <span class="highlight">Piliyandala College</span>
+            Welcome to <span class="highlight">Matugama College</span>
         </h1>
         <br />
     
@@ -13,7 +13,7 @@
                 <div class="branch-info">
                     <p>
                         <v-icon class="icon">mdi-map-marker</v-icon>
-                        No 119, Moratuwa Rd, Suwarapola, Piliyandala, 10300
+                        No 57/D, Aluthgama Rd, Matugama, 12100
                     </p>
                     <p>
                         <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,11 +21,11 @@
                     </p>
                     <p>
                         <v-icon class="icon">mdi-phone</v-icon>
-                        <a href="tel:011 2 180 008">+94 11 218 0008</a>
+                        <a href="tel:091 22 37 37 3">+94 34 212 1477 / +94 70 506 0666</a>
                     </p>
                     <p>
                         <v-icon class="icon">mdi-email</v-icon>
-                        <a>piliyandalaccbe@gmail.com</a>
+                        <a>matugama@ccbe.lk</a>
                     </p>
                     <p>
                         <a href="https://www.facebook.com/ccbe.ambalangoda" target="_blank" rel="noopener noreferrer">
@@ -41,7 +41,7 @@
                             <v-icon class="icon mr-1" color="orange">mdi-music-note</v-icon>
                         </a>
                     </p>
-                    <a href="https://wa.me/+94705834666?text=Hello%20Branch%201" target="_blank" class="whatsapp-button">
+                    <a href="https://wa.me/+94705725666?text=Hello%20Branch%201" target="_blank" class="whatsapp-button">
                         <img :src="require('@/assets/icons/whatsapp.jpg')" alt="WhatsApp" />
                         <strong>Chat Via WhatsApp</strong>
                     </a>
@@ -93,7 +93,7 @@
     
     export default {
     
-        name: 'PiliyandalaBranch',
+        name: 'MatugamaBranch',
         components: {
             NavBar,
             FooterPage,
@@ -128,7 +128,7 @@
         },
         methods: {
             openGoogleMaps() {
-                window.open('https://www.google.com/maps/place/Cambridge+College+of+British+English+-+Piliyandala+Branch/@6.7976862,79.9104188,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae24f66c70e2e1f:0x2c68479dd8418786!8m2!3d6.7976862!4d79.9129937!16s%2Fg%2F11y63j2s3q?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D', '_blank');
+                window.open('https://www.google.com/maps/place/Cambridge+College+of+British+English+-+Matugama+Branch+(CCBE+-+Matugama)/@6.5188635,80.1137881,17z/data=!3m1!4b1!4m6!3m5!1s0x3ae3cdeac2cafabd:0xf09b386262c9fa5d!8m2!3d6.5188635!4d80.116363!16s%2Fg%2F11zb48c7ql?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D', '_blank');
             },
         },
     };

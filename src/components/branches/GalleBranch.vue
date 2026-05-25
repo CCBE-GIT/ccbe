@@ -13,7 +13,7 @@
                 <div class="branch-info">
                     <p>
                         <v-icon class="icon">mdi-map-marker</v-icon>
-                        456 High Street, Galle
+                        No 118, Old Matara Rd, Galle, 80000
                     </p>
                     <p>
                         <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,7 +21,7 @@
                     </p>
                     <p>
                         <v-icon class="icon">mdi-phone</v-icon>
-                        <a href="tel:091 22 37 37 3">091 22 37 37 3</a>
+                        <a href="tel:091 22 37 37 3">+94 91 223 7373</a>
                     </p>
                     <p>
                         <v-icon class="icon">mdi-email</v-icon>

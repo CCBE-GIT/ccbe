@@ -13,7 +13,7 @@
             <div class="branch-info">
                 <p>
                     <v-icon class="icon">mdi-map-marker</v-icon>
-                    123 Main Street, Ambalangoda
+                    No 97, New Rd, Ambalangoda, 80300
                 </p>
                 <p>
                     <v-icon color="blue" @click="openGoogleMaps" style="cursor: pointer;">mdi-map-marker</v-icon>
@@ -21,7 +21,7 @@
                 </p>
                 <p>
                     <v-icon class="icon">mdi-phone</v-icon>
-                    <a href="tel:091 2 252 452">091 2 252 452</a>
+                    <a href="tel:091 2 252 452">+94 91 225 2452</a>
                 </p>
                 <p>
                     <v-icon class="icon">mdi-email</v-icon>
