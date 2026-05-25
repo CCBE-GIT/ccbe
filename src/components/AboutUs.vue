@@ -63,26 +63,99 @@
       </h1>
 
       <div class="center-container-Branch mt-3">
-        <!-- Image Container -->
-        <div class="image-container">
-          <!-- Main Image -->
-          <img data-aos="zoom-out" data-aos-duration="2000" width="390" height="490" :src="branchImage" alt="Branch Network" class="branch-map">
-          
-          <!-- Interactive Points -->
-          <div class="point" :style="{ top: '73%', left: '34%' }" @click="navigateTo('/about/ambalangoda')" @mouseenter="showTooltip($event, 'Ambalangoda College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '80.5%', left: '40%' }" @click="navigateTo('/about/galle')" @mouseenter="showTooltip($event, 'Galle College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '79%', left: '55%' }" @click="navigateTo('/about/matara')" @mouseenter="showTooltip($event, 'Matara College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '63%', left: '35%' }" @click="navigateTo('/about/piliyandala')" @mouseenter="showTooltip($event, 'Piliyandala College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '67%', left: '32.5%' }" @click="navigateTo('/about/horana')" @mouseenter="showTooltip($event, 'Horana College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '63.5%', left: '28.5%' }" @click="navigateTo('/about/kalutara')" @mouseenter="showTooltip($event, 'Kalutara College')" @mouseleave="hideTooltip()"></div>
-          <div class="point" :style="{ top: '67%', left: '36.5%' }" @click="navigateTo('/about/matugama')" @mouseenter="showTooltip($event, 'Matugama College')" @mouseleave="hideTooltip()"></div>
-        </div>
-        
-        <!-- Tooltip -->
-        <div v-if="tooltipVisible" class="tooltip" :style="{ top: tooltipTop + 'px', left: tooltipLeft + 'px' }">
-          {{ tooltipText }}
-        </div>
-      </div>
+  <!-- Image Container -->
+  <div class="image-container">
+
+    <!-- Main Image -->
+    <img
+      data-aos="zoom-out"
+      data-aos-duration="2000"
+      width="390"
+      height="490"
+      :src="branchImage"
+      alt="Branch Network"
+      class="branch-map"
+    />
+
+    <!-- Ambalangoda -->
+    <div
+      class="point"
+      :style="{ top: '74.5%', left: '36%' }"
+      @click="navigateTo('/about/ambalangoda')"
+    >
+      <span class="point-tooltip">
+        Ambalangoda College
+      </span>
+    </div>
+
+    <!-- Galle -->
+    <div
+      class="point"
+      :style="{ top: '82%', left: '42%' }"
+      @click="navigateTo('/about/galle')"
+    >
+      <span class="point-tooltip">
+        Galle College
+      </span>
+    </div>
+
+    <!-- Matara -->
+    <div
+      class="point"
+      :style="{ top: '81%', left: '57%' }"
+      @click="navigateTo('/about/matara')"
+    >
+      <span class="point-tooltip">
+        Matara College
+      </span>
+    </div>
+
+    <!-- Piliyandala -->
+    <div
+      class="point"
+      :style="{ top: '64.8%', left: '36.5%' }"
+      @click="navigateTo('/about/piliyandala')"
+    >
+      <span class="point-tooltip">
+        Piliyandala College
+      </span>
+    </div>
+
+    <!-- Horana -->
+    <div
+      class="point"
+      :style="{ top: '68.5%', left: '34%' }"
+      @click="navigateTo('/about/horana')"
+    >
+      <span class="point-tooltip">
+        Horana College
+      </span>
+    </div>
+
+    <!-- Kalutara -->
+    <div
+      class="point"
+      :style="{ top: '65%', left: '30.5%' }"
+      @click="navigateTo('/about/kalutara')"
+    >
+      <span class="point-tooltip">
+        Kalutara College
+      </span>
+    </div>
+
+    <!-- Matugama -->
+    <div
+      class="point"
+      :style="{ top: '68.5%', left: '38.5%' }"
+      @click="navigateTo('/about/matugama')"
+    >
+      <span class="point-tooltip">
+        Matugama College
+      </span>
+    </div>
+
+  </div>
+</div>
       
       <div v-if="selectedOffice" class="text-center mt-5">
         <h3>{{ selectedOffice.name }}</h3>
@@ -158,15 +231,6 @@ export default {
         console.warn("No link provided for this point.");
       }
     },
-    showTooltip(event, text) {
-      this.tooltipText = text;
-      this.tooltipVisible = true;
-      this.tooltipTop = event.target.getBoundingClientRect().top + window.scrollY - 40;
-      this.tooltipLeft = event.target.getBoundingClientRect().left + window.scrollX;
-    },
-    hideTooltip() {
-      this.tooltipVisible = false;
-    }
   },
   data() {
     return {
@@ -210,10 +274,6 @@ export default {
         },
       ],
       selectedOffice: null,
-      tooltipVisible: false,
-      tooltipText: '',
-      tooltipTop: 0,
-      tooltipLeft: 0
     }
   }
 }
@@ -368,35 +428,85 @@ export default {
 }
 
 /* Points for interactive map */
+/* Points for interactive map */
 .point {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: rgb(255, 230, 0);
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+
   transform: translate(-50%, -50%);
   cursor: pointer;
   z-index: 10;
-  animation: pulse-grow 2s infinite;
-  box-shadow: 0 0 10px rgba(255, 230, 0, 0.8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.point::before,
+/* Main yellow dot */
+.point::before {
+  content: '';
+  position: absolute;
+
+  width: 15px;
+  height: 15px;
+
+  background-color: rgb(255, 230, 0);
+  border-radius: 50%;
+
+  box-shadow: 0 0 18px rgba(255, 230, 0, 0.9);
+
+  animation: pulse-grow 2s infinite;
+}
+
+/* Glow wave effect */
 .point::after {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 100%;
+
+  width: 15px;
+  height: 15px;
+
   border: 2px solid rgba(255, 243, 7, 0.889);
   border-radius: 50%;
-  top: 0;
-  left: 0;
-  transform: scale(1);
+
   animation: wave 2s infinite;
 }
 
-.point::after {
-  animation-delay: 1s;
+/* Tooltip beside point */
+.point-tooltip {
+  position: absolute;
+
+  left: 30px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  background-color: white;
+  color: black;
+
+  padding: 10px 18px;
+
+  border: 2px solid #222;
+  border-radius: 4px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Show tooltip on hover */
+.point:hover .point-tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* Tooltip */
