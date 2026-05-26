@@ -198,6 +198,7 @@
                                 <option value="Matara">Matara</option>
                                 <option value="Piliyandala">Piliyandala</option>
                                 <option value="Kalutara">Kalutara</option>
+                                <option value="Matugama">Matugama</option>
                             </select>
                         </div>
                         
@@ -403,6 +404,11 @@ export default {
                     serviceId: "service_mg2271v",
                     templateId: "template_loig6cz",
                     publicKey: "MJPUAdls_w9W5hPaK",
+                },
+                Matugama: {
+                    serviceId: "service_a0rf5c8",
+                    templateId: "template_6bv0ico",
+                    publicKey: "5DFKJ881pqi_jmuPZ",
                 },
             };
 
