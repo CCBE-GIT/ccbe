@@ -38,7 +38,7 @@ const routes = [
     path: '/', name: 'HomePage', component: HomePage,
     meta: {
       title: 'Home | Cambridge College of British English',
-      description: 'Cambridge College of British English (CCBE) — Sri Lanka\'s premier Cambridge English exam preparation centre. English courses for all ages across 6 branches island-wide.',
+      description: 'Cambridge College of British English (CCBE) — Sri Lanka\'s premier Cambridge English exam preparation centre. English courses for all ages across 7 branches island-wide.',
       canonical: `${BASE_URL}/`
     }
   },
@@ -70,7 +70,7 @@ const routes = [
     path: '/contact', name: 'contact', component: ContactUsPage,
     meta: {
       title: 'Contact Us | CCBE',
-      description: 'Get in touch with Cambridge College of British English. Find our 6 branch locations across Sri Lanka — Galle, Ambalangoda, Matara, Piliyandala, Horana, and Kalutara.',
+      description: 'Get in touch with Cambridge College of British English. Find our 7 branch locations across Sri Lanka — Galle, Ambalangoda, Matara, Piliyandala, Horana, and Kalutara.',
       canonical: `${BASE_URL}/contact`
     }
   },
