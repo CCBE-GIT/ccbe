@@ -106,6 +106,13 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/u3wbiya66/MIS/Mathugama.jpeg", 
+          title: "CCBE | New Branch", 
+          subtitle: "New Branch Opening", 
+          description: "A big surprise awaits!! CCBE's newest branch is coming soon to Matugama.",
+          year: "June 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/Cover%20Song.jpeg", 
           title: "♪ අම්මේ, මං නුඹට ආදරෙයි... | Official Cover Song by CCBE Students", 
           subtitle: "Celebrating the Mother's Day 2026", 
