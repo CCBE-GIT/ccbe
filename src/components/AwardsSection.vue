@@ -196,6 +196,16 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg", 
+          title: "Authorised for Cambridge Linguaskill", 
+          subtitle: "Authorised for Cambridge Linguaskill by Cambridge English.", 
+          description: "Authorised Cambridge Linguaskill Provider & Cambridge English Exam Centre",
+          year: "2026",
+          category: "Recognition",
+          organization: "Cambridge English",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/Awards/Trinity%20College-%20approval1.jpeg", 
           title: "GESE Preparation Centre Approval", 
           subtitle: "Cambridge College of British English (CCBE) is now officially recognized as an Authorized Preparation Centre.", 

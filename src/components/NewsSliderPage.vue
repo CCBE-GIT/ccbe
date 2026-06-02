@@ -106,6 +106,13 @@ export default {
     return {
       awards: [
         { 
+          src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg", 
+          title: "Authorised for Cambridge Linguaskill", 
+          subtitle: "Authorised for Cambridge Linguaskill by Cambridge English", 
+          description: "CCBE International (Pvt) Ltd, LK114 is proud to announce that we are now Authorised for Cambridge Linguaskill by Cambridge English, alongside being an Authorised Cambridge English Exam Centre.",
+          year: "June 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/u3wbiya66/MIS/Mathugama.jpeg", 
           title: "CCBE | New Branch", 
           subtitle: "New Branch Opening", 
