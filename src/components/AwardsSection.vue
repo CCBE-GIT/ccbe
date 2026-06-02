@@ -199,7 +199,7 @@ export default {
           src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg", 
           title: "Authorised for Cambridge Linguaskill", 
           subtitle: "Authorised for Cambridge Linguaskill by Cambridge English.", 
-          description: "Authorised Cambridge Linguaskill Provider & Cambridge English Exam Centre",
+          description: "Authorised Cambridge Linguaskill Provider & Cambridge English Exam Centre.",
           year: "2026",
           category: "Recognition",
           organization: "Cambridge English",
