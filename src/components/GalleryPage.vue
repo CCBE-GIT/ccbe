@@ -280,6 +280,36 @@ export default {
 
       groups: [
         {
+          groupKey: 'linguaskill-day-2026',
+          groupLabel: "Authorised for Cambridge Linguaskill",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-check-decagram',
+          items: [
+            { id: 801, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill14.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 802, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill12.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 803, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill11.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 804, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill7.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 805, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill17.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 806, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill13.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 807, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill5.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 808, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill2.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 809, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill19.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 810, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill8.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 811, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill10.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 812, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill9.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 813, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill4.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 814, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill6.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 815, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill1.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 816, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill3.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 817, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill15.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 818, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill18.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 819, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill16.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+            { id: 820, src: 'https://ik.imagekit.io/kp5tixhur/Linguaskill%20Event/Linguaskill20.jpeg', title: "Authorised for Cambridge Linguaskill", category: 'Events', year: '2026' },
+          ]
+        },
+        {
           groupKey: 'womens-day-2026',
           groupLabel: "INTERNATIONAL WOMEN'S DAY 2026",
           categoryKey: 'events',
