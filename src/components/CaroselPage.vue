@@ -1,9 +1,11 @@
 <template>
   <div class="parallax-carousel-container">
     <!-- Top Logo -->
-    <a href="https://www.topweb.lk" target="_blank" rel="noopener" class="logo-link">
+    <!-- <a href="https://www.topweb.lk" target="_blank" rel="noopener" class="logo-link">
       <img :src="topWebImage" alt="TopWeb Logo" class="top-left-image" />
-    </a>
+    </a> -->
+    <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified" target="_blank" rel="noopener" class="logo-link"> 
+    <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png" alt="logo" width="150" height="150" /> </a>
 
     <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
     <div class="snow-container">
@@ -77,7 +79,7 @@
 </template>
 
 <script>
-import topWebImage from '@/assets/TopWeb2026.png';
+//import topWebImage from '@/assets/TopWeb2026.png';
 //import snowflakeImage from '@/assets/festivel/snow.png';
 //import santaCapImage from '@/assets/festivel/bells.png';
 //import kokisImage from '@/assets/festivel/kokis.png';
@@ -91,7 +93,7 @@ export default {
   data() {
     return {
       currentSlide: 0,
-      topWebImage,
+      //topWebImage,
       //snowflakeImage,
       //santaCapImage,
       //kokisImage,
