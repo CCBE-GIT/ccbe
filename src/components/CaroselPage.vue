@@ -1,11 +1,36 @@
 <template>
   <div class="parallax-carousel-container">
-    <!-- Top Logo -->
-    <!-- <a href="https://www.topweb.lk" target="_blank" rel="noopener" class="logo-link">
-      <img :src="topWebImage" alt="TopWeb Logo" class="top-left-image" />
-    </a> -->
-    <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified" target="_blank" rel="noopener" class="logo-link"> 
-    <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png" alt="logo" width="150" height="150" /> </a>
+    <!-- Badge + Countdown (grouped) -->
+    <div class="badge-countdown-group">
+      <!-- Top Logo -->
+      <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified" target="_blank" rel="noopener" class="logo-link"> 
+        <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png" alt="logo" class="badge-img" />
+      </a>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-wrapper">
+        <div class="voting-status">
+          <span class="pulse-dot"></span>
+          VOTING OPEN NOW
+        </div>
+        <div class="countdown-display">
+          <div class="countdown-unit">
+            <span class="countdown-value">{{ countdown.days }}</span>
+            <span class="countdown-label">DAYS</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-value">{{ countdown.hours }}</span>
+            <span class="countdown-label">HRS</span>
+          </div>
+          <span class="countdown-separator">:</span>
+          <div class="countdown-unit">
+            <span class="countdown-value">{{ countdown.minutes }}</span>
+            <span class="countdown-label">MINS</span>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
     <div class="snow-container">
@@ -106,6 +131,8 @@ export default {
       videoLoaded: false,
       autoPlayTimer: null,
       INTERVAL: 8000,
+      countdown: { days: '00', hours: '00', minutes: '00' },
+      countdownTimer: null,
       items: [
         {
           src: 'https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356',
@@ -188,6 +215,27 @@ export default {
     handleTouchEnd(e) {
       const diff = this._touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
+    },
+    updateCountdown() {
+      const target = new Date('2026-07-01T00:00:00');
+      const now = new Date();
+      const diff = target - now;
+
+      if (diff <= 0) {
+        this.countdown = { days: '00', hours: '00', minutes: '00' };
+        clearInterval(this.countdownTimer);
+        return;
+      }
+
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      this.countdown = {
+        days:    String(days).padStart(2, '0'),
+        hours:   String(hours).padStart(2, '0'),
+        minutes: String(minutes).padStart(2, '0'),
+      };
     },
     generateKokisflakeStyle() {
       const isMobile = this.isMobile;
@@ -300,6 +348,8 @@ export default {
   mounted() {
     this.checkMobile();
     this.startAutoPlay();
+    this.updateCountdown();
+    this.countdownTimer = setInterval(this.updateCountdown, 1000);
     window.addEventListener('resize', this.checkMobile);
     window.addEventListener('keydown', this.handleKeydown);
     this.$el.addEventListener('touchstart', this.handleTouchStart, { passive: true });
@@ -307,6 +357,7 @@ export default {
   },
   beforeUnmount() {
     this.stopAutoPlay();
+    clearInterval(this.countdownTimer);
     window.removeEventListener('resize', this.checkMobile);
     window.removeEventListener('keydown', this.handleKeydown);
     this.$el.removeEventListener('touchstart', this.handleTouchStart);
@@ -324,24 +375,108 @@ export default {
   background: #000;
 }
 
-/* ===== LOGO ===== */
-.logo-link {
+/* ===== BADGE + COUNTDOWN GROUP ===== */
+.badge-countdown-group {
   position: absolute;
   top: 20px;
   right: 20px;
   z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 160px;
+}
+
+.logo-link {
+  display: block;
   transition: opacity 0.3s ease;
+  line-height: 0;
 }
 .logo-link:hover {
   opacity: 0.9;
 }
-.top-left-image {
-  width: 85px;
-  height: 170px;
-  border-radius: 4px;
-  object-fit: cover;
+.badge-img {
+  width: 150px;
+  height: 150px;
   display: block;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== COUNTDOWN TIMER ===== */
+.countdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.voting-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  background: #00e676;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.countdown-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 32px;
+}
+
+.countdown-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #FFD700;
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.countdown-separator {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 12px;
+  line-height: 1;
 }
 
 /* ===== SNOW CONTAINER - ANIMATION FROM OLD VERSION ===== */
@@ -706,6 +841,8 @@ export default {
   
   .content-wrapper {
     max-width: 100%;
+    /* leave space for the badge+countdown on the right */
+    padding-right: 120px;
   }
   
   .slide-title {
@@ -726,11 +863,6 @@ export default {
     height: 40px;
   }
   
-  .top-left-image {
-    width: 60px;
-    height: 120px;
-  }
-  
   .dots-navigation {
     bottom: 20px;
   }
@@ -741,6 +873,37 @@ export default {
   
   .dot.active {
     width: 45px;
+  }
+
+  /* Badge + countdown group */
+  .badge-countdown-group {
+    top: 10px;
+    right: 10px;
+    max-width: 115px;
+    gap: 5px;
+  }
+
+  .badge-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .countdown-value {
+    font-size: 0.95rem;
+  }
+
+  .countdown-unit {
+    min-width: 24px;
+  }
+
+  .countdown-display {
+    padding: 5px 7px;
+    gap: 3px;
+  }
+
+  .voting-status {
+    font-size: 0.52rem;
+    padding: 3px 8px;
   }
 }
 
@@ -792,11 +955,6 @@ export default {
     padding: 4px 10px;
   }
   
-  .top-left-image {
-    width: 50px;
-    height: 100px;
-  }
-  
   .dot {
     width: 25px;
     height: 3px;
@@ -809,6 +967,49 @@ export default {
   .nav-arrow {
     width: 36px;
     height: 36px;
+  }
+
+  /* Badge + countdown group */
+  .badge-countdown-group {
+    top: 8px;
+    right: 8px;
+    max-width: 95px;
+    gap: 4px;
+  }
+
+  .badge-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .countdown-value {
+    font-size: 0.82rem;
+  }
+
+  .countdown-unit {
+    min-width: 20px;
+  }
+
+  .countdown-display {
+    padding: 4px 5px;
+    gap: 2px;
+    border-radius: 6px;
+  }
+
+  .countdown-separator {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+  }
+
+  .voting-status {
+    font-size: 0.48rem;
+    padding: 3px 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .pulse-dot {
+    width: 5px;
+    height: 5px;
   }
 }
 
