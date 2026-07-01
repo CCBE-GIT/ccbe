@@ -83,6 +83,14 @@ export default {
       // Array of card data
       cards: [
         {
+          image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/1000479548.jpg",
+          title: "♪ දෙපිය නගලා... | Official Cover Song by CCBE Students",
+          subtitle: "Celebrating the Father's Day 2026",
+          content: "For the silent love of a father who makes a lot of sacrifices but never shows it to his children, CCBE presents to you, දෙපිය නගලා..!!, a song sung by our own children. ",
+          link: "https://youtu.be/AC1pIXhzwcE?si=p8uRQGfczIaTPcz-",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/Cover%20Song.jpeg",
           title: "♪ අම්මේ, මං නුඹට ආදරෙයි... | Official Cover Song by CCBE Students",
           subtitle: "Celebrating the Mother's Day 2026",
