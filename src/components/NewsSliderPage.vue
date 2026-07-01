@@ -105,6 +105,14 @@ export default {
   data() {
     return {
       awards: [
+      { 
+          src: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/1000479548.jpg", 
+          title: "♪ දෙපිය නගලා... | Official Cover Song by CCBE Students", 
+          subtitle: "Celebrating the Father's Day 2026",
+          link: "https://youtu.be/AC1pIXhzwcE?si=p8uRQGfczIaTPcz-", 
+          description: "For the silent love of a father who makes a lot of sacrifices but never shows it to his children, CCBE presents to you, දෙපිය නගලා..!!, a song sung by our own children. ",
+          year: "June 2026"
+        },
         { 
           src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg", 
           title: "Authorised for Cambridge Linguaskill", 

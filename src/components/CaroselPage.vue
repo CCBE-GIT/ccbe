@@ -8,7 +8,7 @@
       </a>
 
       <!-- Countdown Timer -->
-      <div class="countdown-wrapper">
+      <!-- <div class="countdown-wrapper">
         <div class="voting-status">
           <span class="pulse-dot"></span>
           VOTING OPEN NOW
@@ -29,7 +29,7 @@
             <span class="countdown-label">MINS</span>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
