@@ -99,6 +99,13 @@ export default {
           show: false,
         },
         {
+          image: "https://ik.imagekit.io/kp5tixhur/New%20Year/Aurudu%20Kumara%20-%20Kumariya.jpeg",
+          title: "CCBE Digital Sigithi Awurudu Kumara & Kumariya 2026",
+          subtitle: "Prize Giving Ceremony",
+          content: "The prize giving ceremony of the CCBE Digital Sigithi Awurudu Kumara and Kumari Competition 2026 was successfully held, celebrating the joy and traditions of the Sinhala & Tamil New Year.During the ceremony, prizes were presented to the little stars who participated in this wonderful celebration,along with scholarship vouchers for their next Cambridge Level course, encouraging and supporting their continued learning journey.",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/u3wbiya66/News&Events/NE8.jpeg",
           title: "INTERNATIONAL WOMEN'S DAY 2026",
           subtitle: "International Women’s Day 2026 was celebrated at CCBE",
