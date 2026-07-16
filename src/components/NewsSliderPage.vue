@@ -105,7 +105,14 @@ export default {
   data() {
     return {
       awards: [
-      { 
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20Awards%20-%202026/1.jpeg", 
+          title: "Cambridge Awards 2026", 
+          subtitle: "Cambridge Awards 2026", 
+          description: "Nearly 1,000 students who successfully completed Cambridge English Qualifications from Pre A1 Starters to C2 Proficiency were recognized and celebrated for their outstanding achievements.",
+          year: "June 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/1000479548.jpg", 
           title: "♪ දෙපිය නගලා... | Official Cover Song by CCBE Students", 
           subtitle: "Celebrating the Father's Day 2026",
@@ -135,13 +142,13 @@ export default {
           description: "For the never-ending, silent love of a mother, CCBE presents to you, අම්මේ, මං නුඹට ආදරෙයි..!!, a song sung by our own children.",
           year: "May 2026"
         },
-        { 
-          src: "https://ik.imagekit.io/kp5tixhur/New%20Year/new%20year.jpeg", 
-          title: "New Year Celebrations 2026", 
-          subtitle: "Celebrating the Spirit of Sinhala & Tamil New Year", 
-          description: " CCBE All Branches wishes you a joyful and prosperous Sinhala & Tamil New Year!!. May this festive season bring happiness, success, and new beginnings to everyone as we celebrate the true spirit of Aurudu together",
-          year: "APR 2026"
-        },
+        //{ 
+          //src: "https://ik.imagekit.io/kp5tixhur/New%20Year/new%20year.jpeg", 
+          //title: "New Year Celebrations 2026", 
+          //subtitle: "Celebrating the Spirit of Sinhala & Tamil New Year", 
+          //description: " CCBE All Branches wishes you a joyful and prosperous Sinhala & Tamil New Year!!. May this festive season bring happiness, success, and new beginnings to everyone as we celebrate the true spirit of Aurudu together",
+          //year: "APR 2026"
+        //},
         { 
           src: "https://ik.imagekit.io/kp5tixhur/Trinity%20College/GESE.jpeg", 
           title: "Trinity College Sign Up", 
