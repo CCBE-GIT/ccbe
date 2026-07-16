@@ -106,7 +106,7 @@ export default {
     return {
       awards: [
         { 
-          src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20Awards%20-%202026/1.jpeg", 
+          src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20Awards%20-%202026/37.jpeg", 
           title: "Cambridge Awards 2026", 
           subtitle: "Celebrating Outstanding Achievements of CCBE Students", 
           description: "Nearly 1,000 students who successfully completed Cambridge English Qualifications from Pre A1 Starters to C2 Proficiency were recognized and celebrated for their outstanding achievements.",
