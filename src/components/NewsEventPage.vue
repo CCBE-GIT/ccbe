@@ -83,6 +83,20 @@ export default {
       // Array of card data
       cards: [
         {
+          image: "https://ik.imagekit.io/kp5tixhur/Husma%20Project%202026/3.jpeg",
+          title: "🌿 Husma Fruit Plant Dansal 2026",
+          subtitle: "Thank You for Being a Part of the Husma Project 2026",
+          content: "CCBE & CCIT are proud to distribute 6,000 medicinal plants free of charge across our branches for the third consecutive year. Through this initiative, we aim to inspire communities to protect nature, promote sustainability, and contribute to a greener Sri Lanka. Together, let's plant today for a healthier tomorrow.",
+          show: false,
+        },
+        {
+          image: "https://ik.imagekit.io/kp5tixhur/Cambridge%20Awards%20-%202026/1.jpeg",
+          title: "Cambridge Awards 2026",
+          subtitle: "Celebrating Outstanding Achievements of CCBE Students",
+          content: "Nearly 1,000 students who successfully completed Cambridge English Qualifications from Pre A1 Starters to C2 Proficiency were recognized and celebrated for their outstanding achievements.",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/1000479548.jpg",
           title: "♪ දෙපිය නගලා... | Official Cover Song by CCBE Students",
           subtitle: "Celebrating the Father's Day 2026",
@@ -161,13 +175,13 @@ export default {
           content: " 2025 වසරේදී අනුරාධපුර ශ්‍රී ස්වර්ණමාලි මහා සෑය වෙත කංචුක පූජාව, කිරිපිඬු දානය සහ අෂ්ඨපාන පූජාව භක්තිසම්පන්නව පැවැත්වුණි.",
           show: false,
         },
-        {
-          image: "https://ik.imagekit.io/u3wbiya66/News&Events/WhatsApp%20Image%202025-06-08%20at%2010.12.15_fb599a49.jpg?updatedAt=1749452636230",
-          title: "🌿 Husma Fruit Plant Dansal 2025",
-          subtitle: "Thank You for Being a Part of the Husma Project 2025",
-          content: "The Husma Project, first launched by our CCBE Galle branch in 2024 with just 500 plants, has grown into a beautiful island-wide movement. In 2025, thanks to the amazing support from all our branches, the project has flourished reaching 5,000 plants across the country. This initiative reflects our shared commitment to a greener tomorrow and the strength of working together as one. Thank you for being a part of this journey. Together, we breathe life into the future.",
-          show: false,
-        },
+        // {
+        //   image: "https://ik.imagekit.io/u3wbiya66/News&Events/WhatsApp%20Image%202025-06-08%20at%2010.12.15_fb599a49.jpg?updatedAt=1749452636230",
+        //   title: "🌿 Husma Fruit Plant Dansal 2025",
+        //   subtitle: "Thank You for Being a Part of the Husma Project 2025",
+        //   content: "The Husma Project, first launched by our CCBE Galle branch in 2024 with just 500 plants, has grown into a beautiful island-wide movement. In 2025, thanks to the amazing support from all our branches, the project has flourished reaching 5,000 plants across the country. This initiative reflects our shared commitment to a greener tomorrow and the strength of working together as one. Thank you for being a part of this journey. Together, we breathe life into the future.",
+        //   show: false,
+        // },
         {
           image: "https://ik.imagekit.io/u3wbiya66/_MG_9895.jpg?updatedAt=1745842133941",
           title: "Cambrians Awrudu Udanaya",
