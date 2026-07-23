@@ -105,6 +105,13 @@ export default {
   data() {
     return {
       awards: [
+      { 
+          src: "https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/0.1.jpg", 
+          title: "CCBE ONE - Grand Opening", 
+          subtitle: "Experience the Pulse of Cambrians !!", 
+          description: "The grand opening of CCBE One on 20th July 2026 marked the beginning of an exciting new journey for the CCBE family. From inspiring moments to unforgettable celebrations, this milestone reflects our commitment to excellence, innovation, and empowering future generations.",
+          year: "July 2026"
+        },
         { 
           src: "https://ik.imagekit.io/kp5tixhur/Cambridge%20Awards%20-%202026/37.jpeg", 
           title: "Cambridge Awards 2026", 
