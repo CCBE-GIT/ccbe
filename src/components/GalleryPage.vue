@@ -280,6 +280,35 @@ export default {
 
       groups: [
         {
+          groupKey: 'ccbe-one',
+          groupLabel: "CCBE ONE - Grand Opening",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-storefront-outline',
+          items: [
+            { id: 3001, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/0.1.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3002, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/4.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3003, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/5.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3004, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/6.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3005, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/7.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3006, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/2.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3007, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/9.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3008, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/12.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3009, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/17.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3010, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/13.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3011, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/11.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3012, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/16.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3013, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/8.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3014, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/10.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3015, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/18.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3016, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/19.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3017, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/20.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+            { id: 3018, src: 'https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/21.jpg', title: "CCBE ONE - Grand Opening", category: 'Events', year: '2026' },
+
+          ]
+        },
+        {
           groupKey: 'husma-dansal-2026',
           groupLabel: "Husma Fruit Plant Dansal 2026",
           categoryKey: 'events',
