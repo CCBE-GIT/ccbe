@@ -83,6 +83,13 @@ export default {
       // Array of card data
       cards: [
         {
+          image: "https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/0.1.jpg",
+          title: "CCBE ONE - Grand Opening",
+          subtitle: "Experience the Pulse of Cambrians !!",
+          content: "The grand opening of CCBE One on 20th July 2026 marked the beginning of an exciting new journey for the CCBE family. From inspiring moments to unforgettable celebrations, this milestone reflects our commitment to excellence, innovation, and empowering future generations.",
+          show: false,
+        },
+        {
           image: "https://ik.imagekit.io/kp5tixhur/Husma%20Project%202026/3.jpeg",
           title: "🌿 Husma Fruit Plant Dansal 2026",
           subtitle: "Thank You for Being a Part of the Husma Project 2026",
