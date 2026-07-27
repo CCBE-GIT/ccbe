@@ -11,105 +11,111 @@
       <div class="gallery-hero" data-aos="fade-up" data-aos-duration="1000">
         <div class="hero-eyebrow">
           <span class="eyebrow-line"></span>
-          <v-icon size="18" color="#ff6b35">mdi-camera</v-icon>
-          <span class="eyebrow-text">Visual Stories</span>
+          <v-icon size="18" color="#ff6b35">{{ mainSection === 'gallery' ? 'mdi-camera' : 'mdi-youtube' }}</v-icon>
+          <span class="eyebrow-text">{{ mainSection === 'gallery' ? 'Visual Stories' : 'Video Highlights' }}</span>
           <span class="eyebrow-line"></span>
         </div>
         <h1 class="hero-title">
-          OUR <span class="hero-highlight">GALLERY</span>
+          <template v-if="mainSection === 'gallery'">OUR <span class="hero-highlight">GALLERY</span></template>
+          <template v-else>CCBE <span class="hero-highlight">BUZZCAST</span></template>
         </h1>
         <div class="hero-rule"></div>
         <p class="hero-subtitle">
-          Moments that define us from classrooms to celebrations, every picture tells our story.
+          {{ mainSection === 'gallery'
+            ? 'Moments that define us from classrooms to celebrations, every picture tells our story.'
+            : 'Catch every announcement, event recap, and behind-the-scenes moment on video.' }}
         </p>
       </div>
 
-      <!-- ── Filter Tabs ─────────────────────────── -->
-      <div class="filter-bar" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+      <!-- ── Main Section Switcher ───────────────── -->
+      <div class="section-tabs" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
         <button
-          v-for="cat in categories"
-          :key="cat.key"
-          class="filter-btn"
-          :class="{ 'filter-btn--active': activeCategory === cat.key }"
-          @click="setCategory(cat.key)"
+          class="section-tab"
+          :class="{ 'section-tab--active': mainSection === 'gallery' }"
+          @click="setMainSection('gallery')"
         >
-          <v-icon size="16" class="filter-icon">{{ cat.icon }}</v-icon>
-          {{ cat.label }}
-          <span class="filter-count">{{ getCategoryCount(cat.key) }}</span>
+          <span class="section-tab-icon">
+            <v-icon size="20" :color="mainSection === 'gallery' ? '#ffffff' : '#ff6b35'">mdi-image-multiple</v-icon>
+          </span>
+          <span class="section-tab-text">
+            <span class="section-tab-title">Gallery</span>
+            <span class="section-tab-sub">Photos & moments</span>
+          </span>
+        </button>
+
+        <button
+          class="section-tab"
+          :class="{ 'section-tab--active': mainSection === 'buzzcast' }"
+          @click="setMainSection('buzzcast')"
+        >
+          <span class="section-tab-icon">
+            <v-icon size="20" :color="mainSection === 'buzzcast' ? '#ffffff' : '#ff6b35'">mdi-youtube</v-icon>
+          </span>
+          <span class="section-tab-text">
+            <span class="section-tab-title">BuzzCast</span>
+            <span class="section-tab-sub">Watch the videos</span>
+          </span>
         </button>
       </div>
 
-      <!-- ── Gallery Groups ─────────────────────── -->
-      <div class="gallery-container">
+      <!-- ══════════════════════ GALLERY SECTION ══════════════════════ -->
+      <template v-if="mainSection === 'gallery'">
 
-        <div
-          v-for="(group, gIndex) in filteredGroups"
-          :key="group.groupKey"
-          class="event-group"
-          data-aos="fade-up"
-          :data-aos-delay="gIndex * 60"
-          data-aos-duration="700"
-        >
-          <!-- Group Header -->
-          <div class="group-header">
-            <div class="group-header-left">
-              <span class="group-icon-wrap">
-                <v-icon size="16" color="#ff6b35">{{ group.icon }}</v-icon>
-              </span>
-              <div>
-                <h2 class="group-title">{{ group.groupLabel }}</h2>
-                <span class="group-meta">
-                  {{ group.year }} &nbsp;·&nbsp;
-                  {{ group.items.length }} photo{{ group.items.length > 1 ? 's' : '' }}
+        <!-- Filter Tabs -->
+        <div class="filter-bar" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <button
+            v-for="cat in categories"
+            :key="cat.key"
+            class="filter-btn"
+            :class="{ 'filter-btn--active': activeCategory === cat.key }"
+            @click="setCategory(cat.key)"
+          >
+            <v-icon size="16" class="filter-icon">{{ cat.icon }}</v-icon>
+            {{ cat.label }}
+            <span class="filter-count">{{ getCategoryCount(cat.key) }}</span>
+          </button>
+        </div>
+
+        <!-- Gallery Groups -->
+        <div class="gallery-container">
+
+          <div
+            v-for="(group, gIndex) in filteredGroups"
+            :key="group.groupKey"
+            class="event-group"
+            data-aos="fade-up"
+            :data-aos-delay="gIndex * 60"
+            data-aos-duration="700"
+          >
+            <!-- Group Header -->
+            <div class="group-header">
+              <div class="group-header-left">
+                <span class="group-icon-wrap">
+                  <v-icon size="16" color="#ff6b35">{{ group.icon }}</v-icon>
                 </span>
-              </div>
-            </div>
-            <!-- <div class="group-header-right">
-              <span class="group-category-tag">{{ group.categoryLabel }}</span>
-              <button
-                v-if="group.items.length > 3"
-                class="view-all-btn"
-                @click="openGroupModal(group)"
-              >
-                <v-icon size="14">mdi-view-grid</v-icon>
-                View All {{ group.items.length }}
-              </button>
-            </div> -->
-          </div>
-
-          <!-- Group Grid — shows max 3 images -->
-          <div class="group-grid" :class="'group-grid--' + Math.min(group.items.length, 3)">
-
-            <!-- First 2 images always shown normally -->
-            <div
-              v-for="item in group.items.slice(0, 2)"
-              :key="item.id"
-              class="gallery-card"
-              @click="openLightbox(item, group.items)"
-            >
-              <img :src="item.src" :alt="item.title" class="gallery-img" loading="lazy" />
-              <div class="gallery-overlay">
-                <div class="overlay-inner">
-                  <h3 class="overlay-title">{{ item.title }}</h3>
-                  <div class="overlay-icon-wrap">
-                    <v-icon color="white" size="18">mdi-magnify-plus-outline</v-icon>
-                  </div>
+                <div>
+                  <h2 class="group-title">{{ group.groupLabel }}</h2>
+                  <span class="group-meta">
+                    {{ group.year }} &nbsp;·&nbsp;
+                    {{ group.items.length }} photo{{ group.items.length > 1 ? 's' : '' }}
+                  </span>
                 </div>
               </div>
             </div>
 
-            <!-- 3rd slot -->
-            <template v-if="group.items.length >= 3">
-              <!-- Exactly 3: show 3rd image normally -->
+            <!-- Group Grid — shows max 3 images -->
+            <div class="group-grid" :class="'group-grid--' + Math.min(group.items.length, 3)">
+
               <div
-                v-if="group.items.length === 3"
+                v-for="item in group.items.slice(0, 2)"
+                :key="item.id"
                 class="gallery-card"
-                @click="openLightbox(group.items[2], group.items)"
+                @click="openLightbox(item, group.items)"
               >
-                <img :src="group.items[2].src" :alt="group.items[2].title" class="gallery-img" loading="lazy" />
+                <img :src="item.src" :alt="item.title" class="gallery-img" loading="lazy" />
                 <div class="gallery-overlay">
                   <div class="overlay-inner">
-                    <h3 class="overlay-title">{{ group.items[2].title }}</h3>
+                    <h3 class="overlay-title">{{ item.title }}</h3>
                     <div class="overlay-icon-wrap">
                       <v-icon color="white" size="18">mdi-magnify-plus-outline</v-icon>
                     </div>
@@ -117,34 +123,123 @@
                 </div>
               </div>
 
-              <!-- 4+ items: "+N more" tile over 3rd image -->
-              <div
-                v-else
-                class="gallery-card gallery-card--more"
-                
-              >
-                <img :src="group.items[2].src" :alt="group.items[2].title" class="gallery-img" loading="lazy" />
-                <div class="more-overlay">
-                  <div class="more-overlay-inner">
-                    <span class="more-count">+{{ group.items.length - 2 }}</span>
-                    <span class="more-label">more photos</span>
-                    <!-- <div class="more-icon">
-                      <v-icon color="white" size="20">mdi-view-grid-outline</v-icon>
-                    </div> -->
+              <template v-if="group.items.length >= 3">
+                <div
+                  v-if="group.items.length === 3"
+                  class="gallery-card"
+                  @click="openLightbox(group.items[2], group.items)"
+                >
+                  <img :src="group.items[2].src" :alt="group.items[2].title" class="gallery-img" loading="lazy" />
+                  <div class="gallery-overlay">
+                    <div class="overlay-inner">
+                      <h3 class="overlay-title">{{ group.items[2].title }}</h3>
+                      <div class="overlay-icon-wrap">
+                        <v-icon color="white" size="18">mdi-magnify-plus-outline</v-icon>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </template>
 
+                <div
+                  v-else
+                  class="gallery-card gallery-card--more"
+                >
+                  <img :src="group.items[2].src" :alt="group.items[2].title" class="gallery-img" loading="lazy" />
+                  <div class="more-overlay">
+                    <div class="more-overlay-inner">
+                      <span class="more-count">+{{ group.items.length - 2 }}</span>
+                      <span class="more-label">more photos</span>
+                    </div>
+                  </div>
+                </div>
+              </template>
+
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div v-if="filteredGroups.length === 0" class="empty-state">
+            <v-icon size="64" color="#e0e0e0">mdi-image-off-outline</v-icon>
+            <p>No images in this category yet.</p>
           </div>
         </div>
+      </template>
 
-        <!-- Empty State -->
-        <div v-if="filteredGroups.length === 0" class="empty-state">
-          <v-icon size="64" color="#e0e0e0">mdi-image-off-outline</v-icon>
-          <p>No images in this category yet.</p>
+      <!-- ══════════════════════ BUZZCAST SECTION ═════════════════════ -->
+      <template v-else>
+        <div class="buzzcast-container">
+
+          <div
+            v-if="buzzcastVideos.length"
+            class="buzzcast-grid"
+          >
+            <div
+              v-for="(video, vIndex) in buzzcastVideos"
+              :key="video.id"
+              class="video-card"
+              data-aos="fade-up"
+              :data-aos-delay="vIndex * 60"
+              data-aos-duration="700"
+              @click="openVideoModal(video)"
+            >
+              <div class="video-thumb-wrap">
+                <img
+                  :src="video.thumbnail || ('https://img.youtube.com/vi/' + video.youtubeId + '/hqdefault.jpg')"
+                  :alt="video.title"
+                  class="video-thumb"
+                  loading="lazy"
+                />
+                <div class="video-play-overlay">
+                  <div class="video-play-btn">
+                    <v-icon color="white" size="28">mdi-play</v-icon>
+                  </div>
+                </div>
+                <span v-if="video.badge" class="video-badge">{{ video.badge }}</span>
+              </div>
+              <div class="video-card-info">
+                <h3 class="video-card-title">{{ video.title }}</h3>
+                <span v-if="video.date" class="video-card-date">{{ video.date }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty State -->
+          <div v-else class="empty-state">
+            <v-icon size="64" color="#e0e0e0">mdi-youtube</v-icon>
+            <p>No videos published yet. Check back soon!</p>
+          </div>
         </div>
-      </div>
+      </template>
+
+      <!-- ── Video Modal (BuzzCast) ──────────────── -->
+      <transition name="lightbox-fade">
+        <div
+          v-if="videoModal"
+          class="lightbox-backdrop"
+          @click.self="closeVideoModal"
+        >
+          <div class="video-modal">
+            <button class="lightbox-close" @click="closeVideoModal" aria-label="Close video">
+              <v-icon color="white" size="28">mdi-close</v-icon>
+            </button>
+            <div class="video-modal-frame-wrap">
+              <iframe
+                :src="'https://www.youtube.com/embed/' + videoModal.youtubeId + '?autoplay=1&rel=0'"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="video-modal-iframe"
+              ></iframe>
+            </div>
+            <div class="lightbox-caption">
+              <span class="lightbox-cat">BuzzCast</span>
+              <h3 class="lightbox-title">{{ videoModal.title }}</h3>
+              <span v-if="videoModal.date" class="lightbox-year">{{ videoModal.date }}</span>
+            </div>
+          </div>
+        </div>
+      </transition>
 
       <!-- ── Group All-Photos Modal ──────────────── -->
       <transition name="modal-fade">
@@ -154,7 +249,6 @@
           @click.self="closeGroupModal"
         >
           <div class="modal-panel">
-            <!-- Modal Header -->
             <div class="modal-header">
               <div class="modal-header-left">
                 <span class="modal-icon-wrap">
@@ -170,7 +264,6 @@
               </button>
             </div>
 
-            <!-- Modal Grid — ALL photos -->
             <div class="modal-grid">
               <div
                 v-for="(item, idx) in groupModal.items"
@@ -266,16 +359,45 @@ export default {
 
   data() {
     return {
+      mainSection: 'gallery', // 'gallery' | 'buzzcast'
+
       activeCategory: 'all',
       lightboxItem: null,
       lightboxIndex: 0,
       lightboxSet: [],
       groupModal: null,
+      videoModal: null,
 
       categories: [
-        { key: 'all',      label: 'All',      icon: 'mdi-view-grid' },
-        // { key: 'events',   label: 'Events',   icon: 'mdi-calendar-star' },
-        // { key: 'students', label: 'Students', icon: 'mdi-account-group' },
+        { key: 'all', label: 'All', icon: 'mdi-view-grid' },
+      ],
+
+      // ── BuzzCast videos ──────────────────────────
+      // Add your YouTube links here. `youtubeId` is just the ID portion
+      // of the URL, e.g. for https://youtu.be/dQw4w9WgXcQ the ID is dQw4w9WgXcQ
+      buzzcastVideos: [
+        { id: 3, 
+          youtubeId: 'zkzzaA67Rns?si=6dRFofrupR-Epekj', 
+          title: 'What Happened at CCBE in June 2026 ?', 
+          date: '2026', 
+          badge: 'New',
+          thumbnail: 'https://ik.imagekit.io/kp5tixhur/BUZZCAST/BUZZCAST%20-%20June.jpeg'
+        },
+        { id: 2, 
+          youtubeId: 'lrEOsj3hMgI?si=qZ6M3wxr7sNUwQMA', 
+          title: 'What Happened at CCBE in May 2026 ?', 
+          date: '2026', 
+          //badge: 'New',
+          thumbnail: 'https://ik.imagekit.io/kp5tixhur/BUZZCAST/BUZZCAST%20-%20May.jpeg'
+        },
+        { id: 1, 
+          youtubeId: 'oBKw8Vgznzg?si=sJs1vBb3GlvEq272', 
+          title: 'What Happened at CCBE in April 2026 ?', 
+          date: '2026', 
+          //badge: 'New',
+          thumbnail: 'https://ik.imagekit.io/kp5tixhur/BUZZCAST/BUZZCAST%20-%20April.jpeg'
+        },
+        // { id: 1, youtubeId: 'dQw4w9WgXcQ', title: 'CCBE ONE - Grand Opening Highlights', date: '2026', badge: 'New' },
       ],
 
       groups: [
@@ -607,6 +729,13 @@ export default {
   },
 
   methods: {
+    setMainSection(section) {
+      this.mainSection = section;
+      this.closeLightbox();
+      this.closeGroupModal();
+      this.closeVideoModal();
+    },
+
     setCategory(key) {
       this.activeCategory = key;
       this.closeLightbox();
@@ -624,7 +753,7 @@ export default {
     },
     closeGroupModal() {
       this.groupModal = null;
-      if (!this.lightboxItem) document.body.style.overflow = '';
+      if (!this.lightboxItem && !this.videoModal) document.body.style.overflow = '';
     },
 
     // ── Lightbox ────────────────────────────────
@@ -645,7 +774,7 @@ export default {
     },
     closeLightbox() {
       this.lightboxItem = null;
-      if (!this.groupModal) document.body.style.overflow = '';
+      if (!this.groupModal && !this.videoModal) document.body.style.overflow = '';
     },
     lightboxNext() {
       this.lightboxIndex = (this.lightboxIndex + 1) % this.lightboxSet.length;
@@ -655,11 +784,24 @@ export default {
       this.lightboxIndex = (this.lightboxIndex - 1 + this.lightboxSet.length) % this.lightboxSet.length;
       this.lightboxItem = this.lightboxSet[this.lightboxIndex];
     },
+
+    // ── BuzzCast Video Modal ─────────────────────
+    openVideoModal(video) {
+      this.videoModal = video;
+      document.body.style.overflow = 'hidden';
+    },
+    closeVideoModal() {
+      this.videoModal = null;
+      if (!this.groupModal && !this.lightboxItem) document.body.style.overflow = '';
+    },
+
     handleKeydown(e) {
       if (this.lightboxItem) {
         if (e.key === 'ArrowRight') this.lightboxNext();
         if (e.key === 'ArrowLeft')  this.lightboxPrev();
         if (e.key === 'Escape')     this.closeLightbox();
+      } else if (this.videoModal) {
+        if (e.key === 'Escape') this.closeVideoModal();
       } else if (this.groupModal) {
         if (e.key === 'Escape') this.closeGroupModal();
       }
@@ -685,7 +827,7 @@ export default {
 .bg-blob--2 { width: 440px; height: 440px; background: radial-gradient(circle, rgba(251,183,0,0.08) 0%, transparent 70%); bottom: 80px; right: -140px; }
 
 /* ── Hero ─────────────────────────────────────────── */
-.gallery-hero { text-align: center; padding: 0 20px; margin-bottom: 48px; position: relative; z-index: 1; }
+.gallery-hero { text-align: center; padding: 0 20px; margin-bottom: 32px; position: relative; z-index: 1; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 18px; }
 .eyebrow-line { width: 40px; height: 2px; background: linear-gradient(90deg, transparent, #ff6b35); border-radius: 2px; }
 .eyebrow-line:last-child { background: linear-gradient(90deg, #ff6b35, transparent); }
@@ -695,6 +837,35 @@ export default {
 .hero-highlight::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 100%; height: 10px; background: rgba(255,107,53,0.15); z-index: -1; border-radius: 4px; }
 .hero-rule { width: 60px; height: 4px; background: linear-gradient(90deg, #ff6b35, #FBB700); margin: 0 auto 20px; border-radius: 2px; }
 .hero-subtitle { font-size: 1.1rem; color: #6c757d; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+/* ── Main Section Tabs ────────────────────────────── */
+.section-tabs { display: flex; justify-content: center; gap: 16px; padding: 0 20px; margin-bottom: 40px; position: relative; z-index: 1; flex-wrap: wrap; }
+.section-tab {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 26px;
+  border-radius: 16px;
+  border: 2px solid #eee;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+  min-width: 210px;
+}
+.section-tab:hover { border-color: #ff6b35; box-shadow: 0 8px 24px rgba(255,107,53,0.14); transform: translateY(-1px); }
+.section-tab--active { border-color: #ff6b35; background: linear-gradient(135deg, #ff6b35, #FBB700); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+.section-tab-icon {
+  width: 40px; height: 40px; border-radius: 12px;
+  background: rgba(255,107,53,0.10);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+.section-tab--active .section-tab-icon { background: rgba(255,255,255,0.22); }
+.section-tab-text { display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+.section-tab-title { font-size: 0.98rem; font-weight: 700; color: #2c3e50; }
+.section-tab--active .section-tab-title { color: white; }
+.section-tab-sub { font-size: 0.72rem; color: #6c757d; font-weight: 500; }
+.section-tab--active .section-tab-sub { color: rgba(255,255,255,0.85); }
 
 /* ── Filter Bar ───────────────────────────────────── */
 .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 20px; margin-bottom: 48px; position: relative; z-index: 1; }
@@ -712,25 +883,18 @@ export default {
 .event-group { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid rgba(255,107,53,0.08); transition: box-shadow 0.3s ease; }
 .event-group:hover { box-shadow: 0 8px 36px rgba(255,107,53,0.12); }
 
-/* Group Header */
 .group-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid #f0f0f0; background: linear-gradient(90deg, #fff8f5 0%, #ffffff 100%); flex-wrap: wrap; gap: 10px; }
 .group-header-left { display: flex; align-items: center; gap: 12px; }
 .group-icon-wrap { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,107,53,0.10); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .group-title { font-size: 0.95rem; font-weight: 700; color: #2c3e50; margin: 0 0 2px; line-height: 1.3; }
 .group-meta { font-size: 0.73rem; color: #6c757d; font-weight: 500; }
-.group-header-right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.group-category-tag { background: rgba(255,107,53,0.10); color: #ff6b35; font-size: 0.68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
-.view-all-btn { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 50px; border: 1.5px solid #ff6b35; background: transparent; color: #ff6b35; font-size: 0.75rem; font-weight: 600; cursor: pointer; transition: all 0.25s ease; white-space: nowrap; }
-.view-all-btn:hover { background: #ff6b35; color: white; box-shadow: 0 4px 14px rgba(255,107,53,0.25); }
 
-/* ── Group Grid — max 3 slots ─────────────────────── */
 .group-grid { display: grid; gap: 4px; padding: 4px; background: #ebebeb; }
 .group-grid--1 { grid-template-columns: 1fr; grid-template-rows: 340px; }
 .group-grid--2 { grid-template-columns: 1fr 1fr; grid-template-rows: 280px; }
 .group-grid--3 { grid-template-columns: 2fr 1fr; grid-template-rows: 155px 155px; }
 .group-grid--3 .gallery-card:first-child { grid-column: 1; grid-row: 1 / 3; }
 
-/* ── Gallery Card ─────────────────────────────────── */
 .gallery-card { position: relative; overflow: hidden; cursor: pointer; border-radius: 8px; }
 .gallery-card:hover .gallery-img { transform: scale(1.07); }
 .gallery-card:hover .gallery-overlay { opacity: 1; }
@@ -740,25 +904,45 @@ export default {
 .overlay-title { font-size: 0.85rem; font-weight: 700; line-height: 1.3; margin: 0; flex: 1; }
 .overlay-icon-wrap { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 
-/* ── "+N more" tile ───────────────────────────────── */
 .gallery-card--more .gallery-img { filter: brightness(0.28); }
 .gallery-card--more:hover .gallery-img { transform: scale(1.05); filter: brightness(0.22); }
 .more-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
 .more-overlay-inner { display: flex; flex-direction: column; align-items: center; gap: 6px; color: white; text-align: center; }
 .more-count { font-size: 2.6rem; font-weight: 800; line-height: 1; color: white; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
 .more-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.82; }
-.more-icon { width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; margin-top: 6px; transition: background 0.25s, border-color 0.25s; }
-.gallery-card--more:hover .more-icon { background: #ff6b35; border-color: #ff6b35; }
 
-/* ── Empty State ──────────────────────────────────── */
 .empty-state { text-align: center; padding: 80px 20px; color: #ccc; font-size: 1rem; }
+
+/* ── BuzzCast ─────────────────────────────────────── */
+.buzzcast-container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+.buzzcast-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+
+.video-card { background: white; border-radius: 16px; overflow: hidden; cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid rgba(255,107,53,0.08); transition: box-shadow 0.3s ease, transform 0.3s ease; }
+.video-card:hover { box-shadow: 0 12px 32px rgba(255,107,53,0.16); transform: translateY(-3px); }
+
+.video-thumb-wrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #111; }
+.video-thumb { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
+.video-card:hover .video-thumb { transform: scale(1.06); }
+.video-play-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.18); display: flex; align-items: center; justify-content: center; transition: background 0.3s ease; }
+.video-card:hover .video-play-overlay { background: rgba(0,0,0,0.32); }
+.video-play-btn { width: 58px; height: 58px; border-radius: 50%; background: rgba(255,107,53,0.92); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.35); transition: transform 0.25s ease; }
+.video-card:hover .video-play-btn { transform: scale(1.1); }
+.video-badge { position: absolute; top: 10px; left: 10px; background: #ff6b35; color: white; font-size: 0.65rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; }
+
+.video-card-info { padding: 14px 16px; }
+.video-card-title { font-size: 0.92rem; font-weight: 700; color: #2c3e50; margin: 0 0 4px; line-height: 1.35; }
+.video-card-date { font-size: 0.72rem; color: #6c757d; font-weight: 500; }
+
+/* ── Video Modal ──────────────────────────────────── */
+.video-modal { position: relative; max-width: 900px; width: 100%; display: flex; flex-direction: column; align-items: center; }
+.video-modal-frame-wrap { width: 100%; aspect-ratio: 16/9; border-radius: 12px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.6); background: #111; }
+.video-modal-iframe { width: 100%; height: 100%; border: none; display: block; }
 
 /* ══ Group All-Photos Modal ═══════════════════════════ */
 .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,0.62); z-index: 8888; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(6px); }
 .modal-panel { background: white; border-radius: 20px; width: 100%; max-width: 920px; max-height: 88vh; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.28); animation: modalIn 0.28s ease; }
 @keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
 
-/* Modal Header */
 .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 22px; border-bottom: 1px solid #f0f0f0; background: linear-gradient(90deg, #fff8f5, #ffffff); flex-shrink: 0; }
 .modal-header-left { display: flex; align-items: center; gap: 12px; }
 .modal-icon-wrap { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,107,53,0.10); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -767,7 +951,6 @@ export default {
 .modal-close { background: #f5f5f5; border: none; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; flex-shrink: 0; }
 .modal-close:hover { background: #ffe0d6; }
 
-/* Modal Photo Grid */
 .modal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 6px; overflow-y: auto; background: #ebebeb; flex: 1; }
 .modal-grid::-webkit-scrollbar { width: 6px; }
 .modal-grid::-webkit-scrollbar-track { background: #f0f0f0; }
@@ -783,7 +966,6 @@ export default {
 .modal-photo-num { font-size: 0.62rem; font-weight: 800; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 2px 7px; flex-shrink: 0; }
 .modal-card-title { font-size: 0.78rem; font-weight: 700; line-height: 1.3; margin: 0; flex: 1; }
 
-/* Modal transition */
 .modal-fade-enter-active, .modal-fade-leave-active { transition: opacity 0.25s ease; }
 .modal-fade-enter-from, .modal-fade-leave-to { opacity: 0; }
 
@@ -810,79 +992,20 @@ export default {
 .lb-slide-leave-to { opacity: 0; transform: scale(1.04); }
 
 /* ── Back to Home ───────────────────────────────── */
-.home-link-section {
-  text-align: center;
-  padding: 32px 0 16px;
-}
-
-.home-link-section > p {
-  font-size: 0.95rem;
-  color: #888;
-  margin-bottom: 12px;
-}
-
-.home-link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 28px;
-  background: #FBB700;
-  color: #fff;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(251,183,0,0.3);
-}
-
-.home-link-btn:hover {
-  background: #e0a500;
-  transform: translateY(-2px);
-}
-
-.quick-nav-links {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 16px;
-}
-
-.qnl {
-  font-size: 0.85rem;
-  color: #FF5F15;
-  text-decoration: none;
-  font-weight: 500;
-  padding: 5px 14px;
-  border: 1px solid rgba(255,95,21,0.25);
-  border-radius: 30px;
-  transition: all 0.25s;
-}
-
-.qnl:hover {
-  background: #FF5F15;
-  color: #fff;
-  border-color: #FF5F15;
-}
-
-.text-center {
-  text-align: center;
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.text-center h3 { color: #FBB700; margin-bottom: 10px; }
-.text-center p  { color: #555; margin: 5px 0; font-size: 1rem; }
+.home-link-section { text-align: center; padding: 32px 0 16px; }
+.home-link-section > p { font-size: 0.95rem; color: #888; margin-bottom: 12px; }
+.home-link-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 28px; background: #FBB700; color: #fff; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(251,183,0,0.3); }
+.home-link-btn:hover { background: #e0a500; transform: translateY(-2px); }
+.quick-nav-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+.qnl { font-size: 0.85rem; color: #FF5F15; text-decoration: none; font-weight: 500; padding: 5px 14px; border: 1px solid rgba(255,95,21,0.25); border-radius: 30px; transition: all 0.25s; }
+.qnl:hover { background: #FF5F15; color: #fff; border-color: #FF5F15; }
 
 /* ── Responsive ───────────────────────────────────── */
 @media (max-width: 768px) {
   .gallery-page { padding: 40px 0 80px; }
   .hero-title { font-size: 2rem; }
   .gallery-container { padding: 0 14px; gap: 28px; }
+  .buzzcast-container { padding: 0 14px; }
   .group-header { flex-direction: column; align-items: flex-start; }
   .group-grid--1 { grid-template-rows: 240px; }
   .group-grid--2 { grid-template-rows: 200px; }
@@ -890,12 +1013,15 @@ export default {
   .modal-grid { grid-template-columns: repeat(2, 1fr); }
   .lightbox-nav--prev { left: -8px; }
   .lightbox-nav--next { right: -8px; }
+  .section-tab { min-width: 160px; padding: 10px 18px; }
 }
 
 @media (max-width: 480px) {
   .hero-title { font-size: 1.8rem; }
   .filter-btn { padding: 7px 14px; font-size: 0.8rem; }
   .gallery-container { padding: 0 10px; gap: 20px; }
+  .buzzcast-container { padding: 0 10px; }
+  .buzzcast-grid { grid-template-columns: 1fr; }
   .group-header { padding: 12px 14px; }
   .group-grid--1 { grid-template-rows: 200px; }
   .group-grid--2 { grid-template-rows: 160px; }
@@ -907,6 +1033,9 @@ export default {
   .lightbox-nav--next { right: -4px; }
   .lightbox-close { top: -44px; width: 38px; height: 38px; }
   .lightbox-title { font-size: 1.1rem; }
+  .section-tabs { gap: 10px; }
+  .section-tab { min-width: 140px; padding: 9px 14px; gap: 8px; }
+  .section-tab-title { font-size: 0.85rem; }
 }
 
 @media (hover: none) and (pointer: coarse) {
