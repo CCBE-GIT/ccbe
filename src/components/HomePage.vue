@@ -1,5 +1,57 @@
 <template>
   <NavBar></NavBar>
+
+  <!-- Award Popup -->
+  <div
+    v-if="showAwardPopup"
+    class="award-popup-overlay"
+    @click.self="closeAwardPopup"
+  >
+    <div class="award-popup-card" role="dialog" aria-modal="true" aria-labelledby="award-popup-title">
+      <button
+        class="award-popup-close"
+        @click="closeAwardPopup"
+        aria-label="Close award popup"
+      >
+        &times;
+      </button>
+
+      <img
+        :src="awardPopupData.src"
+        :alt="awardPopupData.title"
+        class="award-popup-image"
+      />
+
+      <div class="award-popup-content">
+        <h2 id="award-popup-title" class="award-popup-title">
+          {{ awardPopupData.title }}
+        </h2>
+        <p class="award-popup-subtitle">{{ awardPopupData.subtitle }}</p>
+        <p class="award-popup-description">{{ awardPopupData.description }}</p>
+
+        <div class="award-popup-meta">
+          <span v-if="awardPopupData.year" class="award-popup-badge"
+            >{{ awardPopupData.year }}</span
+          >
+          <span v-if="awardPopupData.category" class="award-popup-badge"
+            >{{ awardPopupData.category }}</span
+          >
+        </div>
+
+        <p v-if="awardPopupData.organization" class="award-popup-org">
+          Issued by: <b>{{ awardPopupData.organization }}</b>
+        </p>
+
+        <img
+          v-if="awardPopupData.organizationLogo"
+          :src="awardPopupData.organizationLogo"
+          alt="Organization Logo"
+          class="award-popup-org-logo"
+        />
+      </div>
+    </div>
+  </div>
+
   <CaroselPage></CaroselPage>
 
   <!-- Logo Section -->
@@ -311,6 +363,17 @@ export default {
       qualifiedTeachers: 0,
       yearsInField: 9,
       branches: 7,
+      showAwardPopup: false,
+      awardPopupData: {
+        src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg",
+        title: "Authorised for Cambridge Linguaskill",
+        //subtitle: "Authorised for Cambridge Linguaskill by Cambridge English.",
+        description: "Authorised Cambridge Linguaskill Provider & Cambridge English Exam Centre.",
+        year: "2026",
+        category: "Recognition",
+        organization: "Cambridge English",
+        // organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+      },
       items: [
         {
           src: require("../assets/cards/11.jpg"),
@@ -365,6 +428,9 @@ export default {
     };
   },
   mounted() {
+    // Show the award popup as soon as the page loads
+    this.showAwardPopup = true;
+
     // Trigger the animations for numbers when the stats section comes into view
     const options = {
       root: null, // relative to the viewport
@@ -389,6 +455,9 @@ export default {
     observer.observe(this.$refs.statsSection);
   },
   methods: {
+    closeAwardPopup() {
+      this.showAwardPopup = false;
+    },
     animateCount(property, target, duration) {
       const current = this[property];
       const step = (target - current) / (duration / 16); // Adjust step calculation based on target range
@@ -577,5 +646,132 @@ export default {
 .stats-row .v-col:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+/* Award Popup Styles */
+.award-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: award-fade-in 0.25s ease;
+}
+
+.award-popup-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  max-height: 100vh;
+  overflow-y: auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  animation: award-pop-in 0.3s ease;
+}
+
+.award-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.award-popup-close:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.award-popup-image {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: block;
+}
+
+.award-popup-content {
+  padding: 20px 22px 24px;
+  text-align: center;
+}
+
+.award-popup-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #5e0000;
+  margin-bottom: 8px;
+}
+
+.award-popup-subtitle {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.award-popup-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 14px;
+}
+
+.award-popup-meta {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.award-popup-badge {
+  background: #fbb700;
+  color: #5e0000;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.award-popup-org {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.award-popup-org-logo {
+  max-width: 120px;
+  margin-top: 8px;
+}
+
+@keyframes award-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes award-pop-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 </style>
