@@ -195,6 +195,16 @@ export default {
   data() {
     return {
       awards: [
+      { 
+          src: "https://ik.imagekit.io/kp5tixhur/LCME%20Test%20Center/2-edit.jpg", 
+          title: "LCME Approved Test Centre", 
+          subtitle: "Officially accepting CCBE as LCME Approved Test Centre.", 
+          description: "Officially accepting CCBE as LCME Approved Test Centre.",
+          year: "2026",
+          category: "Recognition",
+          organization: "LCME",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
         { 
           src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg", 
           title: "Authorised for Cambridge Linguaskill", 
