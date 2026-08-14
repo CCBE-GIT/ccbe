@@ -362,7 +362,7 @@ export default {
       happyStudents: 0,
       qualifiedTeachers: 0,
       yearsInField: 9,
-      branches: 7,
+      branches: 8,
       showAwardPopup: false,
       awardPopupData: {
         src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg",
