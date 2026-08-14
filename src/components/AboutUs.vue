@@ -154,6 +154,17 @@
       </span>
     </div>
 
+    <!-- Beliatta -->
+    <div
+      class="point"
+      :style="{ top: '75.5%', left: '72%' }"
+      @click="navigateTo('/about/beliatta')"
+    >
+      <span class="point-tooltip">
+        Beliatta College
+      </span>
+    </div>
+
   </div>
 </div>
       
@@ -248,7 +259,7 @@ export default {
   data() {
     return {
       logo: require('@/assets/Logo.png'),
-      branchImage: require('@/assets/Branch_Network1.png'),
+      branchImage: require('@/assets/Branch_Network2.png'),
       offices: [
         {
           name: "Galle College",
@@ -291,6 +302,12 @@ export default {
           address: "No 57/D, Aluthgama Rd, Matugama, 12100",
           phone: "+94 34 212 1477",
           phone1: "+94 70 506 0666",
+        },
+        {
+          name: "Beliatta College",
+          address: "Opposite Bus Stand, No 50 Tangalle Rd, Beliatta 82400",
+          phone: "+94 47 225 2175",
+          phone1: "",
         },
       ],
       selectedOffice: null,

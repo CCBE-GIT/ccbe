@@ -27,6 +27,7 @@ const PiliyandalaBranch = () => import(/* webpackChunkName: "branches" */ '../co
 const HoranaBranch      = () => import(/* webpackChunkName: "branches" */ '../components/branches/HoranaBranch.vue')
 const KalutaraBranch    = () => import(/* webpackChunkName: "branches" */ '../components/branches/KalutaraBranch.vue')
 const MatugamaBranch    = () => import(/* webpackChunkName: "branches" */ '../components/branches/MatugamaBranch.vue')
+const BeliattaBranch    = () => import(/* webpackChunkName: "branches" */ '../components/branches/BeliattaBranch.vue')
 
 // ─────────────────────────────────────────────────────────────────────────
 const BASE_URL = 'https://www.ccbe.lk'
@@ -210,8 +211,16 @@ const routes = [
     path: '/about/matugama', name: 'MatugamaBranch', component: MatugamaBranch,
     meta: {
       title: 'CCBE Matugama Branch',
-      description: 'Cambridge College of British English Matugama — 118, Old Matara Rd, Galle 80000. Call: +94 91 22 37373. English courses and Cambridge exam preparation in Galle.',
+      description: 'Cambridge College of British English Matugama — 118, Old Matara Rd, Galle 80000. Call: +94 91 22 37373. English courses and Cambridge exam preparation in Matugama.',
       canonical: `${BASE_URL}/about/matugama`
+    }
+  },
+  {
+    path: '/about/beliatta', name: 'BeliattaBranch', component: BeliattaBranch,
+    meta: {
+      title: 'CCBE Beliatta Branch',
+      description: 'Cambridge College of British English Beliatta — Opposite Bus Stand, No 50 Tangalle Rd, Beliatta 82400. Call: +94 47 225 2175. English courses and Cambridge exam preparation in Beliatta.',
+      canonical: `${BASE_URL}/about/beliatta`
     }
   },
 ]
