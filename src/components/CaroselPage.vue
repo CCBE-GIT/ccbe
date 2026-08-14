@@ -6,6 +6,12 @@
       <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified" target="_blank" rel="noopener" class="logo-link"> 
         <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png" alt="logo" class="badge-img" />
       </a>
+      <a href="#" target="_blank" rel="noopener" class="logo-link"> 
+        <img src="https://ik.imagekit.io/kp5tixhur/Awards/BestWeb%20Award1%20removed.png" alt="logo" class="badge-img" />
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="logo-link"> 
+        <img src="https://ik.imagekit.io/kp5tixhur/Awards/BestWeb%20Award2%20removed.png" alt="logo" class="badge-img" />
+      </a>
 
       <!-- Countdown Timer -->
       <!-- <div class="countdown-wrapper">
