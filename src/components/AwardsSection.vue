@@ -195,7 +195,17 @@ export default {
   data() {
     return {
       awards: [
-      { 
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/BestWeb%202026/0-1.jpg", 
+          title: "BestWeb.LK 2026 Awards Ceremony", 
+          subtitle: "CCBE’s Educational Excellence | BestWeb.LK 2026", 
+          description: "Recognized as Sri Lanka’s 🏆 Most Popular Education Website and a 🏆 Bronze Winner for Best Education Website.",
+          year: "2026",
+          category: "Recognition",
+          organization: "BestWeb.LK",
+          //organizationLogo: "https://ik.imagekit.io/u3wbiya66/Logos/bc-logo.png?updatedAt=1757647128110"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/LCME%20Test%20Center/2-edit.jpg", 
           title: "LCME Approved Test Centre", 
           subtitle: "Officially accepting CCBE as LCME Approved Test Centre.", 

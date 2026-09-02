@@ -105,7 +105,14 @@ export default {
   data() {
     return {
       awards: [
-      { 
+        { 
+          src: "https://ik.imagekit.io/kp5tixhur/BestWeb%202026/0-1.jpg", 
+          title: "BestWeb.LK 2026 Awards Ceremony", 
+          subtitle: "CCBE’s Educational Excellence | BestWeb.LK 2026", 
+          description: "CCBE has been honoured with two prestigious awards at BestWeb.LK 2026, being recognized as Sri Lanka’s Most Popular Education Website and a Bronze Winner for Best Education Website.",
+          year: "August 2026"
+        },
+        { 
           src: "https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/0.1.jpg", 
           title: "CCBE ONE - Grand Opening", 
           subtitle: "Experience the Pulse of Cambrians !!", 

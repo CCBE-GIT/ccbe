@@ -409,6 +409,26 @@ export default {
 
       groups: [
         {
+          groupKey: 'BestWeb-2026',
+          groupLabel: "BestWeb.LK 2026 Awards Ceremony",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: 'Aug 2026',
+          icon: 'mdi-trophy-award',
+          items: [
+            { id: 4001, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/7.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4002, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/3.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4003, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/1.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4004, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/5.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4005, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/4.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4006, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/8.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4007, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/10.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4008, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/9.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4009, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/6.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+            { id: 4010, src: 'https://ik.imagekit.io/kp5tixhur/BestWeb%202026/0-1.jpg', title: "BestWeb.LK 2026 Awards Ceremony", category: 'Events', year: 'Aug 2026' },
+          ]
+        },
+        {
           groupKey: 'ccbe-one',
           groupLabel: "CCBE ONE - Grand Opening",
           categoryKey: 'events',
