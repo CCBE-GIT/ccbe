@@ -409,6 +409,30 @@ export default {
 
       groups: [
         {
+          groupKey: 'seththabhiwandana-2026',
+          groupLabel: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: 'Aug 2026',
+          icon: 'mdi-flower-outline',
+          items: [
+            { id: 5001, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/0.jpeg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5002, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/1.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5003, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/2.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5004, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/3.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5005, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/4.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5006, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/5.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5007, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/6.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5008, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/7.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5009, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/8.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5010, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/9.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5011, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/11.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5012, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/12.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+            { id: 5013, src: 'https://ik.imagekit.io/kp5tixhur/Seththabiwandana2026/13.jpg', title: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්", category: 'Events', year: 'Aug 2026' },
+
+          ]
+        },
+        {
           groupKey: 'BestWeb-2026',
           groupLabel: "BestWeb.LK 2026 Awards Ceremony",
           categoryKey: 'events',
