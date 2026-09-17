@@ -416,6 +416,33 @@ export default {
 
       groups: [
         {
+          groupKey: 'beliatta-opening',
+          groupLabel: "CCBE Beliatta Grand Opening",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: 'Aug 2026',
+          icon: 'mdi-storefront-outline',
+          items: [
+            { id: 6001, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/13.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6002, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/3.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6003, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/2.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6004, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/4.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6005, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/5.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6006, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/6.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6007, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/10.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6008, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/9.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6009, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/15.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6010, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/17.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6011, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/16.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6012, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/14.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6013, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/12.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6014, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/1.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6015, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/19.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6016, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/18.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+            { id: 6017, src: 'https://ik.imagekit.io/kp5tixhur/Beliatta%20Grand%20Opening/20.jpg', title: "CCBE Beliatta Grand Opening", category: 'Events', year: 'Aug 2026' },
+          ]
+        },
+        {
           groupKey: 'seththabhiwandana-2026',
           groupLabel: "CCBE සෙත්තාභිවන්දනා 2026 | ජයග්‍රහණයට ආශිර්වාදයක්",
           categoryKey: 'events',
