@@ -376,11 +376,18 @@ export default {
       // Add your YouTube links here. `youtubeId` is just the ID portion
       // of the URL, e.g. for https://youtu.be/dQw4w9WgXcQ the ID is dQw4w9WgXcQ
       buzzcastVideos: [
-      { id: 4, 
+        { id: 5, 
+          youtubeId: 'ibxd-JHcv2Y?si=MW1l9EYMCYhG5WCc', 
+          title: 'What Happened at CCBE in August 2026 ?', 
+          date: '2026', 
+          badge: 'New',
+          thumbnail: 'https://ik.imagekit.io/kp5tixhur/BUZZCAST/buzzcast%20-%20August.jpeg'
+        },
+        { id: 4, 
           youtubeId: 'Z84m-SgNOuQ?si=iOEF3DyBx_mhMUzD', 
           title: 'What Happened at CCBE in July 2026 ?', 
           date: '2026', 
-          badge: 'New',
+          //badge: 'New',
           thumbnail: 'https://ik.imagekit.io/kp5tixhur/BUZZCAST/BUZZCAST%20-%20July.jpeg'
         },
         { id: 3, 
