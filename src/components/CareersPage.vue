@@ -181,9 +181,7 @@ export default {
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C7.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C8.jpeg" },
 
-        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C1.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C2.jpeg" },
-        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C3.jpeg" },
 
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Assistant%20BM.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2018.jpeg" },
