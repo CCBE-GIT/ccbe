@@ -175,14 +175,18 @@ export default {
         email: "",
       },
       careers: [
+
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C9.png" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C10.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C11.jpeg" },
+        { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C12.png" },
+
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C4.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C5.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C6.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C7.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C8.jpeg" },
-
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/C2.jpeg" },
-
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Assistant%20BM.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2018.jpeg" },
         { image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Careers/Careers%2017.jpeg" },
