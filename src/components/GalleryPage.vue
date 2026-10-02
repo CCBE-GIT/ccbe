@@ -415,6 +415,32 @@ export default {
       ],
 
       groups: [
+      {
+          groupKey: 'cambridge-awards-2026-III',
+          groupLabel: "Cambridge Awards 2026 - Chapter III",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-trophy-award',
+          items: [
+            { id: 7001, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%201.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7002, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%202.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7003, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%203.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7004, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%204.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7005, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%205.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7006, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%206.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7007, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%207.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7008, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%208.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7009, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%209.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7010, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2010.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7011, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2011.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7012, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2012.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7013, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2013.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7014, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2014.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7015, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2015.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+            { id: 7016, src: 'https://ik.imagekit.io/kp5tixhur/CambridgeAwards2026_C3/C3%2015.jpg', title: "Cambridge Awards 2026 - Chapter III", category: 'Events', year: 'Sep 2026' },
+          ]
+        },
         {
           groupKey: 'beliatta-opening',
           groupLabel: "CCBE Beliatta Grand Opening",
