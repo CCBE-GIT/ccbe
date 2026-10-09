@@ -82,6 +82,14 @@ export default {
     return {
       // Array of card data
       cards: [
+              {
+          image: "https://ik.imagekit.io/kp5tixhur/CCBE%20-%20Cover%20Song/Cover3.jpeg",
+          title: "♪ පැන මඩ කඩිති | Official Cover Song by CCBE Students",
+          subtitle: "Teachers’ Day Special Gift from CCBE 2026",
+          content: "ජීවිතයට දැනුම පමණක් නොව, නිවැරදි මඟ පෙන්වා දෙමින්  ආදරණීය දුවා දරුවන්ගේ හෙට දවස ලස්සන කරන ආදරණීය ගුරුවරුන් වෙනුවෙන්... ❤️",
+          link: "https://youtu.be/XQeUIyJXFgc?si=yM6y7siukLDePVsk",
+          show: false,
+        },
         {
           image: "https://ik.imagekit.io/kp5tixhur/CCBE%20ONE%20Opening/0.1.jpg",
           title: "CCBE ONE - Grand Opening",
