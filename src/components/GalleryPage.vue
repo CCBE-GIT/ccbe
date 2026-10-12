@@ -415,7 +415,34 @@ export default {
       ],
 
       groups: [
-      {
+        {
+          groupKey: 'children-day-2026',
+          groupLabel: "Children’s Day 2026",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-emoticon-happy',
+          items: [
+            { id: 8001, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/2.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8002, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/12.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8003, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/3.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8004, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/7.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8005, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/6.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8006, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/13.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8007, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/14.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8008, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/1.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8009, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/10.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8010, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/11.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8011, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/8.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8012, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/9.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8013, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/4.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8014, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/5.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8015, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/16.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8016, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/17.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 8017, src: 'https://ik.imagekit.io/kp5tixhur/Children%20Day%202026/15.jpg', title: "Children’s Day 2026", category: 'Events', year: 'Oct 2026' },
+          ]
+        },
+        {
           groupKey: 'cambridge-awards-2026-III',
           groupLabel: "Cambridge Awards 2026 - Chapter III",
           categoryKey: 'events',
