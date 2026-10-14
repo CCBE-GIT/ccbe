@@ -44,7 +44,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" @click.prevent="openInquiryDialog">
+                                <a class="nav-link" @click.prevent="openInquiryPopup">
                                     <div class="nav-icon">
                                         <i class="material-icons">help</i>
                                     </div>
@@ -123,7 +123,7 @@
                             </a>
                         </li>
                         <li class="mobile-nav-item">
-                            <a class="mobile-nav-link" @click.prevent="openInquiryDialog(); closeMobileMenu();">
+                            <a class="mobile-nav-link" @click.prevent="openInquiryPopup(); closeMobileMenu();">
                                 <i class="material-icons">help</i>
                                 <span>Inquiry</span>
                             </a>
@@ -162,82 +162,7 @@
         </div>
     </nav>
 
-    <!-- Inquiry Dialog -->
-    <div class="dialog-inquiry" v-show="dialogInq">
-        <div class="dialog-overlay" @click="closeInquiryDialog"></div>
-        <div class="dialog-content">
-            <div class="dialog-card inquiry-card">
-                <div class="dialog-header">
-                    <div class="header-graphic">
-                        <div class="graphic-circle"></div>
-                        <i class="material-icons header-main-icon">help_outline</i>
-                    </div>
-                    <h2 class="dialog-title">Get In Touch</h2>
-                    <p class="dialog-subtitle">We'll get back to you within 24 hours</p>
-                </div>
-                
-                <div class="dialog-body">
-                    <form @submit.prevent="sendInquiry" class="form-grid">
-                        <div class="form-group">
-                            <label for="name">Your Name *</label>
-                            <input type="text" id="name" class="form-control" v-model="formData.name" required placeholder="Enter your name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="contact">Contact Number</label>
-                            <input type="tel" id="contact" class="form-control" v-model="formData.contact" placeholder="Enter contact number">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="branch">Branch *</label>
-                            <select id="branch" class="form-control" v-model="formData.branch" required>
-                                <option value="">Select a branch</option>
-                                <option value="Ambalangoda">Ambalangoda</option>
-                                <option value="Galle">Galle</option>
-                                <option value="Horana">Horana</option>
-                                <option value="Matara">Matara</option>
-                                <option value="Piliyandala">Piliyandala</option>
-                                <option value="Kalutara">Kalutara</option>
-                                <option value="Matugama">Matugama</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="source">How did you hear about us? *</label>
-                            <select id="source" class="form-control" v-model="formData.source" required>
-                                <option value="">Select an option</option>
-                                <option value="Social Media">Social Media</option>
-                                <option value="Website">Website</option>
-                                <option value="Friend/Referral">Friend/Referral</option>
-                                <option value="Other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <label for="message">Type your message *</label>
-                            <textarea id="message" class="form-control" v-model="formData.message" required rows="4" placeholder="Enter your message here..."></textarea>
-                        </div>
-                        
-                        <div class="form-group full-width">
-                            <small class="required-note">* indicates required field</small>
-                        </div>
-                        
-                        <div class="form-group full-width dialog-actions">
-                            <button type="button" class="btn btn-outline action-btn-close" @click="closeInquiryDialog">
-                                <i class="material-icons">close</i>
-                                Cancel
-                            </button>
-                            <div class="spacer"></div>
-                            <button type="submit" class="btn btn-primary action-btn-submit">
-                                <i class="material-icons">send</i>
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Success Dialog -->
     <div class="dialog-success" v-show="successDialog">
@@ -367,6 +292,26 @@ export default {
         closeDialog() {
             this.dialogInq = false;
         },
+        openIframeModal() {
+            this.iframeModal = true;
+            document.body.style.overflow = 'hidden';
+        },
+        closeIframeModal() {
+            this.iframeModal = false;
+            document.body.style.overflow = '';
+        },
+        openInquiryPopup() {
+            const url = 'https://www.admin.ccbe.in/inquiry-form';
+            const w = 720;
+            const h = 800;
+            const left = Math.round((screen.width  - w) / 2);
+            const top  = Math.round((screen.height - h) / 2);
+            window.open(
+                url,
+                'CCBEInquiry',
+                `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,status=no`
+            );
+        },
         
         async sendInquiry() {
             if (!this.formData.name || !this.formData.branch || !this.formData.message || !this.formData.source) {
@@ -456,6 +401,9 @@ export default {
         // Add escape key listener to close dialogs
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
+                if (this.iframeModal) {
+                    this.closeIframeModal();
+                }
                 if (this.dialogInq) {
                     this.closeInquiryDialog();
                 }
@@ -1227,6 +1175,122 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* IFRAME MODAL STYLES */
+.iframe-modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.iframe-modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.iframe-modal-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 900px;
+    height: 90vh;
+    max-height: 800px;
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+    animation: iframeModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes iframeModalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.iframe-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1.25rem;
+    background: linear-gradient(135deg, #FFD700 0%, #FFED4E 100%);
+    flex-shrink: 0;
+}
+
+.iframe-modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.iframe-modal-icon {
+    font-size: 1.4rem;
+    color: #1a1a1a;
+}
+
+.iframe-modal-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 0.02em;
+}
+
+.iframe-modal-close {
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    color: #1a1a1a;
+}
+
+.iframe-modal-close:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.iframe-modal-close .material-icons {
+    font-size: 1.1rem;
+}
+
+.iframe-modal-body {
+    flex: 1;
+    overflow: hidden;
+}
+
+.inquiry-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .iframe-modal-container {
+        height: 95vh;
+        max-height: none;
+        border-radius: 12px;
+    }
 }
 
 .dialog-overlay {
