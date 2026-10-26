@@ -301,7 +301,7 @@ export default {
             document.body.style.overflow = '';
         },
         openInquiryPopup() {
-            const url = '';
+            const url = 'https://www.admin.ccbe.in/inquiry-form';
             const w = 720;
             const h = 800;
             const left = Math.round((screen.width  - w) / 2);
