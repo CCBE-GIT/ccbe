@@ -1,147 +1,120 @@
 <template>
-  <div class="parallax-carousel-container">
-    <!-- Badge + Countdown (grouped) -->
-    <div class="badge-countdown-group">
-      <!-- Top Logo -->
-      <a href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified" target="_blank" rel="noopener" class="logo-link"> 
-        <img src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png" alt="logo" class="badge-img" />
+  <section
+    class="ccbe-hero"
+    aria-roledescription="carousel"
+    aria-label="CCBE highlights"
+    @mouseenter="pauseAutoPlay"
+    @mouseleave="startAutoPlay"
+    @focusin="pauseAutoPlay"
+    @focusout="startAutoPlay"
+  >
+    <!-- Award badges -->
+    <div class="badges">
+      <a
+        href="https://ebadge.bestweb.lk/api/v1/clicked/ccbe.lk/TopWeb/2026-March/Qualified"
+        target="_blank"
+        rel="noopener"
+        class="badge-link"
+      >
+        <img
+          src="https://ebadge.bestweb.lk/eBadgeSystem/domainNames/ccbe.lk/TopWeb/2026-March/Qualified/image.png"
+          alt="BestWeb.lk Top Web 2026 badge"
+          class="badge-img"
+        />
       </a>
-      <a href="#" target="_blank" rel="noopener" class="logo-link"> 
-        <img src="https://ik.imagekit.io/kp5tixhur/Awards/BestWeb%20Award1%20removed.png" alt="logo" class="badge-img" />
+      <a href="#" target="_blank" rel="noopener" class="badge-link">
+        <img
+          src="https://ik.imagekit.io/kp5tixhur/Awards/BestWeb%20Award1%20removed.png"
+          alt="BestWeb.lk Award badge"
+          class="badge-img"
+        />
       </a>
-      <!-- <a href="#" target="_blank" rel="noopener" class="logo-link"> 
-        <img src="https://ik.imagekit.io/kp5tixhur/Awards/BestWeb%20Award2%20removed.png" alt="logo" class="badge-img" />
-      </a> -->
-
-      <!-- Countdown Timer -->
-      <!-- <div class="countdown-wrapper">
-        <div class="voting-status">
-          <span class="pulse-dot"></span>
-          VOTING OPEN NOW
-        </div>
-        <div class="countdown-display">
-          <div class="countdown-unit">
-            <span class="countdown-value">{{ countdown.days }}</span>
-            <span class="countdown-label">DAYS</span>
-          </div>
-          <span class="countdown-separator">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-value">{{ countdown.hours }}</span>
-            <span class="countdown-label">HRS</span>
-          </div>
-          <span class="countdown-separator">:</span>
-          <div class="countdown-unit">
-            <span class="countdown-value">{{ countdown.minutes }}</span>
-            <span class="countdown-label">MINS</span>
-          </div>
-        </div>
-      </div> -->
     </div>
 
-    <!-- Falling Snowflakes and Santa Caps - Animation from old version -->
-    <div class="snow-container">
-      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateKokisflakeStyle()"></div>
-      <div v-for="(cap, index) in santaCapCount" :key="'cap-' + index" class="santa-cap" :style="generateCashewStyle()"></div>
-      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateFlowerStyle()"></div>
-      <div v-for="(snow, index) in snowCount" :key="index" class="snowflake" :style="generateFlowerStyle1()"></div>
+    <!-- Slides (crossfade) -->
+    <div class="slides">
+      <article
+        v-for="(item, i) in items"
+        :key="i"
+        class="slide"
+        :class="{ active: currentSlide === i }"
+        :aria-hidden="currentSlide !== i"
+        role="group"
+        aria-roledescription="slide"
+        :aria-label="`${i + 1} of ${items.length}`"
+      >
+        <div
+          class="photo"
+          role="img"
+          :aria-label="item.title"
+          :style="{ backgroundImage: `url(${item.src})`, backgroundPosition: item.pos || 'center' }"
+        ></div>
+        <div class="shade"></div>
+
+        <div class="copy">
+          <span class="category">{{ item.category }}</span>
+          <h2 class="title">{{ item.title }}</h2>
+          <p class="lede">{{ item.subtitle }}</p>
+
+          <ul class="highlights" v-if="item.features">
+            <li v-for="(feature, fIndex) in item.features" :key="fIndex">{{ feature }}</li>
+          </ul>
+        </div>
+      </article>
     </div>
 
-    <!-- Main Carousel -->
-    <div class="festive-carousel" @mouseenter="pauseAutoPlay" @mouseleave="startAutoPlay">
-      <!-- Slides Track -->
-      <div class="carousel-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
-        <div class="carousel-slide" v-for="(item, i) in items" :key="i">
-          <!-- Image Slide - Clean professional layout -->
-          <div class="parallax-item" :style="{ backgroundImage: `url(${item.src})` }">
-            <!-- Clean gradient overlay -->
-            <div class="gradient-overlay"></div>
-            
-            <!-- Minimal Content Overlay -->
-            <div class="content-overlay">
-              <div class="content-wrapper">
-                <!-- Category Badge -->
-                <div class="category-badge">{{ item.category }}</div>
-                
-                <!-- Main Title -->
-                <h2 class="slide-title">{{ item.title }}</h2>
-                
-                <!-- Subtitle -->
-                <p class="slide-subtitle">{{ item.subtitle }}</p>
-                
-                <!-- Features as subtle text -->
-                <div class="features-wrapper" v-if="item.features">
-                  <div v-for="(feature, fIndex) in item.features" :key="fIndex" class="feature-pill">
-                    <span>{{ feature }}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <!-- Arrows -->
+    <button class="arrow arrow-prev" @click="prev" aria-label="Previous slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    <button class="arrow arrow-next" @click="next" aria-label="Next slide">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
 
-      <!-- Navigation Arrows -->
-      <button class="nav-arrow prev-arrow" @click="prev" aria-label="Previous slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+    <!-- Bottom strip: navigation + autoplay progress -->
+    <nav class="strip" aria-label="Choose a slide">
+      <button
+        v-for="(item, index) in items"
+        :key="index"
+        class="tab"
+        :class="{ active: currentSlide === index }"
+        :aria-current="currentSlide === index ? 'true' : null"
+        @click="goTo(index)"
+      >
+        <span class="bar">
+          <span
+            v-if="currentSlide === index"
+            :key="`bar-${index}-${cycle}`"
+            class="bar-fill"
+            :style="{ animationDuration: `${INTERVAL}ms` }"
+          ></span>
+        </span>
+        <span class="tab-name">{{ item.tab }}</span>
+        <span class="tab-region">{{ item.category }}</span>
       </button>
-      <button class="nav-arrow next-arrow" @click="next" aria-label="Next slide">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-
-      <!-- Clean Dots Navigation -->
-      <div class="dots-navigation">
-        <button
-          v-for="(item, index) in items"
-          :key="index"
-          class="dot"
-          :class="{ active: currentSlide === index }"
-          @click="goTo(index)"
-          :aria-label="`Go to slide ${index + 1}`"
-        >
-          <span class="dot-inner"></span>
-        </button>
-      </div>
-    </div>
-  </div>
+    </nav>
+  </section>
 </template>
 
 <script>
-//import topWebImage from '@/assets/TopWeb2026.png';
-//import snowflakeImage from '@/assets/festivel/snow.png';
-//import santaCapImage from '@/assets/festivel/bells.png';
-//import kokisImage from '@/assets/festivel/kokis.png';
-//import cashewImage from '@/assets/festivel/cashew.png';
-//import flowerImage from '@/assets/festivel/flower1.png';
-//import flowerImage1 from '@/assets/festivel/flower2.png';
-
-
 export default {
   name: 'CarouselPage',
   data() {
     return {
       currentSlide: 0,
-      //topWebImage,
-      //snowflakeImage,
-      //santaCapImage,
-      //kokisImage,
-      //cashewImage,
-      //flowerImage,
-      //flowerImage1,
-      snowCount: 35,
-      santaCapCount: 8,
-      isMobile: false,
-      videoLoaded: false,
       autoPlayTimer: null,
       INTERVAL: 8000,
-      countdown: { days: '00', hours: '00', minutes: '00' },
-      countdownTimer: null,
+      cycle: 0, // restarts the progress bar whenever autoplay restarts
+      touchStartX: 0,
       items: [
         {
           src: 'https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356',
+          pos: 'center',
+          tab: 'Our Recognition',
           title: 'Our Recognition',
           subtitle: 'Celebrating Excellence Through the Years.',
           category: 'AWARDS & HONORS',
@@ -149,6 +122,8 @@ export default {
         },
         {
           src: 'https://ik.imagekit.io/u3wbiya66/2.jpg?updatedAt=1737779121377',
+          pos: 'center',
+          tab: 'Learning Environment',
           title: 'Student-Centric Environment',
           subtitle: 'Empowering Active Participation and Engagement.',
           category: 'LEARNING ENVIRONMENT',
@@ -156,6 +131,8 @@ export default {
         },
         {
           src: 'https://ik.imagekit.io/u3wbiya66/3.jpg?updatedAt=1737779167089',
+          pos: 'center',
+          tab: 'Student Support',
           title: 'Individual Attention',
           subtitle: 'Personalized Support in a Safe Space.',
           category: 'STUDENT SUPPORT',
@@ -163,6 +140,8 @@ export default {
         },
         {
           src: 'https://ik.imagekit.io/u3wbiya66/6.jpg?updatedAt=1737779168033',
+          pos: 'center',
+          tab: 'Personal Development',
           title: 'Personalized Support',
           subtitle: 'Empowering Confidence and Leadership.',
           category: 'PERSONAL DEVELOPMENT',
@@ -170,6 +149,8 @@ export default {
         },
         {
           src: 'https://ik.imagekit.io/u3wbiya66/7.jpg?updatedAt=1737779166430',
+          pos: 'center',
+          tab: 'Innovation',
           title: 'Innovative Learning',
           subtitle: 'Blending Technology and Teaching for Growth.',
           category: 'INNOVATION & TECHNOLOGY',
@@ -191,6 +172,7 @@ export default {
     },
     startAutoPlay() {
       this.stopAutoPlay();
+      this.cycle += 1;
       this.autoPlayTimer = setInterval(() => this.next(), this.INTERVAL);
     },
     stopAutoPlay() {
@@ -203,168 +185,28 @@ export default {
       this.stopAutoPlay();
     },
     restartAutoPlay() {
-      this.stopAutoPlay();
       this.startAutoPlay();
-    },
-    checkMobile() {
-      this.isMobile = window.innerWidth <= 768;
-      this.snowCount = this.isMobile ? 20 : 35;
-      this.santaCapCount = this.isMobile ? 5 : 8;
     },
     handleKeydown(e) {
       if (e.key === 'ArrowRight') this.next();
       if (e.key === 'ArrowLeft') this.prev();
     },
     handleTouchStart(e) {
-      this._touchStartX = e.touches[0].clientX;
+      this.touchStartX = e.touches[0].clientX;
     },
     handleTouchEnd(e) {
-      const diff = this._touchStartX - e.changedTouches[0].clientX;
+      const diff = this.touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
-    },
-    updateCountdown() {
-      const target = new Date('2026-07-01T00:00:00');
-      const now = new Date();
-      const diff = target - now;
-
-      if (diff <= 0) {
-        this.countdown = { days: '00', hours: '00', minutes: '00' };
-        clearInterval(this.countdownTimer);
-        return;
-      }
-
-      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-
-      this.countdown = {
-        days:    String(days).padStart(2, '0'),
-        hours:   String(hours).padStart(2, '0'),
-        minutes: String(minutes).padStart(2, '0'),
-      };
-    },
-    generateKokisflakeStyle() {
-      const isMobile = this.isMobile;
-      
-      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
-      const positionX = Math.random() * 80 + 10;
-      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
-      const delay = Math.random() * 10;
-      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
-      const opacity = Math.random() * 0.7 + 0.3;
-      const rotation = Math.random() * 360;
-
-      return {
-        left: `${positionX}%`,
-        top: '-20px',
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundImage: `url(${this.kokisImage})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: `${opacity}`,
-        transform: `rotate(${rotation}deg)`
-      };
-    },
-    generateCashewStyle() {
-      const isMobile = this.isMobile;
-      
-      const size = isMobile ? Math.random() * 35 + 30 : Math.random() * 45 + 35;
-      const positionX = Math.random() * 80 + 10;
-      const duration = isMobile ? Math.random() * 20 + 15 : Math.random() * 25 + 20;
-      const delay = Math.random() * 15;
-      const driftAmount = isMobile ? Math.random() * 25 - 12.5 : Math.random() * 40 - 20;
-      const rotation = Math.random() * 180 - 90;
-
-      return {
-        left: `${positionX}%`,
-        top: '-30px',
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundImage: `url(${this.cashewImage})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: '1',
-        transform: `rotate(${rotation}deg)`
-      };
-    },
-    generateFlowerStyle() {
-      const isMobile = this.isMobile;
-      
-      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
-      const positionX = Math.random() * 80 + 10;
-      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
-      const delay = Math.random() * 10;
-      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
-      const opacity = Math.random() * 0.7 + 0.3;
-      const rotation = Math.random() * 360;
-
-      return {
-        left: `${positionX}%`,
-        top: '-20px',
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundImage: `url(${this.flowerImage})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: `${opacity}`,
-        transform: `rotate(${rotation}deg)`
-      };
-    },
-    generateFlowerStyle1() {
-      const isMobile = this.isMobile;
-      
-      const size = isMobile ? Math.random() * 25 + 20 : Math.random() * 35 + 25;
-      const positionX = Math.random() * 80 + 10;
-      const duration = isMobile ? Math.random() * 15 + 10 : Math.random() * 20 + 15;
-      const delay = Math.random() * 10;
-      const driftAmount = isMobile ? Math.random() * 20 - 10 : Math.random() * 30 - 15;
-      const opacity = Math.random() * 0.7 + 0.3;
-      const rotation = Math.random() * 360;
-
-      return {
-        left: `${positionX}%`,
-        top: '-20px',
-        width: `${size}px`,
-        height: `${size}px`,
-        backgroundImage: `url(${this.flowerImage1})`,
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        animationDuration: `${duration}s`,
-        animationDelay: `${delay}s`,
-        '--drift-distance': `${driftAmount}px`,
-        opacity: `${opacity}`,
-        transform: `rotate(${rotation}deg)`
-      };
-    },
+    }
   },
   mounted() {
-    this.checkMobile();
     this.startAutoPlay();
-    this.updateCountdown();
-    this.countdownTimer = setInterval(this.updateCountdown, 1000);
-    window.addEventListener('resize', this.checkMobile);
     window.addEventListener('keydown', this.handleKeydown);
     this.$el.addEventListener('touchstart', this.handleTouchStart, { passive: true });
     this.$el.addEventListener('touchend', this.handleTouchEnd);
   },
   beforeUnmount() {
     this.stopAutoPlay();
-    clearInterval(this.countdownTimer);
-    window.removeEventListener('resize', this.checkMobile);
     window.removeEventListener('keydown', this.handleKeydown);
     this.$el.removeEventListener('touchstart', this.handleTouchStart);
     this.$el.removeEventListener('touchend', this.handleTouchEnd);
@@ -373,16 +215,25 @@ export default {
 </script>
 
 <style scoped>
-/* ===== RESET / BASE ===== */
-.parallax-carousel-container {
-  width: 100%;
+/* ===== TOKENS ===== */
+.ccbe-hero {
+  --ink: #111111;
+  --gold: #ffd700;
+  --amber: #ff6b35;
+  --white: #ffffff;
+  --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
   position: relative;
+  width: 100%;
+  height: clamp(520px, 86vh, 700px);
   overflow: hidden;
-  background: #000;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font);
 }
 
-/* ===== BADGE + COUNTDOWN GROUP ===== */
-.badge-countdown-group {
+/* ===== BADGES ===== */
+.badges {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -391,704 +242,327 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  max-width: 160px;
 }
-
-.logo-link {
+.badge-link {
   display: block;
-  transition: opacity 0.3s ease;
   line-height: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
-.logo-link:hover {
-  opacity: 0.9;
+.badge-link:hover {
+  transform: scale(1.05);
+  opacity: 0.95;
 }
 .badge-img {
-  width: 150px;
-  height: 150px;
+  width: 130px;
+  height: 130px;
+  object-fit: contain;
   display: block;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
 }
 
-/* ===== COUNTDOWN TIMER ===== */
-.countdown-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-}
-
-.voting-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 20px;
-  padding: 4px 12px;
-  font-size: 0.6rem;
-  font-weight: 600;
-  color: white;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-.pulse-dot {
-  width: 7px;
-  height: 7px;
-  background: #00e676;
-  border-radius: 50%;
-  animation: pulse 1.5s infinite;
-  flex-shrink: 0;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.5; transform: scale(0.8); }
-}
-
-.countdown-display {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 6px 10px;
-}
-
-.countdown-unit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 32px;
-}
-
-.countdown-value {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #FFD700;
-  line-height: 1;
-}
-
-.countdown-label {
-  font-size: 0.5rem;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.5px;
-  margin-top: 2px;
-}
-
-.countdown-separator {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #FFD700;
-  margin-bottom: 12px;
-  line-height: 1;
-}
-
-/* ===== SNOW CONTAINER - ANIMATION FROM OLD VERSION ===== */
-.snow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 600px;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
-}
-
-.snowflake {
-  position: absolute;
-  animation-name: snowFall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-.santa-cap {
-  position: absolute;
-  animation-name: santaCapFall;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-@keyframes snowFall {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: var(--start-opacity, 0.8);
-  }
-  30% {
-    transform: translateY(150px) translateX(var(--drift-distance)) rotate(180deg);
-  }
-  60% {
-    transform: translateY(300px) translateX(calc(-0.5 * var(--drift-distance))) rotate(360deg);
-  }
-  90% {
-    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.8)) rotate(540deg);
-  }
-  100% {
-    transform: translateY(600px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-    opacity: 0;
-  }
-}
-
-@keyframes santaCapFall {
-  0% {
-    transform: translateY(0) translateX(0) rotate(0deg);
-    opacity: var(--start-opacity, 0.9);
-  }
-  25% {
-    transform: translateY(150px) translateX(calc(var(--drift-distance) * 0.5)) rotate(45deg);
-  }
-  50% {
-    transform: translateY(300px) translateX(calc(-0.3 * var(--drift-distance))) rotate(-30deg);
-  }
-  75% {
-    transform: translateY(450px) translateX(calc(var(--drift-distance) * 0.7)) rotate(60deg);
-  }
-  100% {
-    transform: translateY(600px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-    opacity: 0;
-  }
-}
-
-/* ===== CAROUSEL WRAPPER ===== */
-.festive-carousel {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  overflow: visible;
-  z-index: 1;
-}
-
-.carousel-track {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  will-change: transform;
-}
-
-.carousel-slide {
-  min-width: 100%;
-  width: 100%;
-  height: 100%;
-  position: relative;
-  flex-shrink: 0;
-  overflow: visible;
-}
-
-/* ===== IMAGE SLIDE ===== */
-.parallax-item {
+/* ===== SLIDES (crossfade) ===== */
+.slides {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-
-/* Clean gradient overlay */
-.gradient-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
-  z-index: 1;
-}
-
-/* ===== CONTENT OVERLAY ===== */
-.content-overlay {
+.slide {
   position: absolute;
   inset: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 10%;
-}
-
-.content-wrapper {
-  max-width: 700px;
-  color: white;
-  animation: fadeInUp 1s ease forwards;
-  position: relative;
-  z-index: 15;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Category Badge */
-.category-badge {
-  display: inline-block;
-  background: rgba(255, 107, 53, 0.9);
-  color: white;
-  padding: 4px 12px;
-  font-size: 0.6rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  border-radius: 2px;
-}
-
-/* Title */
-.slide-title {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 15px;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-/* Subtitle */
-.slide-subtitle {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  margin-bottom: 25px;
-  opacity: 0.9;
-  font-weight: 500;
-  max-width: 600px;
-  color: rgba(255,255,255,0.9);
-}
-
-/* Features */
-.features-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.feature-pill {
-  background: linear-gradient(135deg, #FFD700 0%, #FFD700 10%, #FFD700 100%);
-  backdrop-filter: blur(5px);
-  padding: 6px 14px;
-  border-radius: 30px;
-  font-size: 0.7rem;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: black;
-  transition: all 0.3s ease;
-}
-
-.feature-pill:hover {
-  background: white;
-  border-color: rgba(255,107,53,0.5);
-}
-
-/* ===== NAVIGATION ARROWS ===== */
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  transition: all 0.3s ease;
   opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 0s linear 1s;
 }
-
-.festive-carousel:hover .nav-arrow {
+.slide.active {
   opacity: 1;
+  visibility: visible;
+  transition: opacity 1s ease, visibility 0s;
 }
 
-.nav-arrow:hover {
-  background: rgba(255,107,53,0.8);
-  border-color: rgba(255,107,53,0.8);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev-arrow {
-  left: 20px;
-}
-
-.next-arrow {
-  right: 20px;
-}
-
-/* ===== DOTS NAVIGATION ===== */
-.dots-navigation {
+.photo {
   position: absolute;
-  bottom: 30px;
+  inset: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1);
+}
+/* slow drift on the active photo */
+.slide.active .photo {
+  animation: drift 14s ease-out forwards;
+}
+@keyframes drift {
+  from { transform: scale(1.08); }
+  to   { transform: scale(1); }
+}
+
+/* darkens the text side and the strip at the bottom */
+.shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0) 40%),
+    linear-gradient(to right, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.3) 55%, rgba(0, 0, 0, 0.05) 85%);
+}
+
+/* ===== COPY ===== */
+.copy {
+  position: absolute;
   left: 0;
   right: 0;
+  top: 0;
+  bottom: 120px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 10px;
-  z-index: 20;
+  align-items: flex-start;
+  padding: 0 max(7%, 24px);
+  max-width: 760px;
 }
 
-.dot {
-  width: 40px;
-  height: 4px;
-  border: none;
-  background: rgba(255,255,255,0.3);
-  cursor: pointer;
+.category {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 5px 14px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: var(--white);
+  background: var(--amber);
+  border-radius: 3px;
+}
+
+.title {
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  text-wrap: balance;
+}
+
+.lede {
+  margin: 0 0 24px;
+  max-width: 52ch;
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.highlights {
+  list-style: none;
+  margin: 0;
   padding: 0;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+}
+.highlights li {
+  padding: 7px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111;
+  background: var(--gold);
+  border-radius: 999px;
+  transition: background-color 0.25s ease;
+}
+.highlights li:hover {
+  background: var(--white);
+}
+
+/* entrance runs only when a slide becomes active */
+.slide.active .copy > * {
+  animation: rise 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+.slide.active .copy > :nth-child(2) { animation-delay: 0.08s; }
+.slide.active .copy > :nth-child(3) { animation-delay: 0.16s; }
+.slide.active .copy > :nth-child(4) { animation-delay: 0.24s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== ARROWS ===== */
+.arrow {
+  position: absolute;
+  top: 42%;
+  z-index: 20;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.25s ease, transform 0.25s ease;
+}
+.ccbe-hero:hover .arrow,
+.arrow:focus-visible {
+  opacity: 1;
+}
+.arrow:hover {
+  background: var(--amber);
+  border-color: var(--amber);
+  transform: scale(1.08);
+}
+.arrow-prev { left: 20px; }
+.arrow-next { right: 20px; }
+
+.arrow:focus-visible,
+.tab:focus-visible,
+.badge-link:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ===== BOTTOM STRIP ===== */
+.strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 18px;
+  padding: 0 max(7%, 24px) 28px;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  padding: 0;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.62);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.25s ease;
+}
+.tab:hover,
+.tab.active {
+  color: var(--white);
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.28);
   border-radius: 2px;
+  overflow: hidden;
+}
+.bar-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: fill linear forwards;
+}
+@keyframes fill {
+  to { transform: scaleX(1); }
 }
 
-.dot.active {
-  background: #ff6b35;
-  width: 60px;
+.tab-name {
+  max-width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tab-region {
+  max-width: 100%;
+  font-size: 0.68rem;
+  letter-spacing: 0.6px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.dot:hover {
-  background: rgba(255,255,255,0.5);
-}
-
-.dot-inner {
-  display: none;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
-  .festive-carousel {
-    height: 500px;
-  }
-  
-  .snow-container {
-    height: 500px;
-  }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(500px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-  
-  .slide-title {
-    font-size: 2.5rem;
-  }
-  
-  .content-overlay {
-    padding: 0 8%;
-  }
+  .badge-img { width: 110px; height: 110px; }
 }
 
 @media (max-width: 768px) {
-  .festive-carousel {
-    height: 450px;
+  .ccbe-hero {
+    height: clamp(520px, 84vh, 640px);
   }
-  
-  .snow-container {
-    height: 450px;
+  /* badges move to a row at the top so they never cover the text */
+  .badges {
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 6px;
   }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(450px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(450px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-  
-  .content-overlay {
-    padding: 0 5%;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .content-wrapper {
+  .badge-img { width: 70px; height: 70px; }
+
+  .copy {
+    top: 80px;
+    bottom: 96px;
+    padding: 0 20px;
     max-width: 100%;
-    /* leave space for the badge+countdown on the right */
-    padding-right: 120px;
   }
-  
-  .slide-title {
-    font-size: 2rem;
+  .shade {
+    background:
+      linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.35) 60%, rgba(0, 0, 0, 0.55) 100%);
   }
-  
-  .slide-subtitle {
-    font-size: 1rem;
-  }
-  
-  .features-wrapper {
-    justify-content: center;
-  }
-  
-  .nav-arrow {
-    opacity: 0.8;
+  .arrow {
+    opacity: 0.85;
     width: 40px;
     height: 40px;
   }
-  
-  .dots-navigation {
-    bottom: 20px;
+  .arrow-prev { left: 10px; }
+  .arrow-next { right: 10px; }
+  .strip {
+    gap: 8px;
+    padding: 0 20px 20px;
   }
-  
-  .dot {
-    width: 30px;
-  }
-  
-  .dot.active {
-    width: 45px;
-  }
-
-  /* Badge + countdown group */
-  .badge-countdown-group {
-    top: 10px;
-    right: 10px;
-    max-width: 115px;
-    gap: 5px;
-  }
-
-  .badge-img {
-    width: 110px;
-    height: 110px;
-  }
-
-  .countdown-value {
-    font-size: 0.95rem;
-  }
-
-  .countdown-unit {
-    min-width: 24px;
-  }
-
-  .countdown-display {
-    padding: 5px 7px;
-    gap: 3px;
-  }
-
-  .voting-status {
-    font-size: 0.52rem;
-    padding: 3px 8px;
-  }
+  .tab-name { font-size: 0.8rem; }
+  .tab-region { display: none; }
+  .highlights li:nth-child(n + 3) { display: none; }
 }
 
 @media (max-width: 480px) {
-  .festive-carousel {
-    height: 400px;
-  }
-  
-  .snow-container {
-    height: 400px;
-  }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(400px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-  
-  .slide-title {
-    font-size: 1.6rem;
-  }
-  
-  .slide-subtitle {
-    font-size: 0.9rem;
-    margin-bottom: 15px;
-  }
-  
-  .category-badge {
-    font-size: 0.7rem;
-    margin-bottom: 12px;
-  }
-  
-  .feature-pill {
-    font-size: 0.75rem;
-    padding: 4px 10px;
-  }
-  
-  .dot {
-    width: 25px;
-    height: 3px;
-  }
-  
-  .dot.active {
-    width: 35px;
-  }
-  
-  .nav-arrow {
-    width: 36px;
-    height: 36px;
-  }
-
-  /* Badge + countdown group */
-  .badge-countdown-group {
-    top: 8px;
-    right: 8px;
-    max-width: 95px;
-    gap: 4px;
-  }
-
-  .badge-img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .countdown-value {
-    font-size: 0.82rem;
-  }
-
-  .countdown-unit {
-    min-width: 20px;
-  }
-
-  .countdown-display {
-    padding: 4px 5px;
-    gap: 2px;
-    border-radius: 6px;
-  }
-
-  .countdown-separator {
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-  }
-
-  .voting-status {
-    font-size: 0.48rem;
-    padding: 3px 6px;
-    letter-spacing: 0.3px;
-  }
-
-  .pulse-dot {
-    width: 5px;
-    height: 5px;
-  }
+  .badge-img { width: 58px; height: 58px; }
+  .category { font-size: 0.62rem; margin-bottom: 12px; }
+  .lede { margin-bottom: 16px; }
+  .highlights li { font-size: 0.72rem; padding: 6px 12px; }
+  .strip { gap: 6px; }
+  .tab-name { font-size: 0.62rem; }
 }
 
-@media (max-width: 360px) {
-  .slide-title {
-    font-size: 1.4rem;
-  }
-  
-  .feature-pill {
-    font-size: 0.7rem;
-  }
-}
-
-/* Landscape orientation */
 @media (max-width: 768px) and (orientation: landscape) {
-  .festive-carousel {
-    height: 300px;
-  }
-  
-  .snow-container {
-    height: 300px;
-  }
-  
-  @keyframes snowFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(300px) translateX(calc(var(--drift-distance) * 1.2)) rotate(720deg);
-      opacity: 0;
-    }
-  }
-  
-  @keyframes santaCapFall {
-    0% {
-      transform: translateY(0) translateX(0) rotate(0deg);
-    }
-    100% {
-      transform: translateY(300px) translateX(calc(var(--drift-distance) * 1.5)) rotate(-90deg);
-      opacity: 0;
-    }
-  }
-  
-  .slide-title {
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-  }
-  
-  .slide-subtitle {
-    font-size: 0.8rem;
-    margin-bottom: 10px;
-  }
-  
-  .features-wrapper {
-    margin-top: 10px;
-  }
+  .ccbe-hero { height: 420px; }
+  .copy { top: 64px; }
+  .highlights { display: none; }
 }
 
-/* High DPI screens */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .parallax-item {
-    image-rendering: -webkit-optimize-contrast;
-  }
-}
-
-/* Performance optimizations */
-.snow-container {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000;
-}
-
-.snowflake, .santa-cap {
-  will-change: transform, opacity;
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide.active { transition: none; }
+  .slide.active .photo,
+  .slide.active .copy > * { animation: none; }
+  .bar-fill { animation-duration: 0.01ms !important; transform: scaleX(1); }
 }
 </style>
