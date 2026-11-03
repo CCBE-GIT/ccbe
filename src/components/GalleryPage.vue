@@ -61,6 +61,80 @@
       <!-- ══════════════════════ GALLERY SECTION ══════════════════════ -->
       <template v-if="mainSection === 'gallery'">
 
+        <!-- ── MARQUEE: Moments in Motion (photos + videos) ── -->
+        <section
+          v-if="marqueeRows.length"
+          class="mq-section"
+          aria-labelledby="mq-heading"
+          data-aos="fade-up"
+          data-aos-duration="900"
+        >
+          <div class="mq-head">
+            <div class="mq-head-text">
+              <h2 id="mq-heading" class="mq-title">
+                Moments <span class="mq-title-accent">in Motion</span>
+              </h2>
+              <p class="mq-sub">
+                Photos and BuzzCast videos from our latest events. Hover to pause, click any card to open it.
+              </p>
+            </div>
+
+            <button
+              type="button"
+              class="mq-toggle"
+              :aria-pressed="marqueePaused"
+              :aria-label="marqueePaused ? 'Play slider' : 'Pause slider'"
+              @click="marqueePaused = !marqueePaused"
+            >
+              <span class="mq-toggle-icon" aria-hidden="true">
+                <i v-if="!marqueePaused" class="mq-bar"></i>
+                <i v-if="!marqueePaused" class="mq-bar"></i>
+                <i v-if="marqueePaused" class="mq-play"></i>
+              </span>
+              {{ marqueePaused ? 'Play' : 'Pause' }}
+            </button>
+          </div>
+
+          <div class="mq-rows">
+            <div
+              v-for="row in marqueeRows"
+              :key="row.key"
+              class="mq-marquee"
+              :class="{ 'is-paused': marqueePaused }"
+            >
+              <div
+                class="mq-track"
+                :class="{ 'is-reverse': row.reverse }"
+                :style="{ animationDuration: row.duration + 's' }"
+              >
+                <button
+                  v-for="(item, i) in row.items"
+                  :key="row.key + '-' + i"
+                  type="button"
+                  class="mq-card"
+                  :class="{ 'mq-card--video': item.type === 'video' }"
+                  :aria-hidden="i >= row.count ? 'true' : null"
+                  :tabindex="i >= row.count ? -1 : null"
+                  :aria-label="i >= row.count ? null : (item.type === 'video' ? 'Play video: ' : 'View photo: ') + item.title"
+                  @click="openMarqueeItem(item)"
+                >
+                  <img :src="item.src" :alt="i >= row.count ? '' : item.title" loading="lazy" class="mq-img" />
+
+                  <span v-if="item.type === 'video'" class="mq-video-tag">BuzzCast</span>
+                  <span v-if="item.type === 'video'" class="mq-video-play" aria-hidden="true">
+                    <v-icon color="white" size="26">mdi-play</v-icon>
+                  </span>
+
+                  <span class="mq-card-overlay">
+                    <span class="mq-card-title">{{ item.title }}</span>
+                    <span class="mq-card-year">{{ item.year }}</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Filter Tabs -->
         <div class="filter-bar" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <button
@@ -143,6 +217,7 @@
                 <div
                   v-else
                   class="gallery-card gallery-card--more"
+                  @click="openGroupModal(group)"
                 >
                   <img :src="group.items[2].src" :alt="group.items[2].title" class="gallery-img" loading="lazy" />
                   <div class="more-overlay">
@@ -184,7 +259,7 @@
             >
               <div class="video-thumb-wrap">
                 <img
-                  :src="video.thumbnail || ('https://img.youtube.com/vi/' + video.youtubeId + '/hqdefault.jpg')"
+                  :src="videoThumb(video)"
                   :alt="video.title"
                   class="video-thumb"
                   loading="lazy"
@@ -224,7 +299,7 @@
             </button>
             <div class="video-modal-frame-wrap">
               <iframe
-                :src="'https://www.youtube.com/embed/' + videoModal.youtubeId + '?autoplay=1&rel=0'"
+                :src="'https://www.youtube.com/embed/' + cleanVideoId(videoModal.youtubeId) + '?autoplay=1&rel=0'"
                 title="YouTube video player"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -326,19 +401,19 @@
 
     </div>
     <!-- ── Back to Home Link ── -->
-      <div class="home-link-section" data-aos="fade-up" data-aos-duration="1500">
-        <p>Looking for something else?</p>
-        <a href="/" class="home-link-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9L12 2L21 9V20a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
-          Back to Home
-        </a>
-        <div class="quick-nav-links">
-          <a href="/courses" class="qnl">Our Programmes</a>
-          <a href="/about" class="qnl">About CCBE</a>
-          <a href="/news" class="qnl">News & Events</a>
-          <a href="/corevalues" class="qnl">Core Values</a>
-        </div>
+    <div class="home-link-section" data-aos="fade-up" data-aos-duration="1500">
+      <p>Looking for something else?</p>
+      <a href="/" class="home-link-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 9L12 2L21 9V20a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        Back to Home
+      </a>
+      <div class="quick-nav-links">
+        <a href="/courses" class="qnl">Our Programmes</a>
+        <a href="/about" class="qnl">About CCBE</a>
+        <a href="/news" class="qnl">News & Events</a>
+        <a href="/corevalues" class="qnl">Core Values</a>
       </div>
+    </div>
     <ArrowButton></ArrowButton>
     <ChatBot></ChatBot>
     <FooterPage></FooterPage>
@@ -367,6 +442,9 @@ export default {
       lightboxSet: [],
       groupModal: null,
       videoModal: null,
+
+      // Marquee pause state
+      marqueePaused: false,
 
       categories: [
         { key: 'all', label: 'All', icon: 'mdi-view-grid' },
@@ -714,7 +792,7 @@ export default {
             { id: 610, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1436.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
             { id: 611, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1425.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
             { id: 612, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_1428.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
-            { id: 612, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4750.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
+            { id: 616, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4750.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
             { id: 613, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_3433.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
             { id: 614, src: 'https://ik.imagekit.io/kp5tixhur/WOMENS%20DAY%202026/IMG_4807.jpg', title: "INTERNATIONAL WOMEN'S DAY 2026", category: 'Events', year: '2026' },
           ]
@@ -870,7 +948,62 @@ export default {
     filteredGroups() {
       if (this.activeCategory === 'all') return this.groups;
       return this.groups.filter(g => g.categoryKey === this.activeCategory);
-    }
+    },
+
+    // Photos used by the marquee: the first 2 of every group.
+    // Change slice(0, 2) to slice(0, 3) etc. to feature more per event.
+    featuredPhotos() {
+      const out = [];
+      this.groups.forEach(g => {
+        g.items.slice(0, 4).forEach(item => out.push(item));
+      });
+      return out;
+    },
+
+    // Four vertical columns (up, down, up, down). Photos and videos are dealt
+    // out round-robin across the columns, then videos are mixed in evenly.
+    // Each list is doubled so the loop is seamless.
+    marqueeRows() {
+      const COLS = 4;
+
+      const photos = this.featuredPhotos.map(p => ({
+        type: 'photo',
+        src: p.src,
+        title: p.title,
+        year: p.year,
+        raw: p
+      }));
+
+      const videos = this.buzzcastVideos.map(v => ({
+        type: 'video',
+        src: this.videoThumb(v),
+        title: v.title,
+        year: v.date || '',
+        raw: v
+      }));
+
+      // Column c gets every COLS-th item, starting at c
+      const deal = (list) =>
+        Array.from({ length: COLS }, (unused, c) => list.filter((item, i) => i % COLS === c));
+
+      const photoCols = deal(photos);
+      const videoCols = deal(videos);
+
+      const cols = [];
+      for (let c = 0; c < COLS; c++) {
+        const list = this.mixIn(photoCols[c], videoCols[c]);
+        if (!list.length) continue;
+        cols.push({
+          key: 'row-' + c,
+          reverse: c % 2 === 1,
+          count: list.length,
+          items: [...list, ...list],
+          // Slightly different speed per column so they don't move in lockstep
+          duration: Math.max(40, list.length * 5 + c * 8),
+        });
+      }
+      return cols;
+    },
   },
 
   methods: {
@@ -891,6 +1024,36 @@ export default {
       return this.groups.filter(g => g.categoryKey === key).reduce((sum, g) => sum + g.items.length, 0);
     },
 
+    // ── Marquee helpers ─────────────────────────
+    // Spreads `extras` (videos) evenly between the `base` items (photos)
+    mixIn(base, extras) {
+      if (!extras.length) return base.slice();
+      const gap = Math.max(1, Math.floor(base.length / extras.length));
+      const out = [];
+      let e = 0;
+      base.forEach((item, i) => {
+        out.push(item);
+        if ((i + 1) % gap === 0 && e < extras.length) out.push(extras[e++]);
+      });
+      while (e < extras.length) out.push(extras[e++]);
+      return out;
+    },
+    openMarqueeItem(item) {
+      if (item.type === 'video') {
+        this.openVideoModal(item.raw);
+      } else {
+        this.openLightbox(item.raw, this.featuredPhotos);
+      }
+    },
+
+    // Strips things like "?si=xxxx" so the YouTube URLs stay valid
+    cleanVideoId(id) {
+      return String(id || '').split('?')[0];
+    },
+    videoThumb(video) {
+      return video.thumbnail || ('https://img.youtube.com/vi/' + this.cleanVideoId(video.youtubeId) + '/hqdefault.jpg');
+    },
+
     // ── Group Modal ─────────────────────────────
     openGroupModal(group) {
       this.groupModal = group;
@@ -904,7 +1067,7 @@ export default {
     // ── Lightbox ────────────────────────────────
     openLightbox(item, groupItems) {
       this.lightboxSet = groupItems;
-      this.lightboxIndex = groupItems.findIndex(i => i.id === item.id);
+      this.lightboxIndex = Math.max(0, groupItems.findIndex(i => i.id === item.id));
       this.lightboxItem = item;
       document.body.style.overflow = 'hidden';
     },
@@ -912,7 +1075,7 @@ export default {
       this.groupModal = null;
       this.$nextTick(() => {
         this.lightboxSet = groupItems;
-        this.lightboxIndex = groupItems.findIndex(i => i.id === item.id);
+        this.lightboxIndex = Math.max(0, groupItems.findIndex(i => i.id === item.id));
         this.lightboxItem = item;
         document.body.style.overflow = 'hidden';
       });
@@ -1012,7 +1175,221 @@ export default {
 .section-tab-sub { font-size: 0.72rem; color: #6c757d; font-weight: 500; }
 .section-tab--active .section-tab-sub { color: rgba(255,255,255,0.85); }
 
-/* ── Filter Bar ───────────────────────────────────── */
+/* ══ MARQUEE: Moments in Motion (photos + videos) ═════ */
+.mq-section {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 56px;
+  padding: 56px 0 40px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #111111 0%, #1d1d1d 100%);
+}
+.mq-section::before,
+.mq-section::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+.mq-section::before { top: -120px; left: -80px; width: 340px; height: 340px; background: rgba(251,183,0,0.22); }
+.mq-section::after  { right: -100px; bottom: -120px; width: 360px; height: 360px; background: rgba(255,95,21,0.22); }
+
+.mq-head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto 28px;
+  padding: 0 max(20px, 4vw);
+  box-sizing: border-box;
+}
+.mq-title { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 800; line-height: 1.15; color: #ffffff; text-align: left; }
+.mq-title-accent { color: #fbb700; }
+.mq-sub { margin: 0; max-width: 56ch; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.78); }
+
+.mq-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.45);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+.mq-toggle:hover { border-color: #fbb700; }
+.mq-toggle:focus-visible,
+.mq-card:focus-visible { outline: 3px solid #ff5f15; outline-offset: 3px; }
+.mq-toggle-icon { display: inline-flex; align-items: center; justify-content: center; gap: 3px; width: 14px; height: 14px; }
+.mq-bar { display: block; width: 4px; height: 14px; background: #fbb700; border-radius: 1px; }
+.mq-play { display: block; width: 0; height: 0; margin-left: 3px; border-left: 12px solid #fbb700; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+
+.mq-marquee {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  padding: 10px 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.mq-track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  will-change: transform;
+  animation: mq-scroll-left 80s linear infinite;
+}
+.mq-track.is-reverse { animation-name: mq-scroll-right; }
+.mq-marquee:hover .mq-track,
+.mq-marquee:focus-within .mq-track,
+.mq-marquee.is-paused .mq-track { animation-play-state: paused; }
+
+@keyframes mq-scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+@keyframes mq-scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+.mq-card {
+  position: relative;
+  flex: 0 0 clamp(170px, 17vw, 230px);
+  height: clamp(110px, 11vw, 145px);
+  margin: 0 16px 0 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #2a2a2a;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.mq-card:hover,
+.mq-card:focus-visible { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(255,107,53,0.35); }
+.mq-img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.7s ease; }
+.mq-card:hover .mq-img,
+.mq-card:focus-visible .mq-img { transform: scale(1.08); }
+
+.mq-card-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2px;
+  padding: 12px 14px;
+  text-align: left;
+  background: linear-gradient(to top, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.2) 55%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.mq-card:hover .mq-card-overlay,
+.mq-card:focus-visible .mq-card-overlay { opacity: 1; }
+.mq-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+}
+.mq-card-year { font-size: 0.72rem; font-weight: 600; color: #fbb700; }
+
+/* Video cards inside the marquee */
+.mq-card--video { box-shadow: 0 12px 28px rgba(0,0,0,0.45), 0 0 0 2px rgba(255,107,53,0.65); }
+.mq-card--video .mq-img { filter: brightness(0.82); }
+.mq-video-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  padding: 3px 10px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #ff5f15;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+}
+.mq-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  border-radius: 50%;
+  background: rgba(255,107,53,0.92);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.25s ease;
+}
+.mq-card--video:hover .mq-video-play,
+.mq-card--video:focus-visible .mq-video-play { transform: scale(1.12); }
+.mq-card--video .mq-card-overlay { z-index: 1; }
+
+/* ── Horizontal rows (4 stacked marquees) ─────────── */
+.mq-rows {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Vertical columns (no longer used) ────────────── */
+.mq-columns {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 max(20px, 4vw);
+  box-sizing: border-box;
+}
+.mq-col {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 8%, #000 92%, transparent);
+}
+.mq-vtrack {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  animation: mq-scroll-up 80s linear infinite;
+}
+.mq-vtrack.is-reverse { animation-name: mq-scroll-down; }
+.mq-col:hover .mq-vtrack,
+.mq-col:focus-within .mq-vtrack,
+.mq-col.is-paused .mq-vtrack { animation-play-state: paused; }
+
+@keyframes mq-scroll-up   { from { transform: translateY(0); }    to { transform: translateY(-50%); } }
+@keyframes mq-scroll-down { from { transform: translateY(-50%); } to { transform: translateY(0); } }
+
+/* Cards fill the column width instead of the old horizontal sizing */
+.mq-vtrack .mq-card {
+  flex: 0 0 auto;
+  width: 100%;
+  height: clamp(120px, 12vw, 170px);
+  margin: 0 0 16px 0;
+}
 .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 0 20px; margin-bottom: 48px; position: relative; z-index: 1; }
 .filter-btn { display: inline-flex; align-items: center; gap: 6px; padding: 9px 20px; border-radius: 50px; border: 2px solid #e0e0e0; background: white; color: #6c757d; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.28s ease; white-space: nowrap; }
 .filter-btn:hover { border-color: #ff6b35; color: #ff6b35; box-shadow: 0 4px 14px rgba(255,107,53,0.15); }
@@ -1159,6 +1536,13 @@ export default {
   .lightbox-nav--prev { left: -8px; }
   .lightbox-nav--next { right: -8px; }
   .section-tab { min-width: 160px; padding: 10px 18px; }
+
+  .mq-section { padding: 44px 0 32px; margin-bottom: 40px; }
+  .mq-head { flex-direction: column; align-items: flex-start; margin-bottom: 20px; }
+  .mq-card { border-radius: 12px; }
+  .mq-columns { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .mq-col { height: 440px; }
+  .mq-col:nth-child(n+3) { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -1183,8 +1567,23 @@ export default {
   .section-tab-title { font-size: 0.85rem; }
 }
 
+/* Touch devices have no hover, so show the captions faintly */
 @media (hover: none) and (pointer: coarse) {
   .gallery-overlay { opacity: 0.5; }
   .modal-card-overlay { opacity: 0.5; }
+  .mq-card-overlay { opacity: 1; }
+}
+
+/* Respect "reduce motion": stop the animation and let people scroll by hand */
+@media (prefers-reduced-motion: reduce) {
+  .mq-track,
+  .mq-vtrack { animation: none; }
+  .mq-col { overflow-y: auto; }
+  .mq-marquee { overflow-x: auto; }
+  .mq-card,
+  .mq-img,
+  .mq-video-play { transition: none; }
+  .mq-card:hover,
+  .mq-card:hover .mq-img { transform: none; }
 }
 </style>
