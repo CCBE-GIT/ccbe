@@ -106,19 +106,12 @@
 
   <v-container>
     <section
-      class="why-choose-us"
+      class="why-choose-us strength-section"
       ref="statsSection"
-      style="background-color: white; padding: 50px 0"
       aria-labelledby="strength-heading"
     >
       <h1
-        class="title mt-1 text-center"
-        style="
-          color: #fbb700;
-          /* font-family: 'Roboto', sans-serif; */
-          font-size: 36px;
-          font-weight: bold;
-        "
+        class="title strength-title mt-1 text-center"
         data-aos="fade-up"
         data-aos-duration="2000"
       >
@@ -149,15 +142,7 @@
               aria-labelledby="happy-students-title"
             >
               <div class="text-overline mb-2">
-                <p
-                  class="stat-label"
-                  style="
-                    color: #111111;
-                    font-weight: bold;
-                    font-size: 22px;
-                    /* font-family: Arial, Helvetica, sans-serif; */
-                  "
-                >
+                <p class="stat-label strength-label">
                   Happy Students
                 </p>
               </div>
@@ -171,10 +156,7 @@
                 </v-col>
               </v-row>
               <v-list-item-title class="text-h5 mb-1">
-                <h3
-                  class="stat-value"
-                  style="font-size: 28px; color: #ff5f15; font-weight: bold"
-                >
+                <h3 class="stat-value strength-value">
                   {{ happyStudents }} +
                 </h3>
               </v-list-item-title>
@@ -197,15 +179,7 @@
               aria-labelledby="teachers-title"
             >
               <div class="text-overline mb-2">
-                <p
-                  class="stat-label"
-                  style="
-                    color: #111111;
-                    font-weight: bold;
-                    font-size: 22px;
-                    /* font-family: Arial, Helvetica, sans-serif; */
-                  "
-                >
+                <p class="stat-label strength-label">
                   Teachers
                 </p>
               </div>
@@ -219,10 +193,7 @@
                 </v-col>
               </v-row>
               <v-list-item-title class="text-h5 mb-1">
-                <h3
-                  class="stat-value"
-                  style="font-size: 28px; color: #ff5f15; font-weight: bold"
-                >
+                <h3 class="stat-value strength-value">
                   {{ qualifiedTeachers }} +
                 </h3>
               </v-list-item-title>
@@ -245,15 +216,7 @@
               aria-labelledby="years-title"
             >
               <div class="text-overline mb-2">
-                <p
-                  class="stat-label"
-                  style="
-                    color: #111111;
-                    font-weight: bold;
-                    font-size: 20px;
-                    /* font-family: Arial, Helvetica, sans-serif; */
-                  "
-                >
+                <p class="stat-label strength-label strength-label-sm">
                   Years In The Field
                 </p>
               </div>
@@ -267,10 +230,7 @@
                 </v-col>
               </v-row>
               <v-list-item-title class="text-h5 mb-1">
-                <h3
-                  class="stat-value"
-                  style="font-size: 28px; color: #ff5f15; font-weight: bold"
-                >
+                <h3 class="stat-value strength-value">
                   {{ yearsInField }} +
                 </h3>
               </v-list-item-title>
@@ -293,15 +253,7 @@
               aria-labelledby="branches-title"
             >
               <div class="text-overline mb-2">
-                <p
-                  class="stat-label"
-                  style="
-                    color: #111111;
-                    font-weight: bold;
-                    font-size: 22px;
-                    /* font-family: Arial, Helvetica, sans-serif; */
-                  "
-                >
+                <p class="stat-label strength-label">
                   Branches
                 </p>
               </div>
@@ -315,10 +267,7 @@
                 </v-col>
               </v-row>
               <v-list-item-title class="text-h5 mb-1">
-                <h3
-                  class="stat-value"
-                  style="font-size: 28px; color: #ff5f15; font-weight: bold"
-                >
+                <h3 class="stat-value strength-value">
                   {{ branches }}
                 </h3>
               </v-list-item-title>
@@ -1211,6 +1160,38 @@ export default {
 .stats-row .v-col:hover {
   transform: scale(1.05);
   opacity: 0.9;
+}
+
+/* ===== "OUR STRENGTH" section =====
+   These replace the old inline style="..." attributes so the page works
+   under a strict Content Security Policy (no 'unsafe-inline' for styles).
+   The extra class gives them higher specificity than the base rules above,
+   so they win exactly like the inline styles used to. */
+.why-choose-us.strength-section {
+  background-color: white;
+  padding: 50px 0;
+}
+
+.title.strength-title {
+  color: #fbb700;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.stat-label.strength-label {
+  color: #111111;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.stat-label.strength-label.strength-label-sm {
+  font-size: 20px;
+}
+
+.stat-value.strength-value {
+  font-size: 28px;
+  color: #ff5f15;
+  font-weight: bold;
 }
 
 /* Award Popup Styles */
