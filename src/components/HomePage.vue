@@ -106,17 +106,22 @@
 
   <v-container>
     <section
-      class="why-choose-us strength-section"
+      class="why-choose-us strength-section strength-compact"
       ref="statsSection"
       aria-labelledby="strength-heading"
     >
       <h1
+        id="strength-heading"
         class="title strength-title mt-1 text-center"
         data-aos="fade-up"
         data-aos-duration="2000"
       >
         OUR <span class="highlight">STRENGTH</span>
       </h1>
+      <span class="strength-rule" aria-hidden="true"></span>
+      <p class="strength-subtitle" data-aos="fade-up" data-aos-duration="2000">
+        The students, teachers and branches behind every CCBE classroom.
+      </p>
 
       <v-container>
         <v-row
@@ -157,7 +162,7 @@
               </v-row>
               <v-list-item-title class="text-h5 mb-1">
                 <h3 class="stat-value strength-value">
-                  {{ happyStudents }} +
+                  {{ happyStudents.toLocaleString() }} +
                 </h3>
               </v-list-item-title>
             </v-card>
@@ -476,7 +481,7 @@ export default {
       model: null,
       happyStudents: 0,
       qualifiedTeachers: 0,
-      yearsInField: 9,
+      yearsInField: 11,
       branches: 8,
       showAwardPopup: false,
       // Pause state for each marquee
@@ -1192,6 +1197,419 @@ export default {
   font-size: 28px;
   color: #ff5f15;
   font-weight: bold;
+}
+
+/* ===== OUR STRENGTH: attractive redesign ===== */
+.why-choose-us.strength-section {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 24px 48px;
+  background: linear-gradient(180deg, #ffffff 0%, #fff6d6 100%);
+  border: 1px solid #f6e4a8;
+  border-radius: 28px;
+  box-shadow: 0 18px 48px rgba(17, 17, 17, 0.06);
+}
+.why-choose-us.strength-section::before,
+.why-choose-us.strength-section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+.why-choose-us.strength-section::before {
+  top: -100px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(251, 183, 0, 0.28);
+}
+.why-choose-us.strength-section::after {
+  bottom: -120px;
+  right: -80px;
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 95, 21, 0.16);
+}
+.strength-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Heading */
+.strength-section .title.strength-title {
+  color: #111111;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.strength-section .strength-rule {
+  display: block;
+  width: 64px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #fbb700, #ff5f15);
+}
+.strength-section .strength-subtitle {
+  max-width: 52ch;
+  margin: 14px auto 0;
+  text-align: center;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #555555;
+}
+
+/* Cards: icon, then number, then label */
+.strength-section .v-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 16px 22px;
+  overflow: hidden;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #f3e3ae;
+  border-radius: 22px;
+  box-shadow: 0 10px 28px rgba(17, 17, 17, 0.07);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.strength-section .v-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #fbb700, #ff5f15);
+}
+.strength-section .v-card:hover {
+  transform: translateY(-8px);
+  border-color: #ff5f15;
+  box-shadow: 0 18px 38px rgba(255, 95, 21, 0.22);
+}
+/* stop the old column zoom from stacking with the card lift */
+.strength-section .stats-row .v-col:hover {
+  transform: none;
+  opacity: 1;
+}
+
+.strength-section .v-card > .v-row {
+  order: 1;
+  width: 100%;
+  margin: 0;
+}
+.strength-section .v-card > .v-list-item-title {
+  order: 2;
+}
+.strength-section .v-card > .text-overline {
+  order: 3;
+}
+.strength-section .v-card .v-img {
+  filter: drop-shadow(0 8px 12px rgba(255, 95, 21, 0.25));
+}
+
+.strength-section .stat-value.strength-value {
+  margin: 6px 0 4px;
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  color: #ff5f15;
+}
+.strength-section .text-overline {
+  text-transform: none;
+  letter-spacing: normal;
+}
+.strength-section .stat-label.strength-label {
+  position: relative;
+  margin: 0;
+  padding-bottom: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111111;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.strength-section .stat-label.strength-label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 32px;
+  height: 3px;
+  margin-left: -16px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #fbb700, #ff5f15);
+}
+
+@media (max-width: 600px) {
+  .why-choose-us.strength-section {
+    padding: 40px 12px 32px;
+    border-radius: 20px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strength-section .v-card {
+    transition: none;
+  }
+  .strength-section .v-card:hover {
+    transform: none;
+  }
+}
+
+/* ===== OUR STRENGTH: compact yellow band (overrides the previous style) ===== */
+.why-choose-us.strength-section.strength-compact {
+  padding: 28px 20px 22px;
+  background: linear-gradient(135deg, #fbb700 0%, #ffa21a 100%);
+  border: 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 26px rgba(255, 140, 0, 0.25);
+}
+.why-choose-us.strength-section.strength-compact::before,
+.why-choose-us.strength-section.strength-compact::after {
+  display: none;
+}
+
+/* Heading: smaller, black on yellow, with a black pill behind "STRENGTH" */
+.strength-section.strength-compact .title.strength-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: #111111;
+}
+.strength-section.strength-compact .title.strength-title .highlight {
+  display: inline-block;
+  padding: 2px 14px;
+  font-size: inherit;
+  color: #fbb700;
+  background: #111111;
+  border-radius: 10px;
+}
+.strength-section.strength-compact .strength-rule {
+  width: 44px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: #111111;
+}
+.strength-section.strength-compact .strength-subtitle {
+  margin: 8px auto 0;
+  font-size: 0.92rem;
+  color: #3d2e00;
+}
+
+/* Tighter spacing */
+.strength-section.strength-compact .stats-row {
+  margin-top: 8px;
+}
+.strength-section.strength-compact .v-col {
+  padding: 6px 8px;
+}
+
+/* Small horizontal cards: icon on the left, number and label on the right */
+.strength-section.strength-compact .v-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 16px;
+  text-align: left;
+  background: #ffffff;
+  border: 0;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(17, 17, 17, 0.12);
+}
+.strength-section.strength-compact .v-card::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  width: 5px;
+  height: auto;
+  background: #ff5f15;
+}
+.strength-section.strength-compact .v-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(17, 17, 17, 0.2);
+}
+
+.strength-section.strength-compact .v-card > .v-row {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  justify-content: center;
+  margin: 0;
+}
+.strength-section.strength-compact .v-card > .v-row .v-col {
+  padding: 0;
+  margin: 0 !important;
+}
+.strength-section.strength-compact .v-card .v-img {
+  width: 46px !important;
+  filter: none;
+}
+.strength-section.strength-compact .v-card > .v-list-item-title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+}
+.strength-section.strength-compact .v-card > .text-overline {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 0 !important;
+}
+
+.strength-section.strength-compact .stat-value.strength-value {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: #ff5f15;
+}
+.strength-section.strength-compact .stat-label.strength-label,
+.strength-section.strength-compact .stat-label.strength-label.strength-label-sm {
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #111111;
+}
+.strength-section.strength-compact .stat-label.strength-label::after {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .why-choose-us.strength-section.strength-compact {
+    padding: 22px 8px 16px;
+    border-radius: 16px;
+  }
+}
+
+/* ===== OUR STRENGTH: compact, eye-comfortable ===== */
+.why-choose-us.strength-section.strength-compact {
+  padding: 28px 20px 22px;
+  background: linear-gradient(135deg, #fff3d6 0%, #fce7b2 100%);
+  border: 1px solid #f3dda0;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(58, 51, 46, 0.08);
+}
+.why-choose-us.strength-section.strength-compact::before,
+.why-choose-us.strength-section.strength-compact::after {
+  display: none;
+}
+
+/* Heading */
+.strength-section.strength-compact .title.strength-title {
+  margin: 0;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  color: #3a332e;
+}
+.strength-section.strength-compact .title.strength-title .highlight {
+  display: inline;
+  padding: 0;
+  font-size: inherit;
+  color: #b4561c;
+  background: none;
+  border-radius: 0;
+}
+.strength-section.strength-compact .strength-rule {
+  width: 44px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #f4b942, #f2935a);
+}
+.strength-section.strength-compact .strength-subtitle {
+  margin: 8px auto 0;
+  font-size: 0.92rem;
+  color: #6b6159;
+}
+
+/* Tighter spacing */
+.strength-section.strength-compact .stats-row {
+  margin-top: 8px;
+}
+.strength-section.strength-compact .v-col {
+  padding: 6px 8px;
+}
+
+/* Small horizontal cards: icon left, number and label right */
+.strength-section.strength-compact .v-card {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 12px;
+  padding: 12px 16px;
+  text-align: left;
+  background: #fffdf8;
+  border: 1px solid #f6e4b0;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(58, 51, 46, 0.07);
+}
+.strength-section.strength-compact .v-card::before {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
+  width: 5px;
+  height: auto;
+  background: #f2935a;
+}
+.strength-section.strength-compact .v-card:hover {
+  transform: translateY(-3px);
+  border-color: #f2935a;
+  box-shadow: 0 10px 22px rgba(242, 147, 90, 0.2);
+}
+
+.strength-section.strength-compact .v-card > .v-row {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  justify-content: center;
+  margin: 0;
+}
+.strength-section.strength-compact .v-card > .v-row .v-col {
+  padding: 0;
+  margin: 0 !important;
+}
+.strength-section.strength-compact .v-card .v-img {
+  width: 46px !important;
+  filter: none;
+}
+.strength-section.strength-compact .v-card > .v-list-item-title {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: end;
+}
+.strength-section.strength-compact .v-card > .text-overline {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin: 0 !important;
+}
+
+.strength-section.strength-compact .stat-value.strength-value {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  color: #b4561c;
+}
+.strength-section.strength-compact .stat-label.strength-label,
+.strength-section.strength-compact .stat-label.strength-label.strength-label-sm {
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #3a332e;
+}
+.strength-section.strength-compact .stat-label.strength-label::after {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .why-choose-us.strength-section.strength-compact {
+    padding: 22px 8px 16px;
+    border-radius: 16px;
+  }
 }
 
 /* Award Popup Styles */

@@ -876,7 +876,7 @@ body {
 }
 
 /* Tablet & mobile (below 1280px): single burger + drawer */
-@media (max-width: 1399px) {
+@media (max-width: 1499px) {
     .cc-links, .cc-actions { display: none; }
     .cc-burger { display: flex; }
     .cc-brand__sub { font-size: .66rem; }
@@ -890,6 +890,29 @@ body {
     .cc-brand__logo { height: 50px; }
     .cc-nav.is-scrolled .cc-brand__logo { height: 44px; }
     .cc-brand__title { font-size: 1.25rem; }
+}
+
+/* ---------- Contact & Inquiry: shown as text menus, like the page links ---------- */
+.cc-ghost {
+    padding: 10px 13px;
+    border-radius: 12px;
+    font-size: .86rem;
+}
+.cc-ghost .material-icons { display: none; }
+.cc-ghost span { display: inline; }
+.cc-ghost:hover { transform: translateY(-1px); }
+
+/* Laptops: tighten spacing so everything still fits on one row */
+@media (min-width: 1400px) and (max-width: 1799px) {
+    .cc-brand__sub { max-width: 160px; }
+}
+@media (min-width: 1400px) and (max-width: 1599px) {
+    .cc-ghost { padding: 10px 9px; font-size: .8rem; }
+    .cc-link { padding: 10px 8px; }
+    .cc-btn .material-icons { display: none; }
+}
+@media (min-width: 1600px) and (max-width: 1799px) {
+    .cc-ghost { padding: 10px 12px; font-size: .84rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

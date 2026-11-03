@@ -11,11 +11,76 @@
       </p>
       <br />
 
+      <!-- ══════════ MARQUEE: Recent Moments ══════════ -->
+      <section
+        v-if="marqueeItems.length"
+        class="ne-mq"
+        aria-labelledby="ne-mq-heading"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
+        <div class="ne-mq-head">
+          <div class="ne-mq-head-text">
+            <h2 id="ne-mq-heading" class="ne-mq-title">
+              Recent <span class="ne-mq-accent">Moments</span>
+            </h2>
+            <p class="ne-mq-sub">
+              A quick look at our latest news and events. Hover to pause, click a card to read the full story.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="ne-mq-toggle"
+            :aria-pressed="marqueePaused"
+            :aria-label="marqueePaused ? 'Play slider' : 'Pause slider'"
+            @click="marqueePaused = !marqueePaused"
+          >
+            <span class="ne-mq-toggle-icon" aria-hidden="true">
+              <i v-if="!marqueePaused" class="ne-mq-bar"></i>
+              <i v-if="!marqueePaused" class="ne-mq-bar"></i>
+              <i v-if="marqueePaused" class="ne-mq-play"></i>
+            </span>
+            {{ marqueePaused ? 'Play' : 'Pause' }}
+          </button>
+        </div>
+
+        <div class="ne-mq-marquee" :class="{ 'is-paused': marqueePaused }">
+          <div class="ne-mq-track" :style="{ animationDuration: marqueeDuration + 's' }">
+            <button
+              v-for="(item, i) in marqueeLoop"
+              :key="'mq-' + i"
+              type="button"
+              class="ne-mq-card"
+              :aria-hidden="i >= marqueeItems.length ? 'true' : null"
+              :tabindex="i >= marqueeItems.length ? -1 : null"
+              :aria-label="i >= marqueeItems.length ? null : 'Read more: ' + item.title"
+              @click="openFromMarquee(item.index)"
+            >
+              <img
+                :src="item.image"
+                :alt="i >= marqueeItems.length ? '' : item.title"
+                loading="lazy"
+                class="ne-mq-img"
+              />
+              <span class="ne-mq-overlay">
+                <span class="ne-mq-card-title">{{ item.title }}</span>
+                <span class="ne-mq-card-sub">{{ item.subtitle }}</span>
+                <span class="ne-mq-card-more">Read more</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
       <div class="cards-grid">
         <!-- Loop through the cards array -->
-        <div v-for="(card, index) in cards" :key="index" class="card-col">
+        <div v-for="(card, index) in cards" :key="index" :id="'news-card-' + index" class="card-col">
           <div class="card">
-            <img :src="card.image" class="card-image" alt="News & Events image">
+            <div class="card-media">
+              <img :src="card.image" class="card-image" alt="News & Events image">
+              <span v-if="card.link" class="card-badge">▶ Video</span>
+            </div>
             
             <div class="card-title">{{ card.title }}</div>
             
@@ -24,13 +89,17 @@
             <div class="card-actions">
               <div class="spacer"></div>
               
-              <button class="toggle-btn" @click="toggleCard(index)">
-                <span v-if="card.show" class="icon">▲</span>
-                <span v-else class="icon">▼</span>
+              <button
+                class="toggle-btn"
+                :aria-expanded="card.show ? 'true' : 'false'"
+                @click="toggleCard(index)"
+              >
+                <span class="toggle-label">{{ card.show ? 'Show less' : 'Read more' }}</span>
+                <span class="icon">{{ card.show ? '▲' : '▼' }}</span>
               </button>
             </div>
 
-            <div class="expand-transition" :style="{ maxHeight: card.show ? '500px' : '0' }">
+            <div class="expand-transition" :style="{ maxHeight: card.show ? '1200px' : '0' }">
               <div class="divider"></div>
               
               <div class="card-content">
@@ -80,6 +149,9 @@ export default {
   },
   data() {
     return {
+      // Marquee pause state
+      marqueePaused: false,
+
       // Array of card data
       cards: [
               {
@@ -249,12 +321,41 @@ export default {
       ],
     };
   },
+  computed: {
+    // Marquee shows the latest 12 stories. Change 12 to show more or fewer.
+    marqueeItems() {
+      return this.cards
+        .map((card, index) => ({
+          index,
+          image: card.image,
+          title: card.title,
+          subtitle: card.subtitle,
+        }))
+        .slice(0, 12);
+    },
+    // List doubled so the loop is seamless
+    marqueeLoop() {
+      return [...this.marqueeItems, ...this.marqueeItems];
+    },
+    // Higher number = slower scroll
+    marqueeDuration() {
+      return Math.max(40, this.marqueeItems.length * 6);
+    },
+  },
   methods: {
     toggleCard(index) {
       this.cards[index].show = !this.cards[index].show;
     },
     exploreCard(card) {
       alert(`Exploring: ${card.title}`);
+    },
+    // Marquee click: open that story's card and scroll to it
+    openFromMarquee(index) {
+      this.cards[index].show = true;
+      this.$nextTick(() => {
+        const el = document.getElementById('news-card-' + index);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
     },
   },
   mounted() {
@@ -305,6 +406,8 @@ export default {
 
 .card-col {
   width: 100%;
+  /* keeps the card clear of the sticky navbar when the marquee scrolls to it */
+  scroll-margin-top: 110px;
 }
 
 .card {
@@ -414,6 +517,190 @@ export default {
   white-space: pre-line;
 }
 
+/* ══ MARQUEE: Recent Moments (soft, eye-comfortable palette) ══
+   butter #FFF3D6 / sand #FCE7B2 / amber #F4B942 / apricot #F2935A
+   rust #B4561C / charcoal #3A332E / muted #6B6159            */
+.ne-mq {
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 24px;
+  padding: 36px 0 22px;
+  background: linear-gradient(135deg, #fff3d6 0%, #fce7b2 100%);
+  border: 1px solid #f3dda0;
+  border-radius: 24px;
+  box-shadow: 0 10px 28px rgba(58, 51, 46, 0.08);
+}
+
+.ne-mq-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 0 max(20px, 3vw);
+  margin-bottom: 18px;
+}
+.ne-mq-title {
+  margin: 0 0 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: #3A332E;
+  text-align: left;
+}
+.ne-mq-accent { color: #B4561C; }
+.ne-mq-sub {
+  margin: 0;
+  max-width: 58ch;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #6B6159;
+}
+
+.ne-mq-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 9px 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #3A332E;
+  background: #FFFDF8;
+  border: 1.5px solid #F3DDA0;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+.ne-mq-toggle:hover { border-color: #F2935A; }
+.ne-mq-toggle:focus-visible,
+.ne-mq-card:focus-visible {
+  outline: 3px solid #F2935A;
+  outline-offset: 3px;
+}
+.ne-mq-toggle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  width: 14px;
+  height: 14px;
+}
+.ne-mq-bar {
+  display: block;
+  width: 4px;
+  height: 14px;
+  background: #B4561C;
+  border-radius: 1px;
+}
+.ne-mq-play {
+  display: block;
+  width: 0;
+  height: 0;
+  margin-left: 3px;
+  border-left: 12px solid #B4561C;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+/* Moving strip */
+.ne-mq-marquee {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 0 14px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.ne-mq-track {
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  will-change: transform;
+  animation: ne-mq-scroll 90s linear infinite;
+}
+.ne-mq-marquee:hover .ne-mq-track,
+.ne-mq-marquee:focus-within .ne-mq-track,
+.ne-mq-marquee.is-paused .ne-mq-track {
+  animation-play-state: paused;
+}
+@keyframes ne-mq-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Cards */
+.ne-mq-card {
+  position: relative;
+  flex: 0 0 clamp(220px, 21vw, 280px);
+  height: clamp(190px, 17vw, 230px);
+  margin: 0 16px 0 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  background: #E9DFD2;
+  box-shadow: 0 8px 20px rgba(58, 51, 46, 0.18);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.ne-mq-card:hover,
+.ne-mq-card:focus-visible {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 28px rgba(242, 147, 90, 0.32);
+}
+.ne-mq-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.ne-mq-card:hover .ne-mq-img,
+.ne-mq-card:focus-visible .ne-mq-img { transform: scale(1.07); }
+
+.ne-mq-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3px;
+  padding: 14px 14px 12px;
+  background: linear-gradient(to top, rgba(58, 51, 46, 0.88) 0%, rgba(58, 51, 46, 0.45) 45%, transparent 75%);
+}
+.ne-mq-card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #FFFFFF;
+}
+.ne-mq-card-sub {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.78rem;
+  color: #F3E8D8;
+}
+.ne-mq-card-more {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 3px 12px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #3A332E;
+  background: #F4B942;
+  border-radius: 999px;
+  transition: background-color 0.25s ease;
+}
+.ne-mq-card:hover .ne-mq-card-more { background: #F2935A; }
+
 /* ── Back to Home ───────────────────────────────── */
 .home-link-section {
   text-align: center;
@@ -512,6 +799,10 @@ export default {
   .card-image {
     height: 300px;
   }
+
+  .ne-mq { padding: 28px 0 16px; border-radius: 18px; }
+  .ne-mq-head { flex-direction: column; align-items: flex-start; }
+  .ne-mq-card { margin-right: 12px; border-radius: 14px; }
 }
 
 @media (max-width: 480px) {
@@ -547,5 +838,127 @@ export default {
     padding: 12px;
     font-size: 0.9rem;
   }
+}
+
+/* ══ NEWS CARDS: soft card design ══
+   butter #FFF3D6 / amber #F4B942 / apricot #F2935A / rust #B4561C / charcoal #3A332E */
+.cards-grid { gap: 28px; }
+
+.card {
+  background: #FFFDF8;
+  border: 1px solid #F6E4B0;
+  border-radius: 20px;
+  box-shadow: 0 8px 22px rgba(58, 51, 46, 0.08);
+}
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #F2935A;
+  box-shadow: 0 16px 32px rgba(242, 147, 90, 0.22);
+}
+
+/* Same photo shape on every card */
+.card-media {
+  position: relative;
+  overflow: hidden;
+  background: #E9DFD2;
+}
+.card-image {
+  height: auto;
+  aspect-ratio: 4 / 3;
+  transition: transform 0.6s ease;
+}
+.card:hover .card-image { transform: scale(1.05); }
+
+.card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #3A332E;
+  background: #F4B942;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgba(58, 51, 46, 0.25);
+}
+
+/* Left-aligned text, with room for two lines so cards line up in a row */
+.card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2.7em + 22px);
+  padding: 16px 18px 6px;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  text-align: left;
+  color: #3A332E;
+}
+.card-subtitle {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2.9em + 8px);
+  padding: 0 18px 8px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: left;
+  color: #6B6159;
+}
+
+/* Read more button */
+.card-actions {
+  padding: 6px 18px 16px;
+  justify-content: flex-start;
+}
+.card-actions .spacer { display: none; }
+.toggle-btn {
+  gap: 8px;
+  padding: 8px 18px;
+  font: 600 0.85rem 'Roboto', sans-serif;
+  color: #B4561C;
+  background: #FFF3D6;
+  border: 1px solid #F3DDA0;
+  border-radius: 999px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+.toggle-btn:hover {
+  color: #3A332E;
+  background: #F4B942;
+}
+.toggle-btn:focus-visible {
+  outline: 3px solid #F2935A;
+  outline-offset: 3px;
+}
+.toggle-btn .icon {
+  font-size: 0.7rem;
+  color: inherit;
+}
+
+/* Expanded story */
+.divider { display: none; }
+.card-content {
+  margin: 0 18px 18px;
+  padding: 14px 16px;
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #3A332E;
+  background: #FFF8E6;
+  border-left: 4px solid #F4B942;
+  border-radius: 0 12px 12px 0;
+}
+.card-link { color: #B4561C; }
+
+/* Respect "reduce motion": stop the animation and let people scroll by hand */
+@media (prefers-reduced-motion: reduce) {
+  .ne-mq-track { animation: none; }
+  .ne-mq-marquee { overflow-x: auto; }
+  .ne-mq-card,
+  .ne-mq-img { transition: none; }
+  .ne-mq-card:hover,
+  .ne-mq-card:hover .ne-mq-img { transform: none; }
 }
 </style>
