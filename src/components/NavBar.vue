@@ -15,7 +15,22 @@
             <nav class="cc-links" aria-label="Main navigation">
                 <ul class="cc-links__list">
                     <li class="cc-links__item" v-for="(item, index) in secondaryNavItems" :key="index">
+                        <!-- Inquiry opens the popup -->
+                        <button
+                            v-if="item.action === 'inquiry'"
+                            type="button"
+                            class="cc-link"
+                            @click.prevent="openInquiryPopup"
+                            @mouseenter="activateHover(index)"
+                            @mouseleave="activateHover(-1)"
+                        >
+                            <span class="cc-link__text">{{ item.text }}</span>
+                            <span class="cc-link__bar" :class="{ 'active': activeIndex === index }"></span>
+                        </button>
+
+                        <!-- Normal page link -->
                         <a
+                            v-else
                             :href="item.link"
                             class="cc-link"
                             :class="{ 'is-active': isActive(item.link) }"
@@ -31,15 +46,6 @@
 
             <!-- Desktop actions -->
             <div class="cc-actions">
-                <a href="/contact" class="cc-ghost" title="Contact">
-                    <i class="material-icons">phone</i>
-                    <span>Contact</span>
-                </a>
-                <button type="button" class="cc-ghost" title="Inquiry" @click.prevent="openInquiryPopup">
-                    <i class="material-icons">help_outline</i>
-                    <span>Inquiry</span>
-                </button>
-
                 <div class="cc-search"><SearchModal /></div>
 
                 <span class="cc-divider"></span>
@@ -99,31 +105,23 @@
                     <h3 class="cc-drawer__heading">Explore</h3>
                     <ul class="cc-drawer__list">
                         <li class="cc-drawer__item" v-for="(item, index) in secondaryNavItems" :key="index">
-                            <a :href="item.link" class="cc-drawer__link" @click="closeMobileMenu">
+                            <!-- Inquiry opens the popup -->
+                            <a
+                                v-if="item.action === 'inquiry'"
+                                class="cc-drawer__link"
+                                @click.prevent="openInquiryPopup(); closeMobileMenu();"
+                            >
+                                <i class="material-icons">{{ item.icon }}</i>
+                                <span>{{ item.text }}</span>
+                            </a>
+
+                            <!-- Normal page link -->
+                            <a v-else :href="item.link" class="cc-drawer__link" @click="closeMobileMenu">
                                 <i class="material-icons">{{ item.icon }}</i>
                                 <span>{{ item.text }}</span>
                             </a>
                         </li>
                         <SearchModal />
-                    </ul>
-                </div>
-
-                <!-- Main menu -->
-                <div class="cc-drawer__section">
-                    <h3 class="cc-drawer__heading">Main Menu</h3>
-                    <ul class="cc-drawer__list">
-                        <li class="cc-drawer__item">
-                            <a class="cc-drawer__link" href="/contact" @click="closeMobileMenu">
-                                <i class="material-icons">phone</i>
-                                <span>Contact</span>
-                            </a>
-                        </li>
-                        <li class="cc-drawer__item">
-                            <a class="cc-drawer__link" @click.prevent="openInquiryPopup(); closeMobileMenu();">
-                                <i class="material-icons">help</i>
-                                <span>Inquiry</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
 
@@ -196,10 +194,11 @@ export default {
             secondaryNavItems: [
                 { text: "Home", link: "/", icon: "home" },
                 { text: "Our Programmes", link: "/courses", icon: "school" },
-                { text: "Core Values", link: "/corevalues", icon: "verified_user" },
                 { text: "About Us", link: "/about", icon: "info" },
                 { text: "News & Events", link: "/news", icon: "newspaper" },
                 { text: "Careers", link: "/careers", icon: "work" },
+                { text: "Contact", link: "/contact", icon: "phone" },
+                { text: "Inquiry", link: "#", icon: "help_outline", action: "inquiry" },
                 { text: "Gallery", link: "/gallery", icon: "camera" }
             ]
         };
@@ -578,6 +577,12 @@ body {
     font-size: .86rem;
     white-space: nowrap;
     transition: background-color .25s ease, color .25s ease, transform .25s ease;
+
+    /* button reset so <button class="cc-link"> (Inquiry) looks like the links */
+    border: 0;
+    background: none;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
 }
 
 .cc-link:hover {
@@ -814,6 +819,7 @@ body {
 .cc-drawer__item:nth-child(5) { animation-delay: .30s; }
 .cc-drawer__item:nth-child(6) { animation-delay: .35s; }
 .cc-drawer__item:nth-child(7) { animation-delay: .40s; }
+.cc-drawer__item:nth-child(8) { animation-delay: .45s; }
 
 @keyframes ccSlideIn {
     to { opacity: 1; transform: translateX(0); }

@@ -283,6 +283,8 @@
     </section>
   </v-container>
 
+
+
   <!-- TWO MARQUEES: 1. Awards & Recognitions  2. Highlights -->
   <section
     v-for="sec in marqueeSections"
@@ -357,7 +359,66 @@
     </div>
   </section>
 
-  <!-- 3. STUDENT TESTIMONIALS marquee -->
+  <!-- 3. CORE VALUES marquee (before testimonials) -->
+  <section id="corevalues-section" class="hm-section is-cream" aria-labelledby="corevalues-heading">
+    <span class="hm-glow hm-glow-a" aria-hidden="true"></span>
+    <span class="hm-glow hm-glow-b" aria-hidden="true"></span>
+
+    <div class="hm-head">
+      <div class="hm-head-text">
+        <h2 id="corevalues-heading" class="hm-title" data-aos="fade-up" data-aos-duration="1500">
+          Our <span class="hm-title-accent">Core Values</span>
+        </h2>
+        <p class="hm-sub">
+          The principles behind every CCBE classroom, built to support academic excellence for each student.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="hm-toggle"
+        :aria-pressed="paused.corevalues"
+        :aria-label="(paused.corevalues ? 'Play' : 'Pause') + ' core values slider'"
+        @click="paused.corevalues = !paused.corevalues"
+      >
+        <span class="hm-toggle-icon" aria-hidden="true">
+          <i v-if="!paused.corevalues" class="hm-bar"></i>
+          <i v-if="!paused.corevalues" class="hm-bar"></i>
+          <i v-if="paused.corevalues" class="hm-play"></i>
+        </span>
+        {{ paused.corevalues ? "Play" : "Pause" }}
+      </button>
+    </div>
+
+    <div class="hm-marquee" :class="{ 'is-paused': paused.corevalues }">
+      <div
+        class="hm-track is-reverse"
+        :style="{ animationDuration: coreValueDuration + 's' }"
+      >
+        <article
+          v-for="(value, i) in coreValueMarquee"
+          :key="'cvm' + i"
+          class="hm-value"
+          :aria-hidden="i >= coreValues.length ? 'true' : null"
+        >
+          <span class="hm-value-photo">
+            <img :src="value.image" :alt="i >= coreValues.length ? '' : value.title" loading="lazy" />
+            <span class="hm-value-num" aria-hidden="true">{{ String((i % coreValues.length) + 1).padStart(2, "0") }}</span>
+          </span>
+          <span class="hm-value-body">
+            <span class="hm-value-title">{{ value.title }}</span>
+            <span class="hm-value-desc">{{ value.description }}</span>
+          </span>
+        </article>
+      </div>
+    </div>
+
+    <div class="hm-actions">
+      <a href="/corevalues" class="hm-btn">See all core values</a>
+    </div>
+  </section>
+
+  <!-- 4. STUDENT TESTIMONIALS marquee -->
   <section id="testimonials-section" class="hm-section is-dark" aria-labelledby="testimonials-heading">
     <span class="hm-glow hm-glow-a" aria-hidden="true"></span>
     <span class="hm-glow hm-glow-b" aria-hidden="true"></span>
@@ -426,7 +487,7 @@
     </div>
   </section>
 
-  <!-- 4. WATCH THEIR STORIES (embedded videos) -->
+  <!-- 5. WATCH THEIR STORIES (embedded videos) -->
   <section id="stories-section" class="hm-section is-light" aria-labelledby="stories-heading">
     <span class="hm-glow hm-glow-a" aria-hidden="true"></span>
     <span class="hm-glow hm-glow-b" aria-hidden="true"></span>
@@ -485,7 +546,7 @@ export default {
       branches: 8,
       showAwardPopup: false,
       // Pause state for each marquee
-      paused: { awards: false, highlights: false, testimonials: false },
+      paused: { awards: false, highlights: false, corevalues: false, testimonials: false },
       awardPopupData: {
         src: "https://ik.imagekit.io/kp5tixhur/Awards/Linguaskill.jpeg",
         title: "Authorised for Cambridge Linguaskill",
@@ -891,6 +952,49 @@ export default {
           image: require("@/assets/cards/33.jpg"),
         },
       ],
+      // Core values (same list as the Core Values page, shown as a marquee on the home page)
+      coreValues: [
+        {
+          image: require("@/assets/coreValues/CV1.jpg"),
+          title: "State-of-the-Art Facilitated Classrooms",
+          description: "Our commitment to providing a conducive learning atmosphere is reflected in our state-of-the-art classrooms equipped with cutting-edge technology and resources.",
+        },
+        {
+          image: require("@/assets/coreValues/CV2.jpg"),
+          title: "Highly Qualified Lecture Panel",
+          description: "We take pride in our team of exceptionally qualified educators who bring extensive expertise to the classroom, ensuring a robust and enriching learning experience for our students.",
+        },
+        {
+          image: require("@/assets/coreValues/CV3.jpg"),
+          title: "Parent and Student Supportive Administrative Panel",
+          description: "Our administrative team is dedicated to fostering strong partnerships with parents and students, offering unwavering support and guidance throughout their educational journey.",
+        },
+        {
+          image: require("@/assets/coreValues/CV4.jpg"),
+          title: "Monthly Evaluation of Student Skills",
+          description: "To track and enhance student progress, we conduct comprehensive evaluations of their skills on a monthly basis, enabling personalized development plans.",
+        },
+        {
+          image: require("@/assets/coreValues/CV5.jpg"),
+          title: "Continuous Quality Audit",
+          description: "We adhere to a rigorous system of continuous quality audits, reinforcing our commitment to maintaining the highest standards of education and service delivery.",
+        },
+        {
+          image: require("@/assets/coreValues/CV6.jpg"),
+          title: "Student-Centric Classroom Environment",
+          description: "Our classrooms are designed to be student-centric, with a focus on developing the four essential skills, ensuring a holistic approach to education.",
+        },
+        {
+          image: "https://ik.imagekit.io/u3wbiya66/CV7.jpg?updatedAt=1737780608594",
+          title: "Excellent Student Results",
+          description: "Our dedication to academic excellence is evidenced by the consistently outstanding results achieved by our students in various assessments and examinations.",
+        },
+        {
+          image: require("@/assets/coreValues/CV8.jpg"),
+          title: "Child Safeguarding, First Aid Training, and Fire Safety",
+          description: "We prioritize the safety and well-being of our students through the implementation of robust child safeguarding processes, a staff trained in first aid, and stringent fire safety measures to create a secure learning environment.",
+        },
+      ],
       logo: require("@/assets/Logo.png"),
     };
   },
@@ -902,6 +1006,13 @@ export default {
     // 2. Highlights
     highlightItems() {
       return this.allItems.filter((i) => i.type !== "Award" && i.type !== "Recognition");
+    },
+    // Core values marquee: list doubled for a seamless loop
+    coreValueMarquee() {
+      return [...this.coreValues, ...this.coreValues];
+    },
+    coreValueDuration() {
+      return Math.max(50, this.coreValues.length * 9);
     },
     // Testimonials marquee: list doubled for a seamless loop
     studentStoryMarquee() {
@@ -1758,10 +1869,11 @@ export default {
 </style>
 
 <style scoped>
-/* ===== TWO MARQUEES (scoped, classes prefixed hm-) =====
+/* ===== MARQUEES (scoped, classes prefixed hm-) =====
    Theme: yellow #fbb700, orange #ff5f15, black #111111, white #ffffff
-   .is-dark  = Awards & Recognitions (black section, white cards)
-   .is-light = Highlights (white section, black cards) */
+   .is-dark  = Awards & Recognitions, Testimonials (black section, white cards)
+   .is-light = Highlights, Stories (white section, black cards)
+   .is-cream = Core Values (soft cream section, cream cards) */
 
 .hm-section {
   position: relative;
@@ -1810,6 +1922,21 @@ export default {
   --card-shadow: 0 16px 34px rgba(17, 17, 17, 0.28);
   --glow-a: rgba(251, 183, 0, 0.3);
   --glow-b: rgba(255, 95, 21, 0.18);
+}
+
+/* ---- Cream theme: Core Values (soft, eye-comfortable) ---- */
+.hm-section.is-cream {
+  background: linear-gradient(180deg, #fffdf8 0%, #fff3d6 100%);
+  --title: #3a332e;
+  --title-accent: #b4561c;
+  --sub: #6b6159;
+  --toggle-text: #3a332e;
+  --toggle-line: rgba(58, 51, 46, 0.4);
+  --toggle-bg: rgba(58, 51, 46, 0.04);
+  --toggle-icon: #f2935a;
+  --card-shadow: 0 12px 28px rgba(58, 51, 46, 0.14);
+  --glow-a: rgba(244, 185, 66, 0.32);
+  --glow-b: rgba(242, 147, 90, 0.2);
 }
 
 .hm-glow {
@@ -2076,6 +2203,95 @@ export default {
   text-decoration: underline;
 }
 
+/* ---- Core value cards (inside the same marquee strip) ---- */
+.hm-value {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 clamp(260px, 24vw, 320px);
+  margin: 0 20px 0 0;
+  overflow: hidden;
+  background: #fffdf8;
+  border: 1px solid #f6e4b0;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.hm-value:hover {
+  transform: translateY(-8px);
+  border-color: #f2935a;
+  box-shadow: 0 18px 34px rgba(242, 147, 90, 0.28);
+}
+.hm-value-photo {
+  position: relative;
+  display: block;
+  height: 180px;
+  overflow: hidden;
+  background: #e9dfd2;
+}
+.hm-value-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.hm-value:hover .hm-value-photo img {
+  transform: scale(1.08);
+}
+.hm-value-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 10px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #3a332e;
+  background: #f4b942;
+  border: 3px solid #fffdf8;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(58, 51, 46, 0.3);
+}
+.hm-value-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+  padding: 18px 18px 20px;
+}
+.hm-value-body::before {
+  content: "";
+  width: 36px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #f4b942, #f2935a);
+}
+.hm-value-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 3.9em;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #3a332e;
+}
+.hm-value-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #6b6159;
+}
+
 /* ---- Testimonial quote cards (inside the same marquee strip) ---- */
 .hm-quote {
   position: relative;
@@ -2249,6 +2465,13 @@ export default {
   .hm-card-photo {
     height: 170px;
   }
+  .hm-value {
+    margin-right: 14px;
+    border-radius: 16px;
+  }
+  .hm-value-photo {
+    height: 150px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2260,11 +2483,15 @@ export default {
   }
   .hm-card,
   .hm-card-photo img,
+  .hm-value,
+  .hm-value-photo img,
   .hm-btn {
     transition: none;
   }
   .hm-card:hover,
   .hm-card:hover .hm-card-photo img,
+  .hm-value:hover,
+  .hm-value:hover .hm-value-photo img,
   .hm-btn:hover {
     transform: none;
   }
