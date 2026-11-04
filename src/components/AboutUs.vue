@@ -8,9 +8,13 @@
       <h1 class="title mt-5" data-aos="fade-up" data-aos-duration="3000">ABOUT <span class="highlight">CCBE</span>
       </h1>
       <br>
+
+      <!-- Intro: image left, text right -->
       <div class="center-container">
-        <div class="row">
-          <img class="center-image" data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/Board.jpg?updatedAt=1737883142390" alt="Board">
+        <div class="row intro-grid">
+          <div class="intro-image-wrap" data-aos="fade-right" data-aos-duration="1500">
+            <img class="center-image" data-aos="zoom-out" data-aos-duration="2000" src="https://ik.imagekit.io/u3wbiya66/Board.jpg?updatedAt=1737883142390" alt="Board">
+          </div>
           <p class="paragraph mt-2" data-aos="fade-up" data-aos-duration="3000">
             Established on September 3rd, 2015, our institution proudly functions as a distinguished
             Cambridge English
@@ -27,6 +31,22 @@
             education,
             ensuring that our students are well-equipped to excel in their academic pursuits.
           </p>
+        </div>
+      </div>
+
+      <!-- Quick facts band -->
+      <div class="stats-strip" data-aos="fade-up" data-aos-duration="1500">
+        <div class="stat-item">
+          <span class="stat-value">2015</span>
+          <span class="stat-label">Established</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">{{ offices.length }}</span>
+          <span class="stat-label">Branches</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">CELA</span>
+          <span class="stat-label">Cambridge English Centre</span>
         </div>
       </div>
 
@@ -62,7 +82,10 @@
         OUR <span class="highlight mt-3">BRANCH NETWORK</span>
       </h1>
 
-      <div class="center-container-Branch mt-3">
+      <!-- Branch network: map left, details + branch list right -->
+      <div class="branch-layout mt-3">
+
+        <div class="center-container-Branch">
   <!-- Image Container -->
   <div class="image-container">
 
@@ -166,40 +189,47 @@
     </div>
 
   </div>
-</div>
-      
-      <div v-if="selectedOffice" class="text-center mt-5">
-        <h3>{{ selectedOffice.name }}</h3>
-        <p>{{ selectedOffice.address }}</p>
-        <p><a
-            :href="'tel:' + selectedOffice.phone.split('/')[0].replace(/\s/g,'')"
-            class="branch-card-phone"
-            >
-            {{ selectedOffice.phone }}
-            </a>
-        </p>
-        <p><a
-            :href="'tel:' + selectedOffice.phone1.split('/')[0].replace(/\s/g,'')"
-            class="branch-card-phone"
-            >
-            {{ selectedOffice.phone1 }}
-            </a>
-        </p>
-      </div>
-      
-      <div>
-        <div class="office-buttons">
-          <button 
-            v-for="(office, index) in offices" 
-            :key="index" 
-            data-aos="zoom-out" 
-            data-aos-duration="2000" 
-            class="office-btn" 
-            @click="selectOffice(office)"
-          >
-            {{ office.name }}
-          </button>
         </div>
+
+        <div class="branch-side">
+          <div v-if="selectedOffice" class="text-center">
+            <h3>{{ selectedOffice.name }}</h3>
+            <p>{{ selectedOffice.address }}</p>
+            <p><a
+                :href="'tel:' + selectedOffice.phone.split('/')[0].replace(/\s/g,'')"
+                class="branch-card-phone"
+                >
+                {{ selectedOffice.phone }}
+                </a>
+            </p>
+            <!-- Only show the second number when one exists -->
+            <p v-if="selectedOffice.phone1"><a
+                :href="'tel:' + selectedOffice.phone1.split('/')[0].replace(/\s/g,'')"
+                class="branch-card-phone"
+                >
+                {{ selectedOffice.phone1 }}
+                </a>
+            </p>
+          </div>
+          <div v-else class="branch-hint">
+            Select a branch to see its address and phone number.
+          </div>
+
+          <div class="office-buttons">
+            <button 
+              v-for="(office, index) in offices" 
+              :key="index" 
+              data-aos="zoom-out" 
+              data-aos-duration="2000" 
+              class="office-btn" 
+              :class="{ active: selectedOffice && selectedOffice.name === office.name }"
+              @click="selectOffice(office)"
+            >
+              {{ office.name }}
+            </button>
+          </div>
+        </div>
+
       </div>
       <div class="divider"></div>
     </div>
@@ -317,7 +347,7 @@ export default {
 </script>
 
 <style scoped>
-/* Container */
+/* Container (no page background is set anywhere in this file) */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -331,13 +361,30 @@ export default {
   margin: 0 -15px;
 }
 
-/* Title */
+/* Title: centred with a short line on each side */
 .title {
   color: #FBB700;
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
   width: 100%;
+  letter-spacing: 1px;
+}
+
+.title::before,
+.title::after {
+  content: '';
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin: 0 16px;
+  background: linear-gradient(90deg, #FBB700, #FF5F15);
+}
+
+.title::before {
+  background: linear-gradient(270deg, #FBB700, #FF5F15);
 }
 
 .highlight {
@@ -393,12 +440,86 @@ export default {
   flex-direction: column;
 }
 
+/* Intro split layout */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+}
+
+.intro-image-wrap {
+  position: relative;
+}
+
+/* Offset frame behind the image */
+.intro-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: -18px;
+  right: 18px;
+  bottom: -18px;
+  border: 3px solid #FBB700;
+  border-radius: 14px;
+  z-index: 0;
+}
+
 .center-image {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
   height: auto;
   margin: 0 auto;
   display: block;
+  border-radius: 14px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+.intro-grid .paragraph {
+  margin: 0 !important;
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.8;
+  padding-left: 22px;
+  border-left: 4px solid #FF5F15;
+}
+
+/* Quick facts band */
+.stats-strip {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  border-top: 2px solid #FBB700;
+  border-bottom: 2px solid #FBB700;
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 24px 12px;
+}
+
+.stat-item + .stat-item {
+  border-left: 1px solid rgba(251, 183, 0, 0.5);
+}
+
+.stat-value {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #FF5F15;
+}
+
+.stat-label {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
 }
 
 /* Divider */
@@ -433,6 +554,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+/* Mission and Vision side by side */
 .parallax-content {
   position: relative;
   z-index: 1;
@@ -441,13 +563,51 @@ export default {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+.parallax-content br {
+  display: none;
+}
+
+.parallax-content .content {
+  display: flex;
 }
 
 .parallax-content .paragraph {
   color: white;
   background-color: rgba(89, 79, 0, 0.6);
-  padding: 20px;
+  padding: 28px;
   border-radius: 5px;
+  border-top: 5px solid #FBB700;
+  margin: 0 !important;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+}
+
+.parallax-content .paragraph b {
+  display: block;
+  color: #FFD54A;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+/* Branch network layout */
+.branch-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.center-container-Branch {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* Image Container for Branch Network */
@@ -464,7 +624,6 @@ export default {
   object-fit: contain;
 }
 
-/* Points for interactive map */
 /* Points for interactive map */
 .point {
   position: absolute;
@@ -560,13 +719,28 @@ export default {
   transform: translateX(-50%);
 }
 
-/* Office Buttons */
+/* Right column: details card + branch list */
+.branch-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.branch-hint {
+  padding: 18px 20px;
+  border: 2px dashed rgba(251, 183, 0, 0.7);
+  border-radius: 10px;
+  color: #777;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* Office Buttons: vertical list */
 .office-buttons {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   gap: 10px;
-  margin: 1.5rem 0 3rem;
+  margin: 0;
 }
 
 .office-btn {
@@ -574,23 +748,31 @@ export default {
   background-color: transparent;
   color: black;
   border: 2px solid #FBB700;
-  border-radius: 50px;
+  border-left-width: 8px;
+  border-radius: 8px;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .office-btn:hover {
   background-color: #FBB700;
   color: white;
-  transform: translateY(-2px);
+  transform: translateX(6px);
   box-shadow: 0 4px 8px rgba(251, 183, 0, 0.3);
 }
 
+.office-btn.active {
+  background-color: #FF5F15;
+  border-color: #FF5F15;
+  color: white;
+}
+
 .office-btn:active {
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 .office-btn:focus {
@@ -598,24 +780,28 @@ export default {
   outline-offset: 2px;
 }
 
+/* Selected office details card */
 .text-center {
-  text-align: center;
+  text-align: left;
+  padding: 22px 24px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 6px solid #FF5F15;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  animation: card-in 0.35s ease;
 }
 
-.text-center h3 {
-  color: #333;
-  margin-bottom: 10px;
+.text-center h3 { color: #FBB700; margin-bottom: 10px; }
+.text-center p  { color: #555; margin: 5px 0; font-size: 1rem; }
+
+.branch-card-phone {
+  color: #FF5F15;
+  font-weight: 600;
+  text-decoration: none;
 }
 
-.text-center p {
-  color: #666;
-  margin-bottom: 5px;
-}
-
-.center-container-Branch {
-  position: relative;
-  width: 100%;
-  margin: 0 auto;
+.branch-card-phone:hover {
+  text-decoration: underline;
 }
 
 /* ── Back to Home ───────────────────────────────── */
@@ -675,18 +861,6 @@ export default {
   border-color: #FF5F15;
 }
 
-.text-center {
-  text-align: center;
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.text-center h3 { color: #FBB700; margin-bottom: 10px; }
-.text-center p  { color: #555; margin: 5px 0; font-size: 1rem; }
-
 /* Animations */
 @keyframes pulse-grow {
   0%, 100% {
@@ -708,7 +882,32 @@ export default {
   }
 }
 
+@keyframes card-in {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-center { animation: none; }
+}
+
 /* Responsive Styles */
+@media (max-width: 992px) {
+  .intro-grid,
+  .branch-layout,
+  .parallax-content {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-grid {
+    gap: 40px;
+  }
+
+  .intro-image-wrap {
+    padding: 0 18px 18px 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 10px;
@@ -717,10 +916,15 @@ export default {
   .title {
     font-size: 1.75rem;
   }
+
+  .title::before,
+  .title::after {
+    width: 30px;
+    margin: 0 8px;
+  }
   
   .paragraph {
     font-size: 18px;
-    padding: 0 10px;
   }
   
   .center-image {
@@ -741,21 +945,19 @@ export default {
     padding: 1rem;
   }
   
-  .office-buttons {
-    flex-direction: column;
-    align-items: center;
-  }
-  
   .office-btn {
-    width: 90%;
-    max-width: 300px;
-    margin-bottom: 10px;
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .title {
     font-size: 1.5rem;
+  }
+
+  .title::before,
+  .title::after {
+    display: none;
   }
   
   .paragraph {
@@ -770,6 +972,14 @@ export default {
   #logo {
     width: 150px;
     height: auto;
+  }
+
+  .stat-item {
+    padding: 16px 6px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
   }
 }
 </style>
