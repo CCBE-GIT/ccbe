@@ -501,6 +501,30 @@ export default {
 
       groups: [
         {
+          groupKey: 'fit-to-fight2026',
+          groupLabel: "CAMBRIANS  FIT TO FIGHT 2026",
+          categoryKey: 'events',
+          categoryLabel: 'Events',
+          year: '2026',
+          icon: 'mdi-handshake',
+          items: [
+            { id: 9001, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/0.jpeg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9002, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/4.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9003, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/3.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9004, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/12.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9005, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/13.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9006, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/14.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9007, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/6.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9008, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/2.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9009, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/7.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9010, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/11.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9011, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/1.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9012, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/9.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9013, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/10.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+            { id: 9014, src: 'https://ik.imagekit.io/kp5tixhur/FitToFight2026/15.jpg', title: "CAMBRIANS  FIT TO FIGHT 2026", category: 'Events', year: 'Oct 2026' },
+          ]
+        },
+        {
           groupKey: 'children-day-2026',
           groupLabel: "Children’s Day 2026",
           categoryKey: 'events',
