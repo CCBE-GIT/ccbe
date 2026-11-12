@@ -75,7 +75,7 @@
               </span>
             </div>
           </div>
-          <div class="ccbe-card-actions">
+          <!-- <div class="ccbe-card-actions">
             <h3 class="ccbe-image-title">Join Our Team</h3>
             <button
               @click="openApplicationForm"
@@ -84,7 +84,7 @@
             >
               Apply Now
             </button>
-          </div>
+          </div> -->
         </article>
       </div>
     </section>
@@ -123,7 +123,7 @@
       <div v-if="previewImage" class="ccbe-modal-overlay ccbe-preview" @click="closePreview">
         <button class="ccbe-preview-close" @click="closePreview" aria-label="Close preview">×</button>
         <img :src="previewImage" alt="Career poster preview" class="ccbe-preview-img" @click.stop />
-        <button class="ccbe-cta ccbe-preview-apply" @click.stop="applyFromPreview">Apply Now</button>
+        <!--<button class="ccbe-cta ccbe-preview-apply" @click.stop="applyFromPreview">Apply Now</button> -->
       </div>
     </transition>
 
@@ -252,6 +252,7 @@ export default {
   components: { NavBar, FooterPage, ChatBot },
   data() {
     return {
+      cvUploadUrl: 'https://central.ccbe.in/open-zone/cv-upload',
       showDialog: false,
       successDialog: false,
       previewImage: null,
@@ -334,8 +335,23 @@ export default {
       document.body.style.overflow = lock ? 'hidden' : 'auto';
     },
     openApplicationForm() {
-      this.showDialog = true;
-      this.lockScroll(true);
+      const width = 900;
+      const height = 750;
+      const left = Math.max(0, window.screenX + (window.outerWidth - width) / 2);
+      const top = Math.max(0, window.screenY + (window.outerHeight - height) / 2);
+
+      const popup = window.open(
+        this.cvUploadUrl,
+        'ccbeCvUpload',
+        `width=${width},height=${height},left=${left},top=${top},scrollbars=yes,resizable=yes`
+      );
+
+      // Fallback if the popup is blocked by the browser
+      if (!popup) {
+        window.open(this.cvUploadUrl, '_blank');
+      } else {
+        popup.focus();
+      }
     },
     closeDialog() {
       this.showDialog = false;
@@ -355,7 +371,7 @@ export default {
     },
     applyFromPreview() {
       this.previewImage = null;
-      this.openApplicationForm();
+      //this.openApplicationForm();
     },
     async sendInquiry() {
       if (this.sending) return;
