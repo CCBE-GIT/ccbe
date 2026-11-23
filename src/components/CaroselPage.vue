@@ -63,48 +63,6 @@
       </article>
     </div>
 
-    <!-- Snowfall overlay (decorative, never blocks clicks) -->
-    <canvas ref="snowCanvas" class="snow-canvas" aria-hidden="true"></canvas>
-
-    <!-- Snow on/off -->
-    <button
-      class="snow-toggle"
-      :class="{ on: snowOn }"
-      :aria-pressed="snowOn ? 'true' : 'false'"
-      aria-label="Toggle falling snow"
-      title="Toggle snow"
-      @click="toggleSnow"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M12 2v20M4.2 7l15.6 10M19.8 7L4.2 17M9 3.5l3 2.5 3-2.5M9 20.5l3-2.5 3 2.5"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </button>
-
-    <!-- Sparkles on/off -->
-    <button
-      class="snow-toggle sparkle-toggle"
-      :class="{ on: sparkleOn }"
-      :aria-pressed="sparkleOn ? 'true' : 'false'"
-      aria-label="Toggle golden sparkles"
-      title="Toggle sparkles"
-      @click="toggleSparkle"
-    >
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path
-          d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linejoin="round"
-        />
-      </svg>
-    </button>
-
     <!-- Arrows -->
     <button class="arrow arrow-prev" @click="prev" aria-label="Previous slide">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -152,8 +110,6 @@ export default {
       INTERVAL: 8000,
       cycle: 0, // restarts the progress bar whenever autoplay restarts
       touchStartX: 0,
-      snowOn: true, // snowfall enabled by default (turned off automatically for reduced-motion users)
-      sparkleOn: true, // golden sparkles enabled by default (turned off automatically for reduced-motion users)
       items: [
         {
           src: 'https://ik.imagekit.io/a56urydbh7/PXL_202.jpg?updatedAt=1743228744356',
@@ -241,147 +197,6 @@ export default {
     handleTouchEnd(e) {
       const diff = this.touchStartX - e.changedTouches[0].clientX;
       if (Math.abs(diff) > 50) diff > 0 ? this.next() : this.prev();
-    },
-
-    /* ===== SNOWFALL ===== */
-    toggleSnow() {
-      this.snowOn = !this.snowOn;
-      this.syncEffects();
-    },
-    toggleSparkle() {
-      this.sparkleOn = !this.sparkleOn;
-      this.syncEffects();
-    },
-    syncEffects() {
-      // one shared canvas loop runs while at least one effect is on
-      if (this.snowOn || this.sparkleOn) this.startSnow();
-      else this.stopSnow();
-    },
-    createSparkle(initial) {
-      const w = this.snowW;
-      const h = this.snowH;
-      return {
-        x: Math.random() * w,
-        y: initial ? Math.random() * h : h + 10,
-        r: 0.8 + Math.random() * 1.8,
-        vy: 0.15 + Math.random() * 0.4, // rises slowly
-        drift: (Math.random() - 0.5) * 0.25,
-        phase: Math.random() * Math.PI * 2,
-        twinkle: 0.015 + Math.random() * 0.03
-      };
-    },
-    createFlake(initial) {
-      const w = this.snowW;
-      const h = this.snowH;
-      const r = 1 + Math.random() * 2.8; // radius 1 – 3.8px
-      return {
-        x: Math.random() * w,
-        y: initial ? Math.random() * h : -r * 2,
-        r,
-        speed: 0.5 + r * 0.38, // larger flakes fall faster (depth effect)
-        sway: 0.4 + Math.random() * 1.1, // horizontal sway amplitude
-        phase: Math.random() * Math.PI * 2,
-        phaseSpeed: 0.006 + Math.random() * 0.014,
-        alpha: 0.35 + Math.random() * 0.55
-      };
-    },
-    resizeSnow() {
-      const canvas = this.$refs.snowCanvas;
-      if (!canvas) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      this.snowW = canvas.clientWidth;
-      this.snowH = canvas.clientHeight;
-      canvas.width = Math.floor(this.snowW * dpr);
-      canvas.height = Math.floor(this.snowH * dpr);
-      this.snowCtx = canvas.getContext('2d');
-      this.snowCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      // flake count scales with area (fewer on phones)
-      const target = Math.min(170, Math.max(40, Math.floor((this.snowW * this.snowH) / 9000)));
-      this.flakes = this.flakes || [];
-      while (this.flakes.length < target) this.flakes.push(this.createFlake(true));
-      if (this.flakes.length > target) this.flakes.length = target;
-
-      const sparkTarget = Math.min(48, Math.max(12, Math.floor((this.snowW * this.snowH) / 22000)));
-      this.sparks = this.sparks || [];
-      while (this.sparks.length < sparkTarget) this.sparks.push(this.createSparkle(true));
-      if (this.sparks.length > sparkTarget) this.sparks.length = sparkTarget;
-    },
-    drawSnow() {
-      const ctx = this.snowCtx;
-      if (!ctx) return;
-      const w = this.snowW;
-      const h = this.snowH;
-      ctx.clearRect(0, 0, w, h);
-
-      if (this.snowOn) for (let i = 0; i < this.flakes.length; i++) {
-        const f = this.flakes[i];
-        f.phase += f.phaseSpeed;
-        f.y += f.speed;
-        f.x += Math.sin(f.phase) * f.sway * 0.5 + 0.15; // gentle sway with a slight wind
-
-        if (f.y - f.r > h || f.x - f.r > w + 10) {
-          this.flakes[i] = this.createFlake(false);
-          this.flakes[i].x = Math.random() * w;
-          continue;
-        }
-        if (f.x + f.r < -10) f.x = w + f.r;
-
-        ctx.beginPath();
-        ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 255, 255, ${f.alpha})`;
-        ctx.fill();
-      }
-
-      if (this.sparkleOn) {
-        ctx.save();
-        ctx.shadowColor = 'rgba(255, 215, 0, 0.9)';
-        ctx.shadowBlur = 10;
-        for (let i = 0; i < this.sparks.length; i++) {
-          const p = this.sparks[i];
-          p.phase += p.twinkle;
-          p.y -= p.vy;
-          p.x += p.drift + Math.sin(p.phase) * 0.15;
-
-          if (p.y + p.r < -10) {
-            this.sparks[i] = this.createSparkle(false);
-            continue;
-          }
-          const a = 0.15 + 0.85 * (0.5 + 0.5 * Math.sin(p.phase * 3)); // twinkle
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255, 224, 102, ${a})`;
-          ctx.fill();
-        }
-        ctx.restore();
-      }
-    },
-    snowLoop() {
-      this.drawSnow();
-      this.snowRaf = requestAnimationFrame(this.snowLoop);
-    },
-    startSnow() {
-      this.stopSnow();
-      this.resizeSnow();
-      this.snowRaf = requestAnimationFrame(this.snowLoop);
-    },
-    stopSnow() {
-      if (this.snowRaf) {
-        cancelAnimationFrame(this.snowRaf);
-        this.snowRaf = null;
-      }
-      if (this.snowCtx) this.snowCtx.clearRect(0, 0, this.snowW, this.snowH);
-    },
-    handleVisibility() {
-      // save battery: pause the animation while the tab is hidden
-      if (document.hidden) {
-        if (this.snowRaf) {
-          cancelAnimationFrame(this.snowRaf);
-          this.snowRaf = null;
-        }
-      } else if ((this.snowOn || this.sparkleOn) && !this.snowRaf) {
-        this.snowRaf = requestAnimationFrame(this.snowLoop);
-      }
     }
   },
   mounted() {
@@ -389,33 +204,12 @@ export default {
     window.addEventListener('keydown', this.handleKeydown);
     this.$el.addEventListener('touchstart', this.handleTouchStart, { passive: true });
     this.$el.addEventListener('touchend', this.handleTouchEnd);
-
-    // snow setup
-    this.flakes = [];
-    this.sparks = [];
-    this.snowRaf = null;
-    this.snowCtx = null;
-    this.snowW = 0;
-    this.snowH = 0;
-    const reduceMotion =
-      window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      this.snowOn = false;
-      this.sparkleOn = false;
-    }
-    if (this.snowOn || this.sparkleOn) this.startSnow();
-    window.addEventListener('resize', this.resizeSnow);
-    document.addEventListener('visibilitychange', this.handleVisibility);
   },
   beforeUnmount() {
     this.stopAutoPlay();
     window.removeEventListener('keydown', this.handleKeydown);
     this.$el.removeEventListener('touchstart', this.handleTouchStart);
     this.$el.removeEventListener('touchend', this.handleTouchEnd);
-
-    this.stopSnow();
-    window.removeEventListener('resize', this.resizeSnow);
-    document.removeEventListener('visibilitychange', this.handleVisibility);
   }
 };
 </script>
@@ -590,51 +384,6 @@ export default {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== SNOWFALL ===== */
-.snow-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 15; /* above slides, below arrows (20), strip (20) and badges (30) */
-  pointer-events: none; /* never blocks clicks or swipes */
-}
-
-.snow-toggle {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 30;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.7);
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  backdrop-filter: blur(6px);
-  cursor: pointer;
-  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
-}
-.snow-toggle.on {
-  color: var(--ink);
-  background: var(--gold);
-  border-color: var(--gold);
-}
-.snow-toggle:hover {
-  transform: scale(1.08);
-}
-.snow-toggle:focus-visible {
-  outline: 3px solid var(--gold);
-  outline-offset: 3px;
-}
-/* sparkle button sits beside the snow button */
-.sparkle-toggle {
-  left: 68px;
-}
-
 /* ===== ARROWS ===== */
 .arrow {
   position: absolute;
@@ -766,17 +515,6 @@ export default {
     gap: 6px;
   }
   .badge-img { width: 70px; height: 70px; }
-
-  /* snow toggle sits at the top-left, clear of the badges */
-  .snow-toggle {
-    top: 12px;
-    left: 12px;
-    width: 36px;
-    height: 36px;
-  }
-  .sparkle-toggle {
-    left: 56px;
-  }
 
   .copy {
     top: 80px;
