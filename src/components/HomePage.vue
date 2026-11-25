@@ -62,7 +62,10 @@
     </div>
   </div>
 
-  <CaroselPage></CaroselPage>
+  <div class="hero-snow-wrap">
+    <CaroselPage></CaroselPage>
+    <canvas ref="snowCanvas" class="hero-snow" aria-hidden="true"></canvas>
+  </div>
 
   <!-- Logo Section -->
 
@@ -1078,8 +1081,129 @@ export default {
 
     // Start observing the "Why Choose Us" section
     observer.observe(this.$refs.statsSection);
+
+    this.startSnow();
+  },
+  beforeUnmount() {
+    if (this.snowStop) this.snowStop();
   },
   methods: {
+    // Snowfall over the hero section (canvas, no inline styles, so CSP-safe)
+    startSnow() {
+      const canvas = this.$refs.snowCanvas;
+      if (!canvas) return;
+      // Respect users who prefer reduced motion
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const ctx = canvas.getContext("2d");
+      let w = 0;
+      let h = 0;
+      let flakes = [];
+      let raf = null;
+      let hats = [];
+      let hatTimer = null;
+
+      // A Christmas hat falls now and then (drawn on the canvas, no images needed)
+      const makeHat = () => ({
+        x: Math.random() * (w - 60) + 30,
+        y: -60,
+        size: Math.random() * 16 + 30,
+        speed: Math.random() * 0.9 + 0.9,
+        drift: Math.random() * 0.6 + 0.2,
+        phase: Math.random() * Math.PI * 2,
+        rot: (Math.random() - 0.5) * 0.8,
+        rotSpeed: (Math.random() - 0.5) * 0.02,
+      });
+
+      const drawHat = (hat) => {
+        const s = hat.size;
+        ctx.save();
+        ctx.translate(hat.x, hat.y);
+        ctx.rotate(hat.rot);
+        // red body
+        ctx.beginPath();
+        ctx.moveTo(-s * 0.5, s * 0.3);
+        ctx.quadraticCurveTo(-s * 0.35, -s * 0.4, s * 0.25, -s * 0.45);
+        ctx.quadraticCurveTo(s * 0.3, -s * 0.1, s * 0.5, s * 0.3);
+        ctx.closePath();
+        ctx.fillStyle = "#d92027";
+        ctx.fill();
+        // white trim
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(-s * 0.56, s * 0.22, s * 1.12, s * 0.2);
+        // white pompom
+        ctx.beginPath();
+        ctx.arc(s * 0.25, -s * 0.45, s * 0.14, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      };
+
+      const scheduleHat = () => {
+        hatTimer = setTimeout(() => {
+          if (hats.length < 4) hats.push(makeHat());
+          scheduleHat();
+        }, 1500 + Math.random() * 4500); // random gap: 1.5s to 6s
+      };
+
+      const makeFlake = (randomY) => ({
+        x: Math.random() * w,
+        y: randomY ? Math.random() * h : -10,
+        r: Math.random() * 2.6 + 1,
+        speed: Math.random() * 1 + 0.6,
+        drift: Math.random() * 0.8 + 0.2,
+        phase: Math.random() * Math.PI * 2,
+        alpha: Math.random() * 0.4 + 0.5,
+      });
+
+      const resize = () => {
+        const dpr = window.devicePixelRatio || 1;
+        w = canvas.clientWidth;
+        h = canvas.clientHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const count = Math.min(160, Math.floor(w / 9));
+        flakes = Array.from({ length: count }, () => makeFlake(true));
+      };
+
+      const draw = (time) => {
+        ctx.clearRect(0, 0, w, h);
+        const t = time / 1000;
+        for (const f of flakes) {
+          f.y += f.speed;
+          f.x += Math.sin(t + f.phase) * f.drift;
+          if (f.y > h + 10) Object.assign(f, makeFlake(false));
+          if (f.x > w + 10) f.x = -10;
+          if (f.x < -10) f.x = w + 10;
+          ctx.beginPath();
+          ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 255, ${f.alpha})`;
+          ctx.fill();
+        }
+        // hats
+        for (const hat of hats) {
+          hat.y += hat.speed;
+          hat.x += Math.sin(t + hat.phase) * hat.drift;
+          hat.rot += hat.rotSpeed;
+          drawHat(hat);
+        }
+        hats = hats.filter((hat) => hat.y < h + 60);
+        raf = requestAnimationFrame(draw);
+      };
+
+      resize();
+      raf = requestAnimationFrame(draw);
+      scheduleHat();
+
+      const ro = new ResizeObserver(resize);
+      ro.observe(canvas);
+
+      this.snowStop = () => {
+        clearTimeout(hatTimer);
+        cancelAnimationFrame(raf);
+        ro.disconnect();
+      };
+    },
     closeAwardPopup() {
       this.showAwardPopup = false;
     },
@@ -2495,5 +2619,19 @@ export default {
   .hm-btn:hover {
     transform: none;
   }
+}
+
+/* ===== Hero snowfall ===== */
+.hero-snow-wrap {
+  position: relative;
+}
+.hero-snow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
 }
 </style>
